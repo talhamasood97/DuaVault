@@ -1,4 +1,4 @@
-export type AuthenticityGrade = "SAHIH" | "HASAN" | "DA'IF" | "MAWDU'" | "QUDSI";
+export type AuthenticityGrade = "SAHIH" | "HASAN" | "DA'IF" | "MAWDU'" | "QURAN";
 
 export type Category =
   | "daily-life"

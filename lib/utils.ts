@@ -153,7 +153,7 @@ export function getAuthenticityColor(grade: string): string {
       return "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200";
     case "HASAN":
       return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200";
-    case "QUDSI":
+    case "QURAN":
       return "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200";
     case "DA'IF":
       return "bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200";
@@ -168,8 +168,8 @@ export function getAuthenticityLabel(grade: string): string {
       return "Sahih – Authentic";
     case "HASAN":
       return "Hasan – Good";
-    case "QUDSI":
-      return "Quranic";
+    case "QURAN":
+      return "Quranic Verse";
     case "DA'IF":
       return "Da'if – Weak";
     default:
