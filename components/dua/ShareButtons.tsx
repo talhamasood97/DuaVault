@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Share2, Copy, Check, MessageCircle } from "lucide-react";
 import toast from "react-hot-toast";
 import { formatShareText, SITE_URL } from "@/lib/utils";
@@ -8,7 +8,14 @@ import type { Dua } from "@/types";
 
 export function ShareButtons({ dua }: { dua: Dua }) {
   const [copied, setCopied] = useState(false);
+  const copyTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const url = `${SITE_URL}/duas/${dua.slug}`;
+
+  useEffect(() => {
+    return () => {
+      if (copyTimerRef.current) clearTimeout(copyTimerRef.current);
+    };
+  }, []);
   const text = formatShareText(dua.title, dua.translation, `${dua.source_book}${dua.hadith_number ? ` ${dua.hadith_number}` : ""}`);
 
   async function copyLink() {
@@ -16,7 +23,7 @@ export function ShareButtons({ dua }: { dua: Dua }) {
       await navigator.clipboard.writeText(url);
       setCopied(true);
       toast.success("Link copied!");
-      setTimeout(() => setCopied(false), 2000);
+      copyTimerRef.current = setTimeout(() => setCopied(false), 2000);
     } catch {
       toast.error("Could not copy");
     }
