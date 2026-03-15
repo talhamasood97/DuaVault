@@ -130,7 +130,9 @@ export function Navbar() {
           <button
             onClick={() => setOpen(!open)}
             className="md:hidden p-2 rounded-lg text-stone-500 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/50 transition-colors"
-            aria-label="Menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
           >
             {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -139,7 +141,7 @@ export function Navbar() {
 
       {/* Mobile menu dropdown */}
       {open && (
-        <div className="md:hidden glass border-t border-emerald-100 dark:border-emerald-900 animate-slide-up">
+        <div id="mobile-menu" className="md:hidden glass border-t border-emerald-100 dark:border-emerald-900 animate-slide-up">
           <div className="max-w-6xl mx-auto px-4 py-4 space-y-1">
             <form onSubmit={handleSearch} className="flex gap-2 mb-3">
               <input
