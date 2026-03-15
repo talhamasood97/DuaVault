@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { getDuaBySlug } from "@/lib/duas";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 export async function GET(
   _request: NextRequest,
