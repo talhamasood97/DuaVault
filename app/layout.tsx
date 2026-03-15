@@ -5,6 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "react-hot-toast";
 import { GoogleAnalytics } from "@/components/layout/GoogleAnalytics";
+import { Analytics } from "@vercel/analytics/next";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/utils";
 import "./globals.css";
 
@@ -113,6 +114,7 @@ export default function RootLayout({
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
         )}
+        <Analytics />
       </body>
     </html>
   );
