@@ -5,6 +5,7 @@ import { BookOpen, Tag, ChevronRight } from "lucide-react";
 import { getDuaBySlug, getAllSlugs, getRelatedDuas } from "@/lib/duas";
 import { AuthenticityBadge } from "@/components/dua/AuthenticityBadge";
 import { ShareButtons } from "@/components/dua/ShareButtons";
+import { SaveButton } from "@/components/dua/SaveButton";
 import { RelatedDuas } from "@/components/dua/RelatedDuas";
 import { getCategoryMeta, getEmotionMeta, SITE_URL, SITE_NAME } from "@/lib/utils";
 
@@ -139,8 +140,9 @@ export default async function DuaPage({ params }: Props) {
               <h1 className="text-2xl sm:text-3xl font-bold text-stone-800 dark:text-stone-100 leading-tight">
                 {dua.title}
               </h1>
-              <div className="flex-shrink-0">
+              <div className="flex items-center gap-2 flex-shrink-0">
                 <AuthenticityBadge grade={dua.authenticity_grade} size="lg" />
+                <SaveButton slug={dua.slug} title={dua.title} size="lg" />
               </div>
             </div>
 

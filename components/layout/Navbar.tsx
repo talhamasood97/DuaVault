@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
-import { Menu, X, Sun, Moon, Search, BookOpen, Home, Star, Grid3x3 } from "lucide-react";
+import { Menu, X, Sun, Moon, Search, BookOpen, Home, Star, Bookmark } from "lucide-react";
+import { useSavedDuas } from "@/hooks/useSavedDuas";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
@@ -18,7 +19,7 @@ const BOTTOM_NAV = [
   { href: "/", label: "Home", icon: Home },
   { href: "/daily-dua", label: "Daily", icon: Star },
   { href: "/search", label: "Search", icon: Search },
-  { href: "/category/daily-life", label: "Browse", icon: Grid3x3 },
+  { href: "/saved", label: "Saved", icon: Bookmark },
 ];
 
 export function Navbar() {
@@ -30,6 +31,7 @@ export function Navbar() {
   const router = useRouter();
   const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const { count: savedCount, hydrated: savedHydrated } = useSavedDuas();
 
   useEffect(() => setMounted(true), []);
   useEffect(() => {
@@ -233,7 +235,7 @@ export function Navbar() {
 
                 {/* Icon pill — filled background on active */}
                 <span className={cn(
-                  "flex items-center justify-center w-12 h-7 rounded-2xl transition-colors duration-200",
+                  "relative flex items-center justify-center w-12 h-7 rounded-2xl transition-colors duration-200",
                   active
                     ? "bg-emerald-100 dark:bg-emerald-800/60"
                     : ""
@@ -242,6 +244,12 @@ export function Navbar() {
                     "w-[18px] h-[18px] transition-transform duration-200",
                     active && "scale-110"
                   )} />
+                  {/* Saved count badge */}
+                  {href === "/saved" && savedHydrated && savedCount > 0 && (
+                    <span className="absolute -top-1 -right-1 min-w-[16px] h-4 px-1 bg-emerald-600 dark:bg-emerald-400 text-white dark:text-emerald-950 text-[9px] font-bold rounded-full flex items-center justify-center leading-none pointer-events-none">
+                      {savedCount > 99 ? "99+" : savedCount}
+                    </span>
+                  )}
                 </span>
 
                 {/* Label */}

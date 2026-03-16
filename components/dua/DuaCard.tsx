@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BookOpen } from "lucide-react";
 import { AuthenticityBadge } from "./AuthenticityBadge";
+import { SaveButton } from "./SaveButton";
 import { getCategoryMeta } from "@/lib/utils";
 import type { Dua } from "@/types";
 
@@ -8,16 +9,31 @@ export function DuaCard({ dua }: { dua: Dua }) {
   const category = getCategoryMeta(dua.category);
 
   return (
-    <Link
-      href={`/duas/${dua.slug}`}
-      className="dua-card group flex flex-col bg-white dark:bg-emerald-950/40 rounded-2xl p-5 sm:p-6 border border-stone-100 dark:border-emerald-900 hover:border-emerald-200 dark:hover:border-emerald-700 shadow-sm"
-    >
+    <article className="dua-card relative group flex flex-col bg-white dark:bg-emerald-950/40 rounded-2xl p-5 sm:p-6 border border-stone-100 dark:border-emerald-900 hover:border-emerald-200 dark:hover:border-emerald-700 shadow-sm">
+      {/* Stretched invisible link — covers the whole card for mouse clicks.
+          tabIndex={-1} keeps it out of keyboard tab order (title link below handles that). */}
+      <Link
+        href={`/duas/${dua.slug}`}
+        className="absolute inset-0 rounded-2xl focus:outline-none"
+        tabIndex={-1}
+        aria-label={`Open dua: ${dua.title}`}
+      />
+
       {/* Header */}
       <div className="flex items-start justify-between gap-3 mb-4">
-        <h3 className="font-semibold text-stone-800 dark:text-stone-100 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors leading-snug">
+        {/* Title — the keyboard-accessible link */}
+        <Link
+          href={`/duas/${dua.slug}`}
+          className="font-semibold text-stone-800 dark:text-stone-100 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors leading-snug focus:outline-none focus-visible:underline"
+        >
           {dua.title}
-        </h3>
-        <AuthenticityBadge grade={dua.authenticity_grade} />
+        </Link>
+
+        {/* Authenticity badge + save button — relative z-10 to sit above stretched link */}
+        <div className="flex items-center gap-1.5 flex-shrink-0 relative z-10">
+          <AuthenticityBadge grade={dua.authenticity_grade} />
+          <SaveButton slug={dua.slug} title={dua.title} size="sm" />
+        </div>
       </div>
 
       {/* Arabic */}
@@ -52,6 +68,6 @@ export function DuaCard({ dua }: { dua: Dua }) {
           </span>
         )}
       </div>
-    </Link>
+    </article>
   );
 }
