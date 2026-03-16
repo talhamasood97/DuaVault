@@ -122,6 +122,28 @@ export function Navbar() {
               </button>
             )}
 
+            {/* Saved duas — desktop only */}
+            <Link
+              href="/saved"
+              className={cn(
+                "hidden md:flex items-center gap-1.5 p-2 rounded-lg transition-colors relative",
+                pathname === "/saved"
+                  ? "text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/50"
+                  : "text-stone-500 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/50"
+              )}
+              aria-label="Saved duas"
+            >
+              <span className="relative">
+                <Bookmark className="w-4 h-4" />
+                {savedHydrated && savedCount > 0 && (
+                  <span className="absolute -top-1.5 -right-1.5 min-w-[14px] h-3.5 px-0.5 bg-emerald-600 dark:bg-emerald-400 text-white dark:text-emerald-950 text-[8px] font-bold rounded-full flex items-center justify-center leading-none pointer-events-none">
+                    {savedCount > 99 ? "99+" : savedCount}
+                  </span>
+                )}
+              </span>
+              <span className="text-sm font-medium">Saved</span>
+            </Link>
+
             {/* Theme toggle */}
             {mounted && (
               <button
@@ -190,6 +212,26 @@ export function Navbar() {
                   {link.label}
                 </Link>
               ))}
+              {/* Saved — always visible in hamburger, shows count if any */}
+              <Link
+                href="/saved"
+                className={cn(
+                  "flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium transition-colors",
+                  pathname === "/saved"
+                    ? "bg-emerald-50 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-400"
+                    : "text-stone-600 dark:text-stone-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/50"
+                )}
+              >
+                <span className="flex items-center gap-2">
+                  <Bookmark className="w-4 h-4" />
+                  Saved Duas
+                </span>
+                {savedHydrated && savedCount > 0 && (
+                  <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900 px-2 py-0.5 rounded-full">
+                    {savedCount}
+                  </span>
+                )}
+              </Link>
             </div>
           </div>
         )}
