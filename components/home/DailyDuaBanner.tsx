@@ -44,7 +44,7 @@ export function DailyDuaBanner({ dua }: { dua: Dua }) {
                   dir="rtl"
                   lang="ar"
                 >
-                  {(dua.arabic_text || "").split(" ").slice(0, 6).join(" ")}…
+                  {(() => { const words = (dua.arabic_text || "").split(" "); return words.length > 6 ? words.slice(0, 6).join(" ") + "…" : dua.arabic_text; })()}
                 </p>
                 {/* Translation on mobile, below arabic */}
                 <p className="text-xs text-emerald-300/80 mt-2 line-clamp-2 sm:hidden leading-relaxed italic">

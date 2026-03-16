@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { getDuasByCategory } from "@/lib/duas";
 import { DuaCard } from "@/components/dua/DuaCard";
-import { getCategoryMeta, CATEGORIES } from "@/lib/utils";
+import { getCategoryMeta, CATEGORIES, SITE_URL } from "@/lib/utils";
 
 interface Props {
   params: { slug: string };
@@ -30,7 +30,22 @@ export default async function CategoryPage({ params }: Props) {
 
   const duas = await getDuasByCategory(params.slug);
 
+  const breadcrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Categories", item: `${SITE_URL}/category/daily-life` },
+      { "@type": "ListItem", position: 3, name: `${cat.title} Duas`, item: `${SITE_URL}/category/${cat.slug}` },
+    ],
+  };
+
   return (
+    <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
+    />
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12 animate-fade-in">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-1.5 text-xs text-stone-400 dark:text-stone-500 mb-8">
@@ -90,5 +105,6 @@ export default async function CategoryPage({ params }: Props) {
         </div>
       )}
     </div>
+    </>
   );
 }

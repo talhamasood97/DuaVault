@@ -1,10 +1,23 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Share2, Copy, Check, MessageCircle } from "lucide-react";
+import { Share2, Copy, Check, MessageCircle, Twitter, Facebook } from "lucide-react";
 import toast from "react-hot-toast";
-import { formatShareText, SITE_URL } from "@/lib/utils";
+import { formatShareText, formatTwitterText, SITE_URL } from "@/lib/utils";
 import type { Dua } from "@/types";
+
+function trackShare(method: string, slug: string) {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).gtag?.("event", "share", {
+      method,
+      content_type: "dua",
+      item_id: slug,
+    });
+  } catch {
+    // GA not available
+  }
+}
 
 export function ShareButtons({ dua }: { dua: Dua }) {
   const [copied, setCopied] = useState(false);
@@ -16,13 +29,16 @@ export function ShareButtons({ dua }: { dua: Dua }) {
       if (copyTimerRef.current) clearTimeout(copyTimerRef.current);
     };
   }, []);
-  const text = formatShareText(dua.title, dua.translation, `${dua.source_book}${dua.hadith_number ? ` ${dua.hadith_number}` : ""}`);
+
+  const source = `${dua.source_book}${dua.hadith_number ? ` ${dua.hadith_number}` : ""}`;
+  const text = formatShareText(dua.title, dua.translation, source);
 
   async function copyLink() {
     try {
       await navigator.clipboard.writeText(url);
       setCopied(true);
       toast.success("Link copied!");
+      trackShare("copy_link", dua.slug);
       copyTimerRef.current = setTimeout(() => setCopied(false), 2000);
     } catch {
       toast.error("Could not copy");
@@ -32,12 +48,33 @@ export function ShareButtons({ dua }: { dua: Dua }) {
   function shareWhatsApp() {
     const whatsappText = encodeURIComponent(`${text}\n\n${url}`);
     window.open(`https://wa.me/?text=${whatsappText}`, "_blank", "noopener");
+    trackShare("whatsapp", dua.slug);
+  }
+
+  function shareTwitter() {
+    const tweetText = encodeURIComponent(formatTwitterText(dua.title, dua.translation));
+    window.open(
+      `https://twitter.com/intent/tweet?text=${tweetText}&url=${encodeURIComponent(url)}`,
+      "_blank",
+      "noopener,width=600,height=400"
+    );
+    trackShare("twitter", dua.slug);
+  }
+
+  function shareFacebook() {
+    window.open(
+      `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+      "_blank",
+      "noopener,width=600,height=400"
+    );
+    trackShare("facebook", dua.slug);
   }
 
   async function nativeShare() {
     if (navigator.share) {
       try {
         await navigator.share({ title: dua.title, text, url });
+        trackShare("native", dua.slug);
       } catch {
         // User cancelled
       }
@@ -58,6 +95,26 @@ export function ShareButtons({ dua }: { dua: Dua }) {
         WhatsApp
       </button>
 
+      {/* Twitter / X */}
+      <button
+        onClick={shareTwitter}
+        className="flex items-center gap-1.5 px-3 py-2 bg-black hover:bg-stone-800 text-white text-sm font-medium rounded-xl transition-colors"
+        aria-label="Share on X (Twitter)"
+      >
+        <Twitter className="w-4 h-4" />
+        X
+      </button>
+
+      {/* Facebook */}
+      <button
+        onClick={shareFacebook}
+        className="flex items-center gap-1.5 px-3 py-2 bg-[#1877F2] hover:bg-[#1664d9] text-white text-sm font-medium rounded-xl transition-colors"
+        aria-label="Share on Facebook"
+      >
+        <Facebook className="w-4 h-4" />
+        Facebook
+      </button>
+
       {/* Copy link */}
       <button
         onClick={copyLink}
@@ -72,7 +129,7 @@ export function ShareButtons({ dua }: { dua: Dua }) {
         {copied ? "Copied!" : "Copy Link"}
       </button>
 
-      {/* Native share */}
+      {/* Native share — mobile only */}
       {typeof navigator !== "undefined" && "share" in navigator && (
         <button
           onClick={nativeShare}

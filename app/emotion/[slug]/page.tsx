@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ChevronRight, Heart } from "lucide-react";
 import { getDuasByEmotion } from "@/lib/duas";
 import { DuaCard } from "@/components/dua/DuaCard";
-import { getEmotionMeta, EMOTIONS } from "@/lib/utils";
+import { getEmotionMeta, EMOTIONS, SITE_URL } from "@/lib/utils";
 
 interface Props {
   params: { slug: string };
@@ -30,7 +30,29 @@ export default async function EmotionPage({ params }: Props) {
 
   const duas = await getDuasByEmotion(params.slug);
 
+  const breadcrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Emotions", item: `${SITE_URL}/emotion/sad` },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: emotion.title === "Seeking Forgiveness"
+          ? "Duas for Seeking Forgiveness"
+          : `Duas for When You're ${emotion.title}`,
+        item: `${SITE_URL}/emotion/${emotion.slug}`,
+      },
+    ],
+  };
+
   return (
+    <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
+    />
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12 animate-fade-in">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-1.5 text-xs text-stone-400 dark:text-stone-500 mb-8">
@@ -97,5 +119,6 @@ export default async function EmotionPage({ params }: Props) {
         </div>
       )}
     </div>
+    </>
   );
 }
