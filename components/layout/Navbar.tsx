@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/daily-dua", label: "Daily Dua" },
+  { href: "/daily-hadith", label: "Hadith of the Day" },
   { href: "/category/daily-life", label: "Browse" },
   { href: "/search", label: "Search" },
 ];

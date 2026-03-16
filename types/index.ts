@@ -40,6 +40,24 @@ export interface Dua {
   created_at?: string;
 }
 
+export type HadithGrade = "Sahih" | "Hasan";
+
+export interface Hadith {
+  id: number;
+  slug: string;
+  title: string;
+  arabic: string;
+  transliteration: string;
+  translation: string;
+  narrator: string;
+  source_book: string;
+  hadith_number: string;
+  grade: HadithGrade;
+  topic: string;
+  topic_tags: string[];
+  daily_practice: string;
+}
+
 export interface SearchResult {
   duas: Dua[];
   total: number;

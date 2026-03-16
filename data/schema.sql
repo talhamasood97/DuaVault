@@ -88,3 +88,25 @@ select
 from public.duas
 group by category
 order by total desc;
+
+-- ─── Hadith email subscribers ─────────────────────────────────────────────
+create table if not exists public.hadith_subscribers (
+  id                uuid default gen_random_uuid() primary key,
+  email             text unique not null,
+  name              text,
+  confirmed         boolean default false,
+  unsubscribe_token uuid default gen_random_uuid() unique not null,
+  created_at        timestamptz default now()
+);
+
+-- Index for fast lookups
+create index if not exists hadith_subscribers_email_idx on public.hadith_subscribers (email);
+create index if not exists hadith_subscribers_token_idx on public.hadith_subscribers (unsubscribe_token);
+create index if not exists hadith_subscribers_confirmed_idx on public.hadith_subscribers (confirmed);
+
+-- RLS
+alter table public.hadith_subscribers enable row level security;
+
+-- Only the service role (server-side API routes) can read/write subscriber data.
+-- The anon key has no access — subscriber emails are private.
+-- (Service role bypasses RLS automatically in Supabase.)
