@@ -141,9 +141,15 @@
   .animate-delay-300 { animation-delay: 300ms; }
   .animate-delay-400 { animation-delay: 400ms; }
 
-  /* Safe area padding for notch/home indicator on iOS */
+  /* Raw safe-area padding (used by bottom nav element itself) */
   .pb-safe {
     padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /* Main content bottom padding: nav height (4rem/64px) + safe area inset.
+     md:pb-0 overrides this on desktop since there's no bottom nav. */
+  .pb-bottom-nav {
+    padding-bottom: calc(4rem + env(safe-area-inset-bottom, 0px));
   }
 
   /* Hide scrollbar for pill rows */
@@ -156,12 +162,11 @@
   }
 }
 
-/* Mobile bottom bar safe-area support */
-@supports (padding-bottom: env(safe-area-inset-bottom)) {
-  .md\:hidden.fixed.bottom-0 {
-    padding-bottom: env(safe-area-inset-bottom);
-    height: calc(64px + env(safe-area-inset-bottom));
-  }
+/* Bottom nav tap highlight — removes iOS/Android default blue flash,
+   replaced with our active:opacity-60 feedback instead */
+.bottom-nav-link {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation; /* removes 300ms click delay on mobile */
 }
 
 /* Print styles */

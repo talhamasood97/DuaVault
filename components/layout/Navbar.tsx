@@ -194,11 +194,20 @@ export function Navbar() {
       </header>
 
       {/* ── Bottom tab bar (mobile only) ── */}
+      {/*
+        Safe-area strategy:
+        - paddingBottom: env(safe-area-inset-bottom) extends the nav background
+          into the home-indicator zone (iOS) / gesture bar zone (Android).
+        - The visible content row stays h-16 (64px) above that zone.
+        - viewport-fit=cover (set in layout.tsx) is required for the env()
+          values to be non-zero on notched/gesture-bar devices.
+      */}
       <nav
-        className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-emerald-950/95 backdrop-blur-md border-t border-stone-200 dark:border-emerald-900"
+        className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-emerald-950/95 backdrop-blur-md border-t border-stone-200/80 dark:border-emerald-900"
         aria-label="Bottom navigation"
+        style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
       >
-        <div className="flex items-stretch h-16 pb-safe">
+        <div className="flex h-16">
           {BOTTOM_NAV.map(({ href, label, icon: Icon }) => {
             const active =
               pathname === href ||
@@ -208,17 +217,40 @@ export function Navbar() {
                 key={href}
                 href={href}
                 className={cn(
-                  "relative flex-1 flex flex-col items-center justify-center gap-0.5 text-[10px] font-medium transition-colors",
+                  // bottom-nav-link: removes tap-highlight + enables fast-tap
+                  "bottom-nav-link",
+                  "relative flex-1 flex flex-col items-center justify-center gap-0.5",
+                  "transition-opacity active:opacity-50 select-none",
                   active
                     ? "text-emerald-700 dark:text-emerald-400"
                     : "text-stone-400 dark:text-stone-500"
                 )}
               >
+                {/* Active top-line indicator */}
                 {active && (
-                  <span className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-emerald-600 dark:bg-emerald-400 rounded-full" />
+                  <span className="absolute top-0 left-1/2 -translate-x-1/2 w-10 h-[3px] bg-emerald-600 dark:bg-emerald-400 rounded-full" />
                 )}
-                <Icon className={cn("w-5 h-5 transition-transform", active && "scale-110")} />
-                <span>{label}</span>
+
+                {/* Icon pill — filled background on active */}
+                <span className={cn(
+                  "flex items-center justify-center w-12 h-7 rounded-2xl transition-colors duration-200",
+                  active
+                    ? "bg-emerald-100 dark:bg-emerald-800/60"
+                    : ""
+                )}>
+                  <Icon className={cn(
+                    "w-[18px] h-[18px] transition-transform duration-200",
+                    active && "scale-110"
+                  )} />
+                </span>
+
+                {/* Label */}
+                <span className={cn(
+                  "text-[10px] leading-none tracking-wide",
+                  active ? "font-semibold" : "font-medium"
+                )}>
+                  {label}
+                </span>
               </Link>
             );
           })}

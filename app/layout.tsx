@@ -77,6 +77,9 @@ export const viewport: Viewport = {
   ],
   width: "device-width",
   initialScale: 1,
+  // Required for env(safe-area-inset-*) to return real values on notched
+  // iPhones and modern Android devices with gesture navigation bars.
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
@@ -99,11 +102,13 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
-          {/* pb-20 = clearance for mobile bottom tab bar (md:pb-0 removes it on desktop) */}
-          <main className="flex-1 pb-20 md:pb-0">{children}</main>
+          {/* pb-bottom-nav clears the bottom tab bar + iOS/Android safe area inset */}
+          <main className="flex-1 pb-bottom-nav md:pb-0">{children}</main>
           <div className="hidden md:block"><Footer /></div>
           <Toaster
             position="bottom-center"
+            // Offset above the bottom nav (64px) + any safe-area on notched devices
+            containerStyle={{ bottom: "calc(4.5rem + env(safe-area-inset-bottom, 0px))" }}
             toastOptions={{
               className:
                 "!bg-white dark:!bg-emerald-900 !text-stone-800 dark:!text-stone-100 !shadow-lg !rounded-xl !text-sm",
