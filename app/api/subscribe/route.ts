@@ -88,12 +88,15 @@ export async function POST(req: NextRequest) {
     // Send confirmation email via Resend
     if (hasResend) {
       const resend = new Resend(process.env.RESEND_API_KEY);
-      await resend.emails.send({
+      const { error: sendError } = await resend.emails.send({
         from: process.env.RESEND_FROM_EMAIL ?? "noreply@duavault.com",
         to: email,
         subject: "Confirm your Daily Hadith subscription — DuaVault",
         html: buildConfirmationEmail(name ?? "", subscriber.unsubscribe_token),
       });
+      if (sendError) {
+        console.error("Resend send error:", sendError);
+      }
     }
 
     return NextResponse.json({
