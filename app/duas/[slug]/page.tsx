@@ -77,11 +77,35 @@ export default async function DuaPage({ params }: Props) {
     citation: `${dua.source_book}${dua.hadith_number ? `, Hadith ${dua.hadith_number}` : ""}`,
   };
 
+  const breadcrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: categoryMeta?.title ?? dua.category,
+        item: `${SITE_URL}/category/${dua.category}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: dua.title,
+        item: `${SITE_URL}/duas/${dua.slug}`,
+      },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
       />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12 animate-fade-in">

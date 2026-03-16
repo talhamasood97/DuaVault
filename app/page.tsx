@@ -6,7 +6,7 @@ import { FeaturedDuas } from "@/components/home/FeaturedDuas";
 import { TrustBar } from "@/components/home/TrustBar";
 import { DailyDuaBanner } from "@/components/home/DailyDuaBanner";
 import { getFeaturedDuas, getDailyDua } from "@/lib/duas";
-import { SITE_NAME, SITE_DESCRIPTION } from "@/lib/utils";
+import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/utils";
 
 // Revalidate every hour so the Daily Dua banner rotates correctly
 export const revalidate = 3600;
@@ -17,6 +17,31 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: SITE_URL,
+  description: SITE_DESCRIPTION,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${SITE_URL}/search?q={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE_NAME,
+  url: SITE_URL,
+  description: SITE_DESCRIPTION,
+  sameAs: [],
+};
+
 export default async function HomePage() {
   const [featured, daily] = await Promise.all([
     getFeaturedDuas(),
@@ -24,6 +49,9 @@ export default async function HomePage() {
   ]);
 
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
     <div className="animate-fade-in">
       {/* Hero */}
       <section className="hero-gradient py-20 sm:py-28">
@@ -66,5 +94,6 @@ export default async function HomePage() {
       {/* Trust bar */}
       <TrustBar />
     </div>
+    </>
   );
 }

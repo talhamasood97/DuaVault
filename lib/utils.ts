@@ -177,11 +177,16 @@ export function getAuthenticityLabel(grade: string): string {
   }
 }
 
-export function formatShareText(title: string, translation: string, source: string): string {
-  return `${title}\n\n"${translation}"\n\n📖 Source: ${source}\n\nLearn more at DuaVault.com`;
-}
-
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://duavault.com";
 export const SITE_NAME = "DuaVault";
 export const SITE_DESCRIPTION =
   "The most complete vault of authentic Islamic duas — every supplication with Arabic text, transliteration, translation, and verified sources from Quran and Hadith.";
+
+export function formatShareText(title: string, translation: string, source: string): string {
+  return `${title}\n\n"${translation}"\n\n📖 Source: ${source}`;
+}
+
+export function formatTwitterText(title: string, translation: string): string {
+  const excerpt = translation.length > 140 ? translation.slice(0, 137) + "…" : translation;
+  return `${title}\n\n"${excerpt}"\n\n#Dua #Islam #${SITE_NAME}`;
+}
