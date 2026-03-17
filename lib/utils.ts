@@ -79,7 +79,7 @@ export const EMOTIONS: EmotionMeta[] = [
     description: "Find comfort in times of sadness",
     icon: "😔",
     color: "text-blue-700 dark:text-blue-300",
-    bgColor: "bg-blue-50 dark:bg-blue-950 hover:bg-blue-100 dark:hover:bg-blue-900",
+    bgColor: "bg-blue-50 dark:bg-blue-950",
   },
   {
     slug: "stressed",
@@ -87,7 +87,7 @@ export const EMOTIONS: EmotionMeta[] = [
     description: "Relief from anxiety and overwhelm",
     icon: "😰",
     color: "text-orange-700 dark:text-orange-300",
-    bgColor: "bg-orange-50 dark:bg-orange-950 hover:bg-orange-100 dark:hover:bg-orange-900",
+    bgColor: "bg-orange-50 dark:bg-orange-950",
   },
   {
     slug: "afraid",
@@ -95,7 +95,7 @@ export const EMOTIONS: EmotionMeta[] = [
     description: "Seek protection from fear",
     icon: "😨",
     color: "text-purple-700 dark:text-purple-300",
-    bgColor: "bg-purple-50 dark:bg-purple-950 hover:bg-purple-100 dark:hover:bg-purple-900",
+    bgColor: "bg-purple-50 dark:bg-purple-950",
   },
   {
     slug: "lonely",
@@ -103,7 +103,7 @@ export const EMOTIONS: EmotionMeta[] = [
     description: "Connect with Allah when feeling alone",
     icon: "🌙",
     color: "text-indigo-700 dark:text-indigo-300",
-    bgColor: "bg-indigo-50 dark:bg-indigo-950 hover:bg-indigo-100 dark:hover:bg-indigo-900",
+    bgColor: "bg-indigo-50 dark:bg-indigo-950",
   },
   {
     slug: "grateful",
@@ -111,7 +111,7 @@ export const EMOTIONS: EmotionMeta[] = [
     description: "Express thankfulness to Allah",
     icon: "🤲",
     color: "text-emerald-700 dark:text-emerald-300",
-    bgColor: "bg-emerald-50 dark:bg-emerald-950 hover:bg-emerald-100 dark:hover:bg-emerald-900",
+    bgColor: "bg-emerald-50 dark:bg-emerald-950",
   },
   {
     slug: "angry",
@@ -119,7 +119,7 @@ export const EMOTIONS: EmotionMeta[] = [
     description: "Calm your heart through dhikr",
     icon: "😤",
     color: "text-red-700 dark:text-red-300",
-    bgColor: "bg-red-50 dark:bg-red-950 hover:bg-red-100 dark:hover:bg-red-900",
+    bgColor: "bg-red-50 dark:bg-red-950",
   },
   {
     slug: "hopeful",
@@ -127,7 +127,7 @@ export const EMOTIONS: EmotionMeta[] = [
     description: "Strengthen your trust in Allah",
     icon: "✨",
     color: "text-yellow-700 dark:text-yellow-300",
-    bgColor: "bg-yellow-50 dark:bg-yellow-950 hover:bg-yellow-100 dark:hover:bg-yellow-900",
+    bgColor: "bg-yellow-50 dark:bg-yellow-950",
   },
   {
     slug: "seeking-forgiveness",
@@ -135,7 +135,7 @@ export const EMOTIONS: EmotionMeta[] = [
     description: "Turn to Allah in sincere repentance",
     icon: "💚",
     color: "text-teal-700 dark:text-teal-300",
-    bgColor: "bg-teal-50 dark:bg-teal-950 hover:bg-teal-100 dark:hover:bg-teal-900",
+    bgColor: "bg-teal-50 dark:bg-teal-950",
   },
 ];
 

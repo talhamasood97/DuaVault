@@ -19,8 +19,8 @@ export function EmotionGrid() {
             <Link
               key={emotion.slug}
               href={`/emotion/${emotion.slug}`}
-              className={`group flex flex-col items-center justify-center gap-2 sm:gap-3 p-4 sm:p-5 rounded-2xl border border-transparent transition-all duration-200 cursor-pointer animate-fade-in min-h-[88px] sm:min-h-0 ${emotion.bgColor}`}
-              style={{ animationDelay: `${i * 50}ms` }}
+              className={`group flex flex-col items-center justify-center gap-2 sm:gap-3 p-4 sm:p-5 rounded-2xl transition-all duration-200 cursor-pointer animate-fade-in min-h-[88px] sm:min-h-0 focus:outline-none active:scale-[0.96] active:brightness-90 [@media(hover:hover)]:hover:brightness-95 ${emotion.bgColor}`}
+              style={{ animationDelay: `${i * 50}ms`, WebkitTapHighlightColor: "transparent" }}
             >
               <span className="text-3xl group-hover:scale-110 transition-transform duration-200 leading-none">
                 {emotion.icon}

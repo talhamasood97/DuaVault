@@ -19,7 +19,8 @@ export function CategoryGrid() {
             <Link
               key={cat.slug}
               href={`/category/${cat.slug}`}
-              className="group flex items-center gap-3 sm:gap-4 bg-sand-50 dark:bg-emerald-950/60 rounded-2xl px-4 sm:px-5 py-3.5 sm:py-4 border border-stone-100 dark:border-emerald-900 hover:border-emerald-200 dark:hover:border-emerald-700 hover:shadow-md hover:shadow-emerald-50 dark:hover:shadow-emerald-950 transition-all duration-200 active:scale-[0.98]"
+              className="group flex items-center gap-3 sm:gap-4 bg-sand-50 dark:bg-emerald-950/60 rounded-2xl px-4 sm:px-5 py-3.5 sm:py-4 border border-stone-100 dark:border-emerald-900 [@media(hover:hover)]:hover:border-emerald-200 [@media(hover:hover)]:dark:hover:border-emerald-700 [@media(hover:hover)]:hover:shadow-md [@media(hover:hover)]:hover:shadow-emerald-50 [@media(hover:hover)]:dark:hover:shadow-emerald-950 transition-all duration-200 active:scale-[0.98] focus:outline-none"
+              style={{ WebkitTapHighlightColor: "transparent" }}
             >
               <span className="text-2xl flex-shrink-0 w-9 text-center">{cat.icon}</span>
               <div className="min-w-0 flex-1">
