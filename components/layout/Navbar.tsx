@@ -18,9 +18,9 @@ const NAV_LINKS = [
 
 const BOTTOM_NAV = [
   { href: "/", label: "Home", icon: Home },
-  { href: "/daily-dua", label: "Daily", icon: Star },
+  { href: "/daily-dua", label: "Dua", icon: Star },
+  { href: "/daily-hadith", label: "Hadith", icon: BookOpen },
   { href: "/search", label: "Search", icon: Search },
-  { href: "/saved", label: "Saved", icon: Bookmark },
 ];
 
 export function Navbar() {
@@ -287,12 +287,6 @@ export function Navbar() {
                     "w-[18px] h-[18px] transition-transform duration-200",
                     active && "scale-110"
                   )} />
-                  {/* Saved count badge */}
-                  {href === "/saved" && savedHydrated && savedCount > 0 && (
-                    <span className="absolute -top-1 -right-1 min-w-[16px] h-4 px-1 bg-emerald-600 dark:bg-emerald-400 text-white dark:text-emerald-950 text-[9px] font-bold rounded-full flex items-center justify-center leading-none pointer-events-none">
-                      {savedCount > 99 ? "99+" : savedCount}
-                    </span>
-                  )}
                 </span>
 
                 {/* Label */}

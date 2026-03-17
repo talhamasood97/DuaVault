@@ -5,7 +5,9 @@ import { CategoryGrid } from "@/components/home/CategoryGrid";
 import { FeaturedDuas } from "@/components/home/FeaturedDuas";
 import { TrustBar } from "@/components/home/TrustBar";
 import { DailyDuaBanner } from "@/components/home/DailyDuaBanner";
+import { DailyHadithBanner } from "@/components/home/DailyHadithBanner";
 import { getFeaturedDuas, getDailyDua } from "@/lib/duas";
+import { getDailyHadith } from "@/data/hadiths";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/utils";
 
 // Revalidate every hour so the Daily Dua banner rotates correctly
@@ -47,6 +49,7 @@ export default async function HomePage() {
     getFeaturedDuas(),
     getDailyDua(),
   ]);
+  const dailyHadith = getDailyHadith();
 
   return (
     <>
@@ -81,6 +84,9 @@ export default async function HomePage() {
 
       {/* Daily Dua Banner */}
       <DailyDuaBanner dua={daily} />
+
+      {/* Daily Hadith Banner */}
+      <DailyHadithBanner hadith={dailyHadith} />
 
       {/* Emotion-based discovery */}
       <EmotionGrid />
