@@ -9,6 +9,8 @@ import { SaveButton } from "@/components/dua/SaveButton";
 import { RelatedDuas } from "@/components/dua/RelatedDuas";
 import { getCategoryMeta, getEmotionMeta, SITE_URL, SITE_NAME } from "@/lib/utils";
 
+export const revalidate = 86400;
+
 interface Props {
   params: { slug: string };
 }

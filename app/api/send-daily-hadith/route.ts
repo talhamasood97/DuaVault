@@ -149,6 +149,7 @@ export async function GET(req: NextRequest) {
 
     // Send in batches of 50 (Resend batch limit)
     let sent = 0;
+    let failed = 0;
     const BATCH_SIZE = 50;
 
     for (let i = 0; i < subscribers.length; i += BATCH_SIZE) {
@@ -160,13 +161,24 @@ export async function GET(req: NextRequest) {
         html: buildDailyEmail(sub.name ?? "", hadith, sub.unsubscribe_token),
       }));
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      await (resend.batch as any).send(emails);
-      sent += batch.length;
+      try {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const { error: batchError } = await (resend.batch as any).send(emails);
+        if (batchError) {
+          console.error(`Batch ${i / BATCH_SIZE + 1} send error:`, batchError);
+          failed += batch.length;
+        } else {
+          sent += batch.length;
+        }
+      } catch (batchErr) {
+        console.error(`Batch ${i / BATCH_SIZE + 1} threw:`, batchErr);
+        failed += batch.length;
+      }
     }
 
     return NextResponse.json({
       sent,
+      failed,
       hadith: hadith.title,
       date: new Date().toISOString().split("T")[0],
     });

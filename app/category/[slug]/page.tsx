@@ -6,6 +6,8 @@ import { getDuasByCategory } from "@/lib/duas";
 import { DuaCard } from "@/components/dua/DuaCard";
 import { getCategoryMeta, CATEGORIES, SITE_URL } from "@/lib/utils";
 
+export const revalidate = 3600;
+
 interface Props {
   params: { slug: string };
 }
@@ -35,8 +37,7 @@ export default async function CategoryPage({ params }: Props) {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Categories", item: `${SITE_URL}/category/daily-life` },
-      { "@type": "ListItem", position: 3, name: `${cat.title} Duas`, item: `${SITE_URL}/category/${cat.slug}` },
+      { "@type": "ListItem", position: 2, name: `${cat.title} Duas`, item: `${SITE_URL}/category/${cat.slug}` },
     ],
   };
 

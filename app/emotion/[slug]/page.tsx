@@ -6,6 +6,8 @@ import { getDuasByEmotion } from "@/lib/duas";
 import { DuaCard } from "@/components/dua/DuaCard";
 import { getEmotionMeta, EMOTIONS, SITE_URL } from "@/lib/utils";
 
+export const revalidate = 3600;
+
 interface Props {
   params: { slug: string };
 }
@@ -35,10 +37,9 @@ export default async function EmotionPage({ params }: Props) {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Emotions", item: `${SITE_URL}/emotion/sad` },
       {
         "@type": "ListItem",
-        position: 3,
+        position: 2,
         name: emotion.title === "Seeking Forgiveness"
           ? "Duas for Seeking Forgiveness"
           : `Duas for When You're ${emotion.title}`,

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Search as SearchIcon } from "lucide-react";
+
+export const dynamic = "force-dynamic";
 import { searchDuas } from "@/lib/duas";
 import { DuaCard } from "@/components/dua/DuaCard";
 import { HeroSearch } from "@/components/home/HeroSearch";
