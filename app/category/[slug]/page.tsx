@@ -23,6 +23,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${cat.title} Duas – Authentic Islamic Supplications`,
     description: `${cat.description}. Browse authentic duas with Arabic, transliteration, and verified Hadith sources.`,
     alternates: { canonical: `/category/${cat.slug}` },
+    openGraph: {
+      title: `${cat.title} Duas – DuaVault`,
+      description: `${cat.description}. Browse authentic duas with Arabic, transliteration, and verified Hadith sources.`,
+      url: `${SITE_URL}/category/${cat.slug}`,
+      images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: `${cat.title} Duas – DuaVault` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      images: [`${SITE_URL}/opengraph-image`],
+    },
   };
 }
 
@@ -34,10 +44,20 @@ export default async function CategoryPage({ params }: Props) {
 
   const breadcrumbData = {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: `${cat.title} Duas`, item: `${SITE_URL}/category/${cat.slug}` },
+    "@graph": [
+      {
+        "@type": "WebPage",
+        name: `${cat.title} Duas – Authentic Islamic Supplications`,
+        description: `${cat.description}. Browse authentic duas with Arabic, transliteration, and verified Hadith sources.`,
+        url: `${SITE_URL}/category/${cat.slug}`,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: `${cat.title} Duas`, item: `${SITE_URL}/category/${cat.slug}` },
+        ],
+      },
     ],
   };
 

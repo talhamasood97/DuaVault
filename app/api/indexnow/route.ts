@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { DUAS } from "@/data/duas";
+import { HADITHS } from "@/data/hadiths";
 import { CATEGORIES, EMOTIONS, SITE_URL } from "@/lib/utils";
 
 const INDEXNOW_KEY = "9e52a8b3c4d1f067e2a9b5c8d3f10247";
@@ -8,13 +9,15 @@ function getAllUrls(): string[] {
   const staticUrls = [
     SITE_URL,
     `${SITE_URL}/daily-dua`,
+    `${SITE_URL}/daily-hadith`,
     `${SITE_URL}/about`,
     `${SITE_URL}/sources`,
   ];
   const categoryUrls = CATEGORIES.map((c) => `${SITE_URL}/category/${c.slug}`);
   const emotionUrls = EMOTIONS.map((e) => `${SITE_URL}/emotion/${e.slug}`);
   const duaUrls = DUAS.map((d) => `${SITE_URL}/duas/${d.slug}`);
-  return [...staticUrls, ...categoryUrls, ...emotionUrls, ...duaUrls];
+  const hadithUrls = HADITHS.map((h) => `${SITE_URL}/hadith/${h.slug}`);
+  return [...staticUrls, ...categoryUrls, ...emotionUrls, ...duaUrls, ...hadithUrls];
 }
 
 export async function POST() {

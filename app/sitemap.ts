@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { DUAS } from "@/data/duas";
+import { HADITHS } from "@/data/hadiths";
 import { CATEGORIES, EMOTIONS, SITE_URL } from "@/lib/utils";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -20,10 +21,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${SITE_URL}/search`,
+      url: `${SITE_URL}/daily-hadith`,
       lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
+      changeFrequency: "daily",
+      priority: 0.9,
     },
     {
       url: `${SITE_URL}/about`,
@@ -63,5 +64,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  return [...staticPages, ...categoryPages, ...emotionPages, ...duaPages];
+  // Hadith detail pages
+  const hadithPages: MetadataRoute.Sitemap = HADITHS.map((h) => ({
+    url: `${SITE_URL}/hadith/${h.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  return [...staticPages, ...categoryPages, ...emotionPages, ...duaPages, ...hadithPages];
 }
