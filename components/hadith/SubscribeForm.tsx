@@ -77,7 +77,7 @@ export function SubscribeForm() {
           <button
             type="submit"
             disabled={status === "loading" || !email}
-            className="px-5 py-2.5 bg-amber-600 hover:bg-amber-700 disabled:bg-amber-300 dark:disabled:bg-amber-800 text-white text-sm font-semibold rounded-xl transition-colors flex items-center gap-1.5 flex-shrink-0"
+            className="px-5 py-2.5 bg-amber-600 hover:bg-amber-700 disabled:bg-amber-300 dark:disabled:bg-amber-800 text-white text-sm font-semibold rounded-xl transition-colors flex items-center gap-1.5 flex-shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-amber-400"
           >
             {status === "loading" ? (
               <Loader2 className="w-4 h-4 animate-spin" />

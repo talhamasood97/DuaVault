@@ -7,6 +7,7 @@ import { Toaster } from "react-hot-toast";
 import { GoogleAnalytics } from "@/components/layout/GoogleAnalytics";
 import { Analytics } from "@vercel/analytics/next";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/utils";
+import { SavedDuasProvider } from "@/contexts/SavedDuasContext";
 import "./globals.css";
 
 const inter = Inter({
@@ -101,6 +102,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <SavedDuasProvider>
           <Navbar />
           {/* pb-bottom-nav clears the bottom tab bar + iOS/Android safe area inset */}
           <main className="flex-1 pb-bottom-nav md:pb-0">{children}</main>
@@ -115,6 +117,7 @@ export default function RootLayout({
               duration: 2500,
             }}
           />
+          </SavedDuasProvider>
         </ThemeProvider>
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />

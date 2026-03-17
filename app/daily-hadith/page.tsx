@@ -157,7 +157,7 @@ export default function DailyHadithPage({
               </span>
             </div>
 
-            <div className="flex items-center gap-2 text-sm text-stone-500 dark:text-stone-400 mt-3">
+            <div className="flex flex-wrap items-center gap-2 text-sm text-stone-500 dark:text-stone-400 mt-3">
               <BookOpen className="w-4 h-4" />
               <span>
                 {hadith.source_book} · {hadith.hadith_number}

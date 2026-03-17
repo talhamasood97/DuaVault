@@ -88,7 +88,7 @@ export function ShareButtons({ dua }: { dua: Dua }) {
       {/* WhatsApp */}
       <button
         onClick={shareWhatsApp}
-        className="flex items-center gap-1.5 px-3 py-2 bg-[#25D366] hover:bg-[#22c55e] text-white text-sm font-medium rounded-xl transition-colors"
+        className="flex items-center gap-1.5 px-3 py-2 bg-[#25D366] hover:bg-[#22c55e] text-white text-sm font-medium rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-white/70"
         aria-label="Share on WhatsApp"
       >
         <MessageCircle className="w-4 h-4" />
@@ -98,7 +98,7 @@ export function ShareButtons({ dua }: { dua: Dua }) {
       {/* Twitter / X */}
       <button
         onClick={shareTwitter}
-        className="flex items-center gap-1.5 px-3 py-2 bg-black hover:bg-stone-800 text-white text-sm font-medium rounded-xl transition-colors"
+        className="flex items-center gap-1.5 px-3 py-2 bg-black hover:bg-stone-800 text-white text-sm font-medium rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-white/70"
         aria-label="Share on X (Twitter)"
       >
         <Twitter className="w-4 h-4" />
@@ -108,7 +108,7 @@ export function ShareButtons({ dua }: { dua: Dua }) {
       {/* Facebook */}
       <button
         onClick={shareFacebook}
-        className="flex items-center gap-1.5 px-3 py-2 bg-[#1877F2] hover:bg-[#1664d9] text-white text-sm font-medium rounded-xl transition-colors"
+        className="flex items-center gap-1.5 px-3 py-2 bg-[#1877F2] hover:bg-[#1664d9] text-white text-sm font-medium rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-white/70"
         aria-label="Share on Facebook"
       >
         <Facebook className="w-4 h-4" />
@@ -118,7 +118,7 @@ export function ShareButtons({ dua }: { dua: Dua }) {
       {/* Copy link */}
       <button
         onClick={copyLink}
-        className="flex items-center gap-1.5 px-3 py-2 bg-stone-100 dark:bg-emerald-900 hover:bg-stone-200 dark:hover:bg-emerald-800 text-stone-700 dark:text-stone-300 text-sm font-medium rounded-xl transition-colors"
+        className="flex items-center gap-1.5 px-3 py-2 bg-stone-100 dark:bg-emerald-900 hover:bg-stone-200 dark:hover:bg-emerald-800 text-stone-700 dark:text-stone-300 text-sm font-medium rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-emerald-500"
         aria-label="Copy link"
       >
         {copied ? (
@@ -133,7 +133,7 @@ export function ShareButtons({ dua }: { dua: Dua }) {
       {typeof navigator !== "undefined" && "share" in navigator && (
         <button
           onClick={nativeShare}
-          className="flex items-center gap-1.5 px-3 py-2 bg-stone-100 dark:bg-emerald-900 hover:bg-stone-200 dark:hover:bg-emerald-800 text-stone-700 dark:text-stone-300 text-sm font-medium rounded-xl transition-colors"
+          className="flex items-center gap-1.5 px-3 py-2 bg-stone-100 dark:bg-emerald-900 hover:bg-stone-200 dark:hover:bg-emerald-800 text-stone-700 dark:text-stone-300 text-sm font-medium rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-emerald-500"
           aria-label="Share"
         >
           <Share2 className="w-4 h-4" />

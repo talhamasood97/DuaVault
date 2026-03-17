@@ -70,7 +70,7 @@ export function HeroSearch() {
           <button
             type="submit"
             aria-label="Search"
-            className="m-1.5 flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-600 active:bg-emerald-800 text-white font-semibold rounded-xl transition-colors
+            className="m-1.5 flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-600 active:bg-emerald-800 text-white font-semibold rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2
               w-11 h-11 sm:w-auto sm:h-auto sm:px-5 sm:py-2.5 flex-shrink-0"
           >
             <Search className="w-4 h-4 sm:hidden" />
@@ -85,7 +85,7 @@ export function HeroSearch() {
           <button
             key={s}
             onClick={() => handleSuggestion(s)}
-            className="text-xs px-3 py-1.5 rounded-full bg-white dark:bg-emerald-900/60 border border-stone-200 dark:border-emerald-800 text-stone-600 dark:text-stone-400 hover:border-emerald-300 dark:hover:border-emerald-600 hover:text-emerald-700 dark:hover:text-emerald-400 transition-all"
+            className="text-xs px-3 py-1.5 rounded-full bg-white dark:bg-emerald-900/60 border border-stone-200 dark:border-emerald-800 text-stone-600 dark:text-stone-400 hover:border-emerald-300 dark:hover:border-emerald-600 hover:text-emerald-700 dark:hover:text-emerald-400 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-1"
           >
             {s}
           </button>
