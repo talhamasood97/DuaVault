@@ -15,10 +15,13 @@ import {
   FEATURED_DUAS,
 } from "@/data/duas";
 
-// Check if Supabase is configured
+// Check if Supabase is configured for server-side access.
+// Server data paths use createServerClient() which requires the service role key,
+// so gate on that — not the anon key — to avoid runtime failures in partially
+// configured environments.
 const hasSupabase =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
-  !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 export async function getAllDuas(): Promise<Dua[]> {
   if (!hasSupabase) return DUAS;

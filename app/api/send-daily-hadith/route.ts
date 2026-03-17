@@ -107,11 +107,13 @@ function buildDailyEmail(
 }
 
 export async function GET(req: NextRequest) {
-  // Verify cron secret — protects endpoint from public access
-  const authHeader = req.headers.get("authorization");
+  // Verify cron secret — always required, fail closed if unset
   const cronSecret = process.env.CRON_SECRET;
-
-  if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
+  if (!cronSecret) {
+    return NextResponse.json({ error: "CRON_SECRET not configured" }, { status: 500 });
+  }
+  const authHeader = req.headers.get("authorization");
+  if (authHeader !== `Bearer ${cronSecret}`) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -132,53 +134,66 @@ export async function GET(req: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY);
     const fromEmail = process.env.RESEND_FROM_EMAIL ?? "noreply@duavault.com";
 
-    // Fetch all confirmed subscribers
-    const { data: subscribers, error } = await db
-      .from("hadith_subscribers")
-      .select("email, name, unsubscribe_token")
-      .eq("confirmed", true);
-
-    if (error || !subscribers) {
-      console.error("Fetch subscribers error:", error);
-      return NextResponse.json({ error: "Failed to fetch subscribers" }, { status: 500 });
-    }
-
-    if (subscribers.length === 0) {
-      return NextResponse.json({ sent: 0, message: "No confirmed subscribers yet." });
-    }
-
-    // Send in batches of 50 (Resend batch limit)
+    // Paginate through confirmed subscribers (100 rows per DB page) to avoid
+    // loading the entire table into memory on large subscriber lists.
     let sent = 0;
     let failed = 0;
-    const BATCH_SIZE = 50;
+    const DB_PAGE = 100;
+    const BATCH_SIZE = 50; // Resend batch limit
+    let from = 0;
 
-    for (let i = 0; i < subscribers.length; i += BATCH_SIZE) {
-      const batch = subscribers.slice(i, i + BATCH_SIZE);
-      const emails = batch.map((sub) => ({
-        from: fromEmail,
-        to: sub.email,
-        subject: `Hadith of the Day: ${hadith.title}`,
-        html: buildDailyEmail(sub.name ?? "", hadith, sub.unsubscribe_token),
-      }));
+    while (true) {
+      const { data: subscribers, error } = await db
+        .from("hadith_subscribers")
+        .select("email, name, unsubscribe_token")
+        .eq("confirmed", true)
+        .range(from, from + DB_PAGE - 1);
 
-      try {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const { error: batchError } = await (resend.batch as any).send(emails);
-        if (batchError) {
-          console.error(`Batch ${i / BATCH_SIZE + 1} send error:`, batchError);
-          failed += batch.length;
-        } else {
-          sent += batch.length;
-        }
-      } catch (batchErr) {
-        console.error(`Batch ${i / BATCH_SIZE + 1} threw:`, batchErr);
-        failed += batch.length;
+      if (error) {
+        console.error("Fetch subscribers error:", error);
+        return NextResponse.json({ error: "Failed to fetch subscribers" }, { status: 500 });
       }
+
+      if (!subscribers || subscribers.length === 0) {
+        if (from === 0) {
+          return NextResponse.json({ sent: 0, message: "No confirmed subscribers yet." });
+        }
+        break;
+      }
+
+      // Send current page in batches of 50
+      for (let i = 0; i < subscribers.length; i += BATCH_SIZE) {
+        const batch = subscribers.slice(i, i + BATCH_SIZE);
+        const emails = batch.map((sub) => ({
+          from: fromEmail,
+          to: sub.email,
+          subject: `Hadith of the Day: ${hadith.title}`,
+          html: buildDailyEmail(sub.name ?? "", hadith, sub.unsubscribe_token),
+        }));
+
+        try {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const { error: batchError } = await (resend.batch as any).send(emails);
+          if (batchError) {
+            console.error(`Batch send error (from=${from}, i=${i}):`, batchError);
+            failed += batch.length;
+          } else {
+            sent += batch.length;
+          }
+        } catch (batchErr) {
+          console.error(`Batch threw (from=${from}, i=${i}):`, batchErr);
+          failed += batch.length;
+        }
+      }
+
+      if (subscribers.length < DB_PAGE) break;
+      from += DB_PAGE;
     }
 
     return NextResponse.json({
       sent,
       failed,
+      total: sent + failed,
       hadith: hadith.title,
       date: new Date().toISOString().split("T")[0],
     });
