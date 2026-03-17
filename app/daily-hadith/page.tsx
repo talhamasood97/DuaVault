@@ -28,7 +28,7 @@ const GRADE_COLORS = {
 export default function DailyHadithPage({
   searchParams,
 }: {
-  searchParams: { confirmed?: string };
+  searchParams: { confirmed?: string; unsubscribed?: string };
 }) {
   const hadith = getDailyHadith();
 
@@ -88,6 +88,34 @@ export default function DailyHadithPage({
               </p>
               <p className="text-sm text-red-600 dark:text-red-400 mt-0.5">
                 Please subscribe again below and we&apos;ll send a fresh confirmation email.
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* Unsubscribe banners */}
+        {searchParams.unsubscribed === "true" && (
+          <div className="mb-8 flex items-start gap-3 bg-stone-50 dark:bg-stone-800/40 border border-stone-200 dark:border-stone-700 rounded-2xl px-5 py-4">
+            <CheckCircle className="w-5 h-5 text-stone-500 dark:text-stone-400 flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="font-semibold text-stone-700 dark:text-stone-300 text-sm">
+                You&apos;ve been unsubscribed.
+              </p>
+              <p className="text-sm text-stone-500 dark:text-stone-400 mt-0.5">
+                You won&apos;t receive any more emails from us. You can re-subscribe below anytime.
+              </p>
+            </div>
+          </div>
+        )}
+        {(searchParams.unsubscribed === "invalid" || searchParams.unsubscribed === "error") && (
+          <div className="mb-8 flex items-start gap-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-2xl px-5 py-4">
+            <XCircle className="w-5 h-5 text-red-500 dark:text-red-400 flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="font-semibold text-red-700 dark:text-red-300 text-sm">
+                This unsubscribe link is invalid or has already been used.
+              </p>
+              <p className="text-sm text-red-600 dark:text-red-400 mt-0.5">
+                If you&apos;re still receiving emails, please contact us at duavault.com.
               </p>
             </div>
           </div>

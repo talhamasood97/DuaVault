@@ -14,14 +14,18 @@ export async function GET(req: NextRequest) {
 
   try {
     const db = createServerClient();
-    const { error } = await db
+    const { error, count } = await db
       .from("hadith_subscribers")
-      .update({ confirmed: true })
-      .eq("unsubscribe_token", token)
-      .eq("confirmed", false);
+      .update({ confirmed: true }, { count: "exact" })
+      .eq("unsubscribe_token", token);
 
     if (error) {
       return NextResponse.redirect(`${SITE_URL}/daily-hadith?confirmed=error`);
+    }
+
+    // count === 0 means token matched no row (invalid or tampered)
+    if (count === 0) {
+      return NextResponse.redirect(`${SITE_URL}/daily-hadith?confirmed=invalid`);
     }
 
     return NextResponse.redirect(`${SITE_URL}/daily-hadith?confirmed=true`);

@@ -6,6 +6,8 @@ import { getHadithBySlug, getAllHadithSlugs, HADITHS } from "@/data/hadiths";
 import { SubscribeForm } from "@/components/hadith/SubscribeForm";
 import { SITE_NAME, SITE_URL } from "@/lib/utils";
 
+export const revalidate = 86400;
+
 interface Props {
   params: { slug: string };
 }
