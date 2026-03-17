@@ -25,7 +25,7 @@ export async function getAllDuas(): Promise<Dua[]> {
   const { createServerClient } = await import("@/lib/supabase");
   const db = createServerClient();
   const { data, error } = await db.from("duas").select("*").order("id");
-  if (error || !data) return DUAS;
+  if (error || !data || data.length === 0) return DUAS;
   return data as Dua[];
 }
 
@@ -51,7 +51,7 @@ export async function getDuasByCategory(category: string): Promise<Dua[]> {
     .select("*")
     .eq("category", category)
     .order("id");
-  if (error || !data) return staticGetByCategory(category);
+  if (error || !data || data.length === 0) return staticGetByCategory(category);
   return data as Dua[];
 }
 
@@ -64,7 +64,7 @@ export async function getDuasByEmotion(emotion: string): Promise<Dua[]> {
     .select("*")
     .contains("emotion_tags", [emotion])
     .order("id");
-  if (error || !data) return staticGetByEmotion(emotion);
+  if (error || !data || data.length === 0) return staticGetByEmotion(emotion);
   return data as Dua[];
 }
 
@@ -80,7 +80,7 @@ export async function searchDuas(query: string): Promise<SearchResult> {
     .select("*", { count: "exact" })
     .textSearch("search_vector", query, { type: "websearch" })
     .limit(20);
-  if (error || !data) {
+  if (error || !data || data.length === 0) {
     const results = staticSearch(query);
     return { duas: results, total: results.length, query };
   }
@@ -96,7 +96,7 @@ export async function getFeaturedDuas(): Promise<Dua[]> {
     .select("*")
     .eq("featured", true)
     .limit(6);
-  if (error || !data) return FEATURED_DUAS;
+  if (error || !data || data.length === 0) return FEATURED_DUAS;
   return data as Dua[];
 }
 
