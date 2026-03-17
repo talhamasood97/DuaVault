@@ -180,7 +180,7 @@ export function getAuthenticityLabel(grade: string): string {
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://duavault.com";
 export const SITE_NAME = "DuaVault";
 export const SITE_DESCRIPTION =
-  "The most complete vault of authentic Islamic duas — every supplication with Arabic text, transliteration, translation, and verified sources from Quran and Hadith.";
+  "50+ authentic Islamic duas with Arabic text, transliteration, translation and verified Hadith sources. Browse by emotion, category or keyword — every dua sourced from Quran & Sahih Hadith.";
 
 export function formatShareText(title: string, translation: string, source: string): string {
   return `${title}\n\n"${translation}"\n\n📖 Source: ${source}`;
