@@ -15,6 +15,11 @@ export const metadata: Metadata = {
     description:
       "Start every morning with an authentic hadith on morals and character. Verified. Short. Actionable.",
     url: `${SITE_URL}/daily-hadith`,
+    images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: "DuaVault – Hadith of the Day" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [`${SITE_URL}/opengraph-image`],
   },
 };
 
@@ -41,11 +46,23 @@ export default function DailyHadithPage({
 
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "Article",
-    headline: `Hadith of the Day – ${hadith.title}`,
-    description: hadith.translation,
-    datePublished: new Date().toISOString().split("T")[0],
-    publisher: { "@type": "Organization", name: SITE_NAME },
+    "@graph": [
+      {
+        "@type": "Article",
+        headline: `Hadith of the Day – ${hadith.title}`,
+        description: hadith.translation,
+        datePublished: new Date().toISOString().split("T")[0],
+        publisher: { "@type": "Organization", name: SITE_NAME },
+        url: `${SITE_URL}/daily-hadith`,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "Hadith of the Day", item: `${SITE_URL}/daily-hadith` },
+        ],
+      },
+    ],
   };
 
   return (

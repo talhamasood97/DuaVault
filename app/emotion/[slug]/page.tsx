@@ -23,6 +23,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `Duas for When You're ${emotion.title} – Islamic Supplications`,
     description: `${emotion.description}. Find authentic duas from Quran and Hadith to help when you're feeling ${emotion.title.toLowerCase()}.`,
     alternates: { canonical: `/emotion/${emotion.slug}` },
+    openGraph: {
+      title: `Duas for When You're ${emotion.title} – DuaVault`,
+      description: `${emotion.description}. Find authentic duas from Quran and Hadith.`,
+      url: `${SITE_URL}/emotion/${emotion.slug}`,
+      images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: `Duas for ${emotion.title} – DuaVault` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      images: [`${SITE_URL}/opengraph-image`],
+    },
   };
 }
 
@@ -32,18 +42,25 @@ export default async function EmotionPage({ params }: Props) {
 
   const duas = await getDuasByEmotion(params.slug);
 
+  const emotionPageTitle = emotion.title === "Seeking Forgiveness"
+    ? "Duas for Seeking Forgiveness"
+    : `Duas for When You're ${emotion.title}`;
+
   const breadcrumbData = {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    "@graph": [
       {
-        "@type": "ListItem",
-        position: 2,
-        name: emotion.title === "Seeking Forgiveness"
-          ? "Duas for Seeking Forgiveness"
-          : `Duas for When You're ${emotion.title}`,
-        item: `${SITE_URL}/emotion/${emotion.slug}`,
+        "@type": "WebPage",
+        name: `${emotionPageTitle} – Islamic Supplications`,
+        description: `${emotion.description}. Find authentic duas from Quran and Hadith.`,
+        url: `${SITE_URL}/emotion/${emotion.slug}`,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: emotionPageTitle, item: `${SITE_URL}/emotion/${emotion.slug}` },
+        ],
       },
     ],
   };
@@ -73,9 +90,7 @@ export default async function EmotionPage({ params }: Props) {
         <div className="text-center">
           <span className="text-5xl sm:text-6xl block mb-4">{emotion.icon}</span>
           <h1 className={`text-2xl sm:text-3xl font-bold mb-3 ${emotion.color}`}>
-            {emotion.title === "Seeking Forgiveness"
-              ? "Duas for Seeking Forgiveness"
-              : `Duas for When You're ${emotion.title}`}
+            {emotionPageTitle}
           </h1>
           <p className="text-stone-500 dark:text-stone-400 max-w-lg mx-auto text-sm sm:text-base leading-relaxed">
             {emotion.description}. Turn to Allah through these authenticated

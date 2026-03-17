@@ -27,6 +27,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: hadith.title,
       description: hadith.translation,
       url: `${SITE_URL}/hadith/${hadith.slug}`,
+      images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: `${hadith.title} – DuaVault` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      images: [`${SITE_URL}/opengraph-image`],
     },
   };
 }
@@ -49,11 +54,24 @@ export default function HadithPage({ params }: Props) {
 
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "Article",
-    headline: hadith.title,
-    description: hadith.translation,
-    author: { "@type": "Organization", name: SITE_NAME },
-    publisher: { "@type": "Organization", name: SITE_NAME },
+    "@graph": [
+      {
+        "@type": "Article",
+        headline: hadith.title,
+        description: hadith.translation,
+        author: { "@type": "Organization", name: SITE_NAME },
+        publisher: { "@type": "Organization", name: SITE_NAME },
+        url: `${SITE_URL}/hadith/${hadith.slug}`,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "Hadith of the Day", item: `${SITE_URL}/daily-hadith` },
+          { "@type": "ListItem", position: 3, name: hadith.title, item: `${SITE_URL}/hadith/${hadith.slug}` },
+        ],
+      },
+    ],
   };
 
   return (
