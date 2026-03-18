@@ -56,7 +56,7 @@ export function HeroSearch() {
               : "border-stone-200 dark:border-emerald-800"
           }`}
         >
-          <Search className="absolute left-4 w-5 h-5 text-stone-400 dark:text-stone-500 pointer-events-none" />
+          <Search className="absolute left-4 w-5 h-5 text-stone-500 dark:text-stone-400 pointer-events-none" />
           <input
             type="search"
             value={query}

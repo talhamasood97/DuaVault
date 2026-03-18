@@ -112,7 +112,7 @@ export default function HadithArchivePage({ searchParams }: Props) {
         {/* Breadcrumb */}
         <nav
           aria-label="breadcrumb"
-          className="flex items-center gap-1.5 text-xs text-stone-400 dark:text-stone-500 mb-8"
+          className="flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400 mb-8"
         >
           <Link href="/" className="hover:text-emerald-600 transition-colors">
             Home
@@ -125,7 +125,7 @@ export default function HadithArchivePage({ searchParams }: Props) {
         <div className="mb-10">
           <div className="flex items-center gap-3 mb-3">
             <div className="p-2.5 bg-amber-50 dark:bg-amber-900/30 rounded-xl">
-              <BookOpen className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+              <BookOpen className="w-5 h-5 text-amber-700 dark:text-amber-400" />
             </div>
             <h1 className="text-2xl sm:text-3xl font-bold text-stone-800 dark:text-stone-100">
               Hadith Archive
@@ -136,7 +136,7 @@ export default function HadithArchivePage({ searchParams }: Props) {
             Muslim, Abu Dawud, and Tirmidhi — each with Arabic text,
             transliteration, translation, and a daily practice.
           </p>
-          <p className="text-sm text-stone-400 dark:text-stone-500 mt-2">
+          <p className="text-sm text-stone-500 dark:text-stone-400 mt-2">
             Showing {hadiths.length} {hadiths.length === 1 ? "hadith" : "hadiths"}
             {activeTopic ? ` on "${activeTopic}"` : ""}
           </p>
@@ -148,7 +148,7 @@ export default function HadithArchivePage({ searchParams }: Props) {
           className="flex items-center justify-between gap-4 px-5 py-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl mb-10 hover:bg-amber-100 dark:hover:bg-amber-900/30 transition-colors group"
         >
           <div className="flex items-center gap-3">
-            <Calendar className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0" />
+            <Calendar className="w-5 h-5 text-amber-700 dark:text-amber-400 flex-shrink-0" />
             <div>
               <p className="text-sm font-semibold text-amber-800 dark:text-amber-200">
                 Hadith of the Day
@@ -158,7 +158,7 @@ export default function HadithArchivePage({ searchParams }: Props) {
               </p>
             </div>
           </div>
-          <ChevronRight className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0 group-hover:translate-x-0.5 transition-transform" />
+          <ChevronRight className="w-4 h-4 text-amber-700 dark:text-amber-400 flex-shrink-0 group-hover:translate-x-0.5 transition-transform" />
         </Link>
 
         {/* Topic filter pills */}
@@ -196,12 +196,12 @@ export default function HadithArchivePage({ searchParams }: Props) {
             ))}
           </div>
         ) : (
-          <div className="text-center py-16 text-stone-400 dark:text-stone-500">
+          <div className="text-center py-16 text-stone-500 dark:text-stone-400">
             <p className="text-5xl mb-4">📖</p>
             <p className="font-medium">No hadiths found for this topic</p>
             <Link
               href="/hadith"
-              className="mt-3 text-sm text-amber-600 dark:text-amber-400 hover:underline inline-block"
+              className="mt-3 text-sm text-amber-700 dark:text-amber-400 hover:underline inline-block"
             >
               ← View all hadiths
             </Link>

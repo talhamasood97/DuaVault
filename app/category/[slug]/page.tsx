@@ -69,7 +69,7 @@ export default async function CategoryPage({ params }: Props) {
     />
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12 animate-fade-in">
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-1.5 text-xs text-stone-400 dark:text-stone-500 mb-8">
+      <nav className="flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400 mb-8">
         <Link href="/" className="hover:text-emerald-600 transition-colors">
           Home
         </Link>
@@ -90,7 +90,7 @@ export default async function CategoryPage({ params }: Props) {
         <p className="text-stone-500 dark:text-stone-400 max-w-xl">
           {cat.description}
         </p>
-        <p className="text-sm text-stone-400 dark:text-stone-500 mt-2">
+        <p className="text-sm text-stone-500 dark:text-stone-400 mt-2">
           {duas.length} authenticated {duas.length === 1 ? "supplication" : "supplications"}
         </p>
       </div>
@@ -120,7 +120,7 @@ export default async function CategoryPage({ params }: Props) {
           ))}
         </div>
       ) : (
-        <div className="text-center py-16 text-stone-400 dark:text-stone-500">
+        <div className="text-center py-16 text-stone-500 dark:text-stone-400">
           <p className="text-5xl mb-4">📖</p>
           <p className="font-medium">More duas coming soon</p>
         </div>

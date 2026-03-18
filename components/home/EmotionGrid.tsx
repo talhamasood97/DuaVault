@@ -29,7 +29,7 @@ export function EmotionGrid() {
                 <p className={`font-semibold text-sm leading-snug ${emotion.color}`}>
                   {emotion.title}
                 </p>
-                <p className="hidden sm:block text-xs text-stone-400 dark:text-stone-500 mt-0.5 line-clamp-2 leading-tight">
+                <p className="hidden sm:block text-xs text-stone-500 dark:text-stone-400 mt-0.5 line-clamp-2 leading-tight">
                   {emotion.description}
                 </p>
               </div>

@@ -1,6 +1,17 @@
 const nextConfig = {
   poweredByHeader: false,
   compress: true,
+  async redirects() {
+    return [
+      // Redirect www → non-www to eliminate the redirect chain (saves ~860ms on first load)
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.duavault.com" }],
+        destination: "https://duavault.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
   images: {
     formats: ["image/avif", "image/webp"],
   },
@@ -12,8 +23,8 @@ const nextConfig = {
     const csp = [
       "default-src 'self'",
       "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com",
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-      "font-src 'self' https://fonts.gstatic.com",
+      "style-src 'self' 'unsafe-inline'",
+      "font-src 'self'",
       "img-src 'self' data: https:",
       "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://vitals.vercel-insights.com https://*.supabase.co",
       "frame-src 'none'",

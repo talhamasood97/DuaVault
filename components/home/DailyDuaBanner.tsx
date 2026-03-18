@@ -36,9 +36,9 @@ export function DailyDuaBanner({ dua }: { dua: Dua }) {
                     · {today}
                   </span>
                 </div>
-                <h3 className="text-base sm:text-xl font-bold text-white mb-2 leading-snug">
+                <h2 className="text-base sm:text-xl font-bold text-white mb-2 leading-snug">
                   {dua.title}
-                </h3>
+                </h2>
                 <p
                   className="arabic text-right text-xl sm:text-3xl text-emerald-100 leading-loose"
                   dir="rtl"

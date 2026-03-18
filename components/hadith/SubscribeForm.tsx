@@ -45,7 +45,7 @@ export function SubscribeForm() {
   if (status === "success") {
     return (
       <div className="bg-emerald-50 dark:bg-emerald-900/40 border border-emerald-200 dark:border-emerald-800 rounded-2xl p-6 text-center">
-        <CheckCircle className="w-8 h-8 text-emerald-600 dark:text-emerald-400 mx-auto mb-3" />
+        <CheckCircle className="w-8 h-8 text-emerald-700 dark:text-emerald-400 mx-auto mb-3" />
         <p className="font-semibold text-emerald-800 dark:text-emerald-200 mb-1">
           You&apos;re on the list!
         </p>
@@ -57,7 +57,7 @@ export function SubscribeForm() {
   return (
     <div className="bg-amber-50/60 dark:bg-amber-900/10 border border-amber-200/60 dark:border-amber-800/40 rounded-2xl p-6">
       <div className="flex items-center gap-2 mb-1">
-        <Mail className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+        <Mail className="w-4 h-4 text-amber-700 dark:text-amber-400" />
         <p className="font-semibold text-stone-800 dark:text-stone-100 text-sm">
           Get Today&apos;s Hadith in Your Inbox
         </p>
@@ -100,7 +100,7 @@ export function SubscribeForm() {
         )}
       </form>
 
-      <p className="text-xs text-stone-400 dark:text-stone-500 mt-3">
+      <p className="text-xs text-stone-500 dark:text-stone-400 mt-3">
         No spam. No sharing. Just one hadith a day.
       </p>
     </div>

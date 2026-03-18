@@ -27,7 +27,7 @@ export function CategoryGrid() {
                 <p className={`font-semibold text-sm ${cat.color} group-hover:underline`}>
                   {cat.title}
                 </p>
-                <p className="text-xs text-stone-400 dark:text-stone-500 mt-0.5 line-clamp-1 leading-tight">
+                <p className="text-xs text-stone-500 dark:text-stone-400 mt-0.5 line-clamp-1 leading-tight">
                   {cat.description}
                 </p>
               </div>

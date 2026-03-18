@@ -21,7 +21,7 @@ export function RelatedDuas({ duas }: { duas: Dua[] }) {
               <p className="text-sm font-medium text-stone-700 dark:text-stone-300 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 truncate transition-colors">
                 {dua.title}
               </p>
-              <p className="text-xs text-stone-400 dark:text-stone-500 mt-0.5">
+              <p className="text-xs text-stone-500 dark:text-stone-400 mt-0.5">
                 {dua.source_book}
               </p>
             </div>

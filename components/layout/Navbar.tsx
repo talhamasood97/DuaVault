@@ -71,7 +71,7 @@ export function Navbar() {
           >
             <BookOpen className="w-5 h-5" />
             <span className="font-semibold tracking-tight text-base sm:text-lg">
-              Dua<span className="text-emerald-600 dark:text-emerald-400">Vault</span>
+              Dua<span className="text-emerald-700 dark:text-emerald-400">Vault</span>
             </span>
           </Link>
 
@@ -269,7 +269,7 @@ export function Navbar() {
                   "transition-opacity active:opacity-50 select-none",
                   active
                     ? "text-emerald-700 dark:text-emerald-400"
-                    : "text-stone-400 dark:text-stone-500"
+                    : "text-stone-500 dark:text-stone-400"
                 )}
               >
                 {/* Active top-line indicator */}

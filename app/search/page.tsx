@@ -67,7 +67,7 @@ export default async function SearchPage({ searchParams }: Props) {
           <h2 className="text-lg font-semibold text-stone-700 dark:text-stone-300 mb-2">
             No duas found
           </h2>
-          <p className="text-stone-400 dark:text-stone-500 text-sm mb-6">
+          <p className="text-stone-500 dark:text-stone-400 text-sm mb-6">
             Try different keywords like &ldquo;sleeping&rdquo;, &ldquo;anxiety&rdquo;, or &ldquo;mosque&rdquo;
           </p>
           <div className="flex flex-wrap justify-center gap-2">
@@ -94,7 +94,7 @@ export default async function SearchPage({ searchParams }: Props) {
 
       {/* Show all link */}
       {!query && (
-        <p className="mt-8 text-center text-sm text-stone-400 dark:text-stone-500">
+        <p className="mt-8 text-center text-sm text-stone-500 dark:text-stone-400">
           Showing 30 of {DUAS.length} duas. Use search to find specific supplications.
         </p>
       )}

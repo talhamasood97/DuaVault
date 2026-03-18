@@ -66,7 +66,7 @@ export function Footer() {
           {/* Links */}
           {Object.entries(LINKS).map(([section, items]) => (
             <div key={section}>
-              <h3 className="text-xs font-semibold uppercase tracking-widest text-stone-400 dark:text-stone-500 mb-4">
+              <h3 className="text-xs font-semibold uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-4">
                 {section}
               </h3>
               <ul className="space-y-2.5">

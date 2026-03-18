@@ -52,7 +52,7 @@ export function DuaCard({ dua }: { dua: Dua }) {
 
       {/* Footer */}
       <div className="flex items-center justify-between gap-2 mt-auto">
-        <div className="flex items-center gap-1 text-xs text-stone-400 dark:text-stone-500 min-w-0">
+        <div className="flex items-center gap-1 text-xs text-stone-500 dark:text-stone-400 min-w-0">
           <BookOpen className="w-3.5 h-3.5 flex-shrink-0" />
           <span className="truncate">{dua.source_book}</span>
           {dua.hadith_number && (

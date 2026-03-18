@@ -73,7 +73,7 @@ export default async function EmotionPage({ params }: Props) {
     />
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12 animate-fade-in">
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-1.5 text-xs text-stone-400 dark:text-stone-500 mb-8">
+      <nav className="flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400 mb-8">
         <Link href="/" className="hover:text-emerald-600 transition-colors">
           Home
         </Link>
@@ -96,7 +96,7 @@ export default async function EmotionPage({ params }: Props) {
             {emotion.description}. Turn to Allah through these authenticated
             supplications.
           </p>
-          <p className="text-xs text-stone-400 dark:text-stone-500 mt-3">
+          <p className="text-xs text-stone-500 dark:text-stone-400 mt-3">
             {duas.length} {duas.length === 1 ? "supplication" : "supplications"} found
           </p>
         </div>
@@ -129,7 +129,7 @@ export default async function EmotionPage({ params }: Props) {
       ) : (
         <div className="text-center py-16">
           <Heart className="w-10 h-10 text-stone-200 dark:text-stone-700 mx-auto mb-4" />
-          <p className="text-stone-400 dark:text-stone-500 font-medium">
+          <p className="text-stone-500 dark:text-stone-400 font-medium">
             More duas for this emotion coming soon
           </p>
         </div>

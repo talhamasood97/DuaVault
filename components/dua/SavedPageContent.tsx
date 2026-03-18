@@ -110,7 +110,7 @@ function SavedDuaCard({ dua, isSharedView }: { dua: Dua; isSharedView: boolean }
       </p>
 
       {/* Footer */}
-      <div className="flex items-center gap-1 text-xs text-stone-400 dark:text-stone-500 mt-auto">
+      <div className="flex items-center gap-1 text-xs text-stone-500 dark:text-stone-400 mt-auto">
         <BookOpen className="w-3.5 h-3.5 flex-shrink-0" />
         <span className="truncate">{dua.source_book}</span>
         {dua.hadith_number && (

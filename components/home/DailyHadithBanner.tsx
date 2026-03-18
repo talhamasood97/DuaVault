@@ -41,9 +41,9 @@ export function DailyHadithBanner({ hadith }: { hadith: Hadith }) {
                     · {today}
                   </span>
                 </div>
-                <h3 className="text-base sm:text-xl font-bold text-white mb-2 leading-snug">
+                <h2 className="text-base sm:text-xl font-bold text-white mb-2 leading-snug">
                   {hadith.title}
-                </h3>
+                </h2>
                 <p
                   className="arabic text-right text-xl sm:text-3xl text-amber-100 leading-loose"
                   dir="rtl"

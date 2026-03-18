@@ -44,7 +44,7 @@ export default async function DailyDuaPage() {
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8 sm:py-12 animate-fade-in">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-1.5 text-xs text-stone-400 dark:text-stone-500 mb-8">
+        <nav className="flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400 mb-8">
           <Link href="/" className="hover:text-emerald-600 transition-colors">
             Home
           </Link>
@@ -55,7 +55,7 @@ export default async function DailyDuaPage() {
         {/* Date header */}
         <div className="flex items-center gap-2 mb-6">
           <div className="p-2 bg-emerald-50 dark:bg-emerald-900/50 rounded-xl">
-            <Calendar className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+            <Calendar className="w-4 h-4 text-emerald-700 dark:text-emerald-400" />
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest text-emerald-700 dark:text-emerald-400">
@@ -77,7 +77,7 @@ export default async function DailyDuaPage() {
                   <Star
                     className="w-4 h-4 fill-amber-400 text-amber-400"
                   />
-                  <span className="text-xs font-semibold text-amber-600 dark:text-amber-400 uppercase tracking-widest">
+                  <span className="text-xs font-semibold text-amber-700 dark:text-amber-400 uppercase tracking-widest">
                     Today's Supplication
                   </span>
                 </div>
@@ -115,7 +115,7 @@ export default async function DailyDuaPage() {
 
           {/* Transliteration */}
           <div className="px-6 sm:px-10 py-6 border-t border-stone-50 dark:border-emerald-900/50">
-            <p className="text-xs font-semibold uppercase tracking-widest text-stone-400 dark:text-stone-500 mb-3">
+            <p className="text-xs font-semibold uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-3">
               Transliteration
             </p>
             <p className="text-stone-600 dark:text-stone-300 italic text-base sm:text-lg leading-relaxed">
@@ -125,7 +125,7 @@ export default async function DailyDuaPage() {
 
           {/* Translation */}
           <div className="px-6 sm:px-10 py-6 border-t border-stone-50 dark:border-emerald-900/50">
-            <p className="text-xs font-semibold uppercase tracking-widest text-stone-400 dark:text-stone-500 mb-3">
+            <p className="text-xs font-semibold uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-3">
               Translation
             </p>
             <p className="text-stone-700 dark:text-stone-200 text-base sm:text-lg leading-relaxed">
@@ -135,7 +135,7 @@ export default async function DailyDuaPage() {
 
           {/* Share */}
           <div className="px-6 sm:px-10 py-6 border-t border-stone-50 dark:border-emerald-900/50 bg-stone-50/50 dark:bg-emerald-950/30">
-            <p className="text-xs font-semibold uppercase tracking-widest text-stone-400 dark:text-stone-500 mb-3">
+            <p className="text-xs font-semibold uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-3">
               Share Today's Dua
             </p>
             <ShareButtons dua={dua} />

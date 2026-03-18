@@ -45,8 +45,8 @@ export function SaveButton({ slug, title, size = "md", className }: SaveButtonPr
       className={cn(
         "transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500",
         saved
-          ? "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/50 hover:bg-emerald-100 dark:hover:bg-emerald-900"
-          : "text-stone-400 dark:text-stone-500 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/50",
+          ? "text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/50 hover:bg-emerald-100 dark:hover:bg-emerald-900"
+          : "text-stone-500 dark:text-stone-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/50",
         sizeClasses[size],
         className
       )}

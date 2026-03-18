@@ -93,7 +93,7 @@ export default function SourcesPage() {
                     {source.grade}
                   </span>
                 </div>
-                <p className="text-xs text-stone-400 dark:text-stone-500 mb-2 italic">
+                <p className="text-xs text-stone-500 dark:text-stone-400 mb-2 italic">
                   {source.author}
                 </p>
                 <p className="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">

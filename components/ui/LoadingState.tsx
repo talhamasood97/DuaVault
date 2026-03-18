@@ -21,7 +21,7 @@ export function PageLoader() {
         <div className="arabic text-4xl text-emerald-600 dark:text-emerald-500 animate-pulse-soft mb-4">
           ﷽
         </div>
-        <p className="text-sm text-stone-400 dark:text-stone-500">Loading…</p>
+        <p className="text-sm text-stone-500 dark:text-stone-400">Loading…</p>
       </div>
     </div>
   );

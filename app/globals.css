@@ -1,4 +1,4 @@
-/* Fonts are loaded via <link> in app/layout.tsx (Amiri) and next/font/google (Inter) */
+/* Fonts loaded via next/font/google (Inter + Amiri) — no render-blocking <link> tags */
 
 @tailwind base;
 @tailwind components;
@@ -41,7 +41,7 @@
 
   /* Arabic text styling */
   .arabic {
-    font-family: 'Amiri', 'Scheherazade New', serif;
+    font-family: var(--font-amiri), 'Scheherazade New', serif;
     direction: rtl;
     line-height: 2;
     letter-spacing: 0.02em;

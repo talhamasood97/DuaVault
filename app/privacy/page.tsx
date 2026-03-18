@@ -47,7 +47,7 @@ export default function PrivacyPage() {
         <p>
           For privacy inquiries, please contact us through our website.
         </p>
-        <p className="text-xs text-stone-400 dark:text-stone-500 mt-8">
+        <p className="text-xs text-stone-500 dark:text-stone-400 mt-8">
           Last updated: {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
         </p>
       </div>

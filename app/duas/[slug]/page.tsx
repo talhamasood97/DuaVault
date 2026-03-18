@@ -122,7 +122,7 @@ export default async function DuaPage({ params }: Props) {
         {/* Breadcrumb */}
         <nav
           aria-label="breadcrumb"
-          className="flex items-center gap-1.5 text-xs text-stone-400 dark:text-stone-500 mb-8"
+          className="flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400 mb-8"
         >
           <Link href="/" className="hover:text-emerald-600 transition-colors">
             Home
@@ -168,7 +168,7 @@ export default async function DuaPage({ params }: Props) {
                 )}
               </div>
               {dua.scholar_verified && (
-                <span className="text-emerald-600 dark:text-emerald-400 font-medium flex items-center gap-1">
+                <span className="text-emerald-700 dark:text-emerald-400 font-medium flex items-center gap-1">
                   ✓ Scholar Verified
                 </span>
               )}
@@ -193,7 +193,7 @@ export default async function DuaPage({ params }: Props) {
 
           {/* Transliteration */}
           <div className="px-6 sm:px-10 py-6 border-t border-stone-50 dark:border-emerald-900/50">
-            <p className="text-xs font-semibold uppercase tracking-widest text-stone-400 dark:text-stone-500 mb-3">
+            <p className="text-xs font-semibold uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-3">
               Transliteration
             </p>
             <p className="text-stone-600 dark:text-stone-300 leading-relaxed italic text-base sm:text-lg">
@@ -203,7 +203,7 @@ export default async function DuaPage({ params }: Props) {
 
           {/* Translation */}
           <div className="px-6 sm:px-10 py-6 border-t border-stone-50 dark:border-emerald-900/50">
-            <p className="text-xs font-semibold uppercase tracking-widest text-stone-400 dark:text-stone-500 mb-3">
+            <p className="text-xs font-semibold uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-3">
               Translation
             </p>
             <p className="text-stone-700 dark:text-stone-200 leading-relaxed text-base sm:text-lg">
@@ -213,7 +213,7 @@ export default async function DuaPage({ params }: Props) {
 
           {/* Share buttons */}
           <div className="px-6 sm:px-10 py-6 border-t border-stone-50 dark:border-emerald-900/50 bg-stone-50/50 dark:bg-emerald-950/30">
-            <p className="text-xs font-semibold uppercase tracking-widest text-stone-400 dark:text-stone-500 mb-3">
+            <p className="text-xs font-semibold uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-3">
               Share this Dua
             </p>
             <ShareButtons dua={dua} />

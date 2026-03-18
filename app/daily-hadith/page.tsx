@@ -74,7 +74,7 @@ export default function DailyHadithPage({
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8 sm:py-12 animate-fade-in">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-1.5 text-xs text-stone-400 dark:text-stone-500 mb-8">
+        <nav className="flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400 mb-8">
           <Link href="/" className="hover:text-emerald-600 transition-colors">
             Home
           </Link>
@@ -85,7 +85,7 @@ export default function DailyHadithPage({
         {/* Confirmation banner */}
         {searchParams.confirmed === "true" && (
           <div className="mb-8 flex items-start gap-3 bg-emerald-50 dark:bg-emerald-900/40 border border-emerald-200 dark:border-emerald-800 rounded-2xl px-5 py-4">
-            <CheckCircle className="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
+            <CheckCircle className="w-5 h-5 text-emerald-700 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
             <div>
               <p className="font-semibold text-emerald-800 dark:text-emerald-200 text-sm">
                 You&apos;re confirmed — JazakAllah Khair!
@@ -141,7 +141,7 @@ export default function DailyHadithPage({
         {/* Date header */}
         <div className="flex items-center gap-2 mb-6">
           <div className="p-2 bg-amber-50 dark:bg-amber-900/30 rounded-xl">
-            <Calendar className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+            <Calendar className="w-4 h-4 text-amber-700 dark:text-amber-400" />
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest text-amber-700 dark:text-amber-400">
@@ -160,7 +160,7 @@ export default function DailyHadithPage({
           <div className="px-6 sm:px-10 pt-8 pb-4">
             <div className="flex items-start justify-between gap-4 flex-wrap mb-2">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-amber-600 dark:text-amber-400 mb-2">
+                <p className="text-xs font-semibold uppercase tracking-widest text-amber-700 dark:text-amber-400 mb-2">
                   Today&apos;s Hadith
                 </p>
                 <h1 className="text-2xl sm:text-3xl font-bold text-stone-800 dark:text-stone-100 leading-snug">
@@ -197,7 +197,7 @@ export default function DailyHadithPage({
 
           {/* Transliteration */}
           <div className="px-6 sm:px-10 py-6 border-t border-stone-50 dark:border-emerald-900/50">
-            <p className="text-xs font-semibold uppercase tracking-widest text-stone-400 dark:text-stone-500 mb-3">
+            <p className="text-xs font-semibold uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-3">
               Transliteration
             </p>
             <p className="text-stone-600 dark:text-stone-300 italic text-base sm:text-lg leading-relaxed">
@@ -207,7 +207,7 @@ export default function DailyHadithPage({
 
           {/* Translation */}
           <div className="px-6 sm:px-10 py-6 border-t border-stone-50 dark:border-emerald-900/50">
-            <p className="text-xs font-semibold uppercase tracking-widest text-stone-400 dark:text-stone-500 mb-3">
+            <p className="text-xs font-semibold uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-3">
               Translation
             </p>
             <p className="text-stone-700 dark:text-stone-200 text-base sm:text-lg leading-relaxed">
@@ -218,7 +218,7 @@ export default function DailyHadithPage({
           {/* Today's practice */}
           <div className="px-6 sm:px-10 py-6 border-t border-stone-50 dark:border-emerald-900/50 bg-amber-50/40 dark:bg-amber-900/10">
             <div className="flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
+              <CheckCircle className="w-5 h-5 text-amber-700 dark:text-amber-400 flex-shrink-0 mt-0.5" />
               <div>
                 <p className="text-xs font-semibold uppercase tracking-widest text-amber-700 dark:text-amber-400 mb-1.5">
                   Today&apos;s Practice
