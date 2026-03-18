@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Share2, Copy, Check, MessageCircle, Twitter, Facebook } from "lucide-react";
+import { Share2, Copy, Check, MessageCircle, Twitter, Facebook, Send } from "lucide-react";
 import toast from "react-hot-toast";
 import { formatShareText, formatTwitterText, SITE_URL } from "@/lib/utils";
 import type { Dua } from "@/types";
@@ -35,8 +35,17 @@ export function ShareButtons({ dua }: { dua: Dua }) {
 
   function shareWhatsApp() {
     const whatsappText = encodeURIComponent(`${text}\n\n${url}`);
-    window.open(`https://wa.me/?text=${whatsappText}`, "_blank", "noopener");
+    window.open(`https://api.whatsapp.com/send?text=${whatsappText}`, "_blank", "noopener");
     trackShareDua("whatsapp", dua.slug);
+  }
+
+  function shareTelegram() {
+    window.open(
+      `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`,
+      "_blank",
+      "noopener,width=600,height=400"
+    );
+    trackShareDua("telegram", dua.slug);
   }
 
   function shareTwitter() {
@@ -81,6 +90,16 @@ export function ShareButtons({ dua }: { dua: Dua }) {
       >
         <MessageCircle className="w-4 h-4" />
         WhatsApp
+      </button>
+
+      {/* Telegram */}
+      <button
+        onClick={shareTelegram}
+        className="flex items-center gap-1.5 px-3 py-2 bg-[#2AABEE] hover:bg-[#1e96d4] text-white text-sm font-medium rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-white/70"
+        aria-label="Share on Telegram"
+      >
+        <Send className="w-4 h-4" />
+        Telegram
       </button>
 
       {/* Twitter / X */}
