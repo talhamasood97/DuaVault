@@ -95,12 +95,12 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400 dark:text-stone-600">
           <p>
-            © {new Date().getFullYear()} DuaVault. Made with{" "}
-            <Heart className="w-3 h-3 inline text-red-400" /> for the Ummah.
+            © {new Date().getFullYear()} DuaVault · Made with{" "}
+            <Heart className="w-3 h-3 inline text-red-400" /> for the Ummah by Mohd Talha Masood, IIT Kanpur
           </p>
           <p>
-            All duas verified against authentic Islamic scholarship. Not a
-            substitute for direct scholarly guidance.
+            Content is carefully sourced but may contain errors. For religious
+            rulings, please consult a qualified Islamic scholar.
           </p>
         </div>
       </div>
