@@ -27,6 +27,7 @@ const LINKS = {
     { href: "/about", label: "About Us" },
     { href: "/sources", label: "Our Sources" },
     { href: "/privacy", label: "Privacy Policy" },
+    { href: "mailto:feedback.duavault@gmail.com", label: "Contact Us" },
   ],
 };
 

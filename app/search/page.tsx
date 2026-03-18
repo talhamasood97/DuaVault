@@ -16,11 +16,12 @@ interface Props {
 export function generateMetadata({ searchParams }: Props): Metadata {
   const q = searchParams.q;
   const noIndex = { index: false, follow: true };
-  if (!q) return { title: "Search Duas", robots: noIndex };
+  if (!q) return { title: "Search Duas", robots: noIndex, alternates: { canonical: "https://duavault.com/search" } };
   return {
     title: `"${q}" – Dua Search Results`,
     description: `Islamic supplications matching "${q}". Find authentic duas with Arabic text, transliteration, and verified sources.`,
     robots: noIndex,
+    alternates: { canonical: `https://duavault.com/search?q=${encodeURIComponent(q)}` },
   };
 }
 

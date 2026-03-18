@@ -4,13 +4,24 @@ import { Star, BookOpen, ChevronRight, Calendar } from "lucide-react";
 import { getDailyDua } from "@/lib/duas";
 import { AuthenticityBadge } from "@/components/dua/AuthenticityBadge";
 import { ShareButtons } from "@/components/dua/ShareButtons";
-import { getCategoryMeta, SITE_NAME } from "@/lib/utils";
+import { getCategoryMeta, SITE_NAME, SITE_URL } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Daily Dua – Today's Islamic Supplication",
   description:
     "A new authentic Islamic supplication every day. Start your morning with a verified dua from Quran and Sunnah.",
-  alternates: { canonical: "/daily-dua" },
+  alternates: { canonical: `${SITE_URL}/daily-dua` },
+  openGraph: {
+    title: "Daily Dua – Today's Islamic Supplication",
+    description:
+      "A new authentic Islamic supplication every day. Start your morning with a verified dua from Quran and Sunnah.",
+    url: `${SITE_URL}/daily-dua`,
+    images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: "Daily Dua – DuaVault" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [`${SITE_URL}/opengraph-image`],
+  },
 };
 
 export const revalidate = 3600; // Revalidate every hour
