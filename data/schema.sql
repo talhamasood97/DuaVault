@@ -96,8 +96,12 @@ create table if not exists public.hadith_subscribers (
   name              text,
   confirmed         boolean default false,
   unsubscribe_token uuid default gen_random_uuid() unique not null,
+  last_sent_on      date,   -- idempotency: the last date (UTC) a daily email was sent
   created_at        timestamptz default now()
 );
+
+-- ⚠️  MIGRATION: run this if the table already exists in your Supabase project:
+-- alter table public.hadith_subscribers add column if not exists last_sent_on date;
 
 -- Index for fast lookups
 create index if not exists hadith_subscribers_email_idx on public.hadith_subscribers (email);

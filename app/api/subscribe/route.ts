@@ -36,7 +36,7 @@ function buildConfirmationEmail(name: string, token: string): string {
               Confirm My Subscription →
             </a>
           </td></tr></table>
-          <p style="margin:24px 0 0;font-size:12px;color:#a8a29e;">If you did not sign up for this, please ignore this email. Link expires in 48 hours.</p>
+          <p style="margin:24px 0 0;font-size:12px;color:#a8a29e;">If you did not sign up for this, simply ignore this email.</p>
         </td></tr>
         <tr><td style="padding:16px 40px;border-top:1px solid #f5f5f4;background:#fafaf9;">
           <p style="margin:0;font-size:11px;color:#a8a29e;">DuaVault · duavault.com</p>
@@ -112,18 +112,31 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Could not save subscription." }, { status: 500 });
     }
 
-    // Send confirmation email via Resend
-    if (hasResend) {
-      const resend = new Resend(process.env.RESEND_API_KEY);
-      const { error: sendError } = await resend.emails.send({
-        from: process.env.RESEND_FROM_EMAIL ?? "noreply@duavault.com",
-        to: normalizedEmail,
-        subject: "Confirm your Daily Hadith subscription — DuaVault",
-        html: buildConfirmationEmail(name ?? "", subscriber.unsubscribe_token),
-      });
-      if (sendError) {
-        console.error("Resend send error:", sendError);
-      }
+    // Send confirmation email via Resend — required in production
+    if (!hasResend) {
+      // No email provider configured: save succeeded but we cannot send confirmation.
+      // Return an error so the user knows to check back rather than waiting forever.
+      console.error("RESEND_API_KEY not configured — confirmation email not sent.");
+      return NextResponse.json(
+        { error: "Email service is not configured. Please contact support." },
+        { status: 503 }
+      );
+    }
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    const { error: sendError } = await resend.emails.send({
+      from: process.env.RESEND_FROM_EMAIL ?? "noreply@duavault.com",
+      to: normalizedEmail,
+      subject: "Confirm your Daily Hadith subscription — DuaVault",
+      html: buildConfirmationEmail(name ?? "", subscriber.unsubscribe_token),
+    });
+
+    if (sendError) {
+      console.error("Resend send error:", sendError);
+      return NextResponse.json(
+        { error: "Could not send confirmation email. Please try again shortly." },
+        { status: 502 }
+      );
     }
 
     return NextResponse.json({

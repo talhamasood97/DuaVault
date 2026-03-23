@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BookOpen, ChevronRight, Calendar, CheckCircle, XCircle } from "lucide-react";
 import { getDailyHadith } from "@/data/hadiths";
 import { SubscribeForm } from "@/components/hadith/SubscribeForm";
-import { SITE_NAME, SITE_URL } from "@/lib/utils";
+import { SITE_NAME, SITE_URL , safeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Hadith of the Day – Daily Islamic Wisdom on Morals & Character",
@@ -69,7 +69,7 @@ export default function DailyHadithPage({
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(structuredData) }}
       />
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8 sm:py-12 animate-fade-in">

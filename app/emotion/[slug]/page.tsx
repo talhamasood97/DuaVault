@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ChevronRight, Heart } from "lucide-react";
 import { getDuasByEmotion } from "@/lib/duas";
 import { DuaCard } from "@/components/dua/DuaCard";
-import { getEmotionMeta, EMOTIONS, SITE_URL } from "@/lib/utils";
+import { getEmotionMeta, EMOTIONS, SITE_URL , safeJsonLd } from "@/lib/utils";
 
 export const revalidate = 3600;
 
@@ -69,7 +69,7 @@ export default async function EmotionPage({ params }: Props) {
     <>
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
+      dangerouslySetInnerHTML={{ __html: safeJsonLd(breadcrumbData) }}
     />
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12 animate-fade-in">
       {/* Breadcrumb */}

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BookOpen, ChevronRight, Calendar } from "lucide-react";
 import { HADITHS } from "@/data/hadiths";
 import { HadithCard } from "@/components/hadith/HadithCard";
-import { SITE_NAME, SITE_URL } from "@/lib/utils";
+import { SITE_NAME, SITE_URL , safeJsonLd } from "@/lib/utils";
 import { HADITH_CATEGORIES, TOPIC_TO_CATEGORY, getHadithCategory } from "@/lib/hadith-categories";
 
 export const revalidate = 86400;
@@ -87,7 +87,7 @@ export default function HadithArchivePage({ searchParams }: Props) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(structuredData) }}
       />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12 animate-fade-in">

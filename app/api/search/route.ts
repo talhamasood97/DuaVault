@@ -30,6 +30,13 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    if (query.length > 150) {
+      return NextResponse.json(
+        { error: "Query too long. Please use fewer than 150 characters." },
+        { status: 400 }
+      );
+    }
+
     const result = await searchDuas(query);
     return NextResponse.json(result, {
       headers: {

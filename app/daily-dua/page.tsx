@@ -4,7 +4,7 @@ import { Star, BookOpen, ChevronRight, Calendar } from "lucide-react";
 import { getDailyDua } from "@/lib/duas";
 import { AuthenticityBadge } from "@/components/dua/AuthenticityBadge";
 import { ShareButtons } from "@/components/dua/ShareButtons";
-import { getCategoryMeta, SITE_NAME, SITE_URL } from "@/lib/utils";
+import { getCategoryMeta, SITE_NAME, SITE_URL , safeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Daily Dua – Today's Islamic Supplication",
@@ -50,7 +50,7 @@ export default async function DailyDuaPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(structuredData) }}
       />
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8 sm:py-12 animate-fade-in">

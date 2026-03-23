@@ -4,7 +4,7 @@ import Link from "next/link";
 import { BookOpen, ChevronRight, CheckCircle } from "lucide-react";
 import { getHadithBySlug, getAllHadithSlugs, HADITHS } from "@/data/hadiths";
 import { SubscribeForm } from "@/components/hadith/SubscribeForm";
-import { SITE_NAME, SITE_URL } from "@/lib/utils";
+import { SITE_NAME, SITE_URL , safeJsonLd } from "@/lib/utils";
 import { HadithViewTracker } from "@/components/analytics/HadithViewTracker";
 
 export const revalidate = 86400;
@@ -79,7 +79,7 @@ export default function HadithPage({ params }: Props) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(structuredData) }}
       />
       <HadithViewTracker
         slug={hadith.slug}

@@ -137,10 +137,15 @@ export async function GET(req: NextRequest) {
     const baseEmail = process.env.RESEND_FROM_EMAIL ?? "noreply@duavault.com";
     const fromEmail = `Daily Hadith · DuaVault <${baseEmail}>`;
 
+    // Today's date string (UTC) used for idempotency — skip subscribers who
+    // already received today's email so duplicate cron runs are safe.
+    const todayUtc = new Date().toISOString().split("T")[0]; // "YYYY-MM-DD"
+
     // Paginate through confirmed subscribers (100 rows per DB page) to avoid
     // loading the entire table into memory on large subscriber lists.
     let sent = 0;
     let failed = 0;
+    let skipped = 0;
     const DB_PAGE = 100;
     const BATCH_SIZE = 50; // Resend batch limit
     let from = 0;
@@ -148,8 +153,9 @@ export async function GET(req: NextRequest) {
     while (true) {
       const { data: subscribers, error } = await db
         .from("hadith_subscribers")
-        .select("email, name, unsubscribe_token")
+        .select("id, email, name, unsubscribe_token, last_sent_on")
         .eq("confirmed", true)
+        .order("id", { ascending: true })
         .range(from, from + DB_PAGE - 1);
 
       if (error) {
@@ -164,9 +170,14 @@ export async function GET(req: NextRequest) {
         break;
       }
 
+      // Filter out subscribers already sent today (idempotency guard).
+      // This makes duplicate cron runs safe — they simply skip already-sent rows.
+      const toSend = subscribers.filter((sub) => sub.last_sent_on !== todayUtc);
+      skipped += subscribers.length - toSend.length;
+
       // Send current page in batches of 50
-      for (let i = 0; i < subscribers.length; i += BATCH_SIZE) {
-        const batch = subscribers.slice(i, i + BATCH_SIZE);
+      for (let i = 0; i < toSend.length; i += BATCH_SIZE) {
+        const batch = toSend.slice(i, i + BATCH_SIZE);
         const emails = batch.map((sub) => ({
           from: fromEmail,
           to: sub.email,
@@ -182,6 +193,12 @@ export async function GET(req: NextRequest) {
             failed += batch.length;
           } else {
             sent += batch.length;
+            // Mark these subscribers as sent today so re-runs skip them.
+            const ids = batch.map((sub) => sub.id);
+            await db
+              .from("hadith_subscribers")
+              .update({ last_sent_on: todayUtc })
+              .in("id", ids);
           }
         } catch (batchErr) {
           console.error(`Batch threw (from=${from}, i=${i}):`, batchErr);
@@ -196,9 +213,10 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({
       sent,
       failed,
+      skipped,
       total: sent + failed,
       hadith: hadith.title,
-      date: new Date().toISOString().split("T")[0],
+      date: todayUtc,
     });
   } catch (err) {
     console.error("Send daily hadith error:", err);

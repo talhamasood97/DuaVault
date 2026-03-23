@@ -7,7 +7,7 @@ import { AuthenticityBadge } from "@/components/dua/AuthenticityBadge";
 import { ShareButtons } from "@/components/dua/ShareButtons";
 import { SaveButton } from "@/components/dua/SaveButton";
 import { RelatedDuas } from "@/components/dua/RelatedDuas";
-import { getCategoryMeta, getEmotionMeta, SITE_URL, SITE_NAME } from "@/lib/utils";
+import { getCategoryMeta, getEmotionMeta, SITE_URL, SITE_NAME , safeJsonLd } from "@/lib/utils";
 import { DuaViewTracker } from "@/components/analytics/DuaViewTracker";
 
 export const revalidate = 86400;
@@ -105,11 +105,11 @@ export default async function DuaPage({ params }: Props) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(structuredData) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(breadcrumbData) }}
       />
       <DuaViewTracker
         slug={dua.slug}

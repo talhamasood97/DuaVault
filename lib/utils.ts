@@ -16,6 +16,19 @@ export function escapeHtml(str: string): string {
     .replace(/'/g, "&#x27;");
 }
 
+/**
+ * Safely serialise data for use in a <script type="application/ld+json"> tag.
+ * JSON.stringify alone does NOT escape "</script>" sequences, which can break
+ * out of the script tag and execute arbitrary HTML. We Unicode-escape the
+ * three characters that matter: < > &
+ */
+export function safeJsonLd(data: unknown): string {
+  return JSON.stringify(data)
+    .replace(/</g, "\\u003c")
+    .replace(/>/g, "\\u003e")
+    .replace(/&/g, "\\u0026");
+}
+
 export const CATEGORIES: CategoryMeta[] = [
   {
     slug: "daily-life",

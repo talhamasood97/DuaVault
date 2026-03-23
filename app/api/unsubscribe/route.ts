@@ -29,6 +29,29 @@ export async function GET(req: NextRequest) {
   // but defence-in-depth against any future token format changes).
   const safeToken = token.replace(/[^a-zA-Z0-9\-_]/g, "");
 
+  // Verify the token exists before rendering the page — mirrors the confirm flow.
+  // Invalid tokens get a redirect instead of a valid-looking unsubscribe page.
+  const hasSupabase =
+    !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
+    !!process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (hasSupabase) {
+    try {
+      const db = createServerClient();
+      const { data } = await db
+        .from("hadith_subscribers")
+        .select("id")
+        .eq("unsubscribe_token", safeToken)
+        .single();
+
+      if (!data) {
+        return NextResponse.redirect(`${SITE_URL}/daily-hadith?unsubscribed=invalid`);
+      }
+    } catch {
+      return NextResponse.redirect(`${SITE_URL}/daily-hadith?unsubscribed=error`);
+    }
+  }
+
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>

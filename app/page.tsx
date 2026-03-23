@@ -9,7 +9,7 @@ import { DailyDuaBanner } from "@/components/home/DailyDuaBanner";
 import { DailyHadithBanner } from "@/components/home/DailyHadithBanner";
 import { getFeaturedDuas, getDailyDua } from "@/lib/duas";
 import { getDailyHadith } from "@/data/hadiths";
-import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/utils";
+import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, safeJsonLd } from "@/lib/utils";
 
 // Revalidate every hour so the Daily Dua banner rotates correctly
 export const revalidate = 3600;
@@ -54,8 +54,8 @@ export default async function HomePage() {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(websiteSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(organizationSchema) }} />
     <div className="animate-fade-in">
       {/* Hero */}
       <section className="hero-gradient py-20 sm:py-28">
