@@ -134,7 +134,8 @@ export async function GET(req: NextRequest) {
     const hadith = getDailyHadith();
     const db = createServerClient();
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const fromEmail = process.env.RESEND_FROM_EMAIL ?? "noreply@duavault.com";
+    const baseEmail = process.env.RESEND_FROM_EMAIL ?? "noreply@duavault.com";
+    const fromEmail = `Daily Hadith · DuaVault <${baseEmail}>`;
 
     // Paginate through confirmed subscribers (100 rows per DB page) to avoid
     // loading the entire table into memory on large subscriber lists.
