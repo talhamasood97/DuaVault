@@ -89,7 +89,7 @@ export default async function DailyDuaPage() {
                     className="w-4 h-4 fill-amber-400 text-amber-400"
                   />
                   <span className="text-xs font-semibold text-amber-700 dark:text-amber-400 uppercase tracking-widest">
-                    Today's Supplication
+                    Today&apos;s Supplication
                   </span>
                 </div>
                 <h1 className="text-2xl sm:text-3xl font-bold text-stone-800 dark:text-stone-100">
@@ -147,7 +147,7 @@ export default async function DailyDuaPage() {
           {/* Share */}
           <div className="px-6 sm:px-10 py-6 border-t border-stone-50 dark:border-emerald-900/50 bg-stone-50/50 dark:bg-emerald-950/30">
             <p className="text-xs font-semibold uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-3">
-              Share Today's Dua
+              Share Today&apos;s Dua
             </p>
             <ShareButtons dua={dua} />
           </div>

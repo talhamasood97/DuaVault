@@ -11,7 +11,7 @@ function formatDuaSource(dua: { source_book: string; hadith_number?: string; aut
 }
 
 function extractCoreQuote(translation: string): string {
-  const quoted = translation.match(/said[,:]?\s*[""](.+)[""]$/s);
+  const quoted = translation.match(/said[,:]?\s*[\u201c"](.+)[\u201d"]$/);
   if (quoted) return quoted[1].trim();
   const colonIdx = translation.indexOf(": ");
   if (colonIdx > 0 && colonIdx < 80) return translation.slice(colonIdx + 2).trim();

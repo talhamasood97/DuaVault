@@ -93,7 +93,7 @@ export function Footer() {
           </span>
         </div>
         <p className="text-center text-xs text-stone-400 dark:text-stone-500 italic mb-8">
-          "Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire." — Quran 2:201
+          &ldquo;Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire.&rdquo; &mdash; Quran 2:201
         </p>
 
         {/* Bottom bar */}

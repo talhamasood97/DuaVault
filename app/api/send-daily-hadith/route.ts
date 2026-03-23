@@ -186,7 +186,6 @@ export async function GET(req: NextRequest) {
         }));
 
         try {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const { error: batchError } = await (resend.batch as any).send(emails);
           if (batchError) {
             console.error(`Batch send error (from=${from}, i=${i}):`, batchError);
