@@ -1,51 +1,15 @@
 "use client";
 
-import { useState } from "react";
 import { Mail, CheckCircle, Loader2 } from "lucide-react";
-import {
-  trackSubscribeAttempt,
-  trackSubscribeSuccess,
-  trackSubscribeError,
-} from "@/lib/analytics";
+import { useSubscribeForm } from "@/hooks/useSubscribeForm";
 
 export function HomeSubscribeBanner() {
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [message, setMessage] = useState("");
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!email) return;
-    setStatus("loading");
-    trackSubscribeAttempt();
-    try {
-      const res = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim().toLowerCase(), name: name.trim() }),
-      });
-      const data = await res.json();
-      if (res.ok) {
-        setStatus("success");
-        setMessage(data.message ?? "Check your inbox to confirm.");
-        trackSubscribeSuccess();
-      } else {
-        setStatus("error");
-        setMessage(data.error ?? "Something went wrong. Please try again.");
-        trackSubscribeError(data.error ?? "api_error");
-      }
-    } catch {
-      setStatus("error");
-      setMessage("Network error. Please try again.");
-      trackSubscribeError("network_error");
-    }
-  }
+  const { email, setEmail, name, setName, status, message, handleSubmit } =
+    useSubscribeForm();
 
   return (
     <section className="py-16 px-4 sm:px-6">
       <div className="max-w-2xl mx-auto text-center">
-        {/* Icon */}
         <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-900/50 mb-5">
           <Mail className="w-5 h-5 text-emerald-700 dark:text-emerald-400" />
         </div>

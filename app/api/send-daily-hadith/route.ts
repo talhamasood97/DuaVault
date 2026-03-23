@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { getDailyHadith } from "@/data/hadiths";
-import { createServerClient } from "@/lib/supabase";
+import { createAdminClient } from "@/lib/supabase";
 import { escapeHtml } from "@/lib/utils";
 
 export const runtime = "nodejs";
@@ -132,7 +132,7 @@ export async function GET(req: NextRequest) {
 
   try {
     const hadith = getDailyHadith();
-    const db = createServerClient();
+    const db = createAdminClient();
     const resend = new Resend(process.env.RESEND_API_KEY);
     const baseEmail = process.env.RESEND_FROM_EMAIL ?? "noreply@duavault.com";
     const fromEmail = `Daily Hadith · DuaVault <${baseEmail}>`;

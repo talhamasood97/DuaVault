@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createServerClient } from "@/lib/supabase";
+import { createAdminClient } from "@/lib/supabase";
 import { escapeHtml } from "@/lib/utils";
 import { rateLimit, getClientIp } from "@/lib/rateLimit";
 
@@ -29,15 +29,15 @@ export async function GET(req: NextRequest) {
     return NextResponse.redirect(`${SITE_URL}/daily-hadith?confirmed=invalid`);
   }
 
-  // Validate the token exists before showing the confirmation page so we don't
-  // render a "Confirm" button for bogus/expired tokens.
+  // Validate the confirmation_token exists before showing the page so we don't
+  // render a "Confirm" button for bogus or already-used tokens.
   if (hasSupabase) {
     try {
-      const db = createServerClient();
+      const db = createAdminClient();
       const { data } = await db
         .from("hadith_subscribers")
-        .select("id, confirmed")
-        .eq("unsubscribe_token", token)
+        .select("id, confirmed, confirmation_token")
+        .eq("confirmation_token", token)
         .single();
 
       if (!data) {
@@ -123,11 +123,13 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const db = createServerClient();
+    const db = createAdminClient();
+    // Confirm the subscriber and null out the confirmation_token so the link
+    // cannot be replayed. Match on confirmation_token (not unsubscribe_token).
     const { error, count } = await db
       .from("hadith_subscribers")
-      .update({ confirmed: true }, { count: "exact" })
-      .eq("unsubscribe_token", token)
+      .update({ confirmed: true, confirmation_token: null }, { count: "exact" })
+      .eq("confirmation_token", token)
       .eq("confirmed", false); // no-op if already confirmed
 
     if (error) {

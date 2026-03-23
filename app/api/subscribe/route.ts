@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { createServerClient } from "@/lib/supabase";
+import { createAdminClient } from "@/lib/supabase";
 import { rateLimit, getClientIp } from "@/lib/rateLimit";
 import { escapeHtml } from "@/lib/utils";
 
@@ -83,7 +83,7 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    const db = createServerClient();
+    const db = createAdminClient();
 
     // Check if already subscribed
     const { data: existing } = await db
@@ -100,11 +100,18 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // Upsert subscriber (insert or re-send confirmation)
+    // Upsert subscriber and regenerate confirmation_token on every (re-)subscribe.
+    // This invalidates any previous confirmation link — the new one is authoritative.
+    // unsubscribe_token is left untouched on conflict so existing subscribers
+    // keep the same unsubscribe link in their inbox.
+    const newConfirmationToken = crypto.randomUUID();
     const { data: subscriber, error } = await db
       .from("hadith_subscribers")
-      .upsert({ email: normalizedEmail, name: name || null }, { onConflict: "email" })
-      .select("unsubscribe_token")
+      .upsert(
+        { email: normalizedEmail, name: name || null, confirmation_token: newConfirmationToken },
+        { onConflict: "email" }
+      )
+      .select("confirmation_token")
       .single();
 
     if (error || !subscriber) {
@@ -114,8 +121,6 @@ export async function POST(req: NextRequest) {
 
     // Send confirmation email via Resend — required in production
     if (!hasResend) {
-      // No email provider configured: save succeeded but we cannot send confirmation.
-      // Return an error so the user knows to check back rather than waiting forever.
       console.error("RESEND_API_KEY not configured — confirmation email not sent.");
       return NextResponse.json(
         { error: "Email service is not configured. Please contact support." },
@@ -128,7 +133,7 @@ export async function POST(req: NextRequest) {
       from: process.env.RESEND_FROM_EMAIL ?? "noreply@duavault.com",
       to: normalizedEmail,
       subject: "Confirm your Daily Hadith subscription — DuaVault",
-      html: buildConfirmationEmail(name ?? "", subscriber.unsubscribe_token),
+      html: buildConfirmationEmail(name ?? "", subscriber.confirmation_token),
     });
 
     if (sendError) {

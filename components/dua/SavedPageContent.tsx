@@ -148,14 +148,15 @@ export function SavedPageContent() {
     : null;
 
   const displaySlugs = sharedSlugs ?? savedSlugs;
-  // Keep display order stable: filter DUAS array (preserves db order), but for
-  // user's own collection we want most-recently-saved first.
+  // Shared view: preserve URL order.
+  // Own collection: most-recently-saved first. New saves are appended to the
+  // end of savedSlugs, so higher indexOf = more recent. Sort descending (b - a).
   const displayDuas = sharedSlugs
     ? DUAS.filter((d) => displaySlugs.includes(d.slug))
     : [...DUAS]
         .filter((d) => displaySlugs.includes(d.slug))
         .sort(
-          (a, b) => savedSlugs.indexOf(a.slug) - savedSlugs.indexOf(b.slug)
+          (a, b) => savedSlugs.indexOf(b.slug) - savedSlugs.indexOf(a.slug)
         );
 
   const isSharedView = !!sharedSlugs;

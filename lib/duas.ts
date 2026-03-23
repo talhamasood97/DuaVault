@@ -1,7 +1,8 @@
 /**
  * Data access layer for duas.
  * Falls back to static data when Supabase is not configured.
- * Swap out the static imports for live DB calls once Supabase is connected.
+ * All public content reads use createPublicServerClient() (anon key).
+ * Only subscriber/admin operations should use createAdminClient().
  */
 import type { Dua, SearchResult } from "@/types";
 import {
@@ -15,18 +16,16 @@ import {
   FEATURED_DUAS,
 } from "@/data/duas";
 
-// Check if Supabase is configured for server-side access.
-// Server data paths use createServerClient() which requires the service role key,
-// so gate on that — not the anon key — to avoid runtime failures in partially
-// configured environments.
+// Public content reads use the anon key (least privilege).
+// Gate on both URL and anon key — if either is missing, fall back to static data.
 const hasSupabase =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
-  !!process.env.SUPABASE_SERVICE_ROLE_KEY;
+  !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 export async function getAllDuas(): Promise<Dua[]> {
   if (!hasSupabase) return DUAS;
-  const { createServerClient } = await import("@/lib/supabase");
-  const db = createServerClient();
+  const { createPublicServerClient } = await import("@/lib/supabase");
+  const db = createPublicServerClient();
   const { data, error } = await db.from("duas").select("*").order("id");
   if (error || !data || data.length === 0) return DUAS;
   return data as Dua[];
@@ -34,8 +33,8 @@ export async function getAllDuas(): Promise<Dua[]> {
 
 export async function getDuaBySlug(slug: string): Promise<Dua | null> {
   if (!hasSupabase) return staticGetBySlug(slug) ?? null;
-  const { createServerClient } = await import("@/lib/supabase");
-  const db = createServerClient();
+  const { createPublicServerClient } = await import("@/lib/supabase");
+  const db = createPublicServerClient();
   const { data, error } = await db
     .from("duas")
     .select("*")
@@ -47,8 +46,8 @@ export async function getDuaBySlug(slug: string): Promise<Dua | null> {
 
 export async function getDuasByCategory(category: string): Promise<Dua[]> {
   if (!hasSupabase) return staticGetByCategory(category);
-  const { createServerClient } = await import("@/lib/supabase");
-  const db = createServerClient();
+  const { createPublicServerClient } = await import("@/lib/supabase");
+  const db = createPublicServerClient();
   const { data, error } = await db
     .from("duas")
     .select("*")
@@ -60,8 +59,8 @@ export async function getDuasByCategory(category: string): Promise<Dua[]> {
 
 export async function getDuasByEmotion(emotion: string): Promise<Dua[]> {
   if (!hasSupabase) return staticGetByEmotion(emotion);
-  const { createServerClient } = await import("@/lib/supabase");
-  const db = createServerClient();
+  const { createPublicServerClient } = await import("@/lib/supabase");
+  const db = createPublicServerClient();
   const { data, error } = await db
     .from("duas")
     .select("*")
@@ -76,8 +75,8 @@ export async function searchDuas(query: string): Promise<SearchResult> {
     const results = staticSearch(query);
     return { duas: results, total: results.length, query };
   }
-  const { createServerClient } = await import("@/lib/supabase");
-  const db = createServerClient();
+  const { createPublicServerClient } = await import("@/lib/supabase");
+  const db = createPublicServerClient();
   const { data, error, count } = await db
     .from("duas")
     .select("*", { count: "exact" })
@@ -92,8 +91,8 @@ export async function searchDuas(query: string): Promise<SearchResult> {
 
 export async function getFeaturedDuas(): Promise<Dua[]> {
   if (!hasSupabase) return FEATURED_DUAS;
-  const { createServerClient } = await import("@/lib/supabase");
-  const db = createServerClient();
+  const { createPublicServerClient } = await import("@/lib/supabase");
+  const db = createPublicServerClient();
   const { data, error } = await db
     .from("duas")
     .select("*")

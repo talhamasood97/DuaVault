@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createServerClient } from "@/lib/supabase";
+import { createAdminClient } from "@/lib/supabase";
 import { rateLimit, getClientIp } from "@/lib/rateLimit";
 
 export const runtime = "nodejs";
@@ -37,7 +37,7 @@ export async function GET(req: NextRequest) {
 
   if (hasSupabase) {
     try {
-      const db = createServerClient();
+      const db = createAdminClient();
       const { data } = await db
         .from("hadith_subscribers")
         .select("id")
@@ -113,7 +113,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const db = createServerClient();
+    const db = createAdminClient();
     const { error, count } = await db
       .from("hadith_subscribers")
       .delete({ count: "exact" })

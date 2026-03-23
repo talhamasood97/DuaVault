@@ -91,17 +91,20 @@ order by total desc;
 
 -- ─── Hadith email subscribers ─────────────────────────────────────────────
 create table if not exists public.hadith_subscribers (
-  id                uuid default gen_random_uuid() primary key,
-  email             text unique not null,
-  name              text,
-  confirmed         boolean default false,
-  unsubscribe_token uuid default gen_random_uuid() unique not null,
-  last_sent_on      date,   -- idempotency: the last date (UTC) a daily email was sent
-  created_at        timestamptz default now()
+  id                   uuid default gen_random_uuid() primary key,
+  email                text unique not null,
+  name                 text,
+  confirmed            boolean default false,
+  confirmation_token   uuid default gen_random_uuid() unique,  -- used only in confirmation email; nulled after confirm
+  unsubscribe_token    uuid default gen_random_uuid() unique not null,  -- used only in unsubscribe link
+  last_sent_on         date,   -- idempotency: the last date (UTC) a daily email was sent
+  created_at           timestamptz default now()
 );
 
--- ⚠️  MIGRATION: run this if the table already exists in your Supabase project:
+-- ⚠️  MIGRATION: run these if the table already exists in your Supabase project:
 -- alter table public.hadith_subscribers add column if not exists last_sent_on date;
+-- alter table public.hadith_subscribers add column if not exists confirmation_token uuid unique default gen_random_uuid();
+-- update public.hadith_subscribers set confirmation_token = gen_random_uuid() where confirmation_token is null;
 
 -- Index for fast lookups
 create index if not exists hadith_subscribers_email_idx on public.hadith_subscribers (email);
