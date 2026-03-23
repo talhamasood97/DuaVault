@@ -78,7 +78,9 @@ export default async function DuaPage({ params }: Props) {
       name: SITE_NAME,
       url: SITE_URL,
     },
-    citation: `${dua.source_book}${dua.hadith_number ? `, Hadith ${dua.hadith_number}` : ""}`,
+    citation: dua.authenticity_grade === "QURAN"
+      ? `${dua.source_book}${dua.hadith_number ? ` ${dua.hadith_number}` : ""}`
+      : `${dua.source_book}${dua.hadith_number ? `, Hadith ${dua.hadith_number}` : ""}`,
   };
 
   const breadcrumbData = {
@@ -163,7 +165,11 @@ export default async function DuaPage({ params }: Props) {
                 {dua.hadith_number && (
                   <>
                     <span className="text-stone-300 dark:text-stone-600">·</span>
-                    <span>{dua.hadith_number}</span>
+                    <span>
+                      {dua.authenticity_grade === "QURAN"
+                        ? dua.hadith_number
+                        : `Hadith ${dua.hadith_number}`}
+                    </span>
                   </>
                 )}
               </div>
