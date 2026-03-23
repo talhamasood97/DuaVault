@@ -15,7 +15,6 @@ export async function GET(request: Request) {
     ? (DUAS.find((d) => d.slug === slug) ?? staticGetDailyDua())
     : staticGetDailyDua();
 
-  const arabic = truncate(dua.arabic_text, 160);
   const translation = truncate(dua.translation, 200);
 
   return new ImageResponse(
@@ -69,15 +68,7 @@ export async function GET(request: Request) {
               padding: "10px 24px",
             }}
           >
-            <div style={{ color: "#c4b5fd", fontSize: 22 }}>☽</div>
-            <div
-              style={{
-                color: "#c4b5fd",
-                fontSize: 24,
-                fontWeight: 600,
-                letterSpacing: 1,
-              }}
-            >
+            <div style={{ color: "#c4b5fd", fontSize: 24, fontWeight: 600, letterSpacing: 1 }}>
               EVENING DUA
             </div>
           </div>
@@ -112,22 +103,6 @@ export async function GET(request: Request) {
           }}
         >
           {dua.title}
-        </div>
-
-        {/* Arabic text */}
-        <div
-          style={{
-            color: "#fde68a",
-            fontSize: 56,
-            fontWeight: 700,
-            textAlign: "right",
-            direction: "rtl",
-            lineHeight: 1.7,
-            marginBottom: 32,
-            width: "100%",
-          }}
-        >
-          {arabic}
         </div>
 
         {/* Transliteration */}
@@ -179,7 +154,7 @@ export async function GET(request: Request) {
         >
           <div style={{ color: "#a5b4fc", fontSize: 22 }}>{dua.source_book}</div>
           <div style={{ color: "#3d4b7a", fontSize: 22 }}>•</div>
-          <div style={{ color: "#a5b4fc", fontSize: 22 }}>Hadith #{dua.hadith_number}</div>
+          <div style={{ color: "#a5b4fc", fontSize: 22 }}>{`Hadith #${dua.hadith_number}`}</div>
         </div>
 
         {/* Footer */}

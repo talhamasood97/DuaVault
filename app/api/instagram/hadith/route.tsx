@@ -25,7 +25,6 @@ export async function GET(request: Request) {
     : getDailyHadith();
 
   const coreQuote = truncate(extractCoreQuote(hadith.translation), 220);
-  const arabic = truncate(hadith.arabic, 160);
 
   return new ImageResponse(
     (
@@ -78,7 +77,6 @@ export async function GET(request: Request) {
               padding: "10px 24px",
             }}
           >
-            <div style={{ color: "#f59e0b", fontSize: 22 }}>✦</div>
             <div style={{ color: "#a7f3d0", fontSize: 24, fontWeight: 600, letterSpacing: 1 }}>
               MORNING HADITH
             </div>
@@ -97,22 +95,6 @@ export async function GET(request: Request) {
           }}
         >
           {hadith.title}
-        </div>
-
-        {/* Arabic text */}
-        <div
-          style={{
-            color: "#fcd34d",
-            fontSize: 52,
-            fontWeight: 700,
-            textAlign: "right",
-            direction: "rtl",
-            lineHeight: 1.7,
-            marginBottom: 28,
-            width: "100%",
-          }}
-        >
-          {arabic}
         </div>
 
         {/* Transliteration */}
@@ -149,7 +131,7 @@ export async function GET(request: Request) {
             maxWidth: 880,
           }}
         >
-          "{coreQuote}"
+          {`"${coreQuote}"`}
         </div>
 
         {/* Source */}
@@ -170,7 +152,7 @@ export async function GET(request: Request) {
           </div>
           <div style={{ color: "#4b7a60", fontSize: 22 }}>•</div>
           <div style={{ color: "#a7f3d0", fontSize: 22 }}>
-            Hadith #{hadith.hadith_number}
+            {`Hadith #${hadith.hadith_number}`}
           </div>
           <div style={{ color: "#4b7a60", fontSize: 22 }}>•</div>
           <div
