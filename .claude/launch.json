@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dev",
+      "runtimeExecutable": "/bin/bash",
+      "runtimeArgs": ["-c", "export PATH=/Users/mohdtalhamasood/.nvm/versions/node/v20.20.1/bin:$PATH && cd /Users/mohdtalhamasood/Downloads/Dua/.claude/worktrees/beautiful-herschel && PORT=3001 npm run dev"],
+      "port": 3001
+    }
+  ]
+}
