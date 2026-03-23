@@ -4,6 +4,7 @@ import { EmotionGrid } from "@/components/home/EmotionGrid";
 import { CategoryGrid } from "@/components/home/CategoryGrid";
 import { FeaturedDuas } from "@/components/home/FeaturedDuas";
 import { TrustBar } from "@/components/home/TrustBar";
+import { HomeSubscribeBanner } from "@/components/home/HomeSubscribeBanner";
 import { DailyDuaBanner } from "@/components/home/DailyDuaBanner";
 import { DailyHadithBanner } from "@/components/home/DailyHadithBanner";
 import { getFeaturedDuas, getDailyDua } from "@/lib/duas";
@@ -96,6 +97,9 @@ export default async function HomePage() {
 
       {/* Featured duas */}
       <FeaturedDuas duas={featured} />
+
+      {/* Email subscription */}
+      <HomeSubscribeBanner />
 
       {/* Trust bar */}
       <TrustBar />
