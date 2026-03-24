@@ -2,8 +2,12 @@
   "framework": "nextjs",
   "crons": [
     {
-      "path": "/api/send-daily-hadith",
-      "schedule": "0 5 * * *"
+      "path": "/api/cron/post-morning",
+      "schedule": "0 2 * * *"
+    },
+    {
+      "path": "/api/cron/post-evening",
+      "schedule": "0 14 * * *"
     }
   ]
 }

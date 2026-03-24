@@ -1,6 +1,7 @@
 const nextConfig = {
   poweredByHeader: false,
   compress: true,
+  serverExternalPackages: ["sharp", "satori"],
   async redirects() {
     return [
       // Redirect www → non-www to eliminate the redirect chain (saves ~860ms on first load)
