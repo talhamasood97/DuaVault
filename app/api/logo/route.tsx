@@ -31,18 +31,27 @@ export async function GET() {
           }}
         />
 
-        {/* Crescent moon SVG */}
+        {/* BookOpen SVG — stroke style matching site navbar */}
         <svg
-          width="140"
-          height="140"
+          width="160"
+          height="160"
           viewBox="0 0 24 24"
           fill="none"
           style={{ marginBottom: 36 }}
         >
           <path
-            d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
-            fill="#34d399"
-            opacity="0.9"
+            d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"
+            stroke="#34d399"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"
+            stroke="#34d399"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
 
