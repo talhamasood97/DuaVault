@@ -16,7 +16,7 @@ function formatDuaSource(dua: Dua): string {
 
 export function buildHadithCaption(hadith: Hadith): string {
   return [
-    "📚 Hadith of the Day",
+    `${hadith.title} 📚`,
     "",
     `"${hadith.translation}"`,
     "",
@@ -38,7 +38,7 @@ export function buildDuaCaption(dua: Dua): string {
     : dua.translation;
 
   return [
-    `🌙 Dua of the Day: ${dua.title}`,
+    `${dua.title} 🌙`,
     "",
     translit,
     "",
