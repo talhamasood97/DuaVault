@@ -234,15 +234,13 @@ export async function GET(request: Request) {
   <!-- Decorative ornament line -->
   <line x1="300" y1="${titleY + 16}" x2="780" y2="${titleY + 16}" stroke="rgba(129,140,248,0.2)" stroke-width="1"/>
 
-  <!-- Arabic text (right-aligned, Amiri — Pango handles RTL shaping) -->
+  <!-- Arabic text (centered, Amiri — Pango handles RTL shaping automatically) -->
   ${arabicLines
     .map(
       (line, i) =>
-        `<text x="960" y="${arabicStartY + i * arabicLineH}" font-family="Amiri" font-size="${arabicFS}" fill="#c7d2fe" text-anchor="end">${escapeXml(line)}</text>`
+        `<text x="540" y="${arabicStartY + i * arabicLineH}" font-family="Amiri" font-size="${arabicFS}" fill="#c7d2fe" text-anchor="middle">${escapeXml(line)}</text>`
     )
     .join("\n  ")}
-  <!-- Left accent bar to balance right-aligned Arabic -->
-  <line x1="120" y1="${arabicStartY - arabicFS + 6}" x2="120" y2="${arabicStartY + (arabicLines.length - 1) * arabicLineH + 10}" stroke="rgba(129,140,248,0.25)" stroke-width="2"/>
 
   <!-- Horizontal divider -->
   <line x1="120" y1="${div1Y}" x2="960" y2="${div1Y}" stroke="rgba(129,140,248,0.2)" stroke-width="1"/>
