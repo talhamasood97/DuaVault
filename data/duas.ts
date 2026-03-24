@@ -3036,12 +3036,12 @@ export function searchDuas(query: string): Dua[] {
   return scored.map(({ dua }) => dua);
 }
 
-export function getDailyDua(): Dua {
+export function getDailyDua(date?: Date): Dua {
   // Guard: fall back to full DUAS list if no eligible duas are marked
   const pool = DAILY_DUA_POOL.length > 0 ? DAILY_DUA_POOL : DUAS;
-  const today = new Date();
+  const d = date ?? new Date();
   const dayOfYear = Math.floor(
-    (today.getTime() - new Date(today.getFullYear(), 0, 0).getTime()) /
+    (d.getTime() - new Date(d.getFullYear(), 0, 0).getTime()) /
       (1000 * 60 * 60 * 24)
   );
   return pool[dayOfYear % pool.length];

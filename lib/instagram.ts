@@ -21,10 +21,12 @@ export interface PostResult {
 /**
  * Post an image to Instagram Business/Creator account.
  * Two-step: create media container → publish container.
+ * Pass scheduledTime (Unix seconds) to schedule instead of posting immediately.
  */
 export async function postToInstagram(
   imageUrl: string,
-  caption: string
+  caption: string,
+  scheduledTime?: number
 ): Promise<PostResult> {
   const igUserId = process.env.INSTAGRAM_BUSINESS_ACCOUNT_ID;
   const token = process.env.META_PAGE_ACCESS_TOKEN;
@@ -37,10 +39,15 @@ export async function postToInstagram(
   }
 
   // Step 1: create media container
+  const body: Record<string, unknown> = { image_url: imageUrl, caption, access_token: token };
+  if (scheduledTime) {
+    body.scheduled_publish_time = scheduledTime;
+    body.published = false;
+  }
   const containerRes = await fetch(`${GRAPH}/${igUserId}/media`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ image_url: imageUrl, caption, access_token: token }),
+    body: JSON.stringify(body),
   });
   const container = await containerRes.json();
 
@@ -51,7 +58,7 @@ export async function postToInstagram(
     };
   }
 
-  // Step 2: publish container
+  // Step 2: publish (or queue for scheduled publishing)
   const publishRes = await fetch(`${GRAPH}/${igUserId}/media_publish`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -71,10 +78,12 @@ export async function postToInstagram(
 
 /**
  * Post an image to a Facebook Page.
+ * Pass scheduledTime (Unix seconds) to schedule instead of posting immediately.
  */
 export async function postToFacebook(
   imageUrl: string,
-  caption: string
+  caption: string,
+  scheduledTime?: number
 ): Promise<PostResult> {
   const pageId = process.env.FACEBOOK_PAGE_ID;
   const token = process.env.META_PAGE_ACCESS_TOKEN;
@@ -86,10 +95,16 @@ export async function postToFacebook(
     };
   }
 
+  const body: Record<string, unknown> = { url: imageUrl, caption, access_token: token };
+  if (scheduledTime) {
+    body.scheduled_publish_time = scheduledTime;
+    body.published = false;
+  }
+
   const res = await fetch(`${GRAPH}/${pageId}/photos`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ url: imageUrl, caption, access_token: token }),
+    body: JSON.stringify(body),
   });
   const data = await res.json();
 

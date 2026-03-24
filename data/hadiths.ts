@@ -965,10 +965,10 @@ export function getHadithBySlug(slug: string): Hadith | undefined {
   return HADITHS.find((h) => h.slug === slug);
 }
 
-export function getDailyHadith(): Hadith {
-  const start = new Date(new Date().getFullYear(), 0, 0);
-  const diff = Date.now() - start.getTime();
-  const dayOfYear = Math.floor(diff / 86_400_000);
+export function getDailyHadith(date?: Date): Hadith {
+  const d = date ?? new Date();
+  const start = new Date(d.getFullYear(), 0, 0);
+  const dayOfYear = Math.floor((d.getTime() - start.getTime()) / 86_400_000);
   return HADITHS[dayOfYear % HADITHS.length];
 }
 
