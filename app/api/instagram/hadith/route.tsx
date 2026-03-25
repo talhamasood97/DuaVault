@@ -1,23 +1,21 @@
 import sharp from "sharp";
-import { readFileSync } from "fs";
 import path from "path";
 import { HADITHS, getDailyHadith } from "@/data/hadiths";
 
-// Cache base64 fonts at module load time
-let interRegularB64: string | null = null;
-let interBoldB64: string | null = null;
-let playfairItalicB64: string | null = null;
-let amiriB64: string | null = null;
+// Cache font file:// URIs at module load time (librsvg requires file paths, not base64 data URIs)
+let fontPaths: { interRegular: string; interBold: string; playfairItalic: string; amiri: string } | null = null;
 
-function getFonts() {
-  if (!interRegularB64) {
+function getFontPaths() {
+  if (!fontPaths) {
     const fontsDir = path.join(process.cwd(), "public", "fonts");
-    interRegularB64 = readFileSync(path.join(fontsDir, "Inter-Regular.ttf")).toString("base64");
-    interBoldB64 = readFileSync(path.join(fontsDir, "Inter-Bold.ttf")).toString("base64");
-    playfairItalicB64 = readFileSync(path.join(fontsDir, "PlayfairDisplay-Italic.ttf")).toString("base64");
-    amiriB64 = readFileSync(path.join(fontsDir, "Amiri-Regular.ttf")).toString("base64");
+    fontPaths = {
+      interRegular: `file://${path.join(fontsDir, "Inter-Regular.ttf")}`,
+      interBold: `file://${path.join(fontsDir, "Inter-Bold.ttf")}`,
+      playfairItalic: `file://${path.join(fontsDir, "PlayfairDisplay-Italic.ttf")}`,
+      amiri: `file://${path.join(fontsDir, "Amiri-Regular.ttf")}`,
+    };
   }
-  return { interRegularB64, interBoldB64, playfairItalicB64, amiriB64 };
+  return fontPaths;
 }
 
 export const runtime = "nodejs";
@@ -178,15 +176,15 @@ export async function GET(request: Request) {
   const narratorY = y + DIV_H + 26;
   const sourceY   = narratorY + NARRATOR_H;
 
-  const { interRegularB64, interBoldB64, playfairItalicB64, amiriB64 } = getFonts();
+  const { interRegular, interBold, playfairItalic, amiri } = getFontPaths();
 
   const svg = `<svg width="1080" height="1080" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
-      @font-face { font-family: 'Inter'; font-weight: 400; src: url('data:font/truetype;base64,${interRegularB64}'); }
-      @font-face { font-family: 'Inter'; font-weight: 700; src: url('data:font/truetype;base64,${interBoldB64}'); }
-      @font-face { font-family: 'Playfair'; font-style: italic; src: url('data:font/truetype;base64,${playfairItalicB64}'); }
-      @font-face { font-family: 'Amiri'; src: url('data:font/truetype;base64,${amiriB64}'); }
+      @font-face { font-family: 'Inter'; font-weight: 400; src: url('${interRegular}'); }
+      @font-face { font-family: 'Inter'; font-weight: 700; src: url('${interBold}'); }
+      @font-face { font-family: 'Playfair'; font-style: italic; src: url('${playfairItalic}'); }
+      @font-face { font-family: 'Amiri'; src: url('${amiri}'); }
     </style>
     <linearGradient id="bg" x1="0" y1="0" x2="540" y2="1080" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#021207"/>

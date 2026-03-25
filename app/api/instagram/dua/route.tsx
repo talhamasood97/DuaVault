@@ -1,5 +1,4 @@
 import sharp from "sharp";
-import { readFileSync } from "fs";
 import path from "path";
 import { DUAS, getDailyDua } from "@/data/duas";
 
@@ -100,14 +99,12 @@ function pickTranslStyle(charCount: number): {
   return { fontSize: fs, lineH, charsPerLine: cpl, blockH: fs + (nLines - 1) * lineH };
 }
 
-let cachedFontB64: string | null = null;
-function getFontB64(): string {
-  if (!cachedFontB64) {
-    cachedFontB64 = readFileSync(
-      path.join(process.cwd(), "public/fonts/Amiri-Regular.ttf")
-    ).toString("base64");
+let cachedAmiriPath: string | null = null;
+function getAmiriPath(): string {
+  if (!cachedAmiriPath) {
+    cachedAmiriPath = `file://${path.join(process.cwd(), "public/fonts/Amiri-Regular.ttf")}`;
   }
-  return cachedFontB64;
+  return cachedAmiriPath;
 }
 
 export async function GET(request: Request) {
@@ -185,14 +182,14 @@ export async function GET(request: Request) {
   const sourceDivY = y;
   const sourceTextY = y + 2 + 16 + 22;
 
-  const fontB64 = getFontB64();
+  const amiriPath = getAmiriPath();
 
   const svg = `<svg width="1080" height="1080" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
       @font-face {
         font-family: 'Amiri';
-        src: url('data:font/truetype;base64,${fontB64}');
+        src: url('${amiriPath}');
         font-weight: normal;
         font-style: normal;
       }
