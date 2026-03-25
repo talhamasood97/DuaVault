@@ -125,10 +125,10 @@ export async function postToFacebook(
 
   const cdnUrl = await uploadToBlobCdn(imageUrl);
 
-  // Step 1: upload photo silently (no_story: true keeps it out of the photos album)
+  // --- Attempt 1: post to feed (appears on page timeline) ---
+  // Step 1a: upload photo as unpublished so it can be attached to a feed post
   const photoParams = new URLSearchParams({
     url: cdnUrl,
-    caption,
     published: "false",
     access_token: token,
   });
@@ -138,38 +138,54 @@ export async function postToFacebook(
   });
   const photoData = await photoRes.json();
 
-  if (!photoData.id) {
-    return {
-      platform: "facebook",
-      error: photoData.error?.message ?? "Photo upload failed",
-    };
+  if (photoData.id) {
+    // Step 1b: post to /feed with the photo attached
+    const feedParams = new URLSearchParams({
+      message: caption,
+      access_token: token,
+    });
+    // Facebook expects attached_media as a JSON-encoded array
+    feedParams.append("attached_media[0]", JSON.stringify({ media_fbid: photoData.id }));
+    if (scheduledTime) {
+      feedParams.set("scheduled_publish_time", String(scheduledTime));
+      feedParams.set("published", "false");
+    }
+
+    const feedRes = await fetch(`${GRAPH}/${pageId}/feed`, {
+      method: "POST",
+      body: feedParams,
+    });
+    const feedData = await feedRes.json();
+
+    if (feedData.id) {
+      return { platform: "facebook", id: feedData.id };
+    }
+    // Feed post failed — log and fall through to photo fallback
+    console.warn("[Facebook] Feed post failed, falling back to /photos:", feedData.error?.message);
+  } else {
+    console.warn("[Facebook] Photo upload failed, falling back to /photos:", photoData.error?.message);
   }
 
-  // Step 2: publish as a feed post with the photo attached
-  const feedParams = new URLSearchParams({
-    message: caption,
-    attached_media: JSON.stringify([{ media_fbid: photoData.id }]),
-    access_token: token,
-  });
+  // --- Fallback: post directly via /photos (appears in Photos tab) ---
+  const fallbackParams = new URLSearchParams({ url: cdnUrl, caption, access_token: token });
   if (scheduledTime) {
-    feedParams.set("scheduled_publish_time", String(scheduledTime));
-    feedParams.set("published", "false");
+    fallbackParams.set("scheduled_publish_time", String(scheduledTime));
+    fallbackParams.set("published", "false");
   }
-
-  const feedRes = await fetch(`${GRAPH}/${pageId}/feed`, {
+  const fallbackRes = await fetch(`${GRAPH}/${pageId}/photos`, {
     method: "POST",
-    body: feedParams,
+    body: fallbackParams,
   });
-  const feedData = await feedRes.json();
+  const fallbackData = await fallbackRes.json();
 
-  if (!feedData.id) {
+  if (!fallbackData.id) {
     return {
       platform: "facebook",
-      error: feedData.error?.message ?? "Feed post failed",
+      error: fallbackData.error?.message ?? "Post failed",
     };
   }
 
-  return { platform: "facebook", id: feedData.id };
+  return { platform: "facebook", id: fallbackData.id };
 }
 
 /** Verify Vercel cron secret from Authorization header. */
