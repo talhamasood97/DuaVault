@@ -1,5 +1,22 @@
 import sharp from "sharp";
+import { readFileSync } from "fs";
+import path from "path";
 import { HADITHS, getDailyHadith } from "@/data/hadiths";
+
+// Cache base64 fonts at module load time
+let interRegularB64: string | null = null;
+let interBoldB64: string | null = null;
+let playfairItalicB64: string | null = null;
+
+function getFonts() {
+  if (!interRegularB64) {
+    const fontsDir = path.join(process.cwd(), "public", "fonts");
+    interRegularB64 = readFileSync(path.join(fontsDir, "Inter-Regular.woff")).toString("base64");
+    interBoldB64 = readFileSync(path.join(fontsDir, "Inter-Bold.woff")).toString("base64");
+    playfairItalicB64 = readFileSync(path.join(fontsDir, "PlayfairDisplay-Italic.woff")).toString("base64");
+  }
+  return { interRegularB64, interBoldB64, playfairItalicB64 };
+}
 
 export const runtime = "nodejs";
 
@@ -140,8 +157,15 @@ export async function GET(request: Request) {
   const narratorY = y + DIV_H + 26;
   const sourceY   = narratorY + NARRATOR_H;
 
+  const { interRegularB64, interBoldB64, playfairItalicB64 } = getFonts();
+
   const svg = `<svg width="1080" height="1080" xmlns="http://www.w3.org/2000/svg">
   <defs>
+    <style>
+      @font-face { font-family: 'Inter'; font-weight: 400; src: url('data:font/woff;base64,${interRegularB64}'); }
+      @font-face { font-family: 'Inter'; font-weight: 700; src: url('data:font/woff;base64,${interBoldB64}'); }
+      @font-face { font-family: 'Playfair'; font-style: italic; src: url('data:font/woff;base64,${playfairItalicB64}'); }
+    </style>
     <linearGradient id="bg" x1="0" y1="0" x2="540" y2="1080" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#021207"/>
       <stop offset="50%" stop-color="#052e16"/>
@@ -162,18 +186,18 @@ export async function GET(request: Request) {
     <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <text x="126" y="81" font-family="sans-serif" font-size="30" font-weight="700"><tspan fill="#d1fae5">Dua</tspan><tspan fill="#34d399">Vault</tspan></text>
+  <text x="126" y="81" font-family="Inter" font-size="30" font-weight="700"><tspan fill="#d1fae5">Dua</tspan><tspan fill="#34d399">Vault</tspan></text>
   <rect x="780" y="54" width="220" height="36" rx="18" fill="rgba(52,211,153,0.12)" stroke="rgba(52,211,153,0.25)" stroke-width="1"/>
-  <text x="890" y="78" font-family="sans-serif" font-size="17" font-weight="600" fill="#6ee7b7" text-anchor="middle" letter-spacing="1">HADITH OF THE DAY</text>
+  <text x="890" y="78" font-family="Inter" font-size="17" font-weight="600" fill="#6ee7b7" text-anchor="middle" letter-spacing="1">HADITH OF THE DAY</text>
 
   <!-- Decorative opening quotation mark (centered, large, subtle) -->
-  <text x="540" y="${openQuoteY}" font-family="serif" font-size="120" fill="rgba(52,211,153,0.12)" text-anchor="middle">\u201C</text>
+  <text x="540" y="${openQuoteY}" font-family="Playfair" font-size="120" fill="rgba(52,211,153,0.12)" text-anchor="middle">\u201C</text>
 
   <!-- Quote text (centered, ${qFS}px, ${quoteLines.length} lines) -->
   ${quoteLines
     .map(
       (line, i) =>
-        `<text x="540" y="${quoteStartY + i * qLH}" font-family="serif" font-size="${qFS}" font-style="italic" fill="#f0fdf4" text-anchor="middle">${line}</text>`
+        `<text x="540" y="${quoteStartY + i * qLH}" font-family="Playfair" font-size="${qFS}" font-style="italic" fill="#f0fdf4" text-anchor="middle">${line}</text>`
     )
     .join("\n  ")}
 
@@ -182,7 +206,7 @@ export async function GET(request: Request) {
   ${translitLines
     .map(
       (line, i) =>
-        `<text x="540" y="${translitStartY + i * 30}" font-family="sans-serif" font-size="20" font-style="italic" fill="rgba(110,231,183,0.75)" text-anchor="middle">${line}</text>`
+        `<text x="540" y="${translitStartY + i * 30}" font-family="Inter" font-size="20" font-style="italic" fill="rgba(110,231,183,0.75)" text-anchor="middle">${line}</text>`
     )
     .join("\n  ")}`
     : `<!-- Transliteration omitted (space constraint) -->`
@@ -192,12 +216,12 @@ export async function GET(request: Request) {
   <line x1="420" y1="${dividerY}" x2="660" y2="${dividerY}" stroke="rgba(52,211,153,0.3)" stroke-width="1"/>
 
   <!-- Narrator + source (centered) -->
-  <text x="540" y="${narratorY}" font-family="sans-serif" font-size="22" font-weight="600" fill="#a7f3d0" text-anchor="middle">\u2014 ${narrator}</text>
-  <text x="540" y="${sourceY}" font-family="sans-serif" font-size="18" fill="rgba(74,222,128,0.75)" text-anchor="middle">${source}</text>
+  <text x="540" y="${narratorY}" font-family="Inter" font-size="22" font-weight="600" fill="#a7f3d0" text-anchor="middle">\u2014 ${narrator}</text>
+  <text x="540" y="${sourceY}" font-family="Inter" font-size="18" fill="rgba(74,222,128,0.75)" text-anchor="middle">${source}</text>
 
   <line x1="0" y1="984" x2="1080" y2="984" stroke="rgba(52,211,153,0.15)" stroke-width="1"/>
-  <text x="80" y="1016" font-family="sans-serif" font-size="20" fill="rgba(74,222,128,0.7)">duavault.com</text>
-  <text x="1000" y="1016" font-family="sans-serif" font-size="18" fill="rgba(74,222,128,0.6)" text-anchor="end">#hadith #islam #islamicquotes</text>
+  <text x="80" y="1016" font-family="Inter" font-size="20" fill="rgba(74,222,128,0.7)">duavault.com</text>
+  <text x="1000" y="1016" font-family="Inter" font-size="18" fill="rgba(74,222,128,0.6)" text-anchor="end">#hadith #islam #islamicquotes</text>
   <rect y="1074" width="1080" height="6" fill="url(#accent)"/>
 </svg>`;
 
