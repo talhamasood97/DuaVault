@@ -11,7 +11,7 @@
  *   BLOB_READ_WRITE_TOKEN       — Vercel Blob token (auto-added when Blob store is connected)
  */
 
-import { put } from "@vercel/blob";
+import { put, list } from "@vercel/blob";
 
 const GRAPH = "https://graph.facebook.com/v20.0";
 
@@ -150,4 +150,20 @@ export async function postToFacebook(
 export function verifyCronSecret(request: Request): boolean {
   const auth = request.headers.get("authorization");
   return auth === `Bearer ${process.env.CRON_SECRET}`;
+}
+
+/** Returns today's date in IST as YYYY-MM-DD (UTC+5:30). */
+function todayIST(): string {
+  return new Date(Date.now() + 5.5 * 3600 * 1000).toISOString().slice(0, 10);
+}
+
+/** Returns true if this slot (morning/evening) has already been posted today. */
+export async function hasPostedToday(slot: "morning" | "evening"): Promise<boolean> {
+  const { blobs } = await list({ prefix: `post-log/${todayIST()}-${slot}` });
+  return blobs.length > 0;
+}
+
+/** Records that this slot was successfully posted today. */
+export async function markPostedToday(slot: "morning" | "evening", slug: string): Promise<void> {
+  await put(`post-log/${todayIST()}-${slot}.txt`, slug, { access: "public", addRandomSuffix: false });
 }

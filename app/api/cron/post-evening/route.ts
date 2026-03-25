@@ -8,7 +8,7 @@
  */
 
 import { getDailyDua } from "@/data/duas";
-import { postToInstagram, postToFacebook, verifyCronSecret } from "@/lib/instagram";
+import { postToInstagram, postToFacebook, verifyCronSecret, hasPostedToday, markPostedToday } from "@/lib/instagram";
 import { buildDuaCaption } from "@/lib/captions";
 
 export const runtime = "nodejs";
@@ -17,6 +17,10 @@ export const dynamic = "force-dynamic";
 export async function GET(request: Request) {
   if (!verifyCronSecret(request)) {
     return new Response("Unauthorized", { status: 401 });
+  }
+
+  if (await hasPostedToday("evening")) {
+    return Response.json({ ok: true, skipped: true, reason: "already posted this evening" });
   }
 
   const dua = getDailyDua();
@@ -28,6 +32,8 @@ export async function GET(request: Request) {
     postToInstagram(imageUrl, caption),
     postToFacebook(imageUrl, caption),
   ]);
+
+  await markPostedToday("evening", dua.slug);
 
   return Response.json({
     ok: true,
