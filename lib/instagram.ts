@@ -77,7 +77,18 @@ export async function postToInstagram(
     };
   }
 
-  // Step 2: publish (or queue for scheduled publishing)
+  // Step 2: poll until container is FINISHED processing (up to 30s)
+  for (let i = 0; i < 10; i++) {
+    await new Promise((r) => setTimeout(r, 3000));
+    const statusRes = await fetch(`${GRAPH}/${container.id}?fields=status_code&access_token=${token}`);
+    const status = await statusRes.json();
+    if (status.status_code === "FINISHED") break;
+    if (status.status_code === "ERROR" || status.status_code === "EXPIRED") {
+      return { platform: "instagram", error: `Container failed with status: ${status.status_code}` };
+    }
+  }
+
+  // Step 3: publish
   const publishRes = await fetch(`${GRAPH}/${igUserId}/media_publish`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
