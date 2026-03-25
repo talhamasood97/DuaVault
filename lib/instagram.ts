@@ -124,26 +124,52 @@ export async function postToFacebook(
   }
 
   const cdnUrl = await uploadToBlobCdn(imageUrl);
-  const params = new URLSearchParams({ url: cdnUrl, caption, access_token: token });
-  if (scheduledTime) {
-    params.set("scheduled_publish_time", String(scheduledTime));
-    params.set("published", "false");
-  }
 
-  const res = await fetch(`${GRAPH}/${pageId}/photos`, {
-    method: "POST",
-    body: params,
+  // Step 1: upload photo silently (no_story: true keeps it out of the photos album)
+  const photoParams = new URLSearchParams({
+    url: cdnUrl,
+    caption,
+    published: "false",
+    access_token: token,
   });
-  const data = await res.json();
+  const photoRes = await fetch(`${GRAPH}/${pageId}/photos`, {
+    method: "POST",
+    body: photoParams,
+  });
+  const photoData = await photoRes.json();
 
-  if (!data.id) {
+  if (!photoData.id) {
     return {
       platform: "facebook",
-      error: data.error?.message ?? "Post failed",
+      error: photoData.error?.message ?? "Photo upload failed",
     };
   }
 
-  return { platform: "facebook", id: data.id };
+  // Step 2: publish as a feed post with the photo attached
+  const feedParams = new URLSearchParams({
+    message: caption,
+    attached_media: JSON.stringify([{ media_fbid: photoData.id }]),
+    access_token: token,
+  });
+  if (scheduledTime) {
+    feedParams.set("scheduled_publish_time", String(scheduledTime));
+    feedParams.set("published", "false");
+  }
+
+  const feedRes = await fetch(`${GRAPH}/${pageId}/feed`, {
+    method: "POST",
+    body: feedParams,
+  });
+  const feedData = await feedRes.json();
+
+  if (!feedData.id) {
+    return {
+      platform: "facebook",
+      error: feedData.error?.message ?? "Feed post failed",
+    };
+  }
+
+  return { platform: "facebook", id: feedData.id };
 }
 
 /** Verify Vercel cron secret from Authorization header. */
