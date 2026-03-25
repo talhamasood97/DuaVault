@@ -938,6 +938,171 @@ export const HADITHS: Hadith[] = [
     daily_practice:
       "Look into sponsoring an orphan today — even a small monthly amount earns the greatest companionship in Paradise.",
   },
+  // ─── NEW HIGH-TRAFFIC HADITHS ─────────────────────────────────────────────
+  {
+    id: 51,
+    slug: "hadith-be-in-world-as-stranger",
+    title: "Be in This World as a Stranger",
+    arabic:
+      "كُنْ فِي الدُّنْيَا كَأَنَّكَ غَرِيبٌ أَوْ عَابِرُ سَبِيلٍ",
+    transliteration:
+      "Kun fid-dunya ka-annaka gharibun aw 'abiru sabil",
+    translation:
+      "Narrated Abdullah ibn Umar (RA): Allah's Messenger ﷺ took hold of my shoulder and said, \"Be in this world as though you were a stranger or a wayfarer.\" Ibn Umar would say: \"When evening comes, do not wait for the morning; when morning comes, do not wait for the evening. Take from your health before your illness, and from your life before your death.\"",
+    narrator: "Abdullah ibn Umar (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "6416",
+    grade: "Sahih",
+    topic: "zuhd",
+    topic_tags: ["dunya", "world", "detachment", "stranger", "traveler", "afterlife", "priorities"],
+    daily_practice:
+      "Live today as a traveler — do not postpone worship, reconciliation, or gratitude. You may not pass this way again.",
+  },
+  {
+    id: 52,
+    slug: "hadith-love-prophet-more-than-all",
+    title: "Love for the Prophet ﷺ is the Completion of Faith",
+    arabic:
+      "لَا يُؤْمِنُ أَحَدُكُمْ حَتَّى أَكُونَ أَحَبَّ إِلَيْهِ مِنْ وَالِدِهِ وَوَلَدِهِ وَالنَّاسِ أَجْمَعِينَ",
+    transliteration:
+      "La yu'minu ahadukum hatta akuna ahabba ilayhi min waliidhi wa waladihi wan-nasi ajma'in",
+    translation:
+      "Narrated Anas ibn Malik (RA): The Prophet ﷺ said, \"None of you truly believes until I am more beloved to him than his father, his son, and all of mankind.\"",
+    narrator: "Anas ibn Malik (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "15",
+    grade: "Sahih",
+    topic: "love for the Prophet",
+    topic_tags: ["iman", "faith", "love", "prophet", "belief", "completion-of-faith"],
+    daily_practice:
+      "Read or listen to one account from the Prophet's ﷺ life today to deepen your love and connection with him.",
+  },
+  {
+    id: 53,
+    slug: "hadith-man-with-those-he-loves",
+    title: "You Will Be with Those You Love",
+    arabic: "الْمَرْءُ مَعَ مَنْ أَحَبَّ",
+    transliteration: "Al-mar'u ma'a man ahabba",
+    translation:
+      "Narrated Anas ibn Malik (RA): A man asked the Prophet ﷺ about the Hour. He ﷺ said, \"What have you prepared for it?\" The man replied, \"I have not prepared much in the way of prayer, fasting, or charity, but I love Allah and His Messenger.\" The Prophet ﷺ said, \"You will be with those you love.\" Anas said: Nothing after accepting Islam pleased us as much as the Prophet's words, \"You will be with those you love.\"",
+    narrator: "Anas ibn Malik (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "6170",
+    grade: "Sahih",
+    topic: "love and companionship",
+    topic_tags: ["love", "companionship", "paradise", "afterlife", "saliheen", "jannah"],
+    daily_practice:
+      "Strengthen your love for the righteous today — attend a gathering of knowledge, read about the companions, or send salawat upon the Prophet ﷺ.",
+  },
+  {
+    id: 54,
+    slug: "hadith-best-learn-teach-quran",
+    title: "The Best Among You Are Those Who Learn and Teach the Quran",
+    arabic: "خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ",
+    transliteration: "Khayrukum man ta'allamal-Qur'ana wa 'allamah",
+    translation:
+      "Narrated Uthman ibn Affan (RA): The Prophet ﷺ said, \"The best of you are those who learn the Quran and teach it.\"",
+    narrator: "Uthman ibn Affan (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "5027",
+    grade: "Sahih",
+    topic: "Quran",
+    topic_tags: ["quran", "knowledge", "teaching", "learning", "recitation", "excellence"],
+    daily_practice:
+      "Recite at least one page of Quran today — and share even a single ayah or its meaning with someone else.",
+  },
+  {
+    id: 55,
+    slug: "hadith-five-before-five",
+    title: "Take Advantage of Five Before Five Come",
+    arabic:
+      "اغْتَنِمْ خَمْسًا قَبْلَ خَمْسٍ: شَبَابَكَ قَبْلَ هَرَمِكَ، وَصِحَّتَكَ قَبْلَ سَقَمِكَ، وَغِنَاكَ قَبْلَ فَقْرِكَ، وَفَرَاغَكَ قَبْلَ شُغْلِكَ، وَحَيَاتَكَ قَبْلَ مَوْتِكَ",
+    transliteration:
+      "Ightanim khamsan qabla khams: shabābaka qabla haramik, wa sihhhataka qabla saqamik, wa ghinaka qabla faqrik, wa farāghaka qabla shughlika, wa hayātaka qabla mawlik",
+    translation:
+      "The Prophet ﷺ said, \"Take advantage of five things before five others: your youth before your old age, your health before your illness, your wealth before your poverty, your free time before you become occupied, and your life before your death.\"",
+    narrator: "Ibn Abbas (RA)",
+    source_book: "Mustadrak al-Hakim",
+    hadith_number: "7846",
+    grade: "Hasan",
+    topic: "time management",
+    topic_tags: ["time", "youth", "health", "life", "priorities", "urgency", "dunya", "akhirah"],
+    daily_practice:
+      "Identify one good deed you have been postponing and do it today — health, youth, and free time are gifts that expire.",
+  },
+  {
+    id: 56,
+    slug: "hadith-sadaqah-jariyah-three-deeds",
+    title: "Three Deeds That Continue After Death",
+    arabic:
+      "إِذَا مَاتَ الإِنْسَانُ انْقَطَعَ عَنْهُ عَمَلُهُ إِلَّا مِنْ ثَلَاثَةٍ: إِلَّا مِنْ صَدَقَةٍ جَارِيَةٍ، أَوْ عِلْمٍ يُنْتَفَعُ بِهِ، أَوْ وَلَدٍ صَالِحٍ يَدْعُو لَهُ",
+    transliteration:
+      "Idha matal-insanu inqata'a 'anhu 'amaluhu illa min thalatha: illa min sadaqatin jariyah, aw 'ilmin yuntafa'u bih, aw waladin salihin yad'u lah",
+    translation:
+      "Narrated Abu Hurayrah (RA): The Messenger of Allah ﷺ said, \"When a person dies, his deeds come to an end except for three: an ongoing charity (sadaqah jariyah), beneficial knowledge that others act upon, or a righteous child who prays for him.\"",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih Muslim",
+    hadith_number: "1631",
+    grade: "Sahih",
+    topic: "sadaqah jariyah",
+    topic_tags: ["sadaqah", "charity", "knowledge", "legacy", "death", "ongoing-reward", "children", "afterlife"],
+    daily_practice:
+      "Plant a seed of ongoing reward today — contribute to a charity, share useful knowledge, or make dua for your parents and those who taught you.",
+  },
+  {
+    id: 57,
+    slug: "hadith-islam-began-strange",
+    title: "Blessed Are the Strangers",
+    arabic:
+      "بَدَأَ الإِسْلَامُ غَرِيبًا وَسَيَعُودُ كَمَا بَدَأَ غَرِيبًا فَطُوبَى لِلْغُرَبَاءِ",
+    transliteration:
+      "Bada'al-Islamu ghariban wa saya'udu kama bada'a ghariban, fatuba lil-ghuraba'",
+    translation:
+      "Narrated Abu Hurayrah (RA): The Messenger of Allah ﷺ said, \"Islam began as something strange and will return to being something strange, so blessed are the strangers.\"",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih Muslim",
+    hadith_number: "145",
+    grade: "Sahih",
+    topic: "steadfastness",
+    topic_tags: ["strangers", "ghuraba", "steadfastness", "identity", "iman", "trials", "faith", "society"],
+    daily_practice:
+      "If your faith feels lonely today, remember — this is by design. Hold firm. The one who stands alone for truth is never truly alone.",
+  },
+  {
+    id: 58,
+    slug: "hadith-no-disease-without-cure",
+    title: "Allah Has Created a Cure for Every Disease",
+    arabic:
+      "مَا أَنْزَلَ اللَّهُ دَاءً إِلَّا أَنْزَلَ لَهُ شِفَاءً",
+    transliteration: "Ma anzalallahu da'an illa anzala lahu shifa'",
+    translation:
+      "Narrated Abu Hurayrah (RA): The Prophet ﷺ said, \"Allah has not sent down any disease except that He has also sent down a cure for it.\"",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "5678",
+    grade: "Sahih",
+    topic: "health and healing",
+    topic_tags: ["health", "healing", "shifa", "medicine", "disease", "cure", "hope", "illness"],
+    daily_practice:
+      "When facing illness — physical or emotional — seek both the medical cure and the spiritual one. Both are from Allah.",
+  },
+  {
+    id: 59,
+    slug: "hadith-tie-camel-tawakkul",
+    title: "Tie Your Camel, Then Put Your Trust in Allah",
+    arabic: "اعْقِلْهَا وَتَوَكَّلْ",
+    transliteration: "I'qilha wa tawakkal",
+    translation:
+      "Narrated Anas ibn Malik (RA): A man said, \"O Messenger of Allah, shall I tie my camel and then put my trust in Allah, or shall I leave her untied and put my trust in Allah?\" The Messenger of Allah ﷺ replied, \"Tie her, then put your trust in Allah.\"",
+    narrator: "Anas ibn Malik (RA)",
+    source_book: "Sunan al-Tirmidhi",
+    hadith_number: "2517",
+    grade: "Hasan",
+    topic: "tawakkul",
+    topic_tags: ["tawakkul", "trust", "effort", "action", "reliance", "planning", "dunya", "akhirah"],
+    daily_practice:
+      "Take every reasonable action in your worldly affairs today — then release the outcome to Allah. Effort and tawakkul are inseparable.",
+  },
   {
     id: 50,
     slug: "hadith-best-jihad-just-word",
@@ -956,6 +1121,24 @@ export const HADITHS: Hadith[] = [
     topic_tags: ["justice", "truth", "courage", "jihad", "speaking up"],
     daily_practice:
       "Speak the truth today even when it is uncomfortable — this is one of the highest forms of worship.",
+  },
+  {
+    id: 60,
+    slug: "hadith-allah-is-beautiful",
+    title: "Allah Is Beautiful and He Loves Beauty",
+    arabic:
+      "إِنَّ اللَّهَ جَمِيلٌ يُحِبُّ الْجَمَالَ",
+    transliteration: "Innallaha jamilun yuhibbul-jamal",
+    translation:
+      "Narrated Abdullah ibn Mas'ud (RA): The Messenger of Allah ﷺ said, \"No one will enter Paradise who has even a mustard seed of arrogance in his heart.\" A man asked, \"What about a man who likes his clothes to be nice and his shoes to be nice?\" He ﷺ replied, \"Verily Allah is beautiful and He loves beauty. Arrogance means rejecting the truth and looking down on people.\"",
+    narrator: "Abdullah ibn Mas'ud (RA)",
+    source_book: "Sahih Muslim",
+    hadith_number: "91",
+    grade: "Sahih",
+    topic: "character",
+    topic_tags: ["beauty", "arrogance", "kibr", "character", "pride", "humility", "truth", "people"],
+    daily_practice:
+      "Check your heart for any trace of arrogance today — toward people, their opinions, or the truth. Beauty is what Allah loves; arrogance is what He despises.",
   },
 ];
 

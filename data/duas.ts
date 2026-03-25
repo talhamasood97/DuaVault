@@ -2713,6 +2713,204 @@ export const DUAS: Dua[] = [
     featured: false,
     daily_dua_eligible: true,
   },
+  // ─── NEW HIGH-TRAFFIC DUAS ────────────────────────────────────────────────
+  {
+    id: 165,
+    slug: "dua-upon-bad-dream-nightmare",
+    title: "Dua Upon Waking from a Bad Dream",
+    arabic_text:
+      "أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ وَمِنْ شَرِّ هَذِهِ الرُّؤْيَا",
+    transliteration:
+      "A'udhu billahi min ash-shaytanir-rajim wa min sharri hadhihi ar-ru'ya",
+    translation:
+      "I seek refuge in Allah from the accursed Shaytan, and from the evil of this dream.",
+    source_book: "Sahih Muslim",
+    hadith_number: "2262",
+    authenticity_grade: "SAHIH",
+    graded_by: "Imam Muslim",
+    category: "daily-life",
+    emotion_tags: ["afraid", "stressed", "hopeful"],
+    situation_tags: ["bad-dream", "nightmare", "sleep", "waking-up", "fear", "shaytan", "night"],
+    featured: false,
+    daily_dua_eligible: true,
+  },
+  {
+    id: 166,
+    slug: "dua-when-seeing-lightning",
+    title: "Dua When Seeing Lightning",
+    arabic_text:
+      "اللَّهُمَّ لَا تَقْتُلْنَا بِغَضَبِكَ وَلَا تُهْلِكْنَا بِعَذَابِكَ وَعَافِنَا قَبْلَ ذَلِكَ",
+    transliteration:
+      "Allahumma la taqtulna bi-ghadabika wa la tuhlikna bi-'adhabika wa 'afina qabla dhalik",
+    translation:
+      "O Allah, do not kill us with Your wrath, do not destroy us with Your punishment, and grant us wellbeing before that.",
+    source_book: "Sunan al-Tirmidhi",
+    hadith_number: "3450",
+    authenticity_grade: "HASAN",
+    graded_by: "Al-Albani",
+    category: "protection",
+    emotion_tags: ["afraid", "hopeful"],
+    situation_tags: ["lightning", "thunder", "storm", "rain", "fear", "weather", "natural-disaster"],
+    featured: false,
+    daily_dua_eligible: false,
+  },
+  {
+    id: 167,
+    slug: "dua-al-masura-abu-bakr",
+    title: "Dua al-Masura – The Prophet's Gift to Abu Bakr",
+    arabic_text:
+      "اللَّهُمَّ إِنِّي ظَلَمْتُ نَفْسِي ظُلْمًا كَثِيرًا وَلَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ فَاغْفِرْ لِي مَغْفِرَةً مِنْ عِنْدِكَ وَارْحَمْنِي إِنَّكَ أَنْتَ الْغَفُورُ الرَّحِيمُ",
+    transliteration:
+      "Allahumma inni zalamtu nafsi zulman kathiran, wa la yaghfirudh-dhunuba illa anta, faghfir li maghfiratan min 'indika warhamni, innaka antal-Ghafurur-Rahim",
+    translation:
+      "O Allah, I have greatly wronged myself and no one forgives sins except You. So grant me forgiveness from Yourself and have mercy on me. Indeed, You are the Forgiving, the Most Merciful.",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "834",
+    authenticity_grade: "SAHIH",
+    graded_by: "Imam Bukhari",
+    category: "forgiveness",
+    emotion_tags: ["seeking-forgiveness", "hopeful", "sad"],
+    situation_tags: ["prayer", "salah", "in-prayer", "forgiveness", "repentance", "sins", "tawbah", "tashahhud"],
+    featured: true,
+    daily_dua_eligible: true,
+  },
+  {
+    id: 168,
+    slug: "dua-waking-at-night",
+    title: "Dua Upon Waking Up in the Night",
+    arabic_text:
+      "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، الْحَمْدُ لِلَّهِ وَسُبْحَانَ اللَّهِ وَلَا إِلَهَ إِلَّا اللَّهُ وَاللَّهُ أَكْبَرُ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+    transliteration:
+      "La ilaha illallahu wahdahu la sharika lah, lahul-mulku wa lahul-hamdu wa huwa 'ala kulli shay'in qadir. Alhamdu lillahi wa subhanallahi wa la ilaha illallahu wallahu akbaru wa la hawla wa la quwwata illa billah",
+    translation:
+      "There is no god but Allah alone, He has no partner; to Him belongs all dominion and all praise, and He is over all things capable. All praise is for Allah, glory be to Allah, there is no god but Allah, Allah is the Greatest, and there is no power nor might except with Allah.",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "1154",
+    authenticity_grade: "SAHIH",
+    graded_by: "Imam Bukhari",
+    category: "worship",
+    emotion_tags: ["grateful", "hopeful"],
+    situation_tags: ["waking-up", "night", "tahajjud", "night-prayer", "dhikr", "middle-of-night", "sleep"],
+    featured: false,
+    daily_dua_eligible: true,
+  },
+  {
+    id: 169,
+    slug: "dua-tawbah-hayy-qayyum",
+    title: "Dua of Sincere Repentance – Al-Hayy Al-Qayyum",
+    arabic_text:
+      "أَسْتَغْفِرُ اللَّهَ الَّذِي لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ وَأَتُوبُ إِلَيْهِ",
+    transliteration:
+      "Astaghfirullahal-ladhi la ilaha illa huwal-Hayyul-Qayyumu wa atubu ilayh",
+    translation:
+      "I seek forgiveness from Allah, besides Whom there is no god, the Ever-Living, the Self-Sustaining, and I turn to Him in repentance.",
+    source_book: "Sunan al-Tirmidhi",
+    hadith_number: "3577",
+    authenticity_grade: "SAHIH",
+    graded_by: "Al-Albani",
+    category: "forgiveness",
+    emotion_tags: ["seeking-forgiveness", "hopeful"],
+    situation_tags: ["repentance", "tawbah", "sins", "forgiveness", "morning", "evening", "daily"],
+    featured: false,
+    daily_dua_eligible: true,
+  },
+  {
+    id: 170,
+    slug: "dua-attahiyyatu-tashahud",
+    title: "At-Tahiyyatu – The Tashahud Recited in Every Prayer",
+    arabic_text:
+      "التَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ السَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ السَّلَامُ عَلَيْنَا وَعَلَى عِبَادِ اللَّهِ الصَّالِحِينَ أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+    transliteration:
+      "At-tahiyyatu lillahi was-salawatu wat-tayyibat. As-salamu 'alayka ayyuhan-nabiyyu wa rahmatullahi wa barakatuh. As-salamu 'alayna wa 'ala 'ibadillahis-salihin. Ashhadu an la ilaha illallahu wa ashhadu anna Muhammadan 'abduhu wa rasuluh",
+    translation:
+      "All greetings, prayers, and good words are for Allah. Peace be upon you, O Prophet, and the mercy of Allah and His blessings. Peace be upon us and upon the righteous servants of Allah. I bear witness that there is no god but Allah, and I bear witness that Muhammad is His servant and Messenger.",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "831",
+    authenticity_grade: "SAHIH",
+    graded_by: "Imam Bukhari",
+    category: "worship",
+    emotion_tags: ["grateful", "hopeful"],
+    situation_tags: ["salah", "prayer", "tashahud", "tashahhud", "sitting-in-prayer", "attahiyyat", "five-prayers", "daily"],
+    featured: true,
+    daily_dua_eligible: true,
+  },
+  {
+    id: 171,
+    slug: "dua-for-zamzam-water",
+    title: "Dua When Drinking Zamzam Water",
+    arabic_text:
+      "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا وَرِزْقًا وَاسِعًا وَشِفَاءً مِنْ كُلِّ دَاءٍ",
+    transliteration:
+      "Allahumma inni as'aluka 'ilman nafi'an wa rizqan wasi'an wa shifa'an min kulli da'",
+    translation:
+      "O Allah, I ask You for beneficial knowledge, abundant provision, and a cure from every disease.",
+    source_book: "Mustadrak al-Hakim",
+    hadith_number: "1739",
+    authenticity_grade: "SAHIH",
+    graded_by: "Al-Hakim",
+    category: "health",
+    emotion_tags: ["hopeful", "grateful"],
+    situation_tags: ["zamzam", "hajj", "umrah", "mecca", "water", "healing", "knowledge", "rizq", "pilgrimage"],
+    featured: false,
+    daily_dua_eligible: false,
+  },
+  {
+    id: 172,
+    slug: "dua-for-one-who-gifts-you",
+    title: "Dua for Someone Who Has Given You a Gift",
+    arabic_text: "بَارَكَ اللَّهُ لَكَ فِي أَهْلِكَ وَمَالِكَ",
+    transliteration: "Barakallahu laka fi ahlika wa malik",
+    translation:
+      "May Allah bless your family and your wealth for you.",
+    source_book: "Sunan Abu Dawud",
+    hadith_number: "1672",
+    authenticity_grade: "SAHIH",
+    graded_by: "Al-Albani",
+    category: "daily-life",
+    emotion_tags: ["grateful", "hopeful"],
+    situation_tags: ["gift", "generosity", "gratitude", "hospitality", "thanking", "favour", "kindness"],
+    featured: false,
+    daily_dua_eligible: false,
+  },
+  {
+    id: 173,
+    slug: "three-quls-protection",
+    title: "The Three Quls – Protection Morning, Evening, and Before Sleep",
+    arabic_text:
+      "قُلْ هُوَ اللَّهُ أَحَدٌ ۞ قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ۞ قُلْ أَعُوذُ بِرَبِّ النَّاسِ",
+    transliteration:
+      "Qul huwal-Allahu ahad [Surah Al-Ikhlas] | Qul a'udhu bi-rabbil-falaq [Surah Al-Falaq] | Qul a'udhu bi-rabbin-nas [Surah An-Nas]",
+    translation:
+      "Recite Surah Al-Ikhlas (112), Surah Al-Falaq (113), and Surah An-Nas (114) in full — three times each. The Prophet ﷺ said: 'Reciting them three times morning and evening will suffice you against everything.' After each recitation, blow into your cupped hands and wipe over your body.",
+    source_book: "Sunan Abu Dawud",
+    hadith_number: "5082",
+    authenticity_grade: "HASAN",
+    graded_by: "Al-Albani",
+    category: "morning-evening",
+    emotion_tags: ["afraid", "hopeful", "grateful"],
+    situation_tags: ["morning", "evening", "before-sleep", "protection", "evil-eye", "shaytan", "ruqyah", "three-quls"],
+    featured: true,
+    daily_dua_eligible: true,
+  },
+  {
+    id: 174,
+    slug: "dua-protection-from-shaytan-whispers",
+    title: "Dua for Protection from the Whispers of Shaytan (Waswasa)",
+    arabic_text:
+      "رَّبِّ أَعُوذُ بِكَ مِنْ هَمَزَاتِ الشَّيَاطِينِ وَأَعُوذُ بِكَ رَبِّ أَن يَحْضُرُونِ",
+    transliteration:
+      "Rabbi a'udhu bika min hamazatish-shayatini wa a'udhu bika rabbi an yahdurun",
+    translation:
+      "My Lord, I seek refuge in You from the promptings of the devils, and I seek refuge in You, my Lord, lest they come near me.",
+    source_book: "Quran",
+    hadith_number: "23:97-98",
+    authenticity_grade: "QURAN",
+    category: "protection",
+    emotion_tags: ["afraid", "hopeful", "stressed"],
+    situation_tags: ["waswasa", "shaytan", "whispers", "ocd", "doubts", "prayer", "distraction", "evil-thoughts", "protection"],
+    featured: false,
+    daily_dua_eligible: true,
+  },
   {
     id: 164,
     slug: "dua-masha-allah-la-quwwata-illa-billah",

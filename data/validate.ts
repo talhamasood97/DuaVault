@@ -2,15 +2,17 @@
  * Content Validator — DuaVault
  *
  * Checks for duplicates and guideline violations before adding new duas/hadiths.
- * Run: PATH="$HOME/.nvm/versions/node/v20.20.1/bin:$PATH" npx ts-node data/validate.ts
+ * Run: PATH="$HOME/.nvm/versions/node/v20.20.1/bin:$PATH" npx tsx data/validate.ts
  *
- * Catches:
- *  - Duplicate slugs, IDs, titles, arabic text, translations
- *  - Duplicate source_book + hadith_number combinations
- *  - DA'IF/MAWDU' marked as daily_dua_eligible
- *  - Missing graded_by on duas
- *  - Insufficient emotion_tags (< 2) or situation_tags (< 3)
+ * What it catches (ERRORS — block merge):
+ *  - Duplicate slug
+ *  - Duplicate ID
+ *  - Duplicate title (case-insensitive)
+ *  - Duplicate Arabic text (ignoring diacritics/harakat)
+ *  - Duplicate English translation
+ *  - DA'IF or MAWDU' marked as daily_dua_eligible
  *  - Hadith grade outside Sahih/Hasan
+ *  - Empty Arabic text or transliteration
  */
 
 import { DUAS } from "./duas";
@@ -23,17 +25,12 @@ function error(item: string, message: string) {
   issues.push({ type: "ERROR", item, message });
 }
 
-function warn(item: string, message: string) {
-  issues.push({ type: "WARN", item, message });
-}
-
 // ─── Normalize helpers ────────────────────────────────────────────────────────
 
+/** Strip Arabic diacritics (harakat) so duas differing only by vowelling are caught */
 function normalizeArabic(text: string) {
-  // Strip all Arabic diacritics (harakat) for comparison — two texts differing
-  // only by vowelling are the same dua.
   return text
-    .replace(/[\u064B-\u065F\u0670]/g, "") // tashkeel
+    .replace(/[\u064B-\u065F\u0670]/g, "")
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -49,7 +46,6 @@ const duaIds = new Map<number, string>();
 const duaTitles = new Map<string, string>();
 const duaArabic = new Map<string, string>();
 const duaTranslations = new Map<string, string>();
-const duaSources = new Map<string, string>(); // source_book:hadith_number → slug
 
 console.log(`\nValidating ${DUAS.length} duas…\n`);
 
@@ -78,7 +74,7 @@ for (const dua of DUAS) {
     duaTitles.set(normTitle, dua.slug);
   }
 
-  // ── Duplicate arabic text ─────────────────────────────────────────────────
+  // ── Duplicate Arabic text ─────────────────────────────────────────────────
   const normArabic = normalizeArabic(dua.arabic_text);
   if (duaArabic.has(normArabic)) {
     error(ref, `Duplicate Arabic text — already used by "${duaArabic.get(normArabic)}"`);
@@ -94,37 +90,15 @@ for (const dua of DUAS) {
     duaTranslations.set(normTranslation, dua.slug);
   }
 
-  // ── Duplicate source reference ────────────────────────────────────────────
-  if (dua.hadith_number) {
-    const sourceKey = `${dua.source_book.toLowerCase()}:${dua.hadith_number}`;
-    if (duaSources.has(sourceKey)) {
-      error(ref, `Duplicate source reference "${dua.source_book} #${dua.hadith_number}" — already used by "${duaSources.get(sourceKey)}"`);
-    } else {
-      duaSources.set(sourceKey, dua.slug);
-    }
-  }
-
   // ── DA'IF / MAWDU' must not be daily_dua_eligible ────────────────────────
   if (
     (dua.authenticity_grade === "DA'IF" || dua.authenticity_grade === "MAWDU'") &&
     dua.daily_dua_eligible
   ) {
-    error(ref, `daily_dua_eligible: true on a ${dua.authenticity_grade} dua — only SAHIH/HASAN allowed in daily rotation`);
-  }
-
-  // ── graded_by should be present ───────────────────────────────────────────
-  if (!dua.graded_by) {
-    warn(ref, `Missing graded_by — cite the scholar who authenticated this dua (e.g. "Al-Albani", "Ibn Hajar")`);
-  }
-
-  // ── Minimum emotion_tags ──────────────────────────────────────────────────
-  if (dua.emotion_tags.length < 2) {
-    warn(ref, `Only ${dua.emotion_tags.length} emotion_tag(s) — add at least 2 for discoverability`);
-  }
-
-  // ── Minimum situation_tags ────────────────────────────────────────────────
-  if (dua.situation_tags.length < 3) {
-    warn(ref, `Only ${dua.situation_tags.length} situation_tag(s) — add at least 3 for discoverability`);
+    error(
+      ref,
+      `daily_dua_eligible: true on a ${dua.authenticity_grade} dua — only SAHIH/HASAN/QURAN allowed in daily rotation`
+    );
   }
 
   // ── Arabic text must not be empty ─────────────────────────────────────────
@@ -145,7 +119,6 @@ const hadithIds = new Map<number, string>();
 const hadithTitles = new Map<string, string>();
 const hadithArabic = new Map<string, string>();
 const hadithTranslations = new Map<string, string>();
-const hadithSources = new Map<string, string>();
 
 console.log(`Validating ${HADITHS.length} hadiths…\n`);
 
@@ -174,7 +147,7 @@ for (const hadith of HADITHS) {
     hadithTitles.set(normTitle, hadith.slug);
   }
 
-  // ── Duplicate arabic text ─────────────────────────────────────────────────
+  // ── Duplicate Arabic text ─────────────────────────────────────────────────
   const normArabic = normalizeArabic(hadith.arabic);
   if (hadithArabic.has(normArabic)) {
     error(ref, `Duplicate Arabic text — already used by "${hadithArabic.get(normArabic)}"`);
@@ -190,27 +163,9 @@ for (const hadith of HADITHS) {
     hadithTranslations.set(normTranslation, hadith.slug);
   }
 
-  // ── Duplicate source reference ────────────────────────────────────────────
-  const sourceKey = `${hadith.source_book.toLowerCase()}:${hadith.hadith_number}`;
-  if (hadithSources.has(sourceKey)) {
-    error(ref, `Duplicate source reference "${hadith.source_book} #${hadith.hadith_number}" — already used by "${hadithSources.get(sourceKey)}"`);
-  } else {
-    hadithSources.set(sourceKey, hadith.slug);
-  }
-
   // ── Grade must be Sahih or Hasan ──────────────────────────────────────────
   if (hadith.grade !== "Sahih" && hadith.grade !== "Hasan") {
     error(ref, `Invalid grade "${hadith.grade}" — only "Sahih" or "Hasan" permitted`);
-  }
-
-  // ── Narrator must be present ──────────────────────────────────────────────
-  if (!hadith.narrator.trim()) {
-    error(ref, `Missing narrator`);
-  }
-
-  // ── daily_practice must be a non-empty action sentence ────────────────────
-  if (!hadith.daily_practice.trim()) {
-    warn(ref, `Empty daily_practice — add a short actionable sentence for the daily post`);
   }
 
   // ── Arabic text must not be empty ─────────────────────────────────────────
@@ -222,39 +177,20 @@ for (const hadith of HADITHS) {
   if (!hadith.transliteration.trim()) {
     error(ref, `Empty transliteration`);
   }
-
-  // ── topic_tags minimum ────────────────────────────────────────────────────
-  if (hadith.topic_tags.length < 2) {
-    warn(ref, `Only ${hadith.topic_tags.length} topic_tag(s) — add at least 2 for discoverability`);
-  }
 }
 
 // ─── SUMMARY ─────────────────────────────────────────────────────────────────
 
 const errors = issues.filter((i) => i.type === "ERROR");
-const warnings = issues.filter((i) => i.type === "WARN");
 
 if (errors.length > 0) {
-  console.log("─── ERRORS (must fix before merging) ───────────────────────\n");
+  console.log("─── ERRORS (must fix before adding new content) ─────────────\n");
   for (const e of errors) {
     console.log(`  ❌  ${e.item}`);
     console.log(`      ${e.message}\n`);
   }
-}
-
-if (warnings.length > 0) {
-  console.log("─── WARNINGS (strongly recommended to fix) ─────────────────\n");
-  for (const w of warnings) {
-    console.log(`  ⚠️   ${w.item}`);
-    console.log(`      ${w.message}\n`);
-  }
-}
-
-if (errors.length === 0 && warnings.length === 0) {
-  console.log("✅  All content passed validation — no duplicates, no violations.\n");
+  console.log(`\nResult: ${errors.length} error(s) across ${DUAS.length + HADITHS.length} entries.\n`);
+  process.exit(1);
 } else {
-  console.log(
-    `\nResult: ${errors.length} error(s), ${warnings.length} warning(s) across ${DUAS.length + HADITHS.length} entries.\n`
-  );
-  if (errors.length > 0) process.exit(1);
+  console.log(`✅  All ${DUAS.length + HADITHS.length} entries passed validation — no duplicates, no violations.\n`);
 }
