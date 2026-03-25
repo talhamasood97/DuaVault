@@ -7,6 +7,7 @@ import { HADITHS, getDailyHadith } from "@/data/hadiths";
 let interRegularB64: string | null = null;
 let interBoldB64: string | null = null;
 let playfairItalicB64: string | null = null;
+let amiriB64: string | null = null;
 
 function getFonts() {
   if (!interRegularB64) {
@@ -14,8 +15,9 @@ function getFonts() {
     interRegularB64 = readFileSync(path.join(fontsDir, "Inter-Regular.ttf")).toString("base64");
     interBoldB64 = readFileSync(path.join(fontsDir, "Inter-Bold.ttf")).toString("base64");
     playfairItalicB64 = readFileSync(path.join(fontsDir, "PlayfairDisplay-Italic.ttf")).toString("base64");
+    amiriB64 = readFileSync(path.join(fontsDir, "Amiri-Regular.ttf")).toString("base64");
   }
-  return { interRegularB64, interBoldB64, playfairItalicB64 };
+  return { interRegularB64, interBoldB64, playfairItalicB64, amiriB64 };
 }
 
 export const runtime = "nodejs";
@@ -53,45 +55,56 @@ function splitLines(text: string, maxChars: number): string[] {
   return lines;
 }
 
-/**
- * Pick font size + leading that fits within MAX_QUOTE_H (560px).
- * Uses 1.55× leading — tight enough to look editorial, not double-spaced.
- */
-const MAX_QUOTE_H = 560;
-const MIN_QUOTE_H = 160;
-
+/** Pick English quote font size targeting 140–420px block height. */
 function pickQuoteStyle(charCount: number): {
-  fontSize: number;
-  lineH: number;
-  charsPerLine: number;
-  blockH: number;
+  fontSize: number; lineH: number; charsPerLine: number; blockH: number;
 } {
-  const sizes = [52, 46, 42, 38, 34, 30, 27, 24, 21, 18];
-  // First pass: find one in target range [160, 560]
+  const sizes = [46, 42, 38, 34, 30, 27, 24, 21, 18, 16];
   for (const fs of sizes) {
     const cpl = Math.floor(880 / (fs * 0.54));
     const nLines = Math.ceil(charCount / cpl);
     const lineH = Math.round(fs * 1.55);
     const blockH = fs + (nLines - 1) * lineH;
-    if (blockH >= MIN_QUOTE_H && blockH <= MAX_QUOTE_H) {
-      return { fontSize: fs, lineH, charsPerLine: cpl, blockH };
-    }
-  }
-  // Second pass: first that fits
-  for (const fs of sizes) {
-    const cpl = Math.floor(880 / (fs * 0.54));
-    const nLines = Math.ceil(charCount / cpl);
-    const lineH = Math.round(fs * 1.55);
-    const blockH = fs + (nLines - 1) * lineH;
-    if (blockH <= MAX_QUOTE_H) {
-      return { fontSize: fs, lineH, charsPerLine: cpl, blockH };
-    }
+    if (blockH <= 420) return { fontSize: fs, lineH, charsPerLine: cpl, blockH };
   }
   const fs = 16;
   const cpl = Math.floor(880 / (fs * 0.54));
   const nLines = Math.ceil(charCount / cpl);
   const lineH = Math.round(fs * 1.55);
   return { fontSize: fs, lineH, charsPerLine: cpl, blockH: fs + (nLines - 1) * lineH };
+}
+
+/** Split Arabic text into lines by word, respecting max pixel width. */
+function splitArabicLines(text: string, fontSize: number, maxWidth: number): string[] {
+  const words = text.split(/\s+/).filter(Boolean);
+  const charWidth = fontSize * 0.58;
+  const lines: string[] = [];
+  let current = "";
+  for (const word of words) {
+    const candidate = current ? `${current} ${word}` : word;
+    if (candidate.length * charWidth > maxWidth && current) {
+      lines.push(current);
+      current = word;
+    } else {
+      current = candidate;
+    }
+  }
+  if (current) lines.push(current);
+  return lines;
+}
+
+/** Pick Arabic font size (46→22px) so text fits in ≤180px height. */
+function pickArabicStyle(text: string, maxWidth: number): { fontSize: number; lines: string[]; blockH: number } {
+  for (const fs of [46, 42, 38, 34, 30, 26, 22]) {
+    const lines = splitArabicLines(text, fs, maxWidth);
+    const lineH = Math.round(fs * 1.5);
+    const blockH = fs + (lines.length - 1) * lineH;
+    if (blockH <= 180) return { fontSize: fs, lines, blockH };
+  }
+  const fs = 22;
+  const lines = splitArabicLines(text, fs, maxWidth);
+  const lineH = Math.round(fs * 1.5);
+  return { fontSize: fs, lines, blockH: fs + (lines.length - 1) * lineH };
 }
 
 export async function GET(request: Request) {
@@ -101,6 +114,9 @@ export async function GET(request: Request) {
   const hadith = slug
     ? (HADITHS.find((h) => h.slug === slug) ?? getDailyHadith())
     : getDailyHadith();
+
+  const arabic = escapeXml(hadith.arabic ?? "");
+  const { fontSize: aFS, lines: arabicLines, blockH: arabicBlockH } = pickArabicStyle(arabic, 920);
 
   const quote = extractCoreQuote(hadith.translation);
   const { fontSize: qFS, lineH: qLH, charsPerLine, blockH: quoteBlockH } =
@@ -117,34 +133,39 @@ export async function GET(request: Request) {
   const FOOTER_TOP = 984;
   const AVAILABLE = FOOTER_TOP - HEADER_BOTTOM; // 864px
 
-  // Fixed non-quote heights
-  const OPEN_QUOTE_H  = 56 + 24;  // large opening " + gap below it
-  const CLOSE_GAP     = 20;       // gap after last quote line
-  const DIV_H         = 2 + 28;   // divider + gap
-  const NARRATOR_H    = 26 + 8;   // narrator text + gap
-  const SOURCE_H      = 20;       // source text
+  // Fixed heights
+  const ARABIC_H      = arabicBlockH + 32;  // arabic block + bottom gap
+  const SEP_H         = 1 + 20;            // separator line + gap below
+  const OPEN_QUOTE_H  = 56 + 16;           // decorative " + gap
+  const CLOSE_GAP     = 16;
+  const DIV_H         = 2 + 24;
+  const NARRATOR_H    = 26 + 8;
+  const SOURCE_H      = 20;
 
-  // Transliteration (conditional)
+  const fixedH = ARABIC_H + SEP_H + OPEN_QUOTE_H + CLOSE_GAP + DIV_H + NARRATOR_H + SOURCE_H;
+
+  // Transliteration (conditional — skip if space is tight)
   const translitRaw =
     hadith.transliteration.length > 180
       ? hadith.transliteration.slice(0, 180).trimEnd() + "\u2026"
       : hadith.transliteration;
   const translitLines = splitLines(escapeXml(translitRaw), 68).slice(0, 2);
-  const TRANSLIT_H = 22 + (translitLines.length - 1) * 30 + 28;
+  const TRANSLIT_H = 22 + (translitLines.length - 1) * 28 + 24;
 
-  const fixedH = OPEN_QUOTE_H + CLOSE_GAP + DIV_H + NARRATOR_H + SOURCE_H;
   const neededWithTranslit = fixedH + quoteBlockH + TRANSLIT_H;
-  const showTranslit = neededWithTranslit <= AVAILABLE - 40;
+  const showTranslit = neededWithTranslit <= AVAILABLE - 30;
 
   const totalH = fixedH + quoteBlockH + (showTranslit ? TRANSLIT_H : 0);
+  const startY = HEADER_BOTTOM + Math.max(16, Math.round((AVAILABLE - totalH) / 2));
 
-  // Vertically center in content zone
-  const startY = HEADER_BOTTOM + Math.max(20, Math.round((AVAILABLE - totalH) / 2));
-
-  // Y coordinates
+  // Y coordinates — top to bottom
   let y = startY;
-  const openQuoteY  = y + 56;          // decorative " baseline
-  const quoteStartY = y + OPEN_QUOTE_H + qFS; // first line baseline
+  const arabicY   = y + arabicBlockH;     // baseline of last Arabic line
+  y += ARABIC_H;
+  const sepY      = y;
+  y += SEP_H;
+  const openQuoteY  = y + 56;
+  const quoteStartY = y + OPEN_QUOTE_H + qFS;
   y = quoteStartY + (quoteLines.length - 1) * qLH + CLOSE_GAP;
 
   let translitStartY = 0;
@@ -157,7 +178,7 @@ export async function GET(request: Request) {
   const narratorY = y + DIV_H + 26;
   const sourceY   = narratorY + NARRATOR_H;
 
-  const { interRegularB64, interBoldB64, playfairItalicB64 } = getFonts();
+  const { interRegularB64, interBoldB64, playfairItalicB64, amiriB64 } = getFonts();
 
   const svg = `<svg width="1080" height="1080" xmlns="http://www.w3.org/2000/svg">
   <defs>
@@ -165,6 +186,7 @@ export async function GET(request: Request) {
       @font-face { font-family: 'Inter'; font-weight: 400; src: url('data:font/truetype;base64,${interRegularB64}'); }
       @font-face { font-family: 'Inter'; font-weight: 700; src: url('data:font/truetype;base64,${interBoldB64}'); }
       @font-face { font-family: 'Playfair'; font-style: italic; src: url('data:font/truetype;base64,${playfairItalicB64}'); }
+      @font-face { font-family: 'Amiri'; src: url('data:font/truetype;base64,${amiriB64}'); }
     </style>
     <linearGradient id="bg" x1="0" y1="0" x2="540" y2="1080" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#021207"/>
@@ -181,7 +203,7 @@ export async function GET(request: Request) {
   <rect width="1080" height="1080" fill="url(#bg)"/>
   <rect width="1080" height="6" fill="url(#accent)"/>
 
-  <!-- BookOpen icon -->
+  <!-- Header -->
   <g transform="translate(80,54) scale(1.333)">
     <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -190,10 +212,20 @@ export async function GET(request: Request) {
   <rect x="780" y="54" width="220" height="36" rx="18" fill="rgba(52,211,153,0.12)" stroke="rgba(52,211,153,0.25)" stroke-width="1"/>
   <text x="890" y="78" font-family="Inter" font-size="17" font-weight="600" fill="#6ee7b7" text-anchor="middle" letter-spacing="1">HADITH OF THE DAY</text>
 
-  <!-- Decorative opening quotation mark (centered, large, subtle) -->
-  <text x="540" y="${openQuoteY}" font-family="Playfair" font-size="120" fill="rgba(52,211,153,0.12)" text-anchor="middle">\u201C</text>
+  <!-- Arabic text -->
+  ${arabicLines.map((line, i) => {
+    const aLH = Math.round(aFS * 1.5);
+    const firstLineY = arabicY - (arabicLines.length - 1) * aLH;
+    return `<text x="540" y="${firstLineY + i * aLH}" font-family="Amiri" font-size="${aFS}" fill="#a7f3d0" text-anchor="middle" direction="rtl">${line}</text>`;
+  }).join("\n  ")}
 
-  <!-- Quote text (centered, ${qFS}px, ${quoteLines.length} lines) -->
+  <!-- Separator -->
+  <line x1="360" y1="${sepY}" x2="720" y2="${sepY}" stroke="rgba(52,211,153,0.25)" stroke-width="1"/>
+
+  <!-- Decorative opening quotation mark -->
+  <text x="540" y="${openQuoteY}" font-family="Playfair" font-size="100" fill="rgba(52,211,153,0.1)" text-anchor="middle">\u201C</text>
+
+  <!-- English quote -->
   ${quoteLines
     .map(
       (line, i) =>
@@ -202,11 +234,11 @@ export async function GET(request: Request) {
     .join("\n  ")}
 
   ${showTranslit
-    ? `<!-- Transliteration (centered italic) -->
+    ? `<!-- Transliteration -->
   ${translitLines
     .map(
       (line, i) =>
-        `<text x="540" y="${translitStartY + i * 30}" font-family="Inter" font-size="20" font-style="italic" fill="rgba(110,231,183,0.75)" text-anchor="middle">${line}</text>`
+        `<text x="540" y="${translitStartY + i * 28}" font-family="Inter" font-size="19" font-style="italic" fill="rgba(110,231,183,0.7)" text-anchor="middle">${line}</text>`
     )
     .join("\n  ")}`
     : `<!-- Transliteration omitted (space constraint) -->`
@@ -215,7 +247,7 @@ export async function GET(request: Request) {
   <!-- Divider -->
   <line x1="420" y1="${dividerY}" x2="660" y2="${dividerY}" stroke="rgba(52,211,153,0.3)" stroke-width="1"/>
 
-  <!-- Narrator + source (centered) -->
+  <!-- Narrator + source -->
   <text x="540" y="${narratorY}" font-family="Inter" font-size="22" font-weight="600" fill="#a7f3d0" text-anchor="middle">\u2014 ${narrator}</text>
   <text x="540" y="${sourceY}" font-family="Inter" font-size="18" fill="rgba(74,222,128,0.75)" text-anchor="middle">${source}</text>
 
