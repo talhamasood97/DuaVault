@@ -9,8 +9,8 @@ interface Props {
 export function SocialFollowStrip({ variant = "dua" }: Props) {
   const message =
     variant === "hadith"
-      ? "We share a fresh hadith every morning on Instagram & Facebook."
-      : "We share a new dua every evening on Instagram & Facebook.";
+      ? "A fresh hadith every morning + a new dua every evening — follow us on Instagram & Facebook."
+      : "A new dua every evening + a fresh hadith every morning — follow us on Instagram & Facebook.";
 
   return (
     <div className="mt-10 rounded-2xl border border-stone-100 dark:border-emerald-900 bg-stone-50 dark:bg-emerald-950/40 px-6 py-5 flex flex-col sm:flex-row items-center gap-4">
