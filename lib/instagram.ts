@@ -57,16 +57,15 @@ export async function postToInstagram(
   // Upload to Vercel Blob CDN so Instagram can reliably fetch the image
   const cdnUrl = await uploadToBlobCdn(imageUrl);
 
-  // Step 1: create media container
-  const body: Record<string, unknown> = { image_url: cdnUrl, caption, access_token: token };
+  // Step 1: create media container (URLSearchParams preserves emoji correctly)
+  const params = new URLSearchParams({ image_url: cdnUrl, caption, access_token: token });
   if (scheduledTime) {
-    body.scheduled_publish_time = scheduledTime;
-    body.published = false;
+    params.set("scheduled_publish_time", String(scheduledTime));
+    params.set("published", "false");
   }
   const containerRes = await fetch(`${GRAPH}/${igUserId}/media`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
+    body: params,
   });
   const container = await containerRes.json();
 
@@ -91,8 +90,7 @@ export async function postToInstagram(
   // Step 3: publish
   const publishRes = await fetch(`${GRAPH}/${igUserId}/media_publish`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ creation_id: container.id, access_token: token }),
+    body: new URLSearchParams({ creation_id: container.id, access_token: token }),
   });
   const publish = await publishRes.json();
 
@@ -126,16 +124,15 @@ export async function postToFacebook(
   }
 
   const cdnUrl = await uploadToBlobCdn(imageUrl);
-  const body: Record<string, unknown> = { url: cdnUrl, caption, access_token: token };
+  const params = new URLSearchParams({ url: cdnUrl, caption, access_token: token });
   if (scheduledTime) {
-    body.scheduled_publish_time = scheduledTime;
-    body.published = false;
+    params.set("scheduled_publish_time", String(scheduledTime));
+    params.set("published", "false");
   }
 
   const res = await fetch(`${GRAPH}/${pageId}/photos`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
+    body: params,
   });
   const data = await res.json();
 

@@ -11,9 +11,9 @@ let playfairItalicB64: string | null = null;
 function getFonts() {
   if (!interRegularB64) {
     const fontsDir = path.join(process.cwd(), "public", "fonts");
-    interRegularB64 = readFileSync(path.join(fontsDir, "Inter-Regular.woff")).toString("base64");
-    interBoldB64 = readFileSync(path.join(fontsDir, "Inter-Bold.woff")).toString("base64");
-    playfairItalicB64 = readFileSync(path.join(fontsDir, "PlayfairDisplay-Italic.woff")).toString("base64");
+    interRegularB64 = readFileSync(path.join(fontsDir, "Inter-Regular.ttf")).toString("base64");
+    interBoldB64 = readFileSync(path.join(fontsDir, "Inter-Bold.ttf")).toString("base64");
+    playfairItalicB64 = readFileSync(path.join(fontsDir, "PlayfairDisplay-Italic.ttf")).toString("base64");
   }
   return { interRegularB64, interBoldB64, playfairItalicB64 };
 }
@@ -162,9 +162,9 @@ export async function GET(request: Request) {
   const svg = `<svg width="1080" height="1080" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
-      @font-face { font-family: 'Inter'; font-weight: 400; src: url('data:font/woff;base64,${interRegularB64}'); }
-      @font-face { font-family: 'Inter'; font-weight: 700; src: url('data:font/woff;base64,${interBoldB64}'); }
-      @font-face { font-family: 'Playfair'; font-style: italic; src: url('data:font/woff;base64,${playfairItalicB64}'); }
+      @font-face { font-family: 'Inter'; font-weight: 400; src: url('data:font/truetype;base64,${interRegularB64}'); }
+      @font-face { font-family: 'Inter'; font-weight: 700; src: url('data:font/truetype;base64,${interBoldB64}'); }
+      @font-face { font-family: 'Playfair'; font-style: italic; src: url('data:font/truetype;base64,${playfairItalicB64}'); }
     </style>
     <linearGradient id="bg" x1="0" y1="0" x2="540" y2="1080" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#021207"/>
