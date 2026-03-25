@@ -55,21 +55,21 @@ function splitLines(text: string, maxChars: number): string[] {
   return lines;
 }
 
-/** Pick English quote font size targeting ≤260px block height (subtler than Arabic). */
+/** Pick English quote font size. Max 22px, hard cap 5 lines — English is secondary to Arabic. */
 function pickQuoteStyle(charCount: number): {
   fontSize: number; lineH: number; charsPerLine: number; blockH: number;
 } {
-  const sizes = [28, 26, 24, 22, 20, 18, 16];
+  const sizes = [22, 20, 18, 16];
   for (const fs of sizes) {
     const cpl = Math.floor(880 / (fs * 0.54));
-    const nLines = Math.ceil(charCount / cpl);
+    const nLines = Math.min(Math.ceil(charCount / cpl), 5);
     const lineH = Math.round(fs * 1.55);
     const blockH = fs + (nLines - 1) * lineH;
-    if (blockH <= 260) return { fontSize: fs, lineH, charsPerLine: cpl, blockH };
+    if (blockH <= 200) return { fontSize: fs, lineH, charsPerLine: cpl, blockH };
   }
   const fs = 16;
   const cpl = Math.floor(880 / (fs * 0.54));
-  const nLines = Math.ceil(charCount / cpl);
+  const nLines = Math.min(Math.ceil(charCount / cpl), 5);
   const lineH = Math.round(fs * 1.55);
   return { fontSize: fs, lineH, charsPerLine: cpl, blockH: fs + (nLines - 1) * lineH };
 }
@@ -93,16 +93,28 @@ function splitArabicLines(text: string, fontSize: number, maxWidth: number): str
   return lines;
 }
 
-/** Pick Arabic font size (64→28px) so text fits in ≤320px height. */
+/**
+ * Pick Arabic font size so text fits in ≤380px height.
+ * Hard-caps at 4 lines — long hadiths get truncated with ellipsis so
+ * the Arabic always renders large and dominant.
+ */
 function pickArabicStyle(text: string, maxWidth: number): { fontSize: number; lines: string[]; blockH: number } {
-  for (const fs of [64, 58, 52, 46, 40, 34, 28]) {
-    const lines = splitArabicLines(text, fs, maxWidth);
+  for (const fs of [72, 64, 56, 48, 42, 36]) {
+    let lines = splitArabicLines(text, fs, maxWidth);
+    if (lines.length > 4) {
+      lines = lines.slice(0, 4);
+      lines[3] = lines[3].slice(0, -2) + "\u2026";
+    }
     const lineH = Math.round(fs * 1.5);
     const blockH = fs + (lines.length - 1) * lineH;
-    if (blockH <= 320) return { fontSize: fs, lines, blockH };
+    if (blockH <= 380) return { fontSize: fs, lines, blockH };
   }
-  const fs = 28;
-  const lines = splitArabicLines(text, fs, maxWidth);
+  const fs = 36;
+  let lines = splitArabicLines(text, fs, maxWidth);
+  if (lines.length > 4) {
+    lines = lines.slice(0, 4);
+    lines[3] = lines[3].slice(0, -2) + "\u2026";
+  }
   const lineH = Math.round(fs * 1.5);
   return { fontSize: fs, lines, blockH: fs + (lines.length - 1) * lineH };
 }
@@ -121,7 +133,11 @@ export async function GET(request: Request) {
   const quote = extractCoreQuote(hadith.translation);
   const { fontSize: qFS, lineH: qLH, charsPerLine, blockH: quoteBlockH } =
     pickQuoteStyle(quote.length);
-  const quoteLines = splitLines(escapeXml(quote), charsPerLine);
+  let quoteLines = splitLines(escapeXml(quote), charsPerLine);
+  if (quoteLines.length > 5) {
+    quoteLines = quoteLines.slice(0, 5);
+    quoteLines[4] = quoteLines[4].slice(0, -1) + "\u2026";
+  }
 
   const narrator = escapeXml(hadith.narrator);
   const source = escapeXml(
