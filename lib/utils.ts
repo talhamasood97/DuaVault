@@ -204,7 +204,7 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://duavault.c
 export const SITE_NAME = "DuaVault";
 export const SOCIAL = {
   instagram: "https://www.instagram.com/dua.vault",
-  facebook: "https://www.facebook.com/profile.php?id=1028552817007610",
+  facebook: "https://www.facebook.com/profile.php?id=61576533567543",
 } as const;
 export const SITE_DESCRIPTION =
   "Find the right dua for any moment — authentic supplications from Quran & Hadith, with Arabic & full meaning.";
