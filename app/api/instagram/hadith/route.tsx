@@ -1,31 +1,18 @@
-import sharp from "sharp";
+import { createCanvas, GlobalFonts, type SKRSContext2D } from "@napi-rs/canvas";
 import path from "path";
 import { HADITHS, getDailyHadith } from "@/data/hadiths";
 
-// Cache font file:// URIs at module load time (librsvg requires file paths, not base64 data URIs)
-let fontPaths: { interRegular: string; interBold: string; playfairItalic: string; amiri: string } | null = null;
-
-function getFontPaths() {
-  if (!fontPaths) {
-    const fontsDir = path.join(process.cwd(), "public", "fonts");
-    fontPaths = {
-      interRegular: `file://${path.join(fontsDir, "Inter-Regular.ttf")}`,
-      interBold: `file://${path.join(fontsDir, "Inter-Bold.ttf")}`,
-      playfairItalic: `file://${path.join(fontsDir, "PlayfairDisplay-Italic.ttf")}`,
-      amiri: `file://${path.join(fontsDir, "Amiri-Regular.ttf")}`,
-    };
-  }
-  return fontPaths;
-}
-
 export const runtime = "nodejs";
 
-function escapeXml(str: string): string {
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
+let fontsRegistered = false;
+function ensureFonts() {
+  if (fontsRegistered) return;
+  const d = path.join(process.cwd(), "public", "fonts");
+  GlobalFonts.registerFromPath(path.join(d, "Amiri-Regular.ttf"), "Amiri");
+  GlobalFonts.registerFromPath(path.join(d, "Inter-Regular.ttf"), "Inter");
+  GlobalFonts.registerFromPath(path.join(d, "Inter-Bold.ttf"), "Inter");
+  GlobalFonts.registerFromPath(path.join(d, "PlayfairDisplay-Italic.ttf"), "Playfair");
+  fontsRegistered = true;
 }
 
 function extractCoreQuote(translation: string): string {
@@ -42,23 +29,44 @@ function splitLines(text: string, maxChars: number): string[] {
   let current = "";
   for (const word of words) {
     const candidate = current ? `${current} ${word}` : word;
-    if (candidate.length > maxChars && current) {
-      lines.push(current);
-      current = word;
-    } else {
-      current = candidate;
-    }
+    if (candidate.length > maxChars && current) { lines.push(current); current = word; }
+    else current = candidate;
   }
   if (current) lines.push(current);
   return lines;
 }
 
-/** Pick English quote font size. Max 22px, hard cap 5 lines — English is secondary to Arabic. */
-function pickQuoteStyle(charCount: number): {
-  fontSize: number; lineH: number; charsPerLine: number; blockH: number;
-} {
-  const sizes = [22, 20, 18, 16];
-  for (const fs of sizes) {
+function splitArabicLines(text: string, fontSize: number, maxWidth: number): string[] {
+  const words = text.split(/\s+/).filter(Boolean);
+  const charWidth = fontSize * 0.58;
+  const lines: string[] = [];
+  let current = "";
+  for (const word of words) {
+    const candidate = current ? `${current} ${word}` : word;
+    if (candidate.length * charWidth > maxWidth && current) { lines.push(current); current = word; }
+    else current = candidate;
+  }
+  if (current) lines.push(current);
+  return lines;
+}
+
+function pickArabicStyle(text: string, maxWidth: number): { fontSize: number; lines: string[]; blockH: number } {
+  for (const fs of [72, 64, 56, 48, 42, 36]) {
+    let lines = splitArabicLines(text, fs, maxWidth);
+    if (lines.length > 4) { lines = lines.slice(0, 4); lines[3] = lines[3].slice(0, -2) + "\u2026"; }
+    const lineH = Math.round(fs * 1.5);
+    const blockH = fs + (lines.length - 1) * lineH;
+    if (blockH <= 380) return { fontSize: fs, lines, blockH };
+  }
+  const fs = 36;
+  let lines = splitArabicLines(text, fs, maxWidth);
+  if (lines.length > 4) { lines = lines.slice(0, 4); lines[3] = lines[3].slice(0, -2) + "\u2026"; }
+  const lineH = Math.round(fs * 1.5);
+  return { fontSize: fs, lines, blockH: fs + (lines.length - 1) * lineH };
+}
+
+function pickQuoteStyle(charCount: number): { fontSize: number; lineH: number; charsPerLine: number; blockH: number } {
+  for (const fs of [22, 20, 18, 16]) {
     const cpl = Math.floor(880 / (fs * 0.54));
     const nLines = Math.min(Math.ceil(charCount / cpl), 5);
     const lineH = Math.round(fs * 1.55);
@@ -72,181 +80,176 @@ function pickQuoteStyle(charCount: number): {
   return { fontSize: fs, lineH, charsPerLine: cpl, blockH: fs + (nLines - 1) * lineH };
 }
 
-/** Split Arabic text into lines by word, respecting max pixel width. */
-function splitArabicLines(text: string, fontSize: number, maxWidth: number): string[] {
-  const words = text.split(/\s+/).filter(Boolean);
-  const charWidth = fontSize * 0.58;
-  const lines: string[] = [];
-  let current = "";
-  for (const word of words) {
-    const candidate = current ? `${current} ${word}` : word;
-    if (candidate.length * charWidth > maxWidth && current) {
-      lines.push(current);
-      current = word;
-    } else {
-      current = candidate;
-    }
-  }
-  if (current) lines.push(current);
-  return lines;
-}
-
-/**
- * Pick Arabic font size so text fits in ≤380px height.
- * Hard-caps at 4 lines — long hadiths get truncated with ellipsis so
- * the Arabic always renders large and dominant.
- */
-function pickArabicStyle(text: string, maxWidth: number): { fontSize: number; lines: string[]; blockH: number } {
-  for (const fs of [72, 64, 56, 48, 42, 36]) {
-    let lines = splitArabicLines(text, fs, maxWidth);
-    if (lines.length > 4) {
-      lines = lines.slice(0, 4);
-      lines[3] = lines[3].slice(0, -2) + "\u2026";
-    }
-    const lineH = Math.round(fs * 1.5);
-    const blockH = fs + (lines.length - 1) * lineH;
-    if (blockH <= 380) return { fontSize: fs, lines, blockH };
-  }
-  const fs = 36;
-  let lines = splitArabicLines(text, fs, maxWidth);
-  if (lines.length > 4) {
-    lines = lines.slice(0, 4);
-    lines[3] = lines[3].slice(0, -2) + "\u2026";
-  }
-  const lineH = Math.round(fs * 1.5);
-  return { fontSize: fs, lines, blockH: fs + (lines.length - 1) * lineH };
+function roundRect(ctx: SKRSContext2D, x: number, y: number, w: number, h: number, r: number) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.arcTo(x + w, y, x + w, y + r, r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
+  ctx.lineTo(x + r, y + h);
+  ctx.arcTo(x, y + h, x, y + h - r, r);
+  ctx.lineTo(x, y + r);
+  ctx.arcTo(x, y, x + r, y, r);
+  ctx.closePath();
 }
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const slug = searchParams.get("slug");
+  const hadith = slug ? (HADITHS.find((h) => h.slug === slug) ?? getDailyHadith()) : getDailyHadith();
 
-  const hadith = slug
-    ? (HADITHS.find((h) => h.slug === slug) ?? getDailyHadith())
-    : getDailyHadith();
+  ensureFonts();
 
-  const arabic = escapeXml(hadith.arabic ?? "");
+  const arabic = hadith.arabic ?? "";
   const { fontSize: aFS, lines: arabicLines, blockH: arabicBlockH } = pickArabicStyle(arabic, 920);
 
   const quote = extractCoreQuote(hadith.translation);
-  const { fontSize: qFS, lineH: qLH, charsPerLine, blockH: quoteBlockH } =
-    pickQuoteStyle(quote.length);
-  let quoteLines = splitLines(escapeXml(quote), charsPerLine);
-  if (quoteLines.length > 5) {
-    quoteLines = quoteLines.slice(0, 5);
-    quoteLines[4] = quoteLines[4].slice(0, -1) + "\u2026";
-  }
+  const { fontSize: qFS, lineH: qLH, charsPerLine, blockH: quoteBlockH } = pickQuoteStyle(quote.length);
+  let quoteLines = splitLines(quote, charsPerLine);
+  if (quoteLines.length > 5) { quoteLines = quoteLines.slice(0, 5); quoteLines[4] = quoteLines[4].slice(0, -1) + "\u2026"; }
 
-  const narrator = escapeXml(hadith.narrator);
-  const source = escapeXml(
-    `${hadith.source_book} \u2022 #${hadith.hadith_number} \u2022 ${hadith.grade}`
-  );
+  const narrator = `\u2014 ${hadith.narrator}`;
+  const source = `${hadith.source_book} \u2022 #${hadith.hadith_number} \u2022 ${hadith.grade}`;
 
-  // Layout constants
+  // Layout
   const HEADER_BOTTOM = 120;
   const FOOTER_TOP = 984;
-  const AVAILABLE = FOOTER_TOP - HEADER_BOTTOM; // 864px
-
-  // Fixed heights
-  const ARABIC_H      = arabicBlockH + 48;  // arabic block + generous bottom gap
-  const SEP_H         = 1 + 28;            // separator line + gap below
-  const OPEN_QUOTE_H  = 48 + 10;           // decorative " + gap
-  const CLOSE_GAP     = 16;
-  const DIV_H         = 2 + 24;
-  const NARRATOR_H    = 26 + 8;
-  const SOURCE_H      = 20;
-
-  const fixedH = ARABIC_H + SEP_H + OPEN_QUOTE_H + CLOSE_GAP + DIV_H + NARRATOR_H + SOURCE_H;
-
-  // Transliteration always skipped for hadith
+  const AVAILABLE = FOOTER_TOP - HEADER_BOTTOM;
+  const ARABIC_H   = arabicBlockH + 48;
+  const SEP_H      = 1 + 28;
+  const OPEN_Q_H   = 48 + 10;
+  const CLOSE_GAP  = 16;
+  const DIV_H      = 2 + 24;
+  const NARRATOR_H = 26 + 8;
+  const SOURCE_H   = 20;
+  const fixedH = ARABIC_H + SEP_H + OPEN_Q_H + CLOSE_GAP + DIV_H + NARRATOR_H + SOURCE_H;
   const totalH = fixedH + quoteBlockH;
   const startY = HEADER_BOTTOM + Math.max(16, Math.round((AVAILABLE - totalH) / 2));
 
-  // Y coordinates — top to bottom
   let y = startY;
-  const arabicY   = y + arabicBlockH;     // baseline of last Arabic line
+  const arabicY     = y + arabicBlockH;
   y += ARABIC_H;
-  const sepY      = y;
+  const sepY        = y;
   y += SEP_H;
   const openQuoteY  = y + 48;
-  const quoteStartY = y + OPEN_QUOTE_H + qFS;
+  const quoteStartY = y + OPEN_Q_H + qFS;
   y = quoteStartY + (quoteLines.length - 1) * qLH + CLOSE_GAP;
+  const dividerY    = y;
+  const narratorY   = y + DIV_H + 26;
+  const sourceY     = narratorY + NARRATOR_H;
 
-  const dividerY  = y;
-  const narratorY = y + DIV_H + 26;
-  const sourceY   = narratorY + NARRATOR_H;
+  // Draw
+  const canvas = createCanvas(1080, 1080);
+  const ctx = canvas.getContext("2d");
 
-  const { interRegular, interBold, playfairItalic, amiri } = getFontPaths();
+  // Background gradient
+  const bgGrad = ctx.createLinearGradient(0, 0, 540, 1080);
+  bgGrad.addColorStop(0, "#021207");
+  bgGrad.addColorStop(0.5, "#052e16");
+  bgGrad.addColorStop(1, "#021a0c");
+  ctx.fillStyle = bgGrad;
+  ctx.fillRect(0, 0, 1080, 1080);
 
-  const svg = `<svg width="1080" height="1080" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <style>
-      @font-face { font-family: 'Inter'; font-weight: 400; src: url('${interRegular}'); }
-      @font-face { font-family: 'Inter'; font-weight: 700; src: url('${interBold}'); }
-      @font-face { font-family: 'Playfair'; font-style: italic; src: url('${playfairItalic}'); }
-      @font-face { font-family: 'Amiri'; src: url('${amiri}'); }
-    </style>
-    <linearGradient id="bg" x1="0" y1="0" x2="540" y2="1080" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#021207"/>
-      <stop offset="50%" stop-color="#052e16"/>
-      <stop offset="100%" stop-color="#021a0c"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1080" y2="0" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#059669"/>
-      <stop offset="50%" stop-color="#34d399"/>
-      <stop offset="100%" stop-color="#059669"/>
-    </linearGradient>
-  </defs>
+  // Accent gradient helper
+  const accentGrad = ctx.createLinearGradient(0, 0, 1080, 0);
+  accentGrad.addColorStop(0, "#059669");
+  accentGrad.addColorStop(0.5, "#34d399");
+  accentGrad.addColorStop(1, "#059669");
 
-  <rect width="1080" height="1080" fill="url(#bg)"/>
-  <rect width="1080" height="6" fill="url(#accent)"/>
+  // Top bar
+  ctx.fillStyle = accentGrad;
+  ctx.fillRect(0, 0, 1080, 6);
 
-  <!-- Header -->
-  <g transform="translate(80,54) scale(1.333)">
-    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <text x="126" y="81" font-family="Inter" font-size="30" font-weight="700"><tspan fill="#d1fae5">Dua</tspan><tspan fill="#34d399">Vault</tspan></text>
-  <rect x="780" y="54" width="220" height="36" rx="18" fill="rgba(52,211,153,0.12)" stroke="rgba(52,211,153,0.25)" stroke-width="1"/>
-  <text x="890" y="78" font-family="Inter" font-size="17" font-weight="600" fill="#6ee7b7" text-anchor="middle" letter-spacing="1">HADITH OF THE DAY</text>
+  // Header — DuaVault text
+  ctx.textBaseline = "alphabetic";
+  ctx.textAlign = "left";
+  ctx.font = "bold 30px Inter";
+  ctx.fillStyle = "#d1fae5";
+  ctx.fillText("Dua", 126, 81);
+  const duaW = ctx.measureText("Dua").width;
+  ctx.fillStyle = "#34d399";
+  ctx.fillText("Vault", 126 + duaW, 81);
 
-  <!-- Arabic text -->
-  ${arabicLines.map((line, i) => {
-    const aLH = Math.round(aFS * 1.5);
-    const firstLineY = arabicY - (arabicLines.length - 1) * aLH;
-    return `<text x="540" y="${firstLineY + i * aLH}" font-family="Amiri" font-size="${aFS}" fill="#ffffff" text-anchor="middle" direction="rtl">${line}</text>`;
-  }).join("\n  ")}
+  // Badge
+  ctx.fillStyle = "rgba(52,211,153,0.12)";
+  roundRect(ctx, 780, 54, 220, 36, 18);
+  ctx.fill();
+  ctx.strokeStyle = "rgba(52,211,153,0.25)";
+  ctx.lineWidth = 1;
+  roundRect(ctx, 780, 54, 220, 36, 18);
+  ctx.stroke();
+  ctx.font = "bold 17px Inter";
+  ctx.fillStyle = "#6ee7b7";
+  ctx.textAlign = "center";
+  ctx.fillText("HADITH OF THE DAY", 890, 78);
 
-  <!-- Separator -->
-  <line x1="300" y1="${sepY}" x2="780" y2="${sepY}" stroke="rgba(52,211,153,0.35)" stroke-width="1.5"/>
+  // Arabic text — large, white, RTL
+  ctx.direction = "rtl";
+  ctx.textAlign = "center";
+  ctx.fillStyle = "#ffffff";
+  const aLH = Math.round(aFS * 1.5);
+  const firstArabicLineY = arabicY - (arabicLines.length - 1) * aLH;
+  for (let i = 0; i < arabicLines.length; i++) {
+    ctx.font = `${aFS}px Amiri`;
+    ctx.fillText(arabicLines[i], 540, firstArabicLineY + i * aLH);
+  }
 
-  <!-- Decorative opening quotation mark -->
-  <text x="540" y="${openQuoteY}" font-family="Playfair" font-size="80" fill="rgba(52,211,153,0.12)" text-anchor="middle">\u201C</text>
+  // Separator
+  ctx.direction = "ltr";
+  ctx.strokeStyle = "rgba(52,211,153,0.35)";
+  ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(300, sepY); ctx.lineTo(780, sepY); ctx.stroke();
 
-  <!-- English quote -->
-  ${quoteLines
-    .map(
-      (line, i) =>
-        `<text x="540" y="${quoteStartY + i * qLH}" font-family="Playfair" font-size="${qFS}" font-style="italic" fill="rgba(224,255,244,0.82)" text-anchor="middle">${line}</text>`
-    )
-    .join("\n  ")}
+  // Decorative quote mark
+  ctx.font = "italic 80px Playfair";
+  ctx.fillStyle = "rgba(52,211,153,0.12)";
+  ctx.textAlign = "center";
+  ctx.fillText("\u201C", 540, openQuoteY);
 
-  <!-- Transliteration skipped for hadith -->
+  // English quote — small, muted italic
+  ctx.fillStyle = "rgba(224,255,244,0.82)";
+  for (let i = 0; i < quoteLines.length; i++) {
+    ctx.font = `italic ${qFS}px Playfair`;
+    ctx.fillText(quoteLines[i], 540, quoteStartY + i * qLH);
+  }
 
-  <!-- Divider -->
-  <line x1="420" y1="${dividerY}" x2="660" y2="${dividerY}" stroke="rgba(52,211,153,0.3)" stroke-width="1"/>
+  // Divider
+  ctx.strokeStyle = "rgba(52,211,153,0.3)";
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(420, dividerY); ctx.lineTo(660, dividerY); ctx.stroke();
 
-  <!-- Narrator + source -->
-  <text x="540" y="${narratorY}" font-family="Inter" font-size="22" font-weight="600" fill="#a7f3d0" text-anchor="middle">\u2014 ${narrator}</text>
-  <text x="540" y="${sourceY}" font-family="Inter" font-size="18" fill="rgba(74,222,128,0.75)" text-anchor="middle">${source}</text>
+  // Narrator
+  ctx.font = "bold 22px Inter";
+  ctx.fillStyle = "#a7f3d0";
+  ctx.textAlign = "center";
+  ctx.fillText(narrator, 540, narratorY);
 
-  <line x1="0" y1="984" x2="1080" y2="984" stroke="rgba(52,211,153,0.15)" stroke-width="1"/>
-  <text x="80" y="1016" font-family="Inter" font-size="20" fill="rgba(74,222,128,0.7)">duavault.com</text>
-  <text x="1000" y="1016" font-family="Inter" font-size="18" fill="rgba(74,222,128,0.6)" text-anchor="end">#hadith #islam #islamicquotes</text>
-  <rect y="1074" width="1080" height="6" fill="url(#accent)"/>
-</svg>`;
+  // Source
+  ctx.font = "18px Inter";
+  ctx.fillStyle = "rgba(74,222,128,0.75)";
+  ctx.fillText(source, 540, sourceY);
 
-  const pngBuffer = await sharp(Buffer.from(svg)).png().toBuffer();
+  // Footer line
+  ctx.strokeStyle = "rgba(52,211,153,0.15)";
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(0, 984); ctx.lineTo(1080, 984); ctx.stroke();
+
+  ctx.font = "20px Inter";
+  ctx.fillStyle = "rgba(74,222,128,0.7)";
+  ctx.textAlign = "left";
+  ctx.fillText("duavault.com", 80, 1016);
+
+  ctx.font = "18px Inter";
+  ctx.fillStyle = "rgba(74,222,128,0.6)";
+  ctx.textAlign = "right";
+  ctx.fillText("#hadith #islam #islamicquotes", 1000, 1016);
+
+  // Bottom bar
+  ctx.fillStyle = accentGrad;
+  ctx.fillRect(0, 1074, 1080, 6);
+
+  const pngBuffer = await canvas.encode("png");
 
   return new Response(pngBuffer as unknown as BodyInit, {
     headers: { "Content-Type": "image/png", "Cache-Control": "no-store" },

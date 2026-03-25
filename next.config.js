@@ -1,7 +1,23 @@
 const nextConfig = {
   poweredByHeader: false,
   compress: true,
-  serverExternalPackages: ["sharp", "satori"],
+  serverExternalPackages: ["sharp", "satori", "@napi-rs/canvas"],
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      // Prevent webpack from trying to bundle native .node binaries
+      const prev = config.externals;
+      config.externals = [
+        ...(Array.isArray(prev) ? prev : [prev]),
+        ({ request }, callback) => {
+          if (request && (request.includes("@napi-rs/canvas") || request.endsWith(".node"))) {
+            return callback(null, `commonjs ${request}`);
+          }
+          callback();
+        },
+      ];
+    }
+    return config;
+  },
   async redirects() {
     return [
       // Redirect www → non-www to eliminate the redirect chain (saves ~860ms on first load)
