@@ -200,7 +200,7 @@ export function getAuthenticityLabel(grade: string): string {
   }
 }
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://duavault.com";
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://duavault.com").trim();
 export const SITE_NAME = "DuaVault";
 export const SITE_DESCRIPTION =
   "Find the right dua for any moment — authentic supplications from Quran & Hadith, with Arabic & full meaning.";
