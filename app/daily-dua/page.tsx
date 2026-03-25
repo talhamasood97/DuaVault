@@ -5,6 +5,7 @@ import { getDailyDua } from "@/lib/duas";
 import { AuthenticityBadge } from "@/components/dua/AuthenticityBadge";
 import { ShareButtons } from "@/components/dua/ShareButtons";
 import { getCategoryMeta, SITE_NAME, SITE_URL , safeJsonLd } from "@/lib/utils";
+import { SocialFollowStrip } from "@/components/layout/SocialFollowStrip";
 
 export const metadata: Metadata = {
   title: "Daily Dua – Today's Islamic Supplication",
@@ -175,6 +176,9 @@ export default async function DailyDuaPage() {
             </Link>
           </div>
         )}
+
+        {/* Follow us */}
+        <SocialFollowStrip variant="dua" />
       </div>
     </>
   );

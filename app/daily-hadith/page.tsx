@@ -4,6 +4,7 @@ import { BookOpen, ChevronRight, Calendar, CheckCircle, XCircle } from "lucide-r
 import { getDailyHadith } from "@/data/hadiths";
 import { SubscribeForm } from "@/components/hadith/SubscribeForm";
 import { SITE_NAME, SITE_URL , safeJsonLd } from "@/lib/utils";
+import { SocialFollowStrip } from "@/components/layout/SocialFollowStrip";
 
 export const metadata: Metadata = {
   title: "Hadith of the Day – Daily Islamic Wisdom on Morals & Character",
@@ -263,6 +264,9 @@ export default function DailyHadithPage({
             <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
+
+        {/* Follow us */}
+        <SocialFollowStrip variant="hadith" />
 
         {/* Email subscription */}
         <div className="mt-10">

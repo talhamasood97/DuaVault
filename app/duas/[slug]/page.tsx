@@ -7,6 +7,7 @@ import { AuthenticityBadge } from "@/components/dua/AuthenticityBadge";
 import { ShareButtons } from "@/components/dua/ShareButtons";
 import { SaveButton } from "@/components/dua/SaveButton";
 import { RelatedDuas } from "@/components/dua/RelatedDuas";
+import { SocialFollowStrip } from "@/components/layout/SocialFollowStrip";
 import { getCategoryMeta, getEmotionMeta, SITE_URL, SITE_NAME , safeJsonLd } from "@/lib/utils";
 import { DuaViewTracker } from "@/components/analytics/DuaViewTracker";
 
@@ -251,6 +252,9 @@ export default async function DuaPage({ params }: Props) {
             ) : null;
           })}
         </div>
+
+        {/* Follow us */}
+        <SocialFollowStrip variant="dua" />
 
         {/* Related duas */}
         <div className="mt-12">
