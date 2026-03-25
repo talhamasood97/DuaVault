@@ -8,9 +8,25 @@
  *   FACEBOOK_PAGE_ID            — numeric Facebook Page ID (set once Page is created)
  *   CRON_SECRET                 — shared secret to verify Vercel cron requests
  *   NEXT_PUBLIC_BASE_URL        — https://duavault.com
+ *   BLOB_READ_WRITE_TOKEN       — Vercel Blob token (auto-added when Blob store is connected)
  */
 
+import { put } from "@vercel/blob";
+
 const GRAPH = "https://graph.facebook.com/v20.0";
+
+/**
+ * Fetch an image from our Vercel API route and upload it to Vercel Blob.
+ * Returns a stable public CDN URL that Instagram/Facebook can reliably fetch.
+ */
+async function uploadToBlobCdn(imageUrl: string): Promise<string> {
+  const res = await fetch(imageUrl);
+  if (!res.ok) throw new Error(`Failed to fetch image: ${res.status}`);
+  const buffer = await res.arrayBuffer();
+  const filename = `posts/${Date.now()}.png`;
+  const blob = await put(filename, buffer, { access: "public", contentType: "image/png" });
+  return blob.url;
+}
 
 export interface PostResult {
   platform: "instagram" | "facebook";
@@ -38,8 +54,11 @@ export async function postToInstagram(
     };
   }
 
+  // Upload to Vercel Blob CDN so Instagram can reliably fetch the image
+  const cdnUrl = await uploadToBlobCdn(imageUrl);
+
   // Step 1: create media container
-  const body: Record<string, unknown> = { image_url: imageUrl, caption, access_token: token };
+  const body: Record<string, unknown> = { image_url: cdnUrl, caption, access_token: token };
   if (scheduledTime) {
     body.scheduled_publish_time = scheduledTime;
     body.published = false;
@@ -95,7 +114,8 @@ export async function postToFacebook(
     };
   }
 
-  const body: Record<string, unknown> = { url: imageUrl, caption, access_token: token };
+  const cdnUrl = await uploadToBlobCdn(imageUrl);
+  const body: Record<string, unknown> = { url: cdnUrl, caption, access_token: token };
   if (scheduledTime) {
     body.scheduled_publish_time = scheduledTime;
     body.published = false;
