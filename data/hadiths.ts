@@ -1140,6 +1140,576 @@ export const HADITHS: Hadith[] = [
     daily_practice:
       "Check your heart for any trace of arrogance today — toward people, their opinions, or the truth. Beauty is what Allah loves; arrogance is what He despises.",
   },
+  {
+    id: 61,
+    slug: "hadith-of-jibril-islam-iman-ihsan",
+    title: "The Hadith of Jibril: Islam, Iman, and Ihsan",
+    arabic:
+      "قَالَ فَأَخْبِرْنِي عَنِ الإِسْلاَمِ قَالَ الإِسْلاَمُ أَنْ تَشْهَدَ أَنْ لاَ إِلَهَ إِلاَّ اللَّهُ وَأَنَّ مُحَمَّدًا رَسُولُ اللَّهِ وَتُقِيمَ الصَّلاَةَ وَتُؤْتِيَ الزَّكَاةَ وَتَصُومَ رَمَضَانَ وَتَحُجَّ الْبَيْتَ إِنِ اسْتَطَعْتَ إِلَيْهِ سَبِيلاً... قَالَ فَأَخْبِرْنِي عَنِ الإِيمَانِ قَالَ أَنْ تُؤْمِنَ بِاللَّهِ وَمَلاَئِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ وَالْيَوْمِ الآخِرِ وَتُؤْمِنَ بِالْقَدَرِ خَيْرِهِ وَشَرِّهِ... قَالَ فَأَخْبِرْنِي عَنِ الإِحْسَانِ قَالَ أَنْ تَعْبُدَ اللَّهَ كَأَنَّكَ تَرَاهُ فَإِنْ لَمْ تَكُنْ تَرَاهُ فَإِنَّهُ يَرَاكَ",
+    transliteration:
+      "Qāla fa-akhbirnī 'anil-Islām. Qāla: al-Islāmu an tashhada allā ilāha illallāhu wa anna Muhammadan rasūlullāh, wa tuqīmaṣ-ṣalāh, wa tu'tiyaz-zakāh, wa taṣūma Ramaḍān, wa taḥujjal-bayta inistaṭa'ta ilayhi sabīlā... Qāla fa-akhbirnī 'anil-Īmān. Qāla: an tu'mina billāhi wa malā'ikatihi wa kutubihi wa rusulihi wal-yawmil-ākhir, wa tu'mina bil-qadari khayrihi wa sharrih... Qāla fa-akhbirnī 'anil-Iḥsān. Qāla: an ta'budallāha ka'annaka tarāh, fa'in lam takun tarāhu fa'innahu yarāk",
+    translation:
+      "Narrated Umar ibn al-Khattab (RA): One day while we were sitting with the Messenger of Allah ﷺ, there appeared before us a man with extremely white clothes and extremely black hair... He placed his knees against his knees and placed his palms on his thighs and said: 'O Muhammad, tell me about Islam.' The Messenger of Allah ﷺ said: 'Islam is to testify that there is no god but Allah and Muhammad is His Messenger, to perform the prayer, to give zakah, to fast Ramadan, and to make pilgrimage to the House if you are able.' He said: 'You have spoken the truth.' He said: 'Tell me about Iman.' He said: 'It is to believe in Allah, His angels, His books, His messengers, the Last Day, and to believe in Divine decree, both the good and evil of it.' He said: 'You have spoken the truth.' He said: 'Tell me about Ihsan.' He said: 'It is to worship Allah as if you see Him, and though you do not see Him, He surely sees you.' The Prophet ﷺ later said: 'It was Jibril, who came to teach you your religion.'",
+    narrator: "Umar ibn al-Khattab (RA)",
+    source_book: "Sahih Muslim",
+    hadith_number: "8",
+    grade: "Sahih",
+    topic: "faith",
+    topic_tags: ["faith", "iman", "islam", "ihsan", "pillars", "belief", "jibril", "worship", "fundamentals", "pillars of Islam"],
+    daily_practice:
+      "Review the three levels — Islam, Iman, and Ihsan — and ask yourself: which level does today's worship reflect? Aim to worship as if you see Allah.",
+  },
+  {
+    id: 62,
+    slug: "hadith-do-not-be-angry",
+    title: "Do Not Be Angry",
+    arabic:
+      "أَنَّ رَجُلاً قَالَ لِلنَّبِيِّ صلى الله عليه وسلم أَوْصِنِي قَالَ لاَ تَغْضَبْ فَرَدَّدَ مِرَارًا قَالَ لاَ تَغْضَبْ",
+    transliteration:
+      "Anna rajulan qāla lin-Nabiyyi ﷺ: Awṣinī. Qāla: Lā taghḍab. Faraddada mirāran qāla: Lā taghḍab",
+    translation:
+      "Narrated Abu Huraira (RA): A man said to the Prophet ﷺ, 'Advise me!' The Prophet ﷺ said, 'Do not become angry and furious.' The man asked the same again and again, and the Prophet ﷺ said in each case, 'Do not become angry and furious.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih Bukhari",
+    hadith_number: "6116",
+    grade: "Sahih",
+    topic: "anger management",
+    topic_tags: ["anger", "self-control", "character", "advice", "patience", "emotional control", "nasiha"],
+    daily_practice:
+      "When you feel the urge to react in anger today — pause and recall the Prophet's ﷺ repeated advice: 'Do not be angry.'",
+  },
+  {
+    id: 63,
+    slug: "hadith-seven-shaded-by-allah",
+    title: "Seven People Shaded by Allah on the Day of Judgment",
+    arabic:
+      "سَبْعَةٌ يُظِلُّهُمُ اللَّهُ فِي ظِلِّهِ يَوْمَ لاَ ظِلَّ إِلاَّ ظِلُّهُ الإِمَامُ الْعَادِلُ وَشَابٌّ نَشَأَ بِعِبَادَةِ اللَّهِ وَرَجُلٌ قَلْبُهُ مُعَلَّقٌ بِالْمَسَاجِدِ وَرَجُلاَنِ تَحَابَّا فِي اللَّهِ اجْتَمَعَا عَلَيْهِ وَتَفَرَّقَا عَلَيْهِ وَرَجُلٌ دَعَتْهُ امْرَأَةٌ ذَاتُ مَنْصِبٍ وَجَمَالٍ فَقَالَ إِنِّي أَخَافُ اللَّهَ وَرَجُلٌ تَصَدَّقَ بِصَدَقَةٍ فَأَخْفَاهَا حَتَّى لاَ تَعْلَمَ شِمَالُهُ مَا تُنْفِقُ يَمِينُهُ وَرَجُلٌ ذَكَرَ اللَّهَ خَالِيًا فَفَاضَتْ عَيْنَاهُ",
+    transliteration:
+      "Sab'atun yuẓilluhumu-llāhu fī ẓillihi yawma lā ẓilla illā ẓilluhu: al-imāmul-'ādil; wa shābbun nasha'a bi'ibādatillāh; wa rajulun qalbuhu mu'allaqun bil-masājid; wa rajulāni taḥābbā fillāhi-jtama'ā 'alayhi wa tafarraqā 'alayh; wa rajulun da'athu imra'atun dhātu manṣibin wa jamālin faqāla innī akhāfullāh; wa rajulun taṣaddaqa biṣadaqatin fa-akhfāhā ḥattā lā ta'lama shimāluhu mā tunfiqu yamīnuhu; wa rajulun dhakara-llāha khāliyyan fafāḍat 'aynāh",
+    translation:
+      "Narrated Abu Huraira (RA): The Prophet ﷺ said, 'Seven people will be shaded by Allah under His shade on the Day when there will be no shade except His: a just ruler; a young man who grew up in the worship of Allah; a man whose heart is attached to the mosques; two people who love each other for Allah's sake, meeting and parting for His sake; a man who is called by a woman of rank and beauty but says, \"I fear Allah\"; a man who gives in charity so secretly that his left hand does not know what his right hand gives; and a man who remembers Allah in seclusion and his eyes become tearful.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih Bukhari",
+    hadith_number: "660",
+    grade: "Sahih",
+    topic: "Day of Judgment",
+    topic_tags: ["Day of Judgment", "shade", "justice", "youth", "mosque", "love for Allah", "charity", "dhikr", "taqwa", "akhirah"],
+    daily_practice:
+      "Identify which of the seven categories you can work toward today — heart attached to the masjid, secret charity, or remembering Allah alone with tearful eyes.",
+  },
+  {
+    id: 64,
+    slug: "hadith-jannah-under-feet-of-mothers",
+    title: "Paradise Is at the Feet of Mothers",
+    arabic:
+      "الْجَنَّةُ تَحْتَ أَقْدَامِ الأُمَّهَاتِ",
+    transliteration:
+      "Al-jannatu taḥta aqdāmil-ummahāt",
+    translation:
+      "Narrated Mu'awiyah ibn Jahima al-Sulami (RA): His father Jahima came to the Prophet ﷺ and said: 'O Messenger of Allah, I wish to go out and fight in the way of Allah, and I have come to consult you.' He said: 'Is your mother still alive?' He said: 'Yes.' He said: 'Then stay with her and serve her, for Paradise is at her feet.'",
+    narrator: "Jahima al-Sulami (RA)",
+    source_book: "Sunan an-Nasa'i",
+    hadith_number: "3104",
+    grade: "Hasan",
+    topic: "parents",
+    topic_tags: ["mother", "parents", "jannah", "service", "family", "birr al-walidayn", "obedience", "kindness"],
+    daily_practice:
+      "Do something today that makes your mother happy — call her, help her, or simply speak to her with gentleness. Paradise may be found in these small moments.",
+  },
+  {
+    id: 65,
+    slug: "hadith-strong-believer-is-better",
+    title: "The Strong Believer Is Better and More Beloved to Allah",
+    arabic:
+      "الْمُؤْمِنُ الْقَوِيُّ خَيْرٌ وَأَحَبُّ إِلَى اللَّهِ مِنَ الْمُؤْمِنِ الضَّعِيفِ وَفِي كُلٍّ خَيْرٌ احْرِصْ عَلَى مَا يَنْفَعُكَ وَاسْتَعِنْ بِاللَّهِ وَلاَ تَعْجَزْ وَإِنْ أَصَابَكَ شَيْءٌ فَلاَ تَقُلْ لَوْ أَنِّي فَعَلْتُ كَانَ كَذَا وَكَذَا وَلَكِنْ قُلْ قَدَّرَ اللَّهُ وَمَا شَاءَ فَعَلَ فَإِنَّ لَوْ تَفْتَحُ عَمَلَ الشَّيْطَانِ",
+    transliteration:
+      "Al-mu'minul-qawiyyu khayrun wa aḥabbu ilallāhi minal-mu'minil-ḍa'īf, wa fī kullin khayr. Iḥriṣ 'alā mā yanfa'uk, wasta'in billāh, wa lā ta'jaz. Wa in aṣābaka shay'un falā taqul: law annī fa'altu kāna kadhā wa kadhā. Wa lākin qul: qaddarallāhu wa mā shā'a fa'al. Fa'inna law taftaḥu 'amalash-shayṭān",
+    translation:
+      "Abu Huraira (RA) reported: The Messenger of Allah ﷺ said, 'A strong believer is better and dearer to Allah than a weak believer, and there is good in everyone. Cherish what gives you benefit, seek help from Allah and do not give up. If any adversity comes to you, do not say: \"If only I had done such-and-such.\" Rather say: \"Allah decreed it and what He wills He does,\" for saying \"if only\" opens the door to the work of Shaytan.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih Muslim",
+    hadith_number: "2664",
+    grade: "Sahih",
+    topic: "resilience",
+    topic_tags: ["strength", "resilience", "tawakkul", "effort", "qadar", "productivity", "believer", "hardship", "shaytan"],
+    daily_practice:
+      "When things do not go your way today, replace 'if only' with 'Allah decreed it.' Then refocus on what you can still do.",
+  },
+  {
+    id: 66,
+    slug: "hadith-two-words-light-on-tongue",
+    title: "Two Words Light on the Tongue, Heavy on the Scale",
+    arabic:
+      "كَلِمَتَانِ خَفِيفَتَانِ عَلَى اللِّسَانِ ثَقِيلَتَانِ فِي الْمِيزَانِ حَبِيبَتَانِ إِلَى الرَّحْمَنِ سُبْحَانَ اللَّهِ وَبِحَمْدِهِ سُبْحَانَ اللَّهِ الْعَظِيمِ",
+    transliteration:
+      "Kalimatāni khafīfatāni 'alal-lisān, thaqīlatāni fil-mīzān, ḥabībatāni ilar-Raḥmān: Subḥānallāhi wa biḥamdih, Subḥānallāhil-'Aẓīm",
+    translation:
+      "Narrated Abu Huraira (RA): The Prophet ﷺ said, 'Two words are light on the tongue but heavy on the Scale and dear to the Most Merciful: Subḥānallāhi wa biḥamdih (Glory be to Allah and all praise is due to Him); Subḥānallāhil-'Aẓīm (Glory be to Allah, the Most Great).'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih Bukhari",
+    hadith_number: "6682",
+    grade: "Sahih",
+    topic: "dhikr",
+    topic_tags: ["dhikr", "tasbih", "worship", "scales", "akhirah", "remembrance", "reward", "subhanallah", "easy deeds"],
+    daily_practice:
+      "Make it a habit to say 'Subḥānallāhi wa biḥamdih, Subḥānallāhil-'Aẓīm' throughout your day — light on the tongue, mighty on the Scale.",
+  },
+  {
+    id: 67,
+    slug: "hadith-allah-hundred-parts-of-mercy",
+    title: "Allah Has a Hundred Parts of Mercy — Only One Is in This World",
+    arabic:
+      "إِنَّ لِلَّهِ مِائَةَ رَحْمَةٍ أَنْزَلَ مِنْهَا رَحْمَةً وَاحِدَةً بَيْنَ الْجِنِّ وَالإِنْسِ وَالْبَهَائِمِ وَالْهَوَامِّ فَبِهَا يَتَعَاطَفُونَ وَبِهَا يَتَرَاحَمُونَ وَبِهَا تَعْطِفُ الْوَحْشُ عَلَى وَلَدِهَا وَأَخَّرَ اللَّهُ تِسْعًا وَتِسْعِينَ رَحْمَةً يَرْحَمُ بِهَا عِبَادَهُ يَوْمَ الْقِيَامَةِ",
+    transliteration:
+      "Inna lillāhi mi'ata raḥmah, anzala minhā raḥmatan wāḥidatan bayna-l-jinni wal-insi wal-bahā'imi wal-hawāmm, fabihā yatā'afawna wa bihā yatarāḥamūna wa bihā ta'ṭifu-l-waḥshu 'alā waladihā. Wa akhkhara-llāhu tis'an wa tis'īna raḥmatan yarḥamu bihā 'ibādahu yawmal-qiyāmah",
+    translation:
+      "Narrated Abu Huraira (RA): I heard Allah's Messenger ﷺ saying, 'Allah has divided His mercy into one hundred parts. He kept ninety-nine parts with Him and sent one part to the earth. Through this one part, all of creation shows compassion to one another — so much so that an animal lifts its hoof over its young lest it should hurt it. On the Day of Resurrection, Allah will complete the full one hundred parts of mercy toward His servants.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih Bukhari",
+    hadith_number: "6469",
+    grade: "Sahih",
+    topic: "mercy",
+    topic_tags: ["mercy", "rahma", "hope", "akhirah", "Allah's attributes", "Day of Judgment", "kindness", "creation", "compassion"],
+    daily_practice:
+      "Every compassionate act you witness today is a reflection of just one part of Allah's mercy. Ninety-nine parts are still reserved for you on the Day of Judgment — hold onto hope.",
+  },
+  {
+    id: 68,
+    slug: "hadith-everyone-is-a-shepherd",
+    title: "Every One of You Is a Shepherd",
+    arabic:
+      "كُلُّكُمْ رَاعٍ وَكُلُّكُمْ مَسْئُولٌ عَنْ رَعِيَّتِهِ الإِمَامُ رَاعٍ وَمَسْئُولٌ عَنْ رَعِيَّتِهِ وَالرَّجُلُ رَاعٍ فِي أَهْلِهِ وَهُوَ مَسْئُولٌ عَنْ رَعِيَّتِهِ وَالْمَرْأَةُ رَاعِيَةٌ فِي بَيْتِ زَوْجِهَا وَمَسْئُولَةٌ عَنْ رَعِيَّتِهَا وَالْخَادِمُ رَاعٍ فِي مَالِ سَيِّدِهِ وَمَسْئُولٌ عَنْ رَعِيَّتِهِ",
+    transliteration:
+      "Kullukum rā'in wa kullukum mas'ūlun 'an ra'iyyatih. Al-imāmu rā'in wa mas'ūlun 'an ra'iyyatih. War-rajulu rā'in fī ahlihi wa huwa mas'ūlun 'an ra'iyyatih. Wal-mar'atu rā'iyatun fī bayti zawjihā wa mas'ūlatun 'an ra'iyyatihā. Wal-khādimu rā'in fī māli sayyidihi wa mas'ūlun 'an ra'iyyatih",
+    translation:
+      "Narrated Abdullah ibn Umar (RA): Allah's Messenger ﷺ said, 'Every one of you is a shepherd and is responsible for his flock. The leader of people is a shepherd and is responsible for his subjects. A man is the shepherd of his family and is responsible for them. A woman is the shepherd of her husband's home and of his children and is responsible for them. The servant is a shepherd of his master's property and is responsible for it. Every one of you is a shepherd and is responsible for his flock.'",
+    narrator: "Abdullah ibn Umar (RA)",
+    source_book: "Sahih Bukhari",
+    hadith_number: "893",
+    grade: "Sahih",
+    topic: "responsibility",
+    topic_tags: ["responsibility", "leadership", "family", "accountability", "community", "amanah", "shepherd", "children", "husband", "role"],
+    daily_practice:
+      "Ask yourself today: am I fulfilling my responsibilities as a shepherd? Start with those closest to you — your family, your household, your community.",
+  },
+  {
+    id: 69,
+    slug: "hadith-whoever-guides-to-good",
+    title: "Whoever Guides to Good Gets the Same Reward",
+    arabic:
+      "مَنْ دَلَّ عَلَى خَيْرٍ فَلَهُ مِثْلُ أَجْرِ فَاعِلِهِ",
+    transliteration:
+      "Man dalla 'alā khayrin falahu mithlu ajri fā'ilih",
+    translation:
+      "Abu Mas'ud al-Ansari (RA) reported: The Messenger of Allah ﷺ said, 'Whoever guides someone to goodness will have a reward like one who does it.'",
+    narrator: "Abu Mas'ud al-Ansari (RA)",
+    source_book: "Sahih Muslim",
+    hadith_number: "1893",
+    grade: "Sahih",
+    topic: "good deeds",
+    topic_tags: ["good deeds", "reward", "guiding others", "dawah", "sharing", "charity", "continuous reward", "teaching", "community"],
+    daily_practice:
+      "Share something beneficial today — a du'a, an ayah, or a reminder. You will receive the same reward as everyone who acts on it.",
+  },
+  {
+    id: 70,
+    slug: "hadith-recite-quran-it-will-intercede",
+    title: "Recite the Quran — It Will Intercede for You on the Day of Resurrection",
+    arabic:
+      "اقْرَءُوا الْقُرْآنَ فَإِنَّهُ يَأْتِي يَوْمَ الْقِيَامَةِ شَفِيعًا لأَصْحَابِهِ",
+    transliteration:
+      "Iqra'ul-Qur'āna fa'innahu ya'tī yawmal-qiyāmati shafī'an li'aṣḥābih",
+    translation:
+      "Narrated Abu Umama al-Bahili (RA): I heard the Messenger of Allah ﷺ say, 'Recite the Quran, for it will come on the Day of Resurrection as an intercessor for its companions.'",
+    narrator: "Abu Umamah al-Bahili (RA)",
+    source_book: "Sahih Muslim",
+    hadith_number: "804",
+    grade: "Sahih",
+    topic: "Quran",
+    topic_tags: ["Quran", "intercession", "akhirah", "worship", "tilawah", "reward", "Day of Judgment", "recitation", "shafa'ah"],
+    daily_practice:
+      "Read at least one page of the Quran today — not just to complete a target, but knowing it will stand before Allah as your intercessor on the Day you need it most.",
+  },
+  {
+    id: 71,
+    slug: "hadith-surah-kahf-friday-light",
+    title: "Whoever Reads Surah Al-Kahf on Friday Will Have Light Until the Next Friday",
+    arabic:
+      "مَنْ قَرَأَ سُورَةَ الْكَهْفِ فِي يَوْمِ الْجُمُعَةِ أَضَاءَ لَهُ مِنَ النُّورِ مَا بَيْنَ الْجُمُعَتَيْنِ",
+    transliteration:
+      "Man qara'a Sūratal-Kahfi fī yawmil-jumu'ati aḍā'a lahu minan-nūri mā baynal-jumu'atayn",
+    translation:
+      "Abu Sa'id al-Khudri (RA) reported: The Prophet ﷺ said, 'Whoever reads Surah al-Kahf on Friday, a light will shine for him between the two Fridays.'",
+    narrator: "Abu Sa'id al-Khudri (RA)",
+    source_book: "Sahih al-Jami'",
+    hadith_number: "6470",
+    grade: "Sahih",
+    topic: "Quran",
+    topic_tags: ["Quran", "surah al-kahf", "Friday", "jumu'ah", "light", "worship", "weekly practice", "protection", "nur"],
+    daily_practice:
+      "Make reciting Surah al-Kahf your most consistent weekly act — every Friday, a light that illuminates an entire week.",
+  },
+  {
+    id: 72,
+    slug: "hadith-surah-mulk-protects-grave",
+    title: "Surah Al-Mulk Intercedes Until Its Reader Is Forgiven",
+    arabic:
+      "إِنَّ سُورَةً مِنَ الْقُرْآنِ ثَلَاثُونَ آيَةً شَفَعَتْ لِرَجُلٍ حَتَّى غُفِرَ لَهُ وَهِيَ سُورَةُ تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ",
+    transliteration:
+      "Inna sūratan minal-Qur'āni thalāthūna āyatan shafa'at li-rajulin ḥattā ghufira lahu wa hiya Sūratu Tabārakalladhī biyadihil-mulk",
+    translation:
+      "Ibn Abbas (RA) reported: The Messenger of Allah ﷺ said, 'A surah of the Quran with thirty verses interceded for its reader until he was forgiven. It is: Blessed is He in Whose Hand is the dominion (Surah Al-Mulk).'",
+    narrator: "Ibn Abbas (RA)",
+    source_book: "Jami' al-Tirmidhi",
+    hadith_number: "2891",
+    grade: "Hasan",
+    topic: "Quran",
+    topic_tags: ["Quran", "surah al-mulk", "intercession", "forgiveness", "grave", "protection", "akhirah", "worship", "night recitation"],
+    daily_practice:
+      "Recite Surah al-Mulk (30 verses) each night before sleeping. It takes only a few minutes and may intercede for you when you need it most.",
+  },
+  {
+    id: 73,
+    slug: "hadith-closest-to-allah-in-sujood",
+    title: "The Servant Is Nearest to His Lord in Prostration",
+    arabic:
+      "أَقْرَبُ مَا يَكُونُ الْعَبْدُ مِنْ رَبِّهِ وَهُوَ سَاجِدٌ فَأَكْثِرُوا الدُّعَاءَ",
+    transliteration:
+      "Aqrabu mā yakūnu-l-'abdu min rabbihi wa huwa sājid, fa-akthirū-d-du'ā'",
+    translation:
+      "Abu Huraira (RA) reported: The Messenger of Allah ﷺ said, 'The servant is nearest to his Lord when he is in prostration, so increase your supplication in it.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih Muslim",
+    hadith_number: "482",
+    grade: "Sahih",
+    topic: "prayer",
+    topic_tags: ["sujood", "prostration", "prayer", "salah", "dua", "closeness to Allah", "supplication", "worship", "nearness"],
+    daily_practice:
+      "In each prostration today, pause before rising and pour your heart out to Allah. This is the closest you will be to Him all day.",
+  },
+  {
+    id: 74,
+    slug: "hadith-jannah-surrounded-by-hardships",
+    title: "Paradise Is Surrounded by Hardships",
+    arabic:
+      "حُجِبَتِ النَّارُ بِالشَّهَوَاتِ وَحُجِبَتِ الْجَنَّةُ بِالْمَكَارِهِ",
+    transliteration:
+      "Ḥujibatn-nāru bish-shahawāt, wa ḥujibal-jannatu bil-makārih",
+    translation:
+      "Narrated Abu Huraira (RA): The Messenger of Allah ﷺ said, 'The Hellfire is veiled by desires and pleasures, and Paradise is veiled by hardships and difficulties.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih Bukhari",
+    hadith_number: "6487",
+    grade: "Sahih",
+    topic: "trials",
+    topic_tags: ["jannah", "hardship", "patience", "desires", "dunya", "akhirah", "temptation", "self-discipline", "struggle", "motivation"],
+    daily_practice:
+      "When something is difficult today — a missed desire, a hard act of worship, a moment of restraint — remind yourself: this is the path to Jannah.",
+  },
+  {
+    id: 75,
+    slug: "hadith-three-signs-of-hypocrite",
+    title: "Three Signs of a Hypocrite",
+    arabic:
+      "آيَةُ الْمُنَافِقِ ثَلاَثٌ إِذَا حَدَّثَ كَذَبَ وَإِذَا وَعَدَ أَخْلَفَ وَإِذَا اؤْتُمِنَ خَانَ",
+    transliteration:
+      "Āyatul-munāfiqi thalāth: idhā ḥaddatha kadhab, wa idhā wa'ada akhlaf, wa idhā-'tumina khān",
+    translation:
+      "Narrated Abu Huraira (RA): The Prophet ﷺ said, 'The signs of a hypocrite are three: when he speaks, he lies; when he makes a promise, he breaks it; and when he is entrusted, he betrays.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih Bukhari",
+    hadith_number: "33",
+    grade: "Sahih",
+    topic: "character",
+    topic_tags: ["hypocrisy", "nifaq", "honesty", "promise", "trust", "character", "truthfulness", "amanah", "accountability", "sincerity"],
+    daily_practice:
+      "Check yourself today against these three: Have I lied? Have I broken a promise? Have I betrayed a trust? These are the markers of hypocrisy that must be actively guarded against.",
+  },
+  {
+    id: 76,
+    slug: "hadith-be-mindful-of-allah-he-will-protect-you",
+    title: "Be Mindful of Allah and He Will Protect You",
+    arabic:
+      "يَا غُلاَمُ إِنِّي أُعَلِّمُكَ كَلِمَاتٍ احْفَظِ اللَّهَ يَحْفَظْكَ احْفَظِ اللَّهَ تَجِدْهُ تُجَاهَكَ إِذَا سَأَلْتَ فَاسْأَلِ اللَّهَ وَإِذَا اسْتَعَنْتَ فَاسْتَعِنْ بِاللَّهِ وَاعْلَمْ أَنَّ الأُمَّةَ لَوِ اجْتَمَعَتْ عَلَى أَنْ يَنْفَعُوكَ بِشَيْءٍ لَمْ يَنْفَعُوكَ إِلاَّ بِشَيْءٍ قَدْ كَتَبَهُ اللَّهُ لَكَ",
+    transliteration:
+      "Yā ghulām, innī u'allimuka kalimāt: iḥfaẓillāha yaḥfaẓka, iḥfaẓillāha tajidhu tujāhak. Idhā sa'alta fas'alillāh, wa idhā-sta'anta fasta'in billāh. Wa-'lam annal-ummata law-jtama'at 'alā an yanfa'ūka bishay'in lam yanfa'ūka illā bishay'in qad katabahuLlāhu lak",
+    translation:
+      "Ibn Abbas (RA) reported: I was riding behind the Messenger of Allah ﷺ when he said, 'O young man, I shall teach you some words: Be mindful of Allah and He will protect you. Be mindful of Allah and you will find Him before you. When you ask, ask of Allah; when you seek help, seek help from Allah. Know that if all the nations were to gather to benefit you with anything, they would only benefit you with something Allah has already written for you. And if they gathered to harm you, they would only harm you with something Allah has already written against you. The pens have been lifted and the pages have dried.'",
+    narrator: "Ibn Abbas (RA)",
+    source_book: "Jami' al-Tirmidhi",
+    hadith_number: "2516",
+    grade: "Hasan",
+    topic: "tawakkul",
+    topic_tags: ["tawakkul", "protection", "qadar", "divine decree", "reliance", "asking Allah", "mindfulness", "faith", "trust", "divine will"],
+    daily_practice:
+      "When you face a decision or difficulty today, remember: ask only from Allah, rely only on Allah. No creation can bring what He has not written for you.",
+  },
+  {
+    id: 77,
+    slug: "hadith-patience-at-first-blow",
+    title: "True Patience Is at the First Stroke of Calamity",
+    arabic:
+      "إِنَّمَا الصَّبْرُ عِنْدَ الصَّدْمَةِ الأُولَى",
+    transliteration:
+      "Innamaṣ-ṣabru 'indaṣ-ṣadmatil-ūlā",
+    translation:
+      "Narrated Anas ibn Malik (RA): The Prophet ﷺ passed by a woman who was weeping at a grave. He told her, 'Fear Allah and be patient.' She said, 'Go away from me, for you have not been afflicted with a calamity like mine!' She did not recognise him. Then she was told it was the Prophet ﷺ, so she came to his house and said: 'I did not recognise you.' He ﷺ said, 'Verily, patience is at the first stroke of calamity.'",
+    narrator: "Anas ibn Malik (RA)",
+    source_book: "Sahih Bukhari",
+    hadith_number: "1283",
+    grade: "Sahih",
+    topic: "patience",
+    topic_tags: ["patience", "sabr", "grief", "loss", "trials", "calamity", "faith", "endurance", "strength", "hardship"],
+    daily_practice:
+      "True patience is shown in the first moment of loss — not after time has passed. Train your heart to return to Allah immediately when struck with difficulty.",
+  },
+  {
+    id: 78,
+    slug: "hadith-believer-mirror-to-believer",
+    title: "The Believer Is a Mirror to His Fellow Believer",
+    arabic:
+      "الْمُؤْمِنُ مِرْآةُ الْمُؤْمِنِ وَالْمُؤْمِنُ أَخُو الْمُؤْمِنِ يَكُفُّ عَلَيْهِ ضَيْعَتَهُ وَيَحُوطُهُ مِنْ وَرَائِهِ",
+    transliteration:
+      "Al-mu'minu mir'ātu-l-mu'min, wal-mu'minu akhū-l-mu'min, yakuffu 'alayhi ḍay'atahu wa yaḥūṭuhu min warā'ih",
+    translation:
+      "Abu Huraira (RA) reported: The Messenger of Allah ﷺ said, 'The believer is a mirror to the believer. The believer is the brother of the believer — he safeguards his interests and defends him in his absence.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sunan Abi Dawud",
+    hadith_number: "4918",
+    grade: "Hasan",
+    topic: "brotherhood",
+    topic_tags: ["brotherhood", "mirror", "sincere counsel", "friendship", "loyalty", "protecting others", "genuine care", "community", "sisterhood"],
+    daily_practice:
+      "Be a true mirror to a friend today — offer sincere, gentle feedback when they need it, and protect their reputation in their absence.",
+  },
+  {
+    id: 79,
+    slug: "hadith-six-rights-of-muslim-upon-muslim",
+    title: "Six Rights of a Muslim upon a Muslim",
+    arabic:
+      "حَقُّ الْمُسْلِمِ عَلَى الْمُسْلِمِ سِتٌّ قِيلَ مَا هُنَّ يَا رَسُولَ اللَّهِ قَالَ إِذَا لَقِيتَهُ فَسَلِّمْ عَلَيْهِ وَإِذَا دَعَاكَ فَأَجِبْهُ وَإِذَا اسْتَنْصَحَكَ فَانْصَحْ لَهُ وَإِذَا عَطَسَ فَحَمِدَ اللَّهَ فَشَمِّتْهُ وَإِذَا مَرِضَ فَعُدْهُ وَإِذَا مَاتَ فَاتَّبِعْهُ",
+    transliteration:
+      "Ḥaqqul-muslimi 'alal-muslimi sitt. Qīla: mā hunna yā rasūlallāh? Qāla: idhā laqītahu fasallim 'alayh, wa idhā da'āka fa-ajibh, wa idhā-stanṣaḥaka fanṣaḥ lah, wa idhā 'aṭasa faḥamidallāha fasham-mithu, wa idhā mariḍa fa'udh, wa idhā māta fattabi'h",
+    translation:
+      "Abu Huraira (RA) reported: The Messenger of Allah ﷺ said, 'The rights of the Muslim upon the Muslim are six.' It was said: 'What are they, O Messenger of Allah?' He ﷺ said: 'When you meet him, greet him with salaam; when he invites you, accept his invitation; when he seeks your advice, give him sincere advice; when he sneezes and praises Allah, say yarhamukallah; when he is sick, visit him; and when he dies, follow his funeral.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih Muslim",
+    hadith_number: "2162",
+    grade: "Sahih",
+    topic: "brotherhood",
+    topic_tags: ["brotherhood", "rights", "community", "salaam", "visiting sick", "funeral", "advice", "sneezing", "etiquette", "Muslim relationships"],
+    daily_practice:
+      "Fulfill at least one of these six rights today — greet someone with salaam, visit someone who is unwell, or give sincere advice when asked.",
+  },
+  {
+    id: 80,
+    slug: "hadith-fast-ramadan-with-faith-forgiven",
+    title: "Whoever Fasts Ramadan with Sincere Faith — All Previous Sins Forgiven",
+    arabic:
+      "مَنْ صَامَ رَمَضَانَ إِيمَانًا وَاحْتِسَابًا غُفِرَ لَهُ مَا تَقَدَّمَ مِنْ ذَنْبِهِ",
+    transliteration:
+      "Man ṣāma Ramaḍāna īmānan waḥtisāban ghufira lahu mā taqaddama min dhanbih",
+    translation:
+      "Narrated Abu Huraira (RA): The Prophet ﷺ said, 'Whoever fasts during Ramadan out of sincere faith and hoping for reward from Allah, then all his previous sins will be forgiven.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih Bukhari",
+    hadith_number: "38",
+    grade: "Sahih",
+    topic: "fasting",
+    topic_tags: ["Ramadan", "fasting", "forgiveness", "sins", "faith", "iman", "worship", "ihtisab", "reward", "purification"],
+    daily_practice:
+      "Fast with intention and hope — not just hunger. Remind yourself: the reward for Ramadan is complete forgiveness of all that came before.",
+  },
+  {
+    id: 81,
+    slug: "hadith-allah-descends-last-third-of-night",
+    title: "Allah Descends to the Nearest Heaven in the Last Third of the Night",
+    arabic:
+      "يَنْزِلُ رَبُّنَا تَبَارَكَ وَتَعَالَى كُلَّ لَيْلَةٍ إِلَى السَّمَاءِ الدُّنْيَا حِينَ يَبْقَى ثُلُثُ اللَّيْلِ الآخِرُ يَقُولُ مَنْ يَدْعُونِي فَأَسْتَجِيبَ لَهُ مَنْ يَسْأَلُنِي فَأُعْطِيَهُ مَنْ يَسْتَغْفِرُنِي فَأَغْفِرَ لَهُ",
+    transliteration:
+      "Yanzilu rabbunā tabāraka wa ta'ālā kulla laylatin ilaṣ-samā'id-dunyā ḥīna yabqā thulutu-l-layli-l-ākhiru yaqūlu: man yad'ūnī fa-astajība lah, man yas'alunī fa-u'ṭiyah, man yastaghfiruni fa-aghfira lah",
+    translation:
+      "Narrated Abu Huraira (RA): Allah's Messenger ﷺ said, 'Our Lord, the Blessed and Superior, comes every night down to the nearest heaven during the last third of the night saying: Is there anyone who invokes Me so that I may respond? Is there anyone who asks Me so that I may give him what he asks? Is there anyone who seeks My forgiveness so that I may forgive him?'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih Bukhari",
+    hadith_number: "1145",
+    grade: "Sahih",
+    topic: "night prayer",
+    topic_tags: ["night prayer", "tahajjud", "dua", "forgiveness", "last third of night", "qiyam", "closeness to Allah", "response", "worship"],
+    daily_practice:
+      "Set an intention tonight to wake in the last third of the night — even for five minutes of sincere dua. Allah Himself is calling out, asking who will come.",
+  },
+  {
+    id: 82,
+    slug: "hadith-best-of-generations",
+    title: "The Best People Are the Companions, Then Those Who Follow Them",
+    arabic:
+      "خَيْرُ النَّاسِ قَرْنِي ثُمَّ الَّذِينَ يَلُونَهُمْ ثُمَّ الَّذِينَ يَلُونَهُمْ",
+    transliteration:
+      "Khayrun-nāsi qarnī, thummal-ladhīna yalūnahum, thummal-ladhīna yalūnahum",
+    translation:
+      "Narrated Abdullah ibn Mas'ud (RA): The Prophet ﷺ said, 'The best people are those of my generation, and then those who will follow them, and then those who will follow them.'",
+    narrator: "Abdullah ibn Mas'ud (RA)",
+    source_book: "Sahih Bukhari",
+    hadith_number: "2651",
+    grade: "Sahih",
+    topic: "Companions",
+    topic_tags: ["Companions", "Sahabah", "generations", "Tabi'in", "Sunnah", "role models", "best generations", "following the Prophet"],
+    daily_practice:
+      "Study the life of one Companion today — even a single story. They are the gold standard of how Islam is lived, preserved for us to follow.",
+  },
+  {
+    id: 83,
+    slug: "hadith-wudu-washes-away-sins",
+    title: "Every Drop of Wudu Carries Away a Sin",
+    arabic:
+      "إِذَا تَوَضَّأَ الْعَبْدُ الْمُسْلِمُ أَوِ الْمُؤْمِنُ فَغَسَلَ وَجْهَهُ خَرَجَ مِنْ وَجْهِهِ كُلُّ خَطِيئَةٍ نَظَرَ إِلَيْهَا بِعَيْنَيْهِ مَعَ الْمَاءِ أَوْ مَعَ آخِرِ قَطْرِ الْمَاءِ فَإِذَا غَسَلَ يَدَيْهِ خَرَجَ مِنْ يَدَيْهِ كُلُّ خَطِيئَةٍ كَانَ بَطَشَهَا يَدَاهُ مَعَ الْمَاءِ حَتَّى يَخْرُجَ نَقِيًّا مِنَ الذُّنُوبِ",
+    transliteration:
+      "Idhā tawadda'a-l-'abdu-l-muslimu awil-mu'minu fa-ghasala wajhahu, kharaja min wajhihi kullu khaṭī'atin naẓara ilayhā bi'aynihi ma'al-mā'i aw ma'a ākhiri qaṭril-mā'. Fa'idhā ghasala yadayhi, kharaja min yadayhi kullu khaṭī'atin kāna baṭashahā yadāhu ma'al-mā'i... ḥattā yakhruja naqiyyan minadh-dhunūb",
+    translation:
+      "Abu Huraira (RA) reported: Allah's Messenger ﷺ said, 'When a Muslim — or a believer — washes his face in the performance of wudu, every sin which he committed with his eyes is washed away with the water, or with the last drop of water. When he washes his hands, every sin his hands committed comes out with the water, or with the last drop of water, until he finally emerges purified from all his sins.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih Muslim",
+    hadith_number: "244",
+    grade: "Sahih",
+    topic: "purification",
+    topic_tags: ["wudu", "purification", "sins", "forgiveness", "taharah", "prayer", "cleanliness", "worship", "spiritual renewal"],
+    daily_practice:
+      "Make every wudu a conscious act of spiritual cleansing — not just physical ritual. As you wash each limb, intend for the sins of that limb to be washed away.",
+  },
+  {
+    id: 84,
+    slug: "hadith-prayer-is-pillar-of-religion",
+    title: "Prayer Is the Pillar of the Religion",
+    arabic:
+      "رَأْسُ الأَمْرِ الإِسْلاَمُ وَعَمُودُهُ الصَّلاَةُ وَذِرْوَةُ سَنَامِهِ الْجِهَادُ",
+    transliteration:
+      "Ra'sul-amri-l-Islām, wa 'amūduhuṣ-ṣalāh, wa dhirwatu sanāmihi-l-jihād",
+    translation:
+      "Mu'adh ibn Jabal (RA) reported: The Messenger of Allah ﷺ said, 'The head of the matter is Islam; its pillar is the prayer; and its highest point is striving in the way of Allah.'",
+    narrator: "Mu'adh ibn Jabal (RA)",
+    source_book: "Jami' al-Tirmidhi",
+    hadith_number: "2616",
+    grade: "Hasan",
+    topic: "prayer",
+    topic_tags: ["salah", "prayer", "pillar", "Islam", "fundamentals", "worship", "five pillars", "ibadah", "foundations"],
+    daily_practice:
+      "Prayer is not one good deed among many — it is the pillar upon which everything stands. Guard your five prayers today as you would guard the foundation of your house.",
+  },
+  {
+    id: 85,
+    slug: "hadith-surah-fatihah-greatest-surah",
+    title: "Surah Al-Fatihah Is the Greatest Surah in the Quran",
+    arabic:
+      "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ هِيَ السَّبْعُ الْمَثَانِي وَالْقُرْآنُ الْعَظِيمُ الَّذِي أُوتِيتُهُ",
+    transliteration:
+      "Al-ḥamdu lillāhi Rabbil-'ālamīn hiya-s-sab'ul-mathānī wal-Qur'ānu-l-'aẓīmulladhī ūtītuhu",
+    translation:
+      "Narrated Abu Sa'id ibn al-Mu'alla (RA): I was praying when the Prophet ﷺ called me, but I did not respond until I had finished. Then I said: 'O Messenger of Allah, I was praying.' He ﷺ said: 'Did not Allah say: Respond to Allah and to the Messenger when he calls you?' He then said: 'Shall I not teach you the greatest surah in the Quran before you leave the mosque?' Then as we were about to leave, he said: 'It is: Al-Ḥamdulillāhi Rabbil-'ālamīn — it is the seven oft-repeated verses (as-sab'ul mathānī) and the great Quran that has been given to me.'",
+    narrator: "Abu Sa'id ibn al-Mu'alla (RA)",
+    source_book: "Sahih Bukhari",
+    hadith_number: "5006",
+    grade: "Sahih",
+    topic: "Quran",
+    topic_tags: ["Quran", "surah al-fatiha", "greatest surah", "prayer", "recitation", "al-hamd", "sab'ul mathani", "magnificence", "tilawah"],
+    daily_practice:
+      "The next time you recite Surah al-Fatihah in prayer, pause at each verse and reflect on its meaning — you are reciting the greatest surah in the Quran, at least 17 times a day.",
+  },
+  {
+    id: 86,
+    slug: "hadith-dua-for-absent-brother-answered",
+    title: "Your Dua for Your Absent Brother Is Answered — and an Angel Prays the Same for You",
+    arabic:
+      "دَعْوَةُ الْمَرْءِ الْمُسْلِمِ لأَخِيهِ بِظَهْرِ الْغَيْبِ مُسْتَجَابَةٌ عِنْدَ رَأْسِهِ مَلَكٌ مُوَكَّلٌ كُلَّمَا دَعَا لأَخِيهِ بِخَيْرٍ قَالَ الْمَلَكُ الْمُوَكَّلُ بِهِ آمِينَ وَلَكَ بِمِثْلٍ",
+    transliteration:
+      "Da'watul-mar'il-muslimi li'akhīhi biẓahril-ghaybi mustajābah, 'inda ra'sihi malakun muwakkalun, kullamā da'ā li'akhīhi bikhayrin qālal-malakul-muwakkalu bih: āmīn wa laka bi-mithl",
+    translation:
+      "Abu al-Darda' (RA) reported: The Messenger of Allah ﷺ said, 'The supplication of a Muslim for his brother in his absence is answered. Near his head there is an appointed angel, and every time he supplicates for his brother with something good, the angel appointed for him says: Ameen, and may you receive the same.'",
+    narrator: "Abu al-Darda' (RA)",
+    source_book: "Sahih Muslim",
+    hadith_number: "2732",
+    grade: "Sahih",
+    topic: "dua",
+    topic_tags: ["dua", "supplication", "brotherhood", "absent prayer", "angels", "answered dua", "sincere prayer", "community", "love"],
+    daily_practice:
+      "Make dua for someone you love today in their absence — a friend, a family member, someone going through a trial. An angel is making the same dua for you in return.",
+  },
+  {
+    id: 87,
+    slug: "hadith-believer-does-not-taunt-or-curse",
+    title: "A Believer Does Not Taunt, Curse, or Speak Indecently",
+    arabic:
+      "لَيْسَ الْمُؤْمِنُ بِالطَّعَّانِ وَلاَ اللَّعَّانِ وَلاَ الْفَاحِشِ وَلاَ الْبَذِيءِ",
+    transliteration:
+      "Laysal-mu'minu biṭ-ṭa''āni wa lal-la''āni wa lal-fāḥishi wa lal-badhī'",
+    translation:
+      "Abdullah ibn Mas'ud (RA) reported: The Prophet ﷺ said, 'A believer is not a taunter, nor a curser, nor indecent, nor coarse in speech.'",
+    narrator: "Abdullah ibn Mas'ud (RA)",
+    source_book: "Jami' al-Tirmidhi",
+    hadith_number: "1977",
+    grade: "Hasan",
+    topic: "speech",
+    topic_tags: ["speech", "character", "taunting", "cursing", "indecency", "manners", "tongue", "believer", "adab", "etiquette"],
+    daily_practice:
+      "Guard your tongue today from taunting, insulting, and crude speech — every word you speak is a direct reflection of your faith.",
+  },
+  {
+    id: 88,
+    slug: "hadith-hajj-wipes-all-previous-sins",
+    title: "A Pure Hajj Returns You Like the Day Your Mother Gave Birth to You",
+    arabic:
+      "مَنْ حَجَّ لِلَّهِ فَلَمْ يَرْفُثْ وَلَمْ يَفْسُقْ رَجَعَ كَيَوْمِ وَلَدَتْهُ أُمُّهُ",
+    transliteration:
+      "Man ḥajja lillāhi falam yarfuth wa lam yafsuq raja'a kayawma waladathu ummuh",
+    translation:
+      "Narrated Abu Huraira (RA): The Prophet ﷺ said, 'Whoever performs Hajj for the sake of Allah and does not have sexual intercourse, nor commits sin, nor disputes unjustly during it, then he returns from Hajj as pure and free from sins as on the day on which his mother gave birth to him.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih Bukhari",
+    hadith_number: "1521",
+    grade: "Sahih",
+    topic: "hajj",
+    topic_tags: ["hajj", "pilgrimage", "forgiveness", "sins", "purification", "five pillars", "worship", "renewal", "purity", "Mecca"],
+    daily_practice:
+      "If you have not yet performed Hajj and are able to, make it your sincere intention today. It is one of the only acts that wipes the entire ledger of sins clean.",
+  },
+  {
+    id: 89,
+    slug: "hadith-first-ten-days-dhul-hijjah",
+    title: "No Days Have Greater Deeds in Them Than the First Ten of Dhul Hijjah",
+    arabic:
+      "مَا مِنْ أَيَّامٍ الْعَمَلُ الصَّالِحُ فِيهَا أَحَبُّ إِلَى اللَّهِ مِنْ هَذِهِ الأَيَّامِ يَعْنِي أَيَّامَ الْعَشْرِ قَالُوا يَا رَسُولَ اللَّهِ وَلاَ الْجِهَادُ فِي سَبِيلِ اللَّهِ قَالَ وَلاَ الْجِهَادُ فِي سَبِيلِ اللَّهِ إِلاَّ رَجُلٌ خَرَجَ بِنَفْسِهِ وَمَالِهِ فَلَمْ يَرْجِعْ مِنْ ذَلِكَ بِشَيْءٍ",
+    transliteration:
+      "Mā min ayyāmini-l-'amalu-ṣ-ṣāliḥu fīhā aḥabbu ilallāhi min hādhihil-ayyām — ya'nī ayyāmal-'ashr. Qālū: yā rasūlallāh wa lal-jihādu fī sabīlillāh? Qāla: wa lal-jihādu fī sabīlillāh, illā rajulun kharaja bi-nafsihi wa mālihi falam yarji' min dhālika bishay'",
+    translation:
+      "Ibn Abbas (RA) reported: The Prophet ﷺ said, 'No good deeds done on other days are superior to those done on the first ten days of Dhul Hijjah.' The Companions said: 'Not even jihad in the way of Allah?' He ﷺ said: 'Not even jihad in the way of Allah, except for a man who goes out with his life and his property and does not return with any of it.'",
+    narrator: "Ibn Abbas (RA)",
+    source_book: "Sahih Bukhari",
+    hadith_number: "969",
+    grade: "Sahih",
+    topic: "worship",
+    topic_tags: ["Dhul Hijjah", "best days", "good deeds", "Eid al-Adha", "fasting", "remembrance", "takbir", "worship", "Hajj season", "seasonal"],
+    daily_practice:
+      "Mark the first ten days of Dhul Hijjah on your calendar — fast as many days as you can, increase dhikr and takbir, and perform your best deeds. These days outweigh everything else.",
+  },
+  {
+    id: 90,
+    slug: "hadith-fajr-prayer-under-allahs-protection",
+    title: "Whoever Prays Fajr Is Under the Protection of Allah",
+    arabic:
+      "مَنْ صَلَّى الصُّبْحَ فَهُوَ فِي ذِمَّةِ اللَّهِ فَلاَ يَطْلُبَنَّكُمُ اللَّهُ مِنْ ذِمَّتِهِ بِشَيْءٍ فَإِنَّهُ مَنْ يَطْلُبْهُ مِنْ ذِمَّتِهِ بِشَيْءٍ يُدْرِكْهُ ثُمَّ يَكُبَّهُ عَلَى وَجْهِهِ فِي نَارِ جَهَنَّمَ",
+    transliteration:
+      "Man ṣallaṣ-ṣubḥa fahuwa fī dhimmatillāh. Falā yaṭluban-nakumullāhu min dhimmatihī bishay'. Fa'innahu man yaṭlubhu min dhimmatihī bishay'in yudrik-hu, thumma yakubbuhu 'alā wajhihi fī nāri jahannam",
+    translation:
+      "Jundub ibn Abdullah (RA) reported: The Messenger of Allah ﷺ said, 'Whoever performs the Fajr prayer is under the protection of Allah. So beware, O son of Adam, that Allah does not hold you accountable for being under His protection. For whoever He holds accountable for it, He will seize him and then throw him on his face into the Hellfire.'",
+    narrator: "Jundub ibn Abdullah (RA)",
+    source_book: "Sahih Muslim",
+    hadith_number: "657",
+    grade: "Sahih",
+    topic: "prayer",
+    topic_tags: ["fajr", "prayer", "protection", "morning prayer", "accountability", "salah", "worship", "consistency", "safety", "dhimmah"],
+    daily_practice:
+      "Never miss Fajr — it places you under the direct protection of Allah for the day. Show up at dawn, and Allah keeps you in His care.",
+  },
 ];
 
 // ── Utilities ─────────────────────────────────────────────────────────────────
