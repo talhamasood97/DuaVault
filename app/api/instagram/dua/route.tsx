@@ -282,6 +282,6 @@ export async function GET(request: Request) {
   const pngBuffer = await sharp(Buffer.from(svg)).png().toBuffer();
 
   return new Response(pngBuffer as unknown as BodyInit, {
-    headers: { "Content-Type": "image/png", "Cache-Control": "public, max-age=3600" },
+    headers: { "Content-Type": "image/png", "Cache-Control": "no-store" },
   });
 }
