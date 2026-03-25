@@ -2,10 +2,6 @@
   "framework": "nextjs",
   "crons": [
     {
-      "path": "/api/cron/fill-buffer",
-      "schedule": "0 0 * * *"
-    },
-    {
       "path": "/api/cron/post-morning",
       "schedule": "0 2 * * *"
     },
