@@ -11,9 +11,33 @@
  *   BLOB_READ_WRITE_TOKEN       — Vercel Blob token (auto-added when Blob store is connected)
  */
 
-import { put, list } from "@vercel/blob";
+import { put, list, del } from "@vercel/blob";
 
 const GRAPH = "https://graph.facebook.com/v20.0";
+
+/**
+ * Send an alert email to the admin when posting fails or the token is invalid.
+ * Uses Resend (already configured). Silently no-ops if env vars are missing.
+ */
+export async function sendAdminAlert(subject: string, body: string): Promise<void> {
+  const apiKey = process.env.RESEND_API_KEY;
+  const adminEmail = process.env.ADMIN_ALERT_EMAIL;
+  if (!apiKey || !adminEmail) return;
+  try {
+    await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        from: `DuaVault Alerts <${process.env.RESEND_FROM_EMAIL ?? "noreply@duavault.com"}>`,
+        to: [adminEmail],
+        subject: `[DuaVault] ${subject}`,
+        html: `<div style="font-family:monospace;font-size:14px;white-space:pre-wrap">${body}</div>`,
+      }),
+    });
+  } catch {
+    // Never let alert failure crash the main flow
+  }
+}
 
 /**
  * Fetch an image from our Vercel API route and upload it to Vercel Blob.

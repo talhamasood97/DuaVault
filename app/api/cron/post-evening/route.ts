@@ -8,7 +8,7 @@
  */
 
 import { getDailyDua } from "@/data/duas";
-import { postToInstagram, postToFacebook, verifyCronSecret, hasPostedToday, markPostedToday } from "@/lib/instagram";
+import { postToInstagram, postToFacebook, verifyCronSecret, hasPostedToday, markPostedToday, sendAdminAlert } from "@/lib/instagram";
 import { buildDuaCaption } from "@/lib/captions";
 
 export const runtime = "nodejs";
@@ -36,15 +36,24 @@ export async function GET(request: Request) {
   const igOk = igResult.status === "fulfilled" && !igResult.value.error;
   const fbOk = fbResult.status === "fulfilled" && !fbResult.value.error;
 
+  const igDetail = igResult.status === "fulfilled" ? igResult.value : { error: String(igResult.reason) };
+  const fbDetail = fbResult.status === "fulfilled" ? fbResult.value : { error: String(fbResult.reason) };
+
   // Only mark as posted if at least one platform succeeded — allows retry if both fail
   if (igOk || fbOk) {
     await markPostedToday("evening", dua.slug);
+  } else {
+    // Both failed — alert admin immediately
+    await sendAdminAlert(
+      "⚠️ Evening post FAILED — action needed",
+      `Dua: ${dua.slug}\nDate: ${new Date().toISOString()}\n\nInstagram: ${JSON.stringify(igDetail)}\nFacebook: ${JSON.stringify(fbDetail)}\n\nFix and retry: POST https://duavault.com/api/cron/force-post with {"slot":"evening"}`
+    );
   }
 
   return Response.json({
     ok: igOk || fbOk,
     dua: dua.slug,
-    instagram: igResult.status === "fulfilled" ? igResult.value : { error: String(igResult.reason) },
-    facebook: fbResult.status === "fulfilled" ? fbResult.value : { error: String(fbResult.reason) },
+    instagram: igDetail,
+    facebook: fbDetail,
   });
 }
