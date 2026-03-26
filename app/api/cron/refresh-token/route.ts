@@ -18,7 +18,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 async function updateVercelEnv(key: string, value: string): Promise<boolean> {
-  const vercelToken = process.env.VERCEL_TOKEN;
+  const vercelToken = process.env.MY_VERCEL_TOKEN;
   const projectId = process.env.VERCEL_PROJECT_ID;
   if (!vercelToken || !projectId) return false;
 
@@ -91,7 +91,7 @@ export async function GET(request: Request) {
 
   await sendAdminAlert(
     "✅ Monthly token refresh SUCCESS",
-    `New user token generated at ${new Date().toISOString()}\nExpires in: ${expiryDays} days\nAuto-updated Vercel env: ${autoUpdated ? "YES ✅" : "NO ⚠️ (set VERCEL_TOKEN + VERCEL_PROJECT_ID to enable auto-update)"}\n\n${!autoUpdated ? `Manual update needed:\nMETA_USER_ACCESS_TOKEN = ${newToken}` : "No manual action needed."}`
+    `New user token generated at ${new Date().toISOString()}\nExpires in: ${expiryDays} days\nAuto-updated Vercel env: ${autoUpdated ? "YES ✅" : "NO ⚠️ (set MY_VERCEL_TOKEN + VERCEL_PROJECT_ID to enable auto-update)"}\n\n${!autoUpdated ? `Manual update needed:\nMETA_USER_ACCESS_TOKEN = ${newToken}` : "No manual action needed."}`
   );
 
   return Response.json({
