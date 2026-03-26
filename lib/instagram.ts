@@ -144,8 +144,8 @@ export async function postToFacebook(
       message: caption,
       access_token: token,
     });
-    // Facebook expects attached_media as a JSON-encoded array
-    feedParams.append("attached_media[0]", JSON.stringify({ media_fbid: photoData.id }));
+    // Facebook expects attached_media as a single JSON-encoded array parameter
+    feedParams.append("attached_media", JSON.stringify([{ media_fbid: photoData.id }]));
     if (scheduledTime) {
       feedParams.set("scheduled_publish_time", String(scheduledTime));
       feedParams.set("published", "false");

@@ -33,10 +33,16 @@ export async function GET(request: Request) {
     postToFacebook(imageUrl, caption),
   ]);
 
-  await markPostedToday("evening", dua.slug);
+  const igOk = igResult.status === "fulfilled" && !igResult.value.error;
+  const fbOk = fbResult.status === "fulfilled" && !fbResult.value.error;
+
+  // Only mark as posted if at least one platform succeeded — allows retry if both fail
+  if (igOk || fbOk) {
+    await markPostedToday("evening", dua.slug);
+  }
 
   return Response.json({
-    ok: true,
+    ok: igOk || fbOk,
     dua: dua.slug,
     instagram: igResult.status === "fulfilled" ? igResult.value : { error: String(igResult.reason) },
     facebook: fbResult.status === "fulfilled" ? fbResult.value : { error: String(fbResult.reason) },
