@@ -34,8 +34,9 @@ export async function sendAdminAlert(subject: string, body: string): Promise<voi
         html: `<div style="font-family:monospace;font-size:14px;white-space:pre-wrap">${body}</div>`,
       }),
     });
-  } catch {
-    // Never let alert failure crash the main flow
+  } catch (e) {
+    // Never let alert failure crash the main flow — but log so it shows in Vercel logs
+    console.error("[sendAdminAlert] Failed to send alert email:", e);
   }
 }
 
@@ -212,10 +213,12 @@ export async function postToFacebook(
   return { platform: "facebook", id: fallbackData.id };
 }
 
-/** Verify Vercel cron secret from Authorization header. */
+/** Verify Vercel cron secret from Authorization header. Fails closed if CRON_SECRET is unset. */
 export function verifyCronSecret(request: Request): boolean {
+  const secret = process.env.CRON_SECRET;
+  if (!secret) return false; // fail closed — never grant access if secret is missing
   const auth = request.headers.get("authorization");
-  return auth === `Bearer ${process.env.CRON_SECRET}`;
+  return auth === `Bearer ${secret}`;
 }
 
 /** Returns today's date in IST as YYYY-MM-DD (UTC+5:30). */

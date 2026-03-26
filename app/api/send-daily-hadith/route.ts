@@ -3,6 +3,7 @@ import { Resend } from "resend";
 import { getDailyHadith } from "@/data/hadiths";
 import { createAdminClient } from "@/lib/supabase";
 import { escapeHtml } from "@/lib/utils";
+import { sendAdminAlert } from "@/lib/instagram";
 
 export const runtime = "nodejs";
 
@@ -209,6 +210,14 @@ export async function GET(req: NextRequest) {
       from += DB_PAGE;
     }
 
+    // Alert if any batch deliveries failed
+    if (failed > 0) {
+      await sendAdminAlert(
+        `⚠️ Daily hadith email — ${failed} delivery failure(s)`,
+        `Date: ${todayUtc}\nSent: ${sent} ✅  Failed: ${failed} ❌  Skipped: ${skipped}\nHadith: ${hadith.title}\n\nSome subscribers did not receive today's email. Failed recipients are NOT marked as sent and will receive tomorrow's email.`
+      );
+    }
+
     return NextResponse.json({
       sent,
       failed,
@@ -218,7 +227,12 @@ export async function GET(req: NextRequest) {
       date: todayUtc,
     });
   } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
     console.error("Send daily hadith error:", err);
+    await sendAdminAlert(
+      "🚨 Daily hadith email CRASHED — subscribers did not receive today's email",
+      `Date: ${new Date().toISOString()}\nError: ${message}\n\nManually trigger: GET https://duavault.com/api/send-daily-hadith (with Authorization header)`
+    );
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
