@@ -1,14 +1,12 @@
 /**
  * FORCE-POST — manual trigger to re-run a cron slot immediately.
- * Use when a scheduled post failed and you need to retry without waiting.
+ * Clears per-platform deduplication markers for today's slot, then posts
+ * to both platforms fresh.
  *
  * Usage:
  *   POST /api/cron/force-post
  *   Authorization: Bearer <CRON_SECRET>
  *   Body (JSON): { "slot": "morning" | "evening" }
- *
- * This clears the deduplication marker for today's slot so it can run again,
- * then fires the appropriate post immediately.
  */
 
 import { getDailyHadith } from "@/data/hadiths";
@@ -37,7 +35,7 @@ export async function POST(request: Request) {
     return Response.json({ ok: false, error: 'Body must include { "slot": "morning" | "evening" }' }, { status: 400 });
   }
 
-  // Clear existing deduplication marker so this slot can post again today
+  // Clear all per-platform deduplication markers for this slot so both can retry
   const prefix = `post-log/${todayIST()}-${slot}`;
   const { blobs } = await list({ prefix });
   for (const blob of blobs) {
@@ -45,7 +43,6 @@ export async function POST(request: Request) {
   }
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "https://duavault.com";
-
   let imageUrl: string;
   let caption: string;
   let slug: string;
@@ -62,23 +59,23 @@ export async function POST(request: Request) {
     caption = buildDuaCaption(dua);
   }
 
-  const [igResult, fbResult] = await Promise.allSettled([
+  const [igSettled, fbSettled] = await Promise.allSettled([
     postToInstagram(imageUrl, caption),
     postToFacebook(imageUrl, caption),
   ]);
 
-  const igOk = igResult.status === "fulfilled" && !igResult.value.error;
-  const fbOk = fbResult.status === "fulfilled" && !fbResult.value.error;
+  const igOk = igSettled.status === "fulfilled" && !igSettled.value.error;
+  const fbOk = fbSettled.status === "fulfilled" && !fbSettled.value.error;
 
-  if (igOk || fbOk) {
-    await markPostedToday(slot, slug);
-  }
+  // Mark each platform independently
+  if (igOk) await markPostedToday(slot, "instagram", slug);
+  if (fbOk) await markPostedToday(slot, "facebook", slug);
 
   return Response.json({
-    ok: igOk || fbOk,
+    ok: igOk && fbOk,
     slot,
     slug,
-    instagram: igResult.status === "fulfilled" ? igResult.value : { error: String(igResult.reason) },
-    facebook: fbResult.status === "fulfilled" ? fbResult.value : { error: String(fbResult.reason) },
+    instagram: igSettled.status === "fulfilled" ? igSettled.value : { error: String(igSettled.reason) },
+    facebook: fbSettled.status === "fulfilled" ? fbSettled.value : { error: String(fbSettled.reason) },
   });
 }

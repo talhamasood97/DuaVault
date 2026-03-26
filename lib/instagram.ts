@@ -226,13 +226,20 @@ function todayIST(): string {
   return new Date(Date.now() + 5.5 * 3600 * 1000).toISOString().slice(0, 10);
 }
 
-/** Returns true if this slot (morning/evening) has already been posted today. */
-export async function hasPostedToday(slot: "morning" | "evening"): Promise<boolean> {
-  const { blobs } = await list({ prefix: `post-log/${todayIST()}-${slot}` });
+/** Returns true if this slot+platform has already been posted today. */
+export async function hasPostedToday(
+  slot: "morning" | "evening",
+  platform: "instagram" | "facebook"
+): Promise<boolean> {
+  const { blobs } = await list({ prefix: `post-log/${todayIST()}-${slot}-${platform}` });
   return blobs.length > 0;
 }
 
-/** Records that this slot was successfully posted today. */
-export async function markPostedToday(slot: "morning" | "evening", slug: string): Promise<void> {
-  await put(`post-log/${todayIST()}-${slot}.txt`, slug, { access: "public", addRandomSuffix: false });
+/** Records that this slot+platform was successfully posted today. */
+export async function markPostedToday(
+  slot: "morning" | "evening",
+  platform: "instagram" | "facebook",
+  slug: string
+): Promise<void> {
+  await put(`post-log/${todayIST()}-${slot}-${platform}.txt`, slug, { access: "public", addRandomSuffix: false });
 }

@@ -1,8 +1,10 @@
 /**
  * POST-EVENING CRON — 7:30 PM IST (14:00 UTC)
  * Posts today's Dua of the Day to Instagram + Facebook.
+ * A retry runs automatically at 8:00 PM IST (14:30 UTC) and will only
+ * attempt platforms that didn't succeed in the first run.
  *
- * Vercel cron schedule in vercel.json: "0 14 * * *"
+ * Vercel cron schedules in vercel.json: "0 14 * * *" and "30 14 * * *"
  * Secured with CRON_SECRET env var.
  */
 
@@ -19,8 +21,14 @@ export async function GET(request: Request) {
   }
 
   try {
-    if (await hasPostedToday("evening")) {
-      return Response.json({ ok: true, skipped: true, reason: "already posted this evening" });
+    // Check each platform independently
+    const [igAlreadyPosted, fbAlreadyPosted] = await Promise.all([
+      hasPostedToday("evening", "instagram"),
+      hasPostedToday("evening", "facebook"),
+    ]);
+
+    if (igAlreadyPosted && fbAlreadyPosted) {
+      return Response.json({ ok: true, skipped: true, reason: "already posted to both platforms this evening" });
     }
 
     const dua = getDailyDua();
@@ -28,46 +36,49 @@ export async function GET(request: Request) {
     const imageUrl = `${baseUrl}/api/instagram/dua?slug=${encodeURIComponent(dua.slug)}`;
     const caption = buildDuaCaption(dua);
 
-    const [igResult, fbResult] = await Promise.allSettled([
-      postToInstagram(imageUrl, caption),
-      postToFacebook(imageUrl, caption),
+    // Only post to platforms that haven't gone out yet
+    const [igSettled, fbSettled] = await Promise.allSettled([
+      igAlreadyPosted
+        ? Promise.resolve({ platform: "instagram" as const, id: "already-posted" } as import("@/lib/instagram").PostResult)
+        : postToInstagram(imageUrl, caption),
+      fbAlreadyPosted
+        ? Promise.resolve({ platform: "facebook" as const, id: "already-posted" } as import("@/lib/instagram").PostResult)
+        : postToFacebook(imageUrl, caption),
     ]);
 
-    const igOk = igResult.status === "fulfilled" && !igResult.value.error;
-    const fbOk = fbResult.status === "fulfilled" && !fbResult.value.error;
+    const igOk = igAlreadyPosted || (igSettled.status === "fulfilled" && !igSettled.value.error);
+    const fbOk = fbAlreadyPosted || (fbSettled.status === "fulfilled" && !fbSettled.value.error);
 
-    const igDetail = igResult.status === "fulfilled" ? igResult.value : { error: String(igResult.reason) };
-    const fbDetail = fbResult.status === "fulfilled" ? fbResult.value : { error: String(fbResult.reason) };
+    const igDetail = igSettled.status === "fulfilled" ? igSettled.value : { error: String(igSettled.reason) };
+    const fbDetail = fbSettled.status === "fulfilled" ? fbSettled.value : { error: String(fbSettled.reason) };
 
-    if (igOk || fbOk) {
-      // Mark posted to prevent double-posting on the platform that succeeded
-      await markPostedToday("evening", dua.slug);
-      // Alert on any partial failure — one platform missed for the day
-      if (!igOk) {
-        await sendAdminAlert(
-          "⚠️ Evening post — Instagram FAILED (Facebook posted OK)",
-          `Dua: ${dua.slug}\nDate: ${new Date().toISOString()}\n\nInstagram error: ${JSON.stringify(igDetail)}\nFacebook: ✅ posted successfully\n\nRetry: POST https://duavault.com/api/cron/force-post {"slot":"evening"}`
-        );
-      }
-      if (!fbOk) {
-        await sendAdminAlert(
-          "⚠️ Evening post — Facebook FAILED (Instagram posted OK)",
-          `Dua: ${dua.slug}\nDate: ${new Date().toISOString()}\n\nFacebook error: ${JSON.stringify(fbDetail)}\nInstagram: ✅ posted successfully\n\nRetry: POST https://duavault.com/api/cron/force-post {"slot":"evening"}`
-        );
-      }
-    } else {
-      // Both failed — alert immediately, do NOT mark as posted so retry is possible
+    // Mark each platform independently on success
+    if (!igAlreadyPosted && igOk) await markPostedToday("evening", "instagram", dua.slug);
+    if (!fbAlreadyPosted && fbOk) await markPostedToday("evening", "facebook", dua.slug);
+
+    // Alert on failures
+    if (!igOk && !fbOk) {
       await sendAdminAlert(
         "🚨 Evening post FAILED on ALL platforms — action needed",
-        `Dua: ${dua.slug}\nDate: ${new Date().toISOString()}\n\nInstagram: ${JSON.stringify(igDetail)}\nFacebook: ${JSON.stringify(fbDetail)}\n\nFix and retry: POST https://duavault.com/api/cron/force-post with {"slot":"evening"}`
+        `Dua: ${dua.slug}\nDate: ${new Date().toISOString()}\n\nInstagram: ${JSON.stringify(igDetail)}\nFacebook: ${JSON.stringify(fbDetail)}\n\nRetry: POST https://duavault.com/api/cron/force-post with {"slot":"evening"}`
+      );
+    } else if (!igOk && !igAlreadyPosted) {
+      await sendAdminAlert(
+        "⚠️ Evening post — Instagram FAILED (Facebook posted OK)",
+        `Dua: ${dua.slug}\nDate: ${new Date().toISOString()}\n\nInstagram error: ${JSON.stringify(igDetail)}\nFacebook: ✅\n\nRetry: POST https://duavault.com/api/cron/force-post {"slot":"evening"}`
+      );
+    } else if (!fbOk && !fbAlreadyPosted) {
+      await sendAdminAlert(
+        "⚠️ Evening post — Facebook FAILED (Instagram posted OK)",
+        `Dua: ${dua.slug}\nDate: ${new Date().toISOString()}\n\nFacebook error: ${JSON.stringify(fbDetail)}\nInstagram: ✅\n\nRetry: POST https://duavault.com/api/cron/force-post {"slot":"evening"}`
       );
     }
 
     return Response.json({
-      ok: igOk || fbOk,
+      ok: igOk && fbOk,
       dua: dua.slug,
-      instagram: igDetail,
-      facebook: fbDetail,
+      instagram: igAlreadyPosted ? { skipped: true } : igDetail,
+      facebook: fbAlreadyPosted ? { skipped: true } : fbDetail,
     });
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
