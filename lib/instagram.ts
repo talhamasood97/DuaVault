@@ -11,7 +11,7 @@
  *   BLOB_READ_WRITE_TOKEN       — Vercel Blob token (auto-added when Blob store is connected)
  */
 
-import { put, list, del } from "@vercel/blob";
+import { put } from "@vercel/blob";
 
 const GRAPH = "https://graph.facebook.com/v20.0";
 
@@ -230,13 +230,24 @@ function todayIST(): string {
   return new Date(Date.now() + 5.5 * 3600 * 1000).toISOString().slice(0, 10);
 }
 
-/** Returns true if this slot+platform has already been posted today. */
+/**
+ * Returns true if this slot+platform has already been posted today.
+ * Uses a direct CDN HEAD request instead of list() to avoid Next.js fetch-cache
+ * returning stale results (list() uses fetch internally which Next.js caches).
+ */
 export async function hasPostedToday(
   slot: "morning" | "evening",
   platform: "instagram" | "facebook"
 ): Promise<boolean> {
-  const { blobs } = await list({ prefix: `post-log/${todayIST()}-${slot}-${platform}` });
-  return blobs.length > 0;
+  try {
+    const token = process.env.BLOB_READ_WRITE_TOKEN ?? "";
+    const storeId = token.match(/vercel_blob_rw_([^_]+)/i)?.[1]?.toLowerCase() ?? "";
+    const url = `https://${storeId}.public.blob.vercel-storage.com/post-log/${todayIST()}-${slot}-${platform}.txt`;
+    const res = await fetch(url, { method: "HEAD", cache: "no-store" });
+    return res.ok;
+  } catch {
+    return false;
+  }
 }
 
 /** Records that this slot+platform was successfully posted today. */
