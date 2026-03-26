@@ -11,7 +11,8 @@
  *   BLOB_READ_WRITE_TOKEN       — Vercel Blob token (auto-added when Blob store is connected)
  */
 
-import { put } from "@vercel/blob";
+import { put, list } from "@vercel/blob";
+import { unstable_noStore as noStore } from "next/cache";
 
 const GRAPH = "https://graph.facebook.com/v20.0";
 
@@ -232,21 +233,26 @@ function todayIST(): string {
 
 /**
  * Returns true if this slot+platform has already been posted today.
- * Uses a direct CDN HEAD request instead of list() to avoid Next.js fetch-cache
- * returning stale results (list() uses fetch internally which Next.js caches).
+ *
+ * Uses list() via the official Blob SDK with noStore() to explicitly opt out
+ * of Next.js data cache (which can serve stale results for fetch-based calls).
+ *
+ * Fail-closed on error: returns true (assume posted) to prevent duplicates.
+ * A missed post is recoverable via the retry cron; a duplicate post is not.
  */
 export async function hasPostedToday(
   slot: "morning" | "evening",
   platform: "instagram" | "facebook"
 ): Promise<boolean> {
+  noStore(); // explicitly opt out of Next.js data cache for this invocation
   try {
-    const token = process.env.BLOB_READ_WRITE_TOKEN ?? "";
-    const storeId = token.match(/vercel_blob_rw_([^_]+)/i)?.[1]?.toLowerCase() ?? "";
-    const url = `https://${storeId}.public.blob.vercel-storage.com/post-log/${todayIST()}-${slot}-${platform}.txt`;
-    const res = await fetch(url, { method: "HEAD", cache: "no-store" });
-    return res.ok;
-  } catch {
-    return false;
+    const { blobs } = await list({ prefix: `post-log/${todayIST()}-${slot}-${platform}` });
+    return blobs.length > 0;
+  } catch (err) {
+    // Fail-closed: assume already posted to prevent duplicate on Blob API failure.
+    // The retry cron will recover any genuine misses.
+    console.error("[hasPostedToday] Blob list failed — assuming posted to prevent duplicate:", err);
+    return true;
   }
 }
 
