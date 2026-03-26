@@ -24,7 +24,7 @@ export async function sendAdminAlert(subject: string, body: string): Promise<voi
   const adminEmail = process.env.ADMIN_ALERT_EMAIL;
   if (!apiKey || !adminEmail) return;
   try {
-    await fetch("https://api.resend.com/emails", {
+    const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -34,8 +34,12 @@ export async function sendAdminAlert(subject: string, body: string): Promise<voi
         html: `<div style="font-family:monospace;font-size:14px;white-space:pre-wrap">${body}</div>`,
       }),
     });
+    if (!res.ok) {
+      // Non-2xx from Resend — log so it shows in Vercel logs
+      console.error(`[sendAdminAlert] Resend returned ${res.status}: ${await res.text()}`);
+    }
   } catch (e) {
-    // Never let alert failure crash the main flow — but log so it shows in Vercel logs
+    // Network/throw failure — never crash the main flow
     console.error("[sendAdminAlert] Failed to send alert email:", e);
   }
 }
