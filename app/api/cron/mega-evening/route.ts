@@ -29,10 +29,23 @@ export async function GET(request: Request) {
   }
 
   try {
-    const [igAlreadyPosted, fbAlreadyPosted] = await Promise.all([
-      hasPostedToday("evening", "instagram"),
-      hasPostedToday("evening", "facebook"),
-    ]);
+    // hasPostedToday throws on Blob error. Proceed fail-open (assume not posted)
+    // because with no retry cron, a permanent miss is worse than a rare duplicate.
+    let igAlreadyPosted = false;
+    let fbAlreadyPosted = false;
+    try {
+      [igAlreadyPosted, fbAlreadyPosted] = await Promise.all([
+        hasPostedToday("evening", "instagram"),
+        hasPostedToday("evening", "facebook"),
+      ]);
+    } catch (blobErr) {
+      const blobMsg = blobErr instanceof Error ? blobErr.message : String(blobErr);
+      console.error("[mega-evening] Blob dedup check failed — proceeding fail-open:", blobMsg);
+      await sendAdminAlert(
+        "⚠️ Evening cron — dedup check failed, proceeding anyway",
+        `Blob error: ${blobMsg}\nDate: ${new Date().toISOString()}\n\nWill attempt to post to both platforms. If already posted, a duplicate may occur.`
+      );
+    }
 
     if (igAlreadyPosted && fbAlreadyPosted) {
       return Response.json({ ok: true, skipped: true, reason: "already posted to both platforms this evening" });

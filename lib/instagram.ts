@@ -237,23 +237,17 @@ function todayIST(): string {
  * Uses list() via the official Blob SDK with noStore() to explicitly opt out
  * of Next.js data cache (which can serve stale results for fetch-based calls).
  *
- * Fail-closed on error: returns true (assume posted) to prevent duplicates.
- * A missed post is recoverable via the retry cron; a duplicate post is not.
+ * Throws on Blob error — callers decide whether to fail-open or fail-closed.
+ * With the single-run mega-cron design (no retry cron), a permanent miss is
+ * worse than a rare duplicate, so callers catch and proceed fail-open.
  */
 export async function hasPostedToday(
   slot: "morning" | "evening",
   platform: "instagram" | "facebook"
 ): Promise<boolean> {
   noStore(); // explicitly opt out of Next.js data cache for this invocation
-  try {
-    const { blobs } = await list({ prefix: `post-log/${todayIST()}-${slot}-${platform}` });
-    return blobs.length > 0;
-  } catch (err) {
-    // Fail-closed: assume already posted to prevent duplicate on Blob API failure.
-    // The retry cron will recover any genuine misses.
-    console.error("[hasPostedToday] Blob list failed — assuming posted to prevent duplicate:", err);
-    return true;
-  }
+  const { blobs } = await list({ prefix: `post-log/${todayIST()}-${slot}-${platform}` });
+  return blobs.length > 0;
 }
 
 /** Records that this slot+platform was successfully posted today. */

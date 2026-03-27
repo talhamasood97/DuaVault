@@ -35,10 +35,24 @@ export async function GET(request: Request) {
 
   // ─── Task 1: Hadith social post (Instagram + Facebook) ───────────────────
   try {
-    const [igAlreadyPosted, fbAlreadyPosted] = await Promise.all([
-      hasPostedToday("morning", "instagram"),
-      hasPostedToday("morning", "facebook"),
-    ]);
+    // hasPostedToday throws on Blob error. We catch and proceed fail-open
+    // (assume not posted) because with no retry cron, a miss is worse than
+    // a rare duplicate. Admin alert is sent either way.
+    let igAlreadyPosted = false;
+    let fbAlreadyPosted = false;
+    try {
+      [igAlreadyPosted, fbAlreadyPosted] = await Promise.all([
+        hasPostedToday("morning", "instagram"),
+        hasPostedToday("morning", "facebook"),
+      ]);
+    } catch (blobErr) {
+      const blobMsg = blobErr instanceof Error ? blobErr.message : String(blobErr);
+      console.error("[mega-morning] Blob dedup check failed — proceeding fail-open:", blobMsg);
+      await sendAdminAlert(
+        "⚠️ Morning cron — dedup check failed, proceeding anyway",
+        `Blob error: ${blobMsg}\nDate: ${new Date().toISOString()}\n\nWill attempt to post to both platforms. If already posted, a duplicate may occur.`
+      );
+    }
 
     if (igAlreadyPosted && fbAlreadyPosted) {
       results.social = { skipped: true, reason: "already posted to both platforms this morning" };
@@ -111,5 +125,8 @@ export async function GET(request: Request) {
     results.email = { ok: false, error: message };
   }
 
-  return Response.json({ ok: true, ...results });
+  const socialOk = (results.social as any)?.ok !== false && !(results.social as any)?.error;
+  const emailOk = !(results.email as any)?.error && (results.email as any)?.ok !== false;
+  const allOk = socialOk && emailOk;
+  return Response.json({ ok: allOk, ...results }, { status: allOk ? 200 : 500 });
 }
