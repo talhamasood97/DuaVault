@@ -2,32 +2,12 @@
   "framework": "nextjs",
   "crons": [
     {
-      "path": "/api/cron/check-token",
-      "schedule": "0 1 * * *"
-    },
-    {
-      "path": "/api/cron/post-morning",
-      "schedule": "0 2 * * *"
-    },
-    {
-      "path": "/api/cron/post-morning",
-      "schedule": "30 2 * * *"
-    },
-    {
-      "path": "/api/send-daily-hadith",
+      "path": "/api/cron/mega-morning",
       "schedule": "0 3 * * *"
     },
     {
-      "path": "/api/cron/post-evening",
-      "schedule": "0 14 * * *"
-    },
-    {
-      "path": "/api/cron/post-evening",
+      "path": "/api/cron/mega-evening",
       "schedule": "30 14 * * *"
-    },
-    {
-      "path": "/api/cron/refresh-token",
-      "schedule": "0 0 1 * *"
     }
   ]
 }
