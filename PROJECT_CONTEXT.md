@@ -1,7 +1,7 @@
 # PROJECT_CONTEXT.md — DuaVault
 
 > Single source of truth for the DuaVault codebase. Every fact below is derived from actual code inspection.
-> Last updated: 2026-03-26
+> Last updated: 2026-03-27
 
 ---
 
@@ -236,13 +236,15 @@ Supabase search: PostgreSQL `websearch` type full-text search on `search_vector`
 │       ├── logo/route.tsx          # Dynamic logo generation
 │       │
 │       └── cron/
-│           ├── post-morning/route.ts   # Morning social post (hadith)
-│           ├── post-evening/route.ts   # Evening social post (dua)
-│           ├── check-token/route.ts    # Daily Meta token health check
-│           ├── refresh-token/route.ts  # Monthly Meta token auto-refresh
+│           ├── mega-morning/route.ts   # PRIMARY: 8:30 AM IST — hadith social post + hadith email
+│           ├── mega-evening/route.ts   # PRIMARY: 8:00 PM IST — dua social post (IG + FB)
+│           ├── force-post/route.ts     # Manual re-trigger for failed posts
+│           ├── post-morning/route.ts   # Legacy (inactive — superseded by mega-morning)
+│           ├── post-evening/route.ts   # Legacy (inactive — superseded by mega-evening)
+│           ├── check-token/route.ts    # Meta token health check (manual only)
+│           ├── refresh-token/route.ts  # Meta token auto-refresh (manual only)
 │           ├── fill-buffer/route.ts    # Pre-schedule 4 days ahead (DISABLED)
-│           ├── init-buffer/route.ts    # One-shot: seed 4-day buffer
-│           └── force-post/route.ts     # Manual re-trigger for failed posts
+│           └── init-buffer/route.ts    # One-shot: seed 4-day buffer
 │
 ├── components/
 │   ├── analytics/
@@ -293,14 +295,15 @@ Supabase search: PostgreSQL `websearch` type full-text search on `search_vector`
 │   └── validate.ts             # Content validation script
 │
 ├── lib/
-│   ├── analytics.ts            # GA4 event helpers (search, dua_viewed, hadith_viewed, etc.)
-│   ├── captions.ts             # Instagram/Facebook caption builders
-│   ├── duas.ts                 # Data access layer with Supabase/static fallback
-│   ├── hadith-categories.ts    # 6 hadith categories mapping 34 topics
-│   ├── instagram.ts            # Meta Graph API: post to IG + FB, dedup, alerting
-│   ├── rateLimit.ts            # In-memory per-process rate limiter
-│   ├── supabase.ts             # Supabase client constructors (anon, admin)
-│   └── utils.ts                # cn(), CATEGORIES, EMOTIONS, SITE_URL, escapeHtml, safeJsonLd
+│   ├── analytics.ts              # GA4 event helpers (search, dua_viewed, hadith_viewed, etc.)
+│   ├── captions.ts               # Instagram/Facebook caption builders
+│   ├── duas.ts                   # Data access layer with Supabase/static fallback
+│   ├── hadith-categories.ts      # 6 hadith categories mapping 34 topics
+│   ├── instagram.ts              # Meta Graph API: post to IG + FB, dedup, alerting
+│   ├── rateLimit.ts              # In-memory per-process rate limiter
+│   ├── sendDailyHadithEmail.ts   # Shared daily hadith email logic (used by mega-morning + manual route)
+│   ├── supabase.ts               # Supabase client constructors (anon, admin)
+│   └── utils.ts                  # cn(), CATEGORIES, EMOTIONS, SITE_URL, escapeHtml, safeJsonLd
 │
 ├── types/
 │   └── index.ts                # Dua, Hadith, SearchResult, CategoryMeta, EmotionMeta
@@ -314,7 +317,7 @@ Supabase search: PostgreSQL `websearch` type full-text search on `search_vector`
 │   ├── generate_excel.py       # Excel export of duas
 │   └── generate_prd.js         # PRD generation
 │
-├── vercel.json                 # Cron schedules (7 active entries)
+├── vercel.json                 # Cron schedules (2 active mega-crons — Hobby plan limit)
 ├── next.config.js              # Security headers, CSP, www redirect, native module externals
 ├── tailwind.config.ts          # Custom colors (sand, emerald, gold), Arabic font sizes, animations
 ├── package.json                # Dependencies, scripts, node >=20.0.0
@@ -381,24 +384,29 @@ Supabase search: PostgreSQL `websearch` type full-text search on `search_vector`
 - Save/unsave duas (localStorage)
 - Share via WhatsApp, Twitter, Facebook, copy link, native share
 - Daily rotating dua and hadith
-- Automated social posting: morning hadith (7:30 AM IST) + evening dua (7:30 PM IST) to Instagram and Facebook
-- Per-platform deduplication via Vercel Blob markers (fail-closed)
-- Automatic retry crons at +30 min for each slot
-- Daily hadith email to confirmed subscribers (8:30 AM IST)
-- Monthly Meta token auto-refresh via Vercel API
-- Daily token health check (6:30 AM IST)
-- Admin email alerts on failures (via Resend)
+- Automated social posting via 2 mega-crons (Vercel Hobby plan limit):
+  - `mega-morning` at 8:30 AM IST: posts daily hadith to IG + FB, then sends hadith email to all subscribers
+  - `mega-evening` at 8:00 PM IST: posts daily dua to IG + FB
+- Per-platform deduplication via Vercel Blob markers (fail-open on Blob error — see below)
+- Daily hadith email to confirmed subscribers (runs inside mega-morning at 8:30 AM IST)
+- Admin email alerts on failures (via Resend to feedback.duavault@gmail.com)
 - sitemap.xml, robots.txt, IndexNow submission
 - SEO: JSON-LD structured data, canonical URLs, OG images
 - GA4 custom events: search, dua_viewed, hadith_viewed, save_dua, share, subscribe
+- Manual trigger endpoints for email and social posts (see Section 8)
 
-### What Is Disabled
-- `fill-buffer` cron (pre-scheduling 4 days ahead) — removed from vercel.json to prevent duplicate posts
+### What Is Disabled / Legacy
+- `fill-buffer` cron — removed from vercel.json to prevent duplicate posts
+- `post-morning`, `post-evening` routes — superseded by mega-crons (files remain for manual use)
+- `check-token`, `refresh-token` crons — removed from vercel.json (Hobby limit reached); available for manual trigger only
+- All retry crons removed — no longer possible within the 2-cron limit
 
 ### Known Technical Decisions
 - Globe emoji removed from captions (renders as raw `\uD83C` escape on Instagram)
 - Using `list()` with `noStore()` for dedup instead of HEAD fetch (more reliable against Next.js cache)
-- Fail-closed dedup: on Blob API error, assumes already posted (prevents duplicates; missed posts recovered by retry cron)
+- **Fail-open dedup**: `hasPostedToday()` now throws on Blob error instead of returning `true`. Both mega-crons catch the error, send an admin alert, and proceed assuming not posted. Rationale: with no retry cron, a permanent miss is worse than a rare duplicate on Blob outage.
+- **Real ok status**: `mega-morning` returns HTTP 500 + `ok: false` when social or email tasks fail. Previously always returned `ok: true`, masking failures.
+- **Manual trigger guide**: All endpoints require `Authorization: Bearer <CRON_SECRET>` header. Email: `GET /api/send-daily-hadith`. Social posts: `POST /api/cron/force-post` with body `{"slot":"morning"}` or `{"slot":"evening"}`. Force repost: add `"force":true`.
 
 ## 8. API Contracts & Integration Points
 
@@ -428,30 +436,30 @@ Supabase search: PostgreSQL `websearch` type full-text search on `search_vector`
 
 | Method | Path | Description |
 |---|---|---|
-| GET | `/api/cron/post-morning` | Post daily hadith to IG + FB |
-| GET | `/api/cron/post-evening` | Post daily dua to IG + FB |
-| GET | `/api/cron/check-token` | Verify Meta token validity |
-| GET | `/api/cron/refresh-token` | Exchange Meta token for fresh 60-day token |
+| GET | `/api/cron/mega-morning` | Automated: post hadith to IG + FB + send hadith email (8:30 AM IST) |
+| GET | `/api/cron/mega-evening` | Automated: post dua to IG + FB (8:00 PM IST) |
+| POST | `/api/cron/force-post` | Manual: re-trigger a slot. Body: `{ slot: "morning"\|"evening", force?: true }` |
+| GET | `/api/send-daily-hadith` | Manual: batch-send hadith email to all confirmed subscribers |
+| GET | `/api/cron/post-morning` | Legacy manual trigger: hadith post only |
+| GET | `/api/cron/post-evening` | Legacy manual trigger: dua post only |
+| GET | `/api/cron/check-token` | Manual: verify Meta token validity |
+| GET | `/api/cron/refresh-token` | Manual: exchange Meta token for fresh 60-day token |
 | GET | `/api/cron/fill-buffer` | Pre-schedule posts 4 days ahead (DISABLED) |
 | GET | `/api/cron/init-buffer` | One-shot: seed 4-day buffer |
-| POST | `/api/cron/force-post` | Re-trigger a slot. Body: `{ slot: "morning"\|"evening", force?: true }` |
-| GET | `/api/send-daily-hadith` | Batch-send daily hadith email to all confirmed subscribers |
 | POST | `/api/indexnow` | Submit all URLs to Bing/Yandex IndexNow |
 | GET | `/api/dedupe-duas` | Remove known duplicate slugs from Supabase |
 
 ### Vercel Cron Schedule (vercel.json)
 
 All times UTC. IST = UTC + 5:30.
+**Vercel Hobby plan allows exactly 2 active crons.** Only these two run automatically:
 
 | Schedule (UTC) | IST | Path | Purpose |
 |---|---|---|---|
-| `0 1 * * *` | 6:30 AM | `/api/cron/check-token` | Token health check |
-| `0 2 * * *` | 7:30 AM | `/api/cron/post-morning` | Morning hadith post (primary) |
-| `30 2 * * *` | 8:00 AM | `/api/cron/post-morning` | Morning hadith post (retry) |
-| `0 3 * * *` | 8:30 AM | `/api/send-daily-hadith` | Daily hadith email |
-| `0 14 * * *` | 7:30 PM | `/api/cron/post-evening` | Evening dua post (primary) |
-| `30 14 * * *` | 8:00 PM | `/api/cron/post-evening` | Evening dua post (retry) |
-| `0 0 1 * *` | 5:30 AM 1st | `/api/cron/refresh-token` | Monthly token refresh |
+| `0 3 * * *` | 8:30 AM | `/api/cron/mega-morning` | Post hadith to IG + FB, then send hadith email to all subscribers |
+| `30 14 * * *` | 8:00 PM | `/api/cron/mega-evening` | Post dua to IG + FB |
+
+All other routes (check-token, refresh-token, post-morning, post-evening) must be triggered manually.
 
 ### External Integrations
 
@@ -535,14 +543,17 @@ All times UTC. IST = UTC + 5:30.
 
 ### Social Posting Flow
 
-1. Vercel cron triggers at scheduled time
-2. Route checks `CRON_SECRET`, calls `hasPostedToday()` per-platform
-3. Generates image URL pointing to `/api/instagram/hadith` or `/api/instagram/dua`
-4. `postToInstagram()`: fetches image -> uploads to Blob CDN -> creates IG container -> polls status -> publishes
-5. `postToFacebook()`: fetches image -> uploads to Blob CDN -> uploads photo (unpublished) -> posts to feed -> fallback to /photos
-6. On success: `markPostedToday()` writes marker to Blob
-7. On failure: `sendAdminAlert()` emails admin with retry instructions
-8. Retry cron at +30 min only attempts platforms that failed
+1. Vercel cron triggers `mega-morning` (8:30 AM IST) or `mega-evening` (8:00 PM IST)
+2. Route checks `CRON_SECRET`
+3. Calls `hasPostedToday(slot, platform)` for each platform — if Blob throws, proceeds fail-open (assume not posted) and sends admin alert
+4. Generates image URL pointing to `/api/instagram/hadith` or `/api/instagram/dua`
+5. `postToInstagram()`: fetches image → uploads to Blob CDN → creates IG container → polls status → publishes
+6. `postToFacebook()`: fetches image → uploads to Blob CDN → uploads photo (unpublished) → posts to /feed with `attached_media` → fallback to /photos
+7. On success: `markPostedToday()` writes `post-log/{DATE}-{slot}-{platform}.txt` to Blob
+8. On failure: `sendAdminAlert()` emails admin with retry instructions
+9. mega-morning then runs `sendDailyHadithEmails()` for the email task
+10. Response: `ok: true` + HTTP 200 only if both tasks succeeded; `ok: false` + HTTP 500 otherwise
+11. No automatic retry — use `POST /api/cron/force-post` to manually retry
 
 ### Email Subscription Flow
 
@@ -567,6 +578,8 @@ All times UTC. IST = UTC + 5:30.
 
 | Date | Commit | Summary |
 |---|---|---|
+| 2026-03-27 | `f07a4d0` | fix: fail-open on Blob dedup error + real ok status in mega-crons |
+| 2026-03-27 | `f5c4b26`–`1fbd357` | feat: consolidate 7 crons into 2 mega-crons (Hobby plan limit); extract sendDailyHadithEmail |
 | Recent | `a85459d` | fix: revert to list() with noStore() + fail-closed on error for robust deduplication |
 | Recent | `e2adf37` | fix: replace list() with direct CDN HEAD fetch in hasPostedToday |
 | Recent | `b9509ac` | fix: force-post respects per-platform markers by default |
