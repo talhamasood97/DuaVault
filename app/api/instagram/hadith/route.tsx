@@ -104,7 +104,7 @@ export async function GET(request: Request) {
   const arabic = hadith.arabic ?? "";
   const { fontSize: aFS, lines: arabicLines, blockH: arabicBlockH } = pickArabicStyle(arabic, 920);
 
-  const quote = extractCoreQuote(hadith.translation);
+  const quote = extractCoreQuote(hadith.translation).replace(/\uFDFA/g, "(SAW)");
   const { fontSize: qFS, lineH: qLH, charsPerLine, blockH: quoteBlockH } = pickQuoteStyle(quote.length);
   let quoteLines = splitLines(quote, charsPerLine);
   if (quoteLines.length > 5) { quoteLines = quoteLines.slice(0, 5); quoteLines[4] = quoteLines[4].slice(0, -1) + "\u2026"; }
