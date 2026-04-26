@@ -1710,6 +1710,575 @@ export const HADITHS: Hadith[] = [
     daily_practice:
       "Never miss Fajr — it places you under the direct protection of Allah for the day. Show up at dawn, and Allah keeps you in His care.",
   },
+
+  // ─── BATCH 2: 30 NEW HADITHS (IDs 91–120) ────────────────────────────────────
+  {
+    id: 91,
+    slug: "hadith-do-not-waste-water-in-wudu",
+    title: "Do Not Be Wasteful Even in Wudu",
+    arabic:
+      "أَنَّ النَّبِيَّ صلى الله عليه وسلم مَرَّ بِسَعْدٍ وَهُوَ يَتَوَضَّأُ فَقَالَ مَا هَذَا السَّرَفُ يَا سَعْدُ قَالَ أَفِي الْوُضُوءِ سَرَفٌ قَالَ نَعَمْ وَإِنْ كُنْتَ عَلَى نَهَرٍ جَارٍ",
+    transliteration:
+      "Annan-Nabiyya ﷺ marra bi Sa'din wa huwa yatawadd'a faqala ma hadhas-sarfu ya Sa'd, qala: afi'l-wudu'i sarafun? Qala: Na'am wa in kunta 'ala naharin jar",
+    translation:
+      "Narrated Ibn Majah: The Prophet (SAW) passed by Sa'd while he was performing wudu and said, 'What is this waste, O Sa'd?' Sa'd asked, 'Is there waste even in wudu?' He replied, 'Yes, even if you are at a flowing river.'",
+    narrator: "Sa'd ibn Abi Waqqas (RA)",
+    source_book: "Sunan Ibn Majah",
+    hadith_number: "425",
+    grade: "Hasan",
+    topic: "conservation",
+    topic_tags: ["wudu", "water", "waste", "environment", "moderation", "purification", "sunnah"],
+    daily_practice:
+      "Use only what you need in wudu today — three washes per limb is the sunnah maximum. Respect water as a trust from Allah.",
+  },
+  {
+    id: 92,
+    slug: "hadith-sleep-in-state-of-wudu",
+    title: "Sleep in a State of Wudu",
+    arabic:
+      "إِذَا أَتَيْتَ مَضْجَعَكَ فَتَوَضَّأْ وُضُوءَكَ لِلصَّلَاةِ ثُمَّ اضْطَجِعْ عَلَى شِقِّكَ الْأَيْمَنِ",
+    transliteration:
+      "Idha atayta madja'aka fatawadda' wudu'aka lis-salah thumma'dtaji' 'ala shiqqikal-aymanم",
+    translation:
+      "Narrated al-Bara' ibn 'Azib: The Prophet (SAW) said, 'When you go to bed, perform wudu as you do for prayer, then lie on your right side.'",
+    narrator: "Al-Bara' ibn 'Azib (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "247",
+    grade: "Sahih",
+    topic: "sleep",
+    topic_tags: ["wudu", "sleep", "bedtime", "purity", "night", "sunnah", "rest", "tahara"],
+    daily_practice:
+      "Make wudu before you sleep tonight and lie on your right side — you will be in a state of purity if you die in the night.",
+  },
+  {
+    id: 93,
+    slug: "hadith-people-praise-deceased",
+    title: "When People Speak Well of the Deceased",
+    arabic:
+      "مَا مِنْ مُسْلِمٍ يَمُوتُ فَيَقُومُ عَلَى جَنَازَتِهِ أَرْبَعُونَ رَجُلًا لَا يُشْرِكُونَ بِاللَّهِ شَيْئًا إِلَّا شَفَّعَهُمُ اللَّهُ فِيهِ",
+    transliteration:
+      "Ma min muslimin yamutu fayaqumu 'ala janazatihi arba'una rajulan la yushrikuna billahi shay'an illa shaffa'ahumulLahu fih",
+    translation:
+      "Narrated Ibn Abbas (RA): The Messenger of Allah (SAW) said, 'If any Muslim dies and forty men who associate nothing with Allah stand over his funeral prayer, Allah will accept their intercession for him.'",
+    narrator: "Ibn Abbas (RA)",
+    source_book: "Sahih Muslim",
+    hadith_number: "948",
+    grade: "Sahih",
+    topic: "death",
+    topic_tags: ["janazah", "death", "funeral", "prayer", "intercession", "community", "deceased"],
+    daily_practice:
+      "Attend every janazah you can — your prayer is an act of intercession. Live so that people will pray over you with sincere hearts.",
+  },
+  {
+    id: 94,
+    slug: "hadith-allah-shy-to-reject-hands",
+    title: "Allah Is Too Generous to Return Empty Hands",
+    arabic:
+      "إِنَّ رَبَّكُمْ تَبَارَكَ وَتَعَالَى حَيِيٌّ كَرِيمٌ يَسْتَحِي مِنْ عَبْدِهِ إِذَا رَفَعَ يَدَيْهِ إِلَيْهِ أَنْ يَرُدَّهُمَا صِفْرًا",
+    transliteration:
+      "Inna Rabbakum tabaraka wa ta'ala Hayyun Karimun, yastahee min 'abdihi idha rafa'a yadayhi ilayhi an yaruddahuma sifra",
+    translation:
+      "Narrated Salman al-Farisi (RA): The Prophet (SAW) said, 'Verily, your Lord — Blessed and Exalted — is Generous and Modest. He is too modest to return the hands of His servant empty when he raises them to Him.'",
+    narrator: "Salman al-Farisi (RA)",
+    source_book: "Sunan Abu Dawud",
+    hadith_number: "1488",
+    grade: "Hasan",
+    topic: "dua",
+    topic_tags: ["dua", "supplication", "generosity", "allah", "answered-prayer", "hope", "trust", "raising-hands"],
+    daily_practice:
+      "Raise your hands and make du'a with certainty — Allah is too generous to send them back empty. Ask without hesitation.",
+  },
+  {
+    id: 95,
+    slug: "hadith-friday-is-best-day",
+    title: "Friday — The Best Day of the Week",
+    arabic:
+      "خَيْرُ يَوْمٍ طَلَعَتْ عَلَيْهِ الشَّمْسُ يَوْمُ الْجُمُعَةِ فِيهِ خُلِقَ آدَمُ وَفِيهِ أُدْخِلَ الْجَنَّةَ وَفِيهِ أُخْرِجَ مِنْهَا وَلَا تَقُومُ السَّاعَةُ إِلَّا فِي يَوْمِ الْجُمُعَةِ",
+    transliteration:
+      "Khayru yawmin tala'at 'alayhish-shamsu yawmul-jum'ah, fihi khuliqa Adamu wa fihi udkhilal-jannah wa fihi ukhrija minha wa la taqumus-sa'atu illa fi yawmil-jum'ah",
+    translation:
+      "Narrated Abu Hurayrah (RA): The Messenger of Allah (SAW) said, 'The best day on which the sun rises is Friday. On it Adam was created, on it he was admitted to Paradise, and on it he was expelled from it. And the Hour will not be established except on a Friday.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih Muslim",
+    hadith_number: "854",
+    grade: "Sahih",
+    topic: "friday",
+    topic_tags: ["friday", "jumu'ah", "best-day", "adam", "paradise", "dua", "dhikr", "salawat"],
+    daily_practice:
+      "On Fridays: send abundant salawat on the Prophet (SAW), read Surah al-Kahf, and look for the blessed hour of accepted du'a between Asr and Maghrib.",
+  },
+  {
+    id: 96,
+    slug: "hadith-two-rakahs-before-fajr",
+    title: "The Fajr Sunnah — Better Than the World and All It Contains",
+    arabic:
+      "رَكْعَتَا الْفَجْرِ خَيْرٌ مِنَ الدُّنْيَا وَمَا فِيهَا",
+    transliteration:
+      "Rak'atal-fajri khayrun minad-dunya wa ma fiha",
+    translation:
+      "Narrated 'Aisha (RA): The Messenger of Allah (SAW) said, 'The two rak'ahs of Fajr are better than the world and all that it contains.'",
+    narrator: "Aisha (RA)",
+    source_book: "Sahih Muslim",
+    hadith_number: "725",
+    grade: "Sahih",
+    topic: "prayer",
+    topic_tags: ["fajr", "sunnah", "prayer", "morning", "dawn", "optional-prayer", "nafl", "dunya", "worship"],
+    daily_practice:
+      "Never skip the two sunnah rak'ahs before Fajr — they are worth more than everything in this world. Wake up early enough to pray them calmly.",
+  },
+  {
+    id: 97,
+    slug: "hadith-ayatul-kursi-after-prayer",
+    title: "Recite Ayat al-Kursi After Every Obligatory Prayer",
+    arabic:
+      "مَنْ قَرَأَ آيَةَ الْكُرْسِيِّ دُبُرَ كُلِّ صَلَاةٍ مَكْتُوبَةٍ لَمْ يَمْنَعْهُ مِنْ دُخُولِ الْجَنَّةِ إِلَّا أَنْ يَمُوتَ",
+    transliteration:
+      "Man qara'a Ayatal-Kursiyyi dubura kulli salatin maktubatin lam yamna'hu min dukhulil-jannati illa an yamut",
+    translation:
+      "Narrated Abu Umamah (RA): The Messenger of Allah (SAW) said, 'Whoever recites Ayat al-Kursi after every obligatory prayer, nothing will prevent him from entering Paradise except death.'",
+    narrator: "Abu Umamah al-Bahili (RA)",
+    source_book: "Sahih Ibn Hibban",
+    hadith_number: "2395",
+    grade: "Sahih",
+    topic: "quran",
+    topic_tags: ["ayatul-kursi", "quran", "prayer", "salah", "paradise", "jannah", "dhikr", "after-salah", "protection"],
+    daily_practice:
+      "After every fard prayer today, recite Ayat al-Kursi before you stand up. Make it as automatic as the prayer itself.",
+  },
+  {
+    id: 98,
+    slug: "hadith-best-marriage-is-simple",
+    title: "The Best Nikah Is the Simplest",
+    arabic:
+      "أَعْظَمُ النِّكَاحِ بَرَكَةً أَيْسَرُهُ مَؤُونَةً",
+    transliteration:
+      "A'zhaman-nikaahi barakatan aysaruhu mu'unatan",
+    translation:
+      "Narrated 'Uqbah ibn 'Amir (RA): The Messenger of Allah (SAW) said, 'The most blessed marriage is the one that is easiest in terms of expenditure.'",
+    narrator: "'Uqbah ibn 'Amir (RA)",
+    source_book: "Musnad Ahmad",
+    hadith_number: "17440",
+    grade: "Hasan",
+    topic: "marriage",
+    topic_tags: ["marriage", "nikah", "simplicity", "mahr", "blessing", "barakah", "family", "wedding"],
+    daily_practice:
+      "If you are planning a nikah, prioritise simplicity over spectacle — the greater the ease, the greater the blessing Allah places in it.",
+  },
+  {
+    id: 99,
+    slug: "hadith-kindness-to-animals",
+    title: "Sins Forgiven for Giving Water to a Thirsty Dog",
+    arabic:
+      "بَيْنَمَا رَجُلٌ يَمْشِي فَاشْتَدَّ عَلَيْهِ الْعَطَشُ فَنَزَلَ بِئْرًا فَشَرِبَ مِنْهَا ثُمَّ خَرَجَ فَإِذَا هُوَ بِكَلْبٍ يَلْهَثُ يَأْكُلُ الثَّرَى مِنَ الْعَطَشِ فَقَالَ لَقَدْ بَلَغَ هَذَا مِثْلُ الَّذِي بَلَغَ بِي فَمَلَأَ خُفَّهُ ثُمَّ أَمْسَكَهُ بِفِيهِ ثُمَّ رَقِيَ فَسَقَى الْكَلْبَ فَشَكَرَ اللَّهُ لَهُ فَغَفَرَ لَهُ",
+    transliteration:
+      "Baynama rajulun yamshi fashtadda 'alayhil-'atash fanazala bi'ran fashariba minha thumma kharaja fa idha huwa bikalbin yalhathu ya'kuluth-thara minal-'atash, faqala: laqad balagha hadha mithla alladhi balagha bi, famala'a khuffahu thumma amsaka bifeeh thumma raqi fasaqal-kalba, fashakara-Allahu lahu faghafaralah",
+    translation:
+      "Narrated Abu Hurayrah (RA): The Prophet (SAW) said, 'While a man was walking he felt very thirsty and went down a well and drank from it. When he came out he saw a dog panting and eating the moist earth out of thirst. He said to himself, this dog is suffering from the same thirst as I was. He went down the well and filled his shoe and gave the dog water. Allah thanked him for this and forgave his sins.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "2363",
+    grade: "Sahih",
+    topic: "mercy",
+    topic_tags: ["animals", "mercy", "kindness", "forgiveness", "compassion", "charity", "rahma", "water"],
+    daily_practice:
+      "Show mercy to every living creature today — a kind act towards an animal can earn Allah's forgiveness. Rahma begins with the small things.",
+  },
+  {
+    id: 100,
+    slug: "hadith-every-joint-owes-sadaqah",
+    title: "Every Joint of Your Body Owes a Daily Charity",
+    arabic:
+      "كُلُّ سُلَامَى مِنَ النَّاسِ عَلَيْهِ صَدَقَةٌ كُلَّ يَوْمٍ تَطْلُعُ فِيهِ الشَّمْسُ تَعْدِلُ بَيْنَ الِاثْنَيْنِ صَدَقَةٌ وَتُعِينُ الرَّجُلَ فِي دَابَّتِهِ فَتَحْمِلُهُ عَلَيْهَا أَوْ تَرْفَعُ لَهُ عَلَيْهَا مَتَاعَهُ صَدَقَةٌ وَالْكَلِمَةُ الطَّيِّبَةُ صَدَقَةٌ وَبِكُلِّ خَطْوَةٍ تَمْشِيهَا إِلَى الصَّلَاةِ صَدَقَةٌ وَتُمِيطُ الْأَذَى عَنِ الطَّرِيقِ صَدَقَةٌ",
+    transliteration:
+      "Kullu sulamy minan-nasi 'alayhi sadaqatun kulla yawmin tatlu'u fihish-shams, ta'dilu baynal-ithnayn sadaqah, wa tu'inur-rajula fi dabbatihi fatahmiluhu 'alayha aw tarfa'u lahu 'alayha mata'ahu sadaqah, wal-kalimatu at-tayyibatu sadaqah, wa bikulli khutwa tamshiha ilas-salati sadaqah, wa tumitu al-adha 'anit-tariq sadaqah",
+    translation:
+      "Narrated Abu Hurayrah (RA): The Prophet (SAW) said, 'Every joint of a person must perform a charity each day the sun rises: to judge justly between two people is a charity; to help a man with his mount is a charity; a good word is a charity; every step you take to the prayer is a charity; and removing a harmful thing from the road is a charity.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "2989",
+    grade: "Sahih",
+    topic: "charity",
+    topic_tags: ["sadaqah", "charity", "joints", "good-deeds", "daily", "kindness", "prayer", "good-word", "steps"],
+    daily_practice:
+      "Today, count your small acts of goodness as sadaqah — a smile, a kind word, helping someone, removing an obstacle. Every joint is owed its daily charity.",
+  },
+  {
+    id: 101,
+    slug: "hadith-wealth-not-in-abundance",
+    title: "True Wealth Is the Richness of the Soul",
+    arabic:
+      "لَيْسَ الْغِنَى عَنْ كَثْرَةِ الْعَرَضِ وَلَكِنَّ الْغِنَى غِنَى النَّفْسِ",
+    transliteration:
+      "Laysal-ghina 'an kathratil-'arad, wa lakinnalghinaa ghina an-nafs",
+    translation:
+      "Narrated Abu Hurayrah (RA): The Messenger of Allah (SAW) said, 'Wealth is not in having many possessions. Rather, true wealth is the richness of the soul (contentment of the heart).'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih Muslim",
+    hadith_number: "1051",
+    grade: "Sahih",
+    topic: "contentment",
+    topic_tags: ["wealth", "contentment", "soul", "richness", "dunya", "zuhd", "satisfaction", "qana'ah"],
+    daily_practice:
+      "Notice what you already have today. The richer your sense of gratitude and contentment, the wealthier you truly are — regardless of your bank balance.",
+  },
+  {
+    id: 102,
+    slug: "hadith-allah-loves-when-you-ask",
+    title: "Allah Is Angry When You Do Not Ask Him",
+    arabic:
+      "مَنْ لَمْ يَسْأَلِ اللَّهَ يَغْضَبْ عَلَيْهِ",
+    transliteration: "Man lam yas'alillaha yaghdhab 'alayh",
+    translation:
+      "Narrated Abu Hurayrah (RA): The Messenger of Allah (SAW) said, 'Whoever does not ask Allah, Allah becomes angry with him.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sunan al-Tirmidhi",
+    hadith_number: "3373",
+    grade: "Hasan",
+    topic: "dua",
+    topic_tags: ["dua", "supplication", "asking", "allah", "anger", "prayer", "tawakkul", "need"],
+    daily_practice:
+      "Ask Allah for everything today — your needs, your fears, your dreams. Not asking is not humility; it is depriving yourself of the greatest relationship.",
+  },
+  {
+    id: 103,
+    slug: "hadith-do-not-break-ties-three-days",
+    title: "A Muslim Must Not Cut Off His Brother for More Than Three Days",
+    arabic:
+      "لَا يَحِلُّ لِمُسْلِمٍ أَنْ يَهْجُرَ أَخَاهُ فَوْقَ ثَلَاثٍ يَلْتَقِيَانِ فَيُعْرِضُ هَذَا وَيُعْرِضُ هَذَا وَخَيْرُهُمَا الَّذِي يَبْدَأُ بِالسَّلَامِ",
+    transliteration:
+      "La yahillu li muslimin an yahjura akhahu fawqa thalath, yaltaqiyani fayu'ridu hadha wa yu'ridu hadha, wa khayruhumaal-ladhi yabda'u bis-salam",
+    translation:
+      "Narrated Abu Ayyub al-Ansari (RA): The Prophet (SAW) said, 'It is not lawful for a Muslim to cut off relations with his brother for more than three days; they meet and this one turns away and that one turns away. The better of the two is the one who initiates the greeting of salam.'",
+    narrator: "Abu Ayyub al-Ansari (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "6077",
+    grade: "Sahih",
+    topic: "brotherhood",
+    topic_tags: ["brotherhood", "reconciliation", "ties", "salaam", "conflict", "forgiveness", "relationship", "muslim"],
+    daily_practice:
+      "If you have cut off a Muslim brother or sister, make today day one of mending — send them salam first. Being first is the mark of the better person.",
+  },
+  {
+    id: 104,
+    slug: "hadith-honor-quran-carriers",
+    title: "Honouring Those Who Carry the Quran",
+    arabic:
+      "إِنَّ مِنْ إِجْلَالِ اللَّهِ إِكْرَامَ ذِي الشَّيْبَةِ الْمُسْلِمِ وَحَامِلِ الْقُرْآنِ غَيْرِ الْغَالِي فِيهِ وَالْجَافِي عَنْهُ وَإِكْرَامَ ذِي السُّلْطَانِ الْمُقْسِطِ",
+    transliteration:
+      "Inna min ijlalillahi ikramu dhish-shaybatil-muslimi wa hamilil-Qur'ani ghayral-ghali fihi wal-jafi 'anhu wa ikramu dhis-sultanil-muqsit",
+    translation:
+      "Narrated Abu Musa al-Ash'ari (RA): The Messenger of Allah (SAW) said, 'Indeed, from the exaltation due to Allah is honouring an aged Muslim, honouring the one who carries the Quran without going to extremes in it or abandoning it, and honouring a just ruler.'",
+    narrator: "Abu Musa al-Ash'ari (RA)",
+    source_book: "Sunan Abu Dawud",
+    hadith_number: "4843",
+    grade: "Hasan",
+    topic: "respect",
+    topic_tags: ["quran", "hafiz", "respect", "elders", "honour", "scholars", "tawqeer", "character"],
+    daily_practice:
+      "Show special respect to those who have memorised the Quran and to the elderly around you — honouring them is part of honouring Allah.",
+  },
+  {
+    id: 105,
+    slug: "hadith-on-moderation-in-religion",
+    title: "The Most Beloved Deed Is the One You Can Sustain",
+    arabic:
+      "أَحَبُّ الْأَعْمَالِ إِلَى اللَّهِ أَدْوَمُهَا وَإِنْ قَلَّ",
+    transliteration:
+      "Ahabbu al-a'mali ilallahi adwamuha wa in qalla",
+    translation:
+      "Narrated 'Aisha (RA): The Messenger of Allah (SAW) said, 'The most beloved of deeds to Allah is the most consistent of them, even if it is little.'",
+    narrator: "Aisha (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "6465",
+    grade: "Sahih",
+    topic: "consistency",
+    topic_tags: ["consistency", "moderation", "good-deeds", "ibadah", "worship", "istiqamah", "beloved", "small-deeds"],
+    daily_practice:
+      "Choose one small ibadah you can do every single day without exception — two rak'ahs, 100 istighfar, one page of Quran. Small and consistent beats grand and sporadic.",
+  },
+  {
+    id: 106,
+    slug: "hadith-black-seed-cure",
+    title: "The Black Seed — a Cure for Every Disease",
+    arabic:
+      "عَلَيْكُمْ بِهَذِهِ الْحَبَّةِ السَّوْدَاءِ فَإِنَّ فِيهَا شِفَاءً مِنْ كُلِّ دَاءٍ إِلَّا السَّامَ",
+    transliteration:
+      "Alaykum bihadhihil-habbatis-sawda'i fa inna fiha shifa'an min kulli da'in illass-sam",
+    translation:
+      "Narrated Abu Hurayrah (RA): The Messenger of Allah (SAW) said, 'Use this black seed — for it is a cure for every disease except death.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "5688",
+    grade: "Sahih",
+    topic: "health",
+    topic_tags: ["black-seed", "nigella", "cure", "health", "medicine", "shifa", "healing", "prophetic-medicine"],
+    daily_practice:
+      "Incorporate black seed (nigella sativa) into your diet with the intention of following prophetic medicine — a small daily habit with deep sunnah roots.",
+  },
+  {
+    id: 107,
+    slug: "hadith-eat-together-blessings",
+    title: "Eat Together — the Blessing Is in the Company",
+    arabic:
+      "اجْتَمِعُوا عَلَى طَعَامِكُمْ وَاذْكُرُوا اسْمَ اللَّهِ عَلَيْهِ يُبَارَكْ لَكُمْ فِيهِ",
+    transliteration:
+      "Ijtami'u 'ala ta'amikum wadhkurusmallahi 'alayhi yubarak lakum fih",
+    translation:
+      "Narrated Wahshi ibn Harb (RA): The companions asked, 'O Messenger of Allah, we eat but are not satisfied.' He said, 'Perhaps you eat separately.' They said yes. He said, 'Gather together over your food, mention the name of Allah over it — it will be blessed for you.'",
+    narrator: "Wahshi ibn Harb (RA)",
+    source_book: "Sunan Abu Dawud",
+    hadith_number: "3764",
+    grade: "Hasan",
+    topic: "food",
+    topic_tags: ["food", "eating-together", "barakah", "blessing", "bismillah", "family", "community", "meal"],
+    daily_practice:
+      "Eat at least one meal together with family or others today, say Bismillah out loud, and notice the barakah that comes with shared meals.",
+  },
+  {
+    id: 108,
+    slug: "hadith-gift-exchange-love",
+    title: "Exchange Gifts — It Will Grow Your Love",
+    arabic:
+      "تَهَادَوْا تَحَابُّوا",
+    transliteration: "Tahadaw tahabbu",
+    translation:
+      "Narrated Abu Hurayrah (RA): The Prophet (SAW) said, 'Exchange gifts, and you will love one another.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Bukhari (Al-Adab al-Mufrad)",
+    hadith_number: "594",
+    grade: "Hasan",
+    topic: "love",
+    topic_tags: ["gifts", "love", "brotherhood", "hadiyya", "relationship", "kindness", "generosity", "social"],
+    daily_practice:
+      "Give a small, sincere gift to someone today — a book, food, or even a heartfelt message. Gifts remove grudges and multiply love.",
+  },
+  {
+    id: 109,
+    slug: "hadith-do-not-spy",
+    title: "Beware of Suspicion, Spying and Backbiting",
+    arabic:
+      "إِيَّاكُمْ وَالظَّنَّ فَإِنَّ الظَّنَّ أَكْذَبُ الْحَدِيثِ وَلَا تَحَسَّسُوا وَلَا تَجَسَّسُوا وَلَا تَنَافَسُوا وَلَا تَحَاسَدُوا وَلَا تَبَاغَضُوا وَلَا تَدَابَرُوا وَكُونُوا عِبَادَ اللَّهِ إِخْوَانًا",
+    transliteration:
+      "Iyyakum waz-zanna fa innaz-zanna akdhabul-hadith, wa la tahassasu wa la tajassasu wa la tanafasu wa la tahasadu wa la tabaghadhuu wa la tadabaru wa kunu 'ibadallahi ikhwana",
+    translation:
+      "Narrated Abu Hurayrah (RA): The Prophet (SAW) said, 'Beware of suspicion, for suspicion is the worst form of lying. Do not spy on one another, do not eavesdrop, do not compete with one another, do not envy one another, do not hate one another, and do not turn away from one another. Be, O servants of Allah, brothers.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "6064",
+    grade: "Sahih",
+    topic: "character",
+    topic_tags: ["spy", "suspicion", "backbiting", "brotherhood", "envy", "character", "social", "privacy", "ghibah"],
+    daily_practice:
+      "Check your phone behaviour today — are you reading messages you shouldn't, or harbouring suspicion about someone? Give others the benefit of the doubt.",
+  },
+  {
+    id: 110,
+    slug: "hadith-body-has-rights",
+    title: "Your Body, Eyes and Family Have Rights Over You",
+    arabic:
+      "إِنَّ لِجَسَدِكَ عَلَيْكَ حَقًّا وَإِنَّ لِعَيْنَيْكَ عَلَيْكَ حَقًّا وَإِنَّ لِزَوْجِكَ عَلَيْكَ حَقًّا",
+    transliteration:
+      "Inna lijasadika 'alayka haqqan wa inna li'aynayka 'alayka haqqan wa inna lizawjika 'alayka haqqan",
+    translation:
+      "Narrated 'Abdullah ibn 'Amr (RA): The Prophet (SAW) said, 'Your body has a right over you, your eyes have a right over you, and your spouse has a right over you.'",
+    narrator: "Abdullah ibn Amr (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "1975",
+    grade: "Sahih",
+    topic: "balance",
+    topic_tags: ["body", "rights", "balance", "sleep", "health", "family", "spouse", "moderation", "ibadah"],
+    daily_practice:
+      "Rest when your body needs rest — it is not laziness, it is fulfilling a right. Balance worship with sleep, food, and time with your family.",
+  },
+  {
+    id: 111,
+    slug: "hadith-hajj-obligatory-once",
+    title: "Hajj Is Obligatory Once — Do Not Burden Yourself Beyond That",
+    arabic:
+      "أَيُّهَا النَّاسُ قَدْ فَرَضَ اللَّهُ عَلَيْكُمُ الْحَجَّ فَحُجُّوا فَقَالَ رَجُلٌ أَكُلَّ عَامٍ يَا رَسُولَ اللَّهِ فَسَكَتَ حَتَّى قَالَهَا ثَلَاثًا فَقَالَ لَوْ قُلْتُ نَعَمْ لَوَجَبَتْ وَلَمَا اسْتَطَعْتُمْ",
+    transliteration:
+      "Ayyuhan-nasu qad faradallahu 'alaykumul-hajja fahujju, faqala rajulun: akulla 'amin ya rasulallah? Fasakata hatta qalaha thalathan faqala: law qultu na'am lawajabat wa lama-stata'tum",
+    translation:
+      "Narrated Abu Hurayrah (RA): The Prophet (SAW) said, 'O people, Allah has made Hajj obligatory for you, so perform it.' A man said, 'Every year, O Messenger of Allah?' He remained silent until he asked three times, then said, 'If I had said yes, it would become obligatory and you would not be able to do it.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih Muslim",
+    hadith_number: "1337",
+    grade: "Sahih",
+    topic: "hajj",
+    topic_tags: ["hajj", "obligatory", "once", "five-pillars", "makkah", "fard", "ibadah", "mercy"],
+    daily_practice:
+      "If Hajj is obligatory on you and you are able, make firm intention to go. If you have performed it, cherish it and live the transformation it brought.",
+  },
+  {
+    id: 112,
+    slug: "hadith-best-deed-prayer-on-time",
+    title: "The Most Beloved Deed to Allah Is Prayer Performed on Time",
+    arabic:
+      "أَيُّ الْعَمَلِ أَحَبُّ إِلَى اللَّهِ قَالَ الصَّلَاةُ عَلَى وَقْتِهَا قُلْتُ ثُمَّ أَيٌّ قَالَ بِرُّ الْوَالِدَيْنِ قُلْتُ ثُمَّ أَيٌّ قَالَ الْجِهَادُ فِي سَبِيلِ اللَّهِ",
+    transliteration:
+      "Ayyul-'amali ahabbu ilallah? Qalas-salatu 'ala waqtiha. Qultu: thumma ayy? Qala: birrul-walidayn. Qultu: thumma ayy? Qala: al-jihadu fi sabilillah",
+    translation:
+      "Narrated Ibn Mas'ud (RA): I asked the Prophet (SAW), 'Which deed is most beloved to Allah?' He replied, 'Performing the prayer on time.' I asked, 'Then what?' He said, 'Being dutiful to parents.' I asked, 'Then what?' He said, 'Jihad in the path of Allah.'",
+    narrator: "Abdullah ibn Mas'ud (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "527",
+    grade: "Sahih",
+    topic: "prayer",
+    topic_tags: ["prayer", "salah", "on-time", "parents", "duty", "ibadah", "beloved", "fard", "priorities"],
+    daily_practice:
+      "Make praying every salah at its earliest time your first goal today. It is the deed most beloved to Allah — let nothing delay it.",
+  },
+  {
+    id: 113,
+    slug: "hadith-walking-to-mosque-rewards",
+    title: "Every Step to the Mosque Raises Your Rank",
+    arabic:
+      "مَنْ تَطَهَّرَ فِي بَيْتِهِ ثُمَّ مَشَى إِلَى بَيْتٍ مِنْ بُيُوتِ اللَّهِ لِيَقْضِيَ فَرِيضَةً مِنْ فَرَائِضِ اللَّهِ كَانَتْ خَطْوَتَاهُ إِحْدَاهُمَا تَحُطُّ خَطِيئَةً وَالْأُخْرَى تَرْفَعُ دَرَجَةً",
+    transliteration:
+      "Man tatahara fi baytihi thumma masha ila baytin min buyutillahi liyaqdhiya faridatan min fara'idillahi kanat khatawatahu ihdahuma tahuttu khati'atan wal-ukhra tarfa'u darajah",
+    translation:
+      "Narrated Abu Hurayrah (RA): The Messenger of Allah (SAW) said, 'Whoever purifies himself in his house and then walks to one of the houses of Allah in order to perform one of the obligatory prayers of Allah — one of his steps will wipe away a sin and the other will raise his rank.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih Muslim",
+    hadith_number: "666",
+    grade: "Sahih",
+    topic: "prayer",
+    topic_tags: ["mosque", "masjid", "steps", "rank", "sins", "walking", "prayer", "salah", "reward"],
+    daily_practice:
+      "Walk to the masjid for at least one prayer today — and know that every single step is wiping a sin and elevating your rank with Allah.",
+  },
+  {
+    id: 114,
+    slug: "hadith-rows-straight-in-prayer",
+    title: "Straighten Your Rows — It Is Part of Completing the Prayer",
+    arabic:
+      "سَوُّوا صُفُوفَكُمْ فَإِنَّ تَسْوِيَةَ الصُّفُوفِ مِنْ إِقَامَةِ الصَّلَاةِ",
+    transliteration:
+      "Sawwu sufufakum fa inna taswiyatas-sufufi min iqamatis-salah",
+    translation:
+      "Narrated Nu'man ibn Bashir (RA): The Messenger of Allah (SAW) said, 'Straighten your rows, for straightening the rows is part of the completion of the prayer.'",
+    narrator: "Nu'man ibn Bashir (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "722",
+    grade: "Sahih",
+    topic: "prayer",
+    topic_tags: ["prayer", "rows", "saf", "congregation", "salah", "jama'ah", "sunnah", "masjid", "discipline"],
+    daily_practice:
+      "In congregational prayer, close the gaps in the rows and stand shoulder to shoulder. Aligned rows are a sign of a spiritually aligned community.",
+  },
+  {
+    id: 115,
+    slug: "hadith-salawat-multiplied-tenfold",
+    title: "One Salawat on the Prophet Returns Tenfold Blessings",
+    arabic:
+      "مَنْ صَلَّى عَلَيَّ صَلَاةً وَاحِدَةً صَلَّى اللَّهُ عَلَيْهِ عَشْرَ صَلَوَاتٍ وَحُطَّتْ عَنْهُ عَشْرُ خَطِيئَاتٍ وَرُفِعَتْ لَهُ عَشْرُ دَرَجَاتٍ",
+    transliteration:
+      "Man salla 'alayya salatan wahidatan sallallahu 'alayhi 'ashara salawatin wa huttat 'anhu 'ashru khati'atin wa rufi'at lahu 'ashru darajat",
+    translation:
+      "Narrated Anas ibn Malik (RA): The Messenger of Allah (SAW) said, 'Whoever sends one blessing upon me, Allah will send ten blessings upon him, ten sins will be erased from him, and his rank will be raised by ten degrees.'",
+    narrator: "Anas ibn Malik (RA)",
+    source_book: "Sahih al-Nasa'i",
+    hadith_number: "1297",
+    grade: "Sahih",
+    topic: "salawat",
+    topic_tags: ["salawat", "salah-upon-prophet", "blessings", "sins", "rank", "dhikr", "friday", "love-of-prophet"],
+    daily_practice:
+      "Send salawat on the Prophet (SAW) abundantly today — especially on Fridays. Set a target: 100 times. Each one returns tenfold mercy from Allah.",
+  },
+  {
+    id: 116,
+    slug: "hadith-first-question-judgment-day-prayer",
+    title: "The First Question on Judgment Day Will Be About Prayer",
+    arabic:
+      "أَوَّلُ مَا يُحَاسَبُ بِهِ الْعَبْدُ يَوْمَ الْقِيَامَةِ الصَّلَاةُ فَإِنْ صَلُحَتْ صَلُحَ سَائِرُ عَمَلِهِ وَإِنْ فَسَدَتْ فَسَدَ سَائِرُ عَمَلِهِ",
+    transliteration:
+      "Awwalu ma yuhasabu bihil-'abdu yawmal-qiyamati as-salah, fa in saluhat saluha sa'iru 'amalih, wa in fasadat fasada sa'iru 'amalih",
+    translation:
+      "Narrated Abu Hurayrah (RA): The Messenger of Allah (SAW) said, 'The first thing a person will be held accountable for on the Day of Judgment is the prayer. If it is sound, the rest of his deeds will be sound, and if it is corrupt, the rest of his deeds will be corrupt.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sunan al-Tirmidhi",
+    hadith_number: "413",
+    grade: "Hasan",
+    topic: "prayer",
+    topic_tags: ["prayer", "salah", "judgment-day", "accountability", "qiyamah", "fard", "deeds", "first-question"],
+    daily_practice:
+      "Guard your prayer as if your entire akhirah depends on it — because it does. Let no prayer be rushed, skipped, or forgotten today.",
+  },
+  {
+    id: 117,
+    slug: "hadith-whoever-builds-mosque",
+    title: "Whoever Builds a Mosque for Allah, Allah Builds Him a House in Jannah",
+    arabic:
+      "مَنْ بَنَى مَسْجِدًا يَبْتَغِي بِهِ وَجْهَ اللَّهِ بَنَى اللَّهُ لَهُ بَيْتًا فِي الْجَنَّةِ",
+    transliteration:
+      "Man bana masjidan yabtaghi bihi wajhallahi bana-Allahu lahu baytan fil-jannah",
+    translation:
+      "Narrated 'Uthman ibn 'Affan (RA): The Messenger of Allah (SAW) said, 'Whoever builds a mosque seeking the pleasure of Allah, Allah will build for him a similar house in Paradise.'",
+    narrator: "Uthman ibn Affan (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "450",
+    grade: "Sahih",
+    topic: "charity",
+    topic_tags: ["mosque", "masjid", "building", "jannah", "sadaqah-jariyah", "charity", "paradise", "sincere-deeds"],
+    daily_practice:
+      "Contribute — even a small amount — towards the building or maintenance of a masjid. Every brick laid for Allah's sake is a room secured in Jannah.",
+  },
+  {
+    id: 118,
+    slug: "hadith-cure-honey-and-quran",
+    title: "Seek Healing in Two Things: Honey and the Quran",
+    arabic:
+      "عَلَيْكُمْ بِالشِّفَاءَيْنِ الْعَسَلِ وَالْقُرْآنِ",
+    transliteration: "Alaykum bish-shifa'ayn: al-'asal wal-Qur'an",
+    translation:
+      "Narrated Ibn Mas'ud (RA): The Messenger of Allah (SAW) said, 'Make use of the two cures: honey and the Quran.'",
+    narrator: "Abdullah ibn Mas'ud (RA)",
+    source_book: "Sunan Ibn Majah",
+    hadith_number: "3452",
+    grade: "Hasan",
+    topic: "health",
+    topic_tags: ["honey", "quran", "healing", "shifa", "cure", "prophetic-medicine", "ruqyah", "health", "illness"],
+    daily_practice:
+      "When ill, recite Quran over yourself with sincerity and take honey as part of your healing — both are divinely prescribed cures.",
+  },
+  {
+    id: 119,
+    slug: "hadith-righteous-bad-companion-analogy",
+    title: "The Good Companion Is Like a Perfume Seller",
+    arabic:
+      "مَثَلُ الْجَلِيسِ الصَّالِحِ وَالْجَلِيسِ السَّوْءِ كَمَثَلِ صَاحِبِ الْمِسْكِ وَكِيرِ الْحَدَّادِ لَا يَعْدَمُكَ مِنْ صَاحِبِ الْمِسْكِ إِمَّا تَشْتَرِيهِ أَوْ تَجِدُ رِيحَهُ وَكِيرُ الْحَدَّادِ يُحْرِقُ بَدَنَكَ أَوْ ثَوْبَكَ أَوْ تَجِدُ مِنْهُ رِيحًا خَبِيثَةً",
+    transliteration:
+      "Mathalul-jalisis-salihi wal-jalisis-saw'i kamatali sahibil-miski wa kiril-haddad. La ya'dumuka min sahibil-miski imma tashtarihi aw tajidu rihah. Wa kirul-haddadi yuhriqubadanaka aw thawbaka aw tajidu minhu rihan khabithah",
+    translation:
+      "Narrated Abu Musa al-Ash'ari (RA): The Prophet (SAW) said, 'The example of a good companion and a bad companion is like that of the perfume seller and the blacksmith's bellows. From the perfume seller you will either buy some or smell its fragrance. But the bellows will either burn your body or your clothes, or you will smell something bad.'",
+    narrator: "Abu Musa al-Ash'ari (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "2101",
+    grade: "Sahih",
+    topic: "companionship",
+    topic_tags: ["friends", "companions", "influence", "good-company", "bad-company", "character", "social", "perfume", "suhba"],
+    daily_practice:
+      "Audit your closest friendships honestly today. Who leaves you feeling closer to Allah? Spend more time with them. Who pulls you away? Create healthy distance.",
+  },
+  {
+    id: 120,
+    slug: "hadith-parents-jannah-and-hellfire",
+    title: "The Pleasure of Allah Is in the Pleasure of Parents",
+    arabic:
+      "رِضَا اللَّهِ فِي رِضَا الْوَالِدَيْنِ وَسَخَطُ اللَّهِ فِي سَخَطِ الْوَالِدَيْنِ",
+    transliteration:
+      "Ridallahi fi ridal-walidayn, wa sakhatullahi fi sakhatil-walidayn",
+    translation:
+      "Narrated 'Abdullah ibn 'Amr (RA): The Messenger of Allah (SAW) said, 'The pleasure of Allah lies in the pleasure of the parents, and the anger of Allah lies in the anger of the parents.'",
+    narrator: "Abdullah ibn Amr (RA)",
+    source_book: "Sunan al-Tirmidhi",
+    hadith_number: "1899",
+    grade: "Sahih",
+    topic: "parents",
+    topic_tags: ["parents", "father", "mother", "pleasure", "anger", "allah", "birrul-walidayn", "family", "obedience"],
+    daily_practice:
+      "Call or visit a parent today. Ask how they are. Say something kind. Their happiness is a direct path to Allah's pleasure — and their hurt is a warning.",
+  },
 ];
 
 // ── Utilities ─────────────────────────────────────────────────────────────────
