@@ -1,7 +1,7 @@
 # PROJECT_CONTEXT.md — DuaVault
 
 > Single source of truth for the DuaVault codebase. Every fact below is derived from actual code inspection.
-> Last updated: 2026-03-27
+> Last updated: 2026-04-27
 
 ---
 
@@ -29,8 +29,8 @@
 - **Direct** — returning users who have saved duas to their local collection.
 
 **User capabilities (no auth required):**
-- Browse 151 duas across 9 categories and 8 emotional states
-- Browse 91 hadiths across 6 categories (34 granular topics)
+- Browse 181 duas across 9 categories and 8 emotional states
+- Browse 120 hadiths across 6 categories (34 granular topics)
 - Full-text search with synonym expansion, fuzzy matching, and Arabic support
 - Save/unsave duas to a local collection (localStorage, max 200)
 - Share duas via WhatsApp, Twitter, Facebook, or native share
@@ -125,8 +125,8 @@ interface Hadith {
 
 | Content | Count | File |
 |---|---|---|
-| Duas | 151 | `data/duas.ts` (3,255 lines) |
-| Hadiths | 91 | `data/hadiths.ts` (1,730 lines) |
+| Duas | 181 | `data/duas.ts` |
+| Hadiths | 120 | `data/hadiths.ts` |
 | Dua Categories | 9 | `lib/utils.ts` — CATEGORIES array |
 | Emotion States | 8 | `lib/utils.ts` — EMOTIONS array |
 | Hadith Categories | 6 (34 topics) | `lib/hadith-categories.ts` |
@@ -288,8 +288,8 @@ Supabase search: PostgreSQL `websearch` type full-text search on `search_vector`
 │   └── useSubscribeForm.ts
 │
 ├── data/
-│   ├── duas.ts                 # 151 duas with search engine + utilities
-│   ├── hadiths.ts              # 91 hadiths with getDailyHadith()
+│   ├── duas.ts                 # 181 duas with search engine + utilities
+│   ├── hadiths.ts              # 120 hadiths with getDailyHadith()
 │   ├── schema.sql              # Supabase DDL (duas + hadith_subscribers)
 │   ├── seed.ts                 # DB seeding script
 │   └── validate.ts             # Content validation script
@@ -378,7 +378,7 @@ Supabase search: PostgreSQL `websearch` type full-text search on `search_vector`
 ## 7. Current State
 
 ### What Is Working
-- Full website live at duavault.com with 151 duas and 91 hadiths
+- Full website live at duavault.com with 181 duas and 120 hadiths
 - Dark mode with system preference detection
 - Search with synonym expansion, fuzzy matching, Arabic support
 - Save/unsave duas (localStorage)
@@ -578,6 +578,7 @@ All other routes (check-token, refresh-token, post-morning, post-evening) must b
 
 | Date | Commit | Summary |
 |---|---|---|
+| 2026-04-27 | `eee29b5` | feat: add 30 new authentic duas (IDs 175-204) and 30 new hadiths (IDs 91-120) — all SAHIH/HASAN/QURAN graded |
 | 2026-03-27 | `f07a4d0` | fix: fail-open on Blob dedup error + real ok status in mega-crons |
 | 2026-03-27 | `f5c4b26`–`1fbd357` | feat: consolidate 7 crons into 2 mega-crons (Hobby plan limit); extract sendDailyHadithEmail |
 | Recent | `a85459d` | fix: revert to list() with noStore() + fail-closed on error for robust deduplication |
