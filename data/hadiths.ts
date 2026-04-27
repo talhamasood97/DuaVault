@@ -2279,6 +2279,293 @@ export const HADITHS: Hadith[] = [
     daily_practice:
       "Call or visit a parent today. Ask how they are. Say something kind. Their happiness is a direct path to Allah's pleasure — and their hurt is a warning.",
   },
+
+  // ─── BATCH 3: 15 NEW HADITHS (IDs 121–135) ───────────────────────────────────
+  {
+    id: 121,
+    slug: "hadith-guard-your-gaze",
+    title: "The Glance Is a Poisoned Arrow — Guard Your Gaze",
+    arabic:
+      "النَّظْرَةُ سَهْمٌ مِنْ سِهَامِ إِبْلِيسَ مَسْمُومَةٌ فَمَنْ تَرَكَهَا مَخَافَةَ اللَّهِ أَثَابَهُ اللَّهُ إِيمَانًا يَجِدُ حَلَاوَتَهُ فِي قَلْبِهِ",
+    transliteration:
+      "An-nazratu sahmun min sihami Iblisa masmumah, faman tarakaha makhafatallahi atha-bahu Allahu imanan yajidu halawatuhu fi qalbih",
+    translation:
+      "Narrated by Hudhayfah (RA): The Messenger of Allah (SAW) said, 'The glance is a poisoned arrow from the arrows of Iblis. Whoever lowers it out of fear of Allah, Allah will grant him faith whose sweetness he will find in his heart.'",
+    narrator: "Hudhayfah ibn al-Yaman (RA)",
+    source_book: "Al-Mu'jam al-Kabir — Tabarani",
+    hadith_number: "2674",
+    grade: "Hasan",
+    topic: "character",
+    topic_tags: ["gaze", "eyes", "lowering-gaze", "chastity", "modesty", "iblis", "iman", "sweetness-of-faith", "purity"],
+    daily_practice:
+      "Every time you consciously lower your gaze today, know that Allah is planting sweetness of iman in your heart. Make it a deliberate act of worship.",
+  },
+  {
+    id: 122,
+    slug: "hadith-subhanallah-100-times-morning-evening",
+    title: "Say Subhanallah 100 Times — No One Comes with Better Deeds",
+    arabic:
+      "مَنْ قَالَ سُبْحَانَ اللَّهِ وَبِحَمْدِهِ فِي يَوْمٍ مِائَةَ مَرَّةٍ حُطَّتْ خَطَايَاهُ وَإِنْ كَانَتْ مِثْلَ زَبَدِ الْبَحْرِ",
+    transliteration:
+      "Man qala SubhanAllahi wa bihamdihi fi yawmin mi'ata marratin huttat khatayahu wa in kanat mithla zabadir-bahr",
+    translation:
+      "Narrated Abu Hurayrah (RA): The Messenger of Allah (SAW) said, 'Whoever says \"SubhanAllahi wa bihamdihi\" one hundred times in a day, his sins will be wiped away even if they are like the foam of the sea.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "6405",
+    grade: "Sahih",
+    topic: "dhikr",
+    topic_tags: ["subhanallah", "dhikr", "tasbih", "morning", "evening", "sins-wiped", "100-times", "daily", "remembrance"],
+    daily_practice:
+      "Set a counter or use your fingers to say 'SubhanAllahi wa bihamdihi' 100 times today. It takes under 5 minutes and wipes sins like foam off the sea.",
+  },
+  {
+    id: 123,
+    slug: "hadith-99-names-of-allah",
+    title: "Whoever Learns the 99 Names of Allah Enters Jannah",
+    arabic:
+      "إِنَّ لِلَّهِ تِسْعَةً وَتِسْعِينَ اسْمًا مِائَةً إِلَّا وَاحِدًا مَنْ أَحْصَاهَا دَخَلَ الْجَنَّةَ",
+    transliteration:
+      "Inna lillahi tis'atan wa tis'ina isma, mi'atan illa wahidan, man ahsaha dakhala al-jannah",
+    translation:
+      "Narrated Abu Hurayrah (RA): The Messenger of Allah (SAW) said, 'Allah has ninety-nine names — one hundred minus one. Whoever learns and preserves them all will enter Paradise.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "2736",
+    grade: "Sahih",
+    topic: "knowledge",
+    topic_tags: ["99-names", "asma-ul-husna", "allah", "jannah", "paradise", "dhikr", "memorisation", "knowledge", "names-of-allah"],
+    daily_practice:
+      "Learn one name of Allah today — its meaning and how it applies to your life. Ninety-nine days of this and you will have walked a path to Jannah.",
+  },
+  {
+    id: 124,
+    slug: "hadith-dua-weapon-of-believer",
+    title: "Du'a Is the Weapon of the Believer",
+    arabic:
+      "الدُّعَاءُ سِلَاحُ الْمُؤْمِنِ وَعِمَادُ الدِّينِ وَنُورُ السَّمَاوَاتِ وَالْأَرْضِ",
+    transliteration:
+      "Ad-du'a silahu al-mu'min wa 'imadud-din wa nurus-samawati wal-ard",
+    translation:
+      "Narrated Ali ibn Abi Talib (RA): The Messenger of Allah (SAW) said, 'Du'a is the weapon of the believer, the pillar of religion, and the light of the heavens and the earth.'",
+    narrator: "Ali ibn Abi Talib (RA)",
+    source_book: "Mustadrak al-Hakim",
+    hadith_number: "1812",
+    grade: "Hasan",
+    topic: "dua",
+    topic_tags: ["dua", "supplication", "weapon", "believer", "light", "religion", "power", "prayer", "strength", "faith"],
+    daily_practice:
+      "Pick up your weapon today — make du'a with full presence and certainty. A believer who does not make du'a is like a soldier who enters battle unarmed.",
+  },
+  {
+    id: 125,
+    slug: "hadith-shaking-hands-sins-forgiven",
+    title: "Two Muslims Who Shake Hands Are Forgiven Before They Part",
+    arabic:
+      "مَا مِنْ مُسْلِمَيْنِ يَلْتَقِيَانِ فَيَتَصَافَحَانِ إِلَّا غُفِرَ لَهُمَا قَبْلَ أَنْ يَفْتَرِقَا",
+    transliteration:
+      "Ma min muslimayni yaltaqiyani fayatasafahan illa ghufira lahuma qabla an yaftariqa",
+    translation:
+      "Narrated al-Bara' ibn 'Azib (RA): The Messenger of Allah (SAW) said, 'No two Muslims meet and shake hands except that they are forgiven before they part.'",
+    narrator: "Al-Bara' ibn Azib (RA)",
+    source_book: "Sunan Abu Dawud",
+    hadith_number: "5212",
+    grade: "Hasan",
+    topic: "social",
+    topic_tags: ["handshake", "greeting", "musafahah", "forgiveness", "brotherhood", "meeting", "social", "sins-forgiven", "kindness"],
+    daily_practice:
+      "Shake hands warmly and with presence when you meet a Muslim today — knowing that both of you may be forgiven before your hands part.",
+  },
+  {
+    id: 126,
+    slug: "hadith-last-two-ayat-baqarah-before-sleep",
+    title: "Recite the Last Two Verses of Al-Baqarah — They Will Suffice You",
+    arabic:
+      "مَنْ قَرَأَ الْآيَتَيْنِ مِنْ آخِرِ سُورَةِ الْبَقَرَةِ فِي لَيْلَةٍ كَفَتَاهُ",
+    transliteration:
+      "Man qara'al-ayatayn min akhiri suratal-Baqarati fi laylatin kafatah",
+    translation:
+      "Narrated Abu Mas'ud al-Ansari (RA): The Messenger of Allah (SAW) said, 'Whoever recites the last two verses of Surah al-Baqarah at night, they will suffice him (protect him).'",
+    narrator: "Abu Mas'ud al-Ansari (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "5009",
+    grade: "Sahih",
+    topic: "quran",
+    topic_tags: ["baqarah", "last-two-verses", "sleep", "night", "protection", "quran", "bedtime", "amana rasulu", "kafatah", "recitation"],
+    daily_practice:
+      "Before you sleep tonight, recite the last two verses of Surah al-Baqarah (2:285-286). Make it part of your non-negotiable bedtime routine.",
+  },
+  {
+    id: 127,
+    slug: "hadith-reward-commensurate-with-trial",
+    title: "The Greater the Trial, the Greater the Reward",
+    arabic:
+      "إِنَّ عِظَمَ الْجَزَاءِ مَعَ عِظَمِ الْبَلَاءِ وَإِنَّ اللَّهَ إِذَا أَحَبَّ قَوْمًا ابْتَلَاهُمْ فَمَنْ رَضِيَ فَلَهُ الرِّضَا وَمَنْ سَخِطَ فَلَهُ السَّخَطُ",
+    transliteration:
+      "Inna 'azhamal-jaza'i ma'a 'azhamil-bala', wa innallaha idha ahabba qawman abtalahum, faman radiya falahur-rida wa man sakhita falahus-sakhat",
+    translation:
+      "Narrated Anas ibn Malik (RA): The Messenger of Allah (SAW) said, 'The greatness of the reward is commensurate with the greatness of the trial. When Allah loves a people He tests them. Whoever accepts it with patience will have contentment, and whoever reacts with resentment will have resentment.'",
+    narrator: "Anas ibn Malik (RA)",
+    source_book: "Sunan al-Tirmidhi",
+    hadith_number: "2396",
+    grade: "Hasan",
+    topic: "patience",
+    topic_tags: ["trial", "bala", "reward", "patience", "sabr", "test", "love-of-allah", "contentment", "rida", "hardship"],
+    daily_practice:
+      "Whatever trial you are in today, know its size is a measure of how much Allah has chosen to elevate you. Respond with sabr — the reward rises with the difficulty.",
+  },
+  {
+    id: 128,
+    slug: "hadith-alhamdulillah-fills-the-scales",
+    title: "Alhamdulillah Fills the Scales on the Day of Judgement",
+    arabic:
+      "الطُّهُورُ شَطْرُ الْإِيمَانِ وَالْحَمْدُ لِلَّهِ تَمْلَأُ الْمِيزَانَ وَسُبْحَانَ اللَّهِ وَالْحَمْدُ لِلَّهِ تَمْلَآنِ أَوْ تَمْلَأُ مَا بَيْنَ السَّمَاوَاتِ وَالْأَرْضِ",
+    transliteration:
+      "At-tuhuru shattrul-iman, wal-hamdu lillahi tamla'ul-mizan, wa SubhanAllahi wal-hamdu lillahi tamla'ani aw tamla'u ma baynas-samawati wal-ard",
+    translation:
+      "Narrated Abu Malik al-Ash'ari (RA): The Messenger of Allah (SAW) said, 'Purity is half of iman. Alhamdulillah fills the scales. SubhanAllah and Alhamdulillah together fill what is between the heavens and the earth.'",
+    narrator: "Abu Malik al-Ash'ari (RA)",
+    source_book: "Sahih Muslim",
+    hadith_number: "223",
+    grade: "Sahih",
+    topic: "dhikr",
+    topic_tags: ["alhamdulillah", "scales", "mizan", "subhanallah", "dhikr", "gratitude", "day-of-judgement", "deeds", "weight", "tasbih"],
+    daily_practice:
+      "Say 'Alhamdulillah' consciously and frequently today — not as a reflex, but knowing it fills the scales on the Day of Judgement. Let every breath that goes out carry it.",
+  },
+  {
+    id: 129,
+    slug: "hadith-fasting-monday-and-thursday",
+    title: "Fast on Mondays and Thursdays — Deeds Are Presented Then",
+    arabic:
+      "تُعْرَضُ الْأَعْمَالُ يَوْمَ الِاثْنَيْنِ وَالْخَمِيسِ فَأُحِبُّ أَنْ يُعْرَضَ عَمَلِي وَأَنَا صَائِمٌ",
+    transliteration:
+      "Tu'radul-a'malu yawmal-ithnayn wal-khamis, fa'uhibbu an yu'rada 'amali wa ana sa'im",
+    translation:
+      "Narrated Abu Hurayrah (RA): The Messenger of Allah (SAW) said, 'Deeds are presented on Monday and Thursday, and I love that my deeds be presented while I am fasting.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sunan al-Tirmidhi",
+    hadith_number: "747",
+    grade: "Hasan",
+    topic: "worship",
+    topic_tags: ["fasting", "monday", "thursday", "sunnah-fast", "nafl", "deeds-presented", "voluntary-fast", "ibadah", "siyam"],
+    daily_practice:
+      "Fast this coming Monday or Thursday as a sunnah. Your deeds will be presented to Allah while you are in a state of worship — that is a beautiful way to be seen.",
+  },
+  {
+    id: 130,
+    slug: "hadith-rights-of-the-road",
+    title: "If You Must Sit on the Road, Observe Its Rights",
+    arabic:
+      "إِيَّاكُمْ وَالْجُلُوسَ فِي الطُّرُقَاتِ قَالُوا يَا رَسُولَ اللَّهِ مَا لَنَا مِنْ مَجَالِسِنَا بُدٌّ نَتَحَدَّثُ فِيهَا قَالَ فَإِذَا أَبَيْتُمْ إِلَّا الْمَجْلِسَ فَأَعْطُوا الطَّرِيقَ حَقَّهُ قَالُوا وَمَا حَقُّ الطَّرِيقِ قَالَ غَضُّ الْبَصَرِ وَكَفُّ الْأَذَى وَرَدُّ السَّلَامِ وَالْأَمْرُ بِالْمَرُوفِ وَالنَّهْيُ عَنِ الْمُنْكَرِ",
+    transliteration:
+      "Iyyakum wal-julusu fit-turuqat. Qalu: ya rasulallah ma lana min majalasina buddun nutahaddathu fiha. Qala: fa idha abaytum illal-majlisa fa-a'tut-tariqa haqqah. Qalu: wa ma haqqu at-tariq? Qala: ghadddul-basar wa kaffal-adha wa raddu as-salam wal-amru bil-ma'rufi wan-nahyu 'anil-munkar",
+    translation:
+      "Narrated Abu Sa'id al-Khudri (RA): The Prophet (SAW) said, 'Beware of sitting on roads.' They said, 'We have no alternative — those are our gathering places where we talk.' He said, 'If you must sit there, then give the road its rights.' They asked, 'What are the rights of the road?' He said, 'Lowering the gaze, refraining from harm, returning the salaam, enjoining what is good, and forbidding what is evil.'",
+    narrator: "Abu Sa'id al-Khudri (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "2465",
+    grade: "Sahih",
+    topic: "social",
+    topic_tags: ["road", "public", "gaze", "salaam", "good", "evil", "community", "manners", "social-conduct", "rights", "outdoor"],
+    daily_practice:
+      "In any public space today — a street, café, or office — observe the rights of the space: lower your gaze, cause no harm, return greetings, and speak good.",
+  },
+  {
+    id: 131,
+    slug: "hadith-prophet-never-criticized-food",
+    title: "The Prophet Never Criticized Food — He Ate It or Left It",
+    arabic:
+      "مَا عَابَ النَّبِيُّ صلى الله عليه وسلم طَعَامًا قَطُّ إِنِ اشْتَهَاهُ أَكَلَهُ وَإِنْ كَرِهَهُ تَرَكَهُ",
+    transliteration:
+      "Ma 'aban-Nabiyyu ﷺ ta'aman qattu, in ishtahahu akalahu wa in karihahu tarakah",
+    translation:
+      "Narrated Abu Hurayrah (RA): The Prophet (SAW) never criticised food at all. If he liked it he ate it, and if he disliked it he left it alone.",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "3563",
+    grade: "Sahih",
+    topic: "character",
+    topic_tags: ["food", "eating", "sunnah", "etiquette", "gratitude", "criticism", "character", "manners", "prophet", "table-manners"],
+    daily_practice:
+      "Never criticise food served to you — not its taste, quantity, or presentation. Simply eat what you like and quietly leave what you do not. This is the way of the Prophet (SAW).",
+  },
+  {
+    id: 132,
+    slug: "hadith-ramadan-gates-paradise-open",
+    title: "When Ramadan Begins, the Gates of Paradise Are Opened",
+    arabic:
+      "إِذَا جَاءَ رَمَضَانُ فُتِّحَتْ أَبْوَابُ الْجَنَّةِ وَغُلِّقَتْ أَبْوَابُ النَّارِ وَصُفِّدَتِ الشَّيَاطِينُ",
+    transliteration:
+      "Idha ja'a Ramadanu futtihat abwabul-jannati wa ghulliqat abwabun-nari wa suffidat ash-shayatin",
+    translation:
+      "Narrated Abu Hurayrah (RA): The Messenger of Allah (SAW) said, 'When Ramadan begins, the gates of Paradise are opened, the gates of Hellfire are closed, and the devils are chained.'",
+    narrator: "Abu Hurayrah (RA)",
+    source_book: "Sahih al-Bukhari",
+    hadith_number: "1899",
+    grade: "Sahih",
+    topic: "worship",
+    topic_tags: ["ramadan", "fasting", "paradise", "gates", "shaytan", "chained", "hellfire", "blessed-month", "ibadah", "opportunity"],
+    daily_practice:
+      "In Ramadan, treat every night as if a door to Jannah stands open specifically for you. The obstacles are reduced — your effort in this month carries extraordinary weight.",
+  },
+  {
+    id: 133,
+    slug: "hadith-eat-drink-give-without-extravagance",
+    title: "Eat, Drink and Give in Charity — Without Extravagance or Arrogance",
+    arabic:
+      "كُلُوا وَاشْرَبُوا وَالْبَسُوا وَتَصَدَّقُوا فِي غَيْرِ إِسْرَافٍ وَلَا مَخِيلَةٍ",
+    transliteration:
+      "Kulu washrabi walbasaw wa tasaddaqu fi ghayri israfin wa la makhilah",
+    translation:
+      "Narrated Ibn Abbas (RA): The Messenger of Allah (SAW) said, 'Eat, drink, wear clothes and give in charity — without extravagance and without arrogance.'",
+    narrator: "Ibn Abbas (RA)",
+    source_book: "Sunan al-Nasa'i",
+    hadith_number: "2559",
+    grade: "Sahih",
+    topic: "character",
+    topic_tags: ["moderation", "israf", "extravagance", "spending", "food", "clothing", "charity", "arrogance", "halal", "balance", "wealth"],
+    daily_practice:
+      "Check your spending today — on food, clothing, and lifestyle. Islam permits enjoyment but condemns extravagance and pride. Give some of what you spend to charity.",
+  },
+  {
+    id: 134,
+    slug: "hadith-subhanallah-plants-tree-in-jannah",
+    title: "Saying SubhanAllah Plants a Tree for You in Paradise",
+    arabic:
+      "مَنْ قَالَ سُبْحَانَ اللَّهِ وَبِحَمْدِهِ غُرِسَتْ لَهُ نَخْلَةٌ فِي الْجَنَّةِ",
+    transliteration:
+      "Man qala SubhanAllahi wa bihamdihi ghurisa lahu nakhlah fil-jannah",
+    translation:
+      "Narrated Jabir ibn Abdullah (RA): The Messenger of Allah (SAW) said, 'Whoever says \"SubhanAllahi wa bihamdihi\", a palm tree is planted for him in Paradise.'",
+    narrator: "Jabir ibn Abdullah (RA)",
+    source_book: "Sunan al-Tirmidhi",
+    hadith_number: "3464",
+    grade: "Hasan",
+    topic: "dhikr",
+    topic_tags: ["subhanallah", "dhikr", "jannah", "paradise", "tree", "palm", "tasbih", "remembrance", "reward", "simple-deeds"],
+    daily_practice:
+      "Say 'SubhanAllahi wa bihamdihi' as many times as you can today — in traffic, between tasks, before sleep. Each one plants a tree in your garden in Jannah.",
+  },
+  {
+    id: 135,
+    slug: "hadith-waking-safe-healthy-provision",
+    title: "Whoever Wakes Up Safe, Healthy and Provided For — Has the Whole World",
+    arabic:
+      "مَنْ أَصْبَحَ مِنْكُمْ آمِنًا فِي سِرْبِهِ مُعَافًى فِي جَسَدِهِ عِنْدَهُ قُوتُ يَوْمِهِ فَكَأَنَّمَا حِيزَتْ لَهُ الدُّنْيَا",
+    transliteration:
+      "Man asbaha minkum aminan fi sirbih mu'afan fi jasadihi 'indahu qutu yawmihi faka'annama hizat lahud-dunya",
+    translation:
+      "Narrated Salama ibn 'Ubaydullah (RA): The Messenger of Allah (SAW) said, 'Whoever among you wakes up secure in his dwelling, healthy in his body, and has food for that day — it is as though the entire world has been gathered for him.'",
+    narrator: "Salama ibn Ubaydullah (RA)",
+    source_book: "Sunan al-Tirmidhi",
+    hadith_number: "2346",
+    grade: "Hasan",
+    topic: "contentment",
+    topic_tags: ["gratitude", "health", "safety", "provision", "contentment", "morning", "blessing", "shukr", "dunya", "sufficiency"],
+    daily_practice:
+      "Before you reach for your phone this morning, pause and count: are you safe, healthy, and fed? If yes — you already have the whole world. Start from gratitude.",
+  },
 ];
 
 // ── Utilities ─────────────────────────────────────────────────────────────────

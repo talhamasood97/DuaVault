@@ -3495,6 +3495,301 @@ export const DUAS: Dua[] = [
     featured: false,
     daily_dua_eligible: true,
   },
+
+  // ─── BATCH 3: 15 NEW DUAS (IDs 205–219) ──────────────────────────────────────
+  {
+    id: 205,
+    slug: "dua-for-increase-and-benefit-in-knowledge",
+    title: "Dua for Beneficial Knowledge and Increased Understanding",
+    arabic_text:
+      "اللَّهُمَّ انْفَعْنِي بِمَا عَلَّمْتَنِي وَعَلِّمْنِي مَا يَنْفَعُنِي وَزِدْنِي عِلْمًا",
+    transliteration:
+      "Allahumma infa'ni bima 'allamtani wa 'allimni ma yanfa'uni wa zidni 'ilma",
+    translation:
+      "O Allah, benefit me with what You have taught me, teach me what will benefit me, and increase me in knowledge.",
+    source_book: "Sunan al-Tirmidhi",
+    hadith_number: "3599",
+    authenticity_grade: "HASAN",
+    graded_by: "Al-Albani",
+    category: "worship",
+    emotion_tags: ["hopeful", "grateful"],
+    situation_tags: ["knowledge", "ilm", "studying", "learning", "memory", "understanding", "school", "university", "students", "quran"],
+    featured: false,
+    daily_dua_eligible: true,
+  },
+  {
+    id: 206,
+    slug: "dua-of-ashab-al-kahf-for-mercy-and-guidance",
+    title: "Dua of the People of the Cave for Mercy and Guidance",
+    arabic_text:
+      "رَبَّنَا آتِنَا مِن لَّدُنكَ رَحْمَةً وَهَيِّئْ لَنَا مِنْ أَمْرِنَا رَشَدًا",
+    transliteration:
+      "Rabbana atina min ladunka rahmatan wa hayyi' lana min amrina rashada",
+    translation:
+      "Our Lord, grant us from Yourself mercy and prepare for us from our affair right guidance.",
+    source_book: "Quran",
+    hadith_number: "18:10",
+    authenticity_grade: "QURAN",
+    category: "quranic",
+    emotion_tags: ["hopeful", "afraid", "stressed"],
+    situation_tags: ["mercy", "guidance", "refuge", "difficulty", "fear", "trial", "cave", "ashab-al-kahf", "protection", "rashad"],
+    featured: false,
+    daily_dua_eligible: true,
+  },
+  {
+    id: 207,
+    slug: "dua-after-salah-tasbih-and-salam",
+    title: "Dhikr and Dua Said Immediately After Every Salah",
+    arabic_text:
+      "أَسْتَغْفِرُ اللَّهَ أَسْتَغْفِرُ اللَّهَ أَسْتَغْفِرُ اللَّهَ اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ",
+    transliteration:
+      "Astaghfirullah, Astaghfirullah, Astaghfirullah. Allahumma antas-salam wa minkas-salam, tabarakta ya dhal-jalali wal-ikram",
+    translation:
+      "I seek forgiveness from Allah (three times). O Allah, You are Peace and from You comes peace. Blessed are You, O Possessor of Glory and Honour.",
+    source_book: "Sahih Muslim",
+    hadith_number: "591",
+    authenticity_grade: "SAHIH",
+    category: "worship",
+    emotion_tags: ["grateful", "seeking-forgiveness", "hopeful"],
+    situation_tags: ["after-prayer", "post-salah", "dhikr", "tasbih", "istighfar", "prayer", "salam", "fard", "salah", "worship"],
+    featured: false,
+    daily_dua_eligible: true,
+  },
+  {
+    id: 208,
+    slug: "dua-for-financial-sufficiency-and-halal",
+    title: "Dua for Halal Sufficiency and Freedom from Need",
+    arabic_text:
+      "اللَّهُمَّ اكْفِنِي بِحَلَالِكَ عَنْ حَرَامِكَ وَأَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ",
+    transliteration:
+      "Allahumma akfini bihalâlika 'an harâmika wa aghnini bifadlika 'amman siwak",
+    translation:
+      "O Allah, make Your lawful provisions sufficient for me so I have no need of what is forbidden, and make me independent of all besides You through Your bounty.",
+    source_book: "Sunan al-Tirmidhi",
+    hadith_number: "3563",
+    authenticity_grade: "HASAN",
+    graded_by: "Al-Albani",
+    category: "health",
+    emotion_tags: ["stressed", "hopeful", "grateful"],
+    situation_tags: ["money", "financial", "halal", "rizq", "provision", "debt", "career", "job", "income", "wealth", "sufficiency"],
+    featured: false,
+    daily_dua_eligible: true,
+  },
+  {
+    id: 209,
+    slug: "dua-ya-muqallibal-qulub-steadfast-heart",
+    title: "Dua for a Steadfast Heart — Ya Muqallibal Qulub",
+    arabic_text:
+      "يَا مُقَلِّبَ الْقُلُوبِ ثَبِّتْ قَلْبِي عَلَى دِينِكَ",
+    transliteration:
+      "Ya muqallibal-qulubi thabbit qalbi 'ala dinik",
+    translation:
+      "O Turner of hearts, keep my heart steadfast upon Your religion.",
+    source_book: "Sunan al-Tirmidhi",
+    hadith_number: "2140",
+    authenticity_grade: "SAHIH",
+    graded_by: "Al-Albani",
+    category: "worship",
+    emotion_tags: ["afraid", "hopeful", "seeking-forgiveness"],
+    situation_tags: ["heart", "iman", "faith", "steadfastness", "istiqamah", "doubt", "wavering", "thabaat", "deen", "guidance"],
+    featured: true,
+    daily_dua_eligible: true,
+  },
+  {
+    id: 210,
+    slug: "dua-for-protection-from-riya-and-shirk",
+    title: "Dua for Protection from Showing Off and Hidden Shirk",
+    arabic_text:
+      "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ أَنْ أُشْرِكَ بِكَ وَأَنَا أَعْلَمُ وَأَسْتَغْفِرُكَ لِمَا لَا أَعْلَمُ",
+    transliteration:
+      "Allahumma inni a'udhu bika an ushrika bika wa ana a'lam, wa astaghfiruka lima la a'lam",
+    translation:
+      "O Allah, I seek refuge in You from knowingly associating partners with You, and I seek Your forgiveness for what I do not know.",
+    source_book: "Musnad Ahmad",
+    hadith_number: "19606",
+    authenticity_grade: "SAHIH",
+    graded_by: "Ibn Hibban",
+    category: "forgiveness",
+    emotion_tags: ["seeking-forgiveness", "afraid", "hopeful"],
+    situation_tags: ["riya", "showing-off", "shirk", "sincerity", "ikhlas", "hidden-shirk", "niyyah", "heart", "worship", "protection"],
+    featured: false,
+    daily_dua_eligible: true,
+  },
+  {
+    id: 211,
+    slug: "dua-for-travel-by-sea-bismillah-majraha",
+    title: "Dua When Travelling by Sea, River or Air",
+    arabic_text:
+      "بِسْمِ اللَّهِ مَجْرَاهَا وَمُرْسَاهَا إِنَّ رَبِّي لَغَفُورٌ رَّحِيمٌ",
+    transliteration:
+      "Bismillahi majraha wa mursaha inna rabbi laghafurun rahim",
+    translation:
+      "In the name of Allah is its sailing and its anchoring. Indeed, my Lord is Forgiving and Merciful.",
+    source_book: "Quran",
+    hadith_number: "11:41",
+    authenticity_grade: "QURAN",
+    category: "travel",
+    emotion_tags: ["hopeful", "grateful"],
+    situation_tags: ["sea", "ship", "boat", "ocean", "river", "travel", "cruise", "ferry", "flight", "plane", "air", "journey"],
+    featured: false,
+    daily_dua_eligible: false,
+  },
+  {
+    id: 212,
+    slug: "dua-allahumma-la-sahla-ease",
+    title: "Dua for Making the Difficult Easy — La Sahla",
+    arabic_text:
+      "اللَّهُمَّ لَا سَهْلَ إِلَّا مَا جَعَلْتَهُ سَهْلًا وَأَنْتَ تَجْعَلُ الْحَزْنَ إِذَا شِئْتَ سَهْلًا",
+    transliteration:
+      "Allahumma la sahla illa ma ja'altahu sahlan wa anta taj'alul-hazna idha shi'ta sahla",
+    translation:
+      "O Allah, there is no ease except what You make easy, and You can make hardship easy whenever You will.",
+    source_book: "Sahih Ibn Hibban",
+    hadith_number: "974",
+    authenticity_grade: "SAHIH",
+    graded_by: "Ibn Hibban",
+    category: "health",
+    emotion_tags: ["stressed", "hopeful", "afraid"],
+    situation_tags: ["ease", "difficulty", "hardship", "challenge", "exam", "interview", "obstacle", "problem", "help", "relief"],
+    featured: true,
+    daily_dua_eligible: true,
+  },
+  {
+    id: 213,
+    slug: "dua-rabbi-najjini-from-oppressors",
+    title: "Dua of Prophet Musa — Save Me from the Wrongdoers",
+    arabic_text:
+      "رَبِّ نَجِّنِي مِنَ الْقَوْمِ الظَّالِمِينَ",
+    transliteration:
+      "Rabbi najjini minal-qawmiz-zalimin",
+    translation:
+      "My Lord, save me from the wrongdoing people.",
+    source_book: "Quran",
+    hadith_number: "28:21",
+    authenticity_grade: "QURAN",
+    category: "protection",
+    emotion_tags: ["afraid", "hopeful", "stressed"],
+    situation_tags: ["oppression", "zulm", "wrongdoers", "injustice", "escape", "rescue", "enemies", "abuse", "prophet-musa", "protection"],
+    featured: false,
+    daily_dua_eligible: true,
+  },
+  {
+    id: 214,
+    slug: "dua-morning-fitra-of-islam",
+    title: "Morning Dua — We Have Awoken Upon the Fitrah of Islam",
+    arabic_text:
+      "أَصْبَحْنَا عَلَى فِطْرَةِ الْإِسْلَامِ وَعَلَى كَلِمَةِ الْإِخْلَاصِ وَعَلَى دِينِ نَبِيِّنَا مُحَمَّدٍ وَعَلَى مِلَّةِ أَبِينَا إِبْرَاهِيمَ حَنِيفًا وَمَا كَانَ مِنَ الْمُشْرِكِينَ",
+    transliteration:
+      "Asbahna 'ala fitratil-Islam wa 'ala kalimatil-ikhlas wa 'ala dini nabiyyina Muhammadin wa 'ala millati abina Ibrahima hanifan wa ma kana minal-mushrikin",
+    translation:
+      "We have awoken upon the natural disposition of Islam, upon the word of sincerity, upon the religion of our Prophet Muhammad, and upon the way of our father Ibrahim — as a true monotheist — and he was not among the polytheists.",
+    source_book: "Musnad Ahmad",
+    hadith_number: "14718",
+    authenticity_grade: "HASAN",
+    graded_by: "Al-Albani",
+    category: "morning-evening",
+    emotion_tags: ["grateful", "hopeful"],
+    situation_tags: ["morning", "waking-up", "fitrah", "islam", "iman", "ibrahim", "ikhlas", "dawn", "adhkar", "day-start"],
+    featured: false,
+    daily_dua_eligible: true,
+  },
+  {
+    id: 215,
+    slug: "dua-for-good-in-this-day-and-after",
+    title: "Dua for Good in This Day and Everything That Follows",
+    arabic_text:
+      "اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَذَا الْيَوْمِ وَخَيْرَ مَا بَعْدَهُ وَأَعُوذُ بِكَ مِنْ شَرِّ هَذَا الْيَوْمِ وَشَرِّ مَا بَعْدَهُ",
+    transliteration:
+      "Allahumma inni as'aluka khayra hadhal-yawmi wa khayra ma ba'dahu wa a'udhu bika min sharri hadhal-yawmi wa sharri ma ba'dahu",
+    translation:
+      "O Allah, I ask You for the good of this day and the good of what follows it, and I seek refuge in You from the evil of this day and the evil of what follows it.",
+    source_book: "Sahih Muslim",
+    hadith_number: "2723",
+    authenticity_grade: "SAHIH",
+    category: "morning-evening",
+    emotion_tags: ["hopeful", "grateful", "afraid"],
+    situation_tags: ["morning", "day", "daily", "protection", "good-day", "evening", "future", "adhkar", "new-day", "safety"],
+    featured: false,
+    daily_dua_eligible: true,
+  },
+  {
+    id: 216,
+    slug: "dua-for-protection-from-enemies",
+    title: "Dua for Protection When Facing an Enemy or Threat",
+    arabic_text:
+      "اللَّهُمَّ إِنَّا نَجْعَلُكَ فِي نُحُورِهِمْ وَنَعُوذُ بِكَ مِنْ شُرُورِهِمْ",
+    transliteration:
+      "Allahumma inna naj'aluka fi nuhurihim wa na'udhu bika min shururihim",
+    translation:
+      "O Allah, we place You before them and seek refuge in You from their evil.",
+    source_book: "Sunan Abu Dawud",
+    hadith_number: "1537",
+    authenticity_grade: "HASAN",
+    graded_by: "Al-Albani",
+    category: "protection",
+    emotion_tags: ["afraid", "hopeful"],
+    situation_tags: ["enemy", "threat", "danger", "harm", "evil-people", "confrontation", "oppressor", "crisis", "fear", "protection"],
+    featured: false,
+    daily_dua_eligible: false,
+  },
+  {
+    id: 217,
+    slug: "dua-for-dhikr-shukr-and-good-worship",
+    title: "Dua for Remembrance, Gratitude and Excellence in Worship",
+    arabic_text:
+      "اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ",
+    transliteration:
+      "Allahumma a'inni 'ala dhikrika wa shukrika wa husni 'ibadatik",
+    translation:
+      "O Allah, help me to remember You, to be grateful to You, and to worship You in the best manner.",
+    source_book: "Sunan Abu Dawud",
+    hadith_number: "1522",
+    authenticity_grade: "SAHIH",
+    graded_by: "Al-Albani",
+    category: "worship",
+    emotion_tags: ["grateful", "hopeful", "seeking-forgiveness"],
+    situation_tags: ["dhikr", "shukr", "gratitude", "ibadah", "worship", "after-prayer", "salah", "remembrance", "excellence", "husn"],
+    featured: false,
+    daily_dua_eligible: true,
+  },
+  {
+    id: 218,
+    slug: "dua-of-ibrahim-and-ismail-for-ummah",
+    title: "Dua of Ibrahim and Ismail for a Muslim Ummah",
+    arabic_text:
+      "رَبَّنَا وَاجْعَلْنَا مُسْلِمَيْنِ لَكَ وَمِن ذُرِّيَّتِنَا أُمَّةً مُّسْلِمَةً لَّكَ وَأَرِنَا مَنَاسِكَنَا وَتُبْ عَلَيْنَا إِنَّكَ أَنتَ التَّوَّابُ الرَّحِيمُ",
+    transliteration:
+      "Rabbana waj'alna muslimayni laka wa min dhurriyyatina ummatan muslimatan laka wa arina manasikana wa tub 'alayna innaka antat-tawwabur-rahim",
+    translation:
+      "Our Lord, make us both submissive to You, and from our descendants a community submissive to You. Show us our rites of worship and accept our repentance. Indeed, You are the Accepting of repentance, the Merciful.",
+    source_book: "Quran",
+    hadith_number: "2:128",
+    authenticity_grade: "QURAN",
+    category: "family",
+    emotion_tags: ["hopeful", "seeking-forgiveness", "grateful"],
+    situation_tags: ["ummah", "offspring", "family", "descendants", "islam", "hajj", "submission", "tawbah", "prophet-ibrahim", "ismail"],
+    featured: false,
+    daily_dua_eligible: true,
+  },
+  {
+    id: 219,
+    slug: "dua-rabbana-afrigh-alayna-sabran",
+    title: "Dua for Patience, Firmness and Victory",
+    arabic_text:
+      "رَبَّنَا أَفْرِغْ عَلَيْنَا صَبْرًا وَثَبِّتْ أَقْدَامَنَا وَانصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ",
+    transliteration:
+      "Rabbana afrigh 'alayna sabran wa thabbit aqdamana wansurna 'alal-qawmil-kafirin",
+    translation:
+      "Our Lord, pour upon us patience, plant our feet firmly, and give us victory over the disbelieving people.",
+    source_book: "Quran",
+    hadith_number: "2:250",
+    authenticity_grade: "QURAN",
+    category: "protection",
+    emotion_tags: ["hopeful", "afraid", "stressed"],
+    situation_tags: ["patience", "sabr", "firmness", "victory", "strength", "battle", "trial", "steadfastness", "thabaat", "courage"],
+    featured: false,
+    daily_dua_eligible: true,
+  },
 ];
 
 export const FEATURED_DUAS = DUAS.filter((d) => d.featured);
