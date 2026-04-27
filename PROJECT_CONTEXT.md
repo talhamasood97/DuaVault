@@ -1,7 +1,7 @@
 # PROJECT_CONTEXT.md — DuaVault
 
 > Single source of truth for the DuaVault codebase. Every fact below is derived from actual code inspection.
-> Last updated: 2026-04-26
+> Last updated: 2026-04-27
 
 ---
 
@@ -578,7 +578,7 @@ All other routes (check-token, refresh-token, post-morning, post-evening) must b
 
 | Date | Commit | Summary |
 |---|---|---|
-| 2026-04-26 | `88dc0ff` | feat: add 15 new SEO-optimised duas (IDs 205-219) and 15 hadiths (IDs 121-135) — batch 3 |
+| 2026-04-27 | `88dc0ff` | feat: add 15 new SEO-optimised duas (IDs 205-219) and 15 hadiths (IDs 121-135) — batch 3, live verified |
 | 2026-04-27 | `eee29b5` | feat: add 30 new authentic duas (IDs 175-204) and 30 new hadiths (IDs 91-120) — all SAHIH/HASAN/QURAN graded |
 | 2026-03-27 | `f07a4d0` | fix: fail-open on Blob dedup error + real ok status in mega-crons |
 | 2026-03-27 | `f5c4b26`–`1fbd357` | feat: consolidate 7 crons into 2 mega-crons (Hobby plan limit); extract sendDailyHadithEmail |
