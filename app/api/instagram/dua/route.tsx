@@ -35,45 +35,34 @@ function splitLines(text: string, maxChars: number): string[] {
   return lines;
 }
 
-function pickArabicStyle(charCount: number, maxBlockH: number): { fontSize: number; lineH: number; charsPerLine: number; blockH: number } {
-  for (const fs of [50, 44, 38, 32, 28, 24]) {
-    const cpl = Math.floor(900 / (fs * 0.7));
-    const nLines = Math.ceil(charCount / cpl);
+// Heights are computed from the actual wrapped lines (not an estimate from the
+// character count) — word wrapping often needs an extra line, which used to push
+// the Arabic into the transliteration and the translation into the footer.
+type TextStyle = { fontSize: number; lineH: number; lines: string[]; blockH: number };
+
+function pickArabicStyle(text: string, maxBlockH: number): TextStyle {
+  let style: TextStyle | null = null;
+  for (const fs of [50, 44, 38, 32, 28, 24, 22, 20]) {
+    const lines = splitLines(text, Math.floor(900 / (fs * 0.7)));
     const lineH = Math.round(fs * 1.9);
-    const blockH = fs + (nLines - 1) * lineH;
-    if (blockH <= maxBlockH) return { fontSize: fs, lineH, charsPerLine: cpl, blockH };
+    style = { fontSize: fs, lineH, lines, blockH: fs + (lines.length - 1) * lineH };
+    if (style.blockH <= maxBlockH) return style;
   }
-  const fs = 22;
-  const cpl = Math.floor(900 / (fs * 0.7));
-  const nLines = Math.ceil(charCount / cpl);
-  const lineH = Math.round(fs * 1.9);
-  return { fontSize: fs, lineH, charsPerLine: cpl, blockH: fs + (nLines - 1) * lineH };
+  return style!;
 }
 
-const TARGET_TRANSL_H = 320;
 const MIN_TRANSL_H = 60;
 
-function pickTranslStyle(charCount: number): { fontSize: number; lineH: number; charsPerLine: number; blockH: number } {
-  const sizes = [30, 27, 24, 22, 20, 18, 16];
-  for (const fs of sizes) {
-    const cpl = Math.floor(900 / (fs * 0.55));
-    const nLines = Math.ceil(charCount / cpl);
+function pickTranslStyle(text: string, targetH: number): TextStyle {
+  const sizes = [30, 27, 24, 22, 20, 18, 16, 14];
+  const styles = sizes.map((fs) => {
+    const lines = splitLines(text, Math.floor(900 / (fs * 0.55)));
     const lineH = Math.round(fs * 1.8);
-    const blockH = fs + (nLines - 1) * lineH;
-    if (blockH >= MIN_TRANSL_H && blockH <= TARGET_TRANSL_H) return { fontSize: fs, lineH, charsPerLine: cpl, blockH };
-  }
-  for (const fs of sizes) {
-    const cpl = Math.floor(900 / (fs * 0.55));
-    const nLines = Math.ceil(charCount / cpl);
-    const lineH = Math.round(fs * 1.8);
-    const blockH = fs + (nLines - 1) * lineH;
-    if (blockH <= TARGET_TRANSL_H) return { fontSize: fs, lineH, charsPerLine: cpl, blockH };
-  }
-  const fs = 14;
-  const cpl = Math.floor(900 / (fs * 0.55));
-  const nLines = Math.ceil(charCount / cpl);
-  const lineH = Math.round(fs * 1.8);
-  return { fontSize: fs, lineH, charsPerLine: cpl, blockH: fs + (nLines - 1) * lineH };
+    return { fontSize: fs, lineH, lines, blockH: fs + (lines.length - 1) * lineH };
+  });
+  return styles.find((s) => s.blockH >= MIN_TRANSL_H && s.blockH <= targetH)
+    ?? styles.find((s) => s.blockH <= targetH)
+    ?? styles[styles.length - 1];
 }
 
 function roundRect(ctx: SKRSContext2D, x: number, y: number, w: number, h: number, r: number) {
@@ -110,26 +99,26 @@ export async function GET(request: Request) {
   const GAP_TRL_TR = 22;
   const GAP_TR_SRC = 24;
 
-  const arabicMaxH = 280;
-  const { fontSize: arabicFS, lineH: arabicLineH, charsPerLine: arabicCPL, blockH: arabicBlockH } =
-    pickArabicStyle(dua.arabic_text.length, arabicMaxH);
-  const arabicLines = splitLines(dua.arabic_text, arabicCPL);
-
-  const { fontSize: translFS, lineH: translLineH, charsPerLine: translCPL, blockH: translBlockH } =
-    pickTranslStyle(dua.translation.length);
-  const translLines = splitLines(dua.translation, translCPL);
-
   const translitRaw = dua.transliteration.length > 200
     ? dua.transliteration.slice(0, 200).trimEnd() + "\u2026"
     : dua.transliteration;
   const translitLines = splitLines(translitRaw, 60).slice(0, 2);
   const TRANSLIT_H = 22 + (translitLines.length - 1) * 36 + GAP_TRL_TR;
 
-  const neededWithTranslit = TITLE_H + arabicBlockH + GAP_ARA_DIV + DIV_H + TRANSLIT_H + translBlockH + GAP_TR_SRC + SOURCE_H;
-  const showTranslit = neededWithTranslit <= AVAILABLE - 40;
-
-  const totalH = TITLE_H + arabicBlockH + GAP_ARA_DIV + DIV_H +
-    (showTranslit ? TRANSLIT_H : 0) + translBlockH + GAP_TR_SRC + SOURCE_H;
+  // Start from the standard budgets (Arabic \u2264 280px, translation \u2264 320px) and only
+  // tighten them when the whole card would not fit between header and footer.
+  const BUDGETS: [number, number][] = [[280, 320], [240, 300], [200, 280], [170, 260], [150, 240], [130, 220]];
+  let arabic!: TextStyle, transl!: TextStyle, showTranslit = false, totalH = 0;
+  for (const [arabicMaxH, translMaxH] of BUDGETS) {
+    arabic = pickArabicStyle(dua.arabic_text, arabicMaxH);
+    transl = pickTranslStyle(dua.translation, translMaxH);
+    const base = TITLE_H + arabic.blockH + GAP_ARA_DIV + DIV_H + transl.blockH + GAP_TR_SRC + SOURCE_H;
+    showTranslit = base + TRANSLIT_H <= AVAILABLE - 40;
+    totalH = base + (showTranslit ? TRANSLIT_H : 0);
+    if (totalH <= AVAILABLE - 20) break;
+  }
+  const { fontSize: arabicFS, lineH: arabicLineH, lines: arabicLines, blockH: arabicBlockH } = arabic;
+  const { fontSize: translFS, lineH: translLineH, lines: translLines, blockH: translBlockH } = transl;
   const startY = HEADER_BOTTOM + Math.max(16, Math.round((AVAILABLE - totalH) / 2));
 
   let y = startY;
