@@ -29,8 +29,8 @@
 - **Direct** — returning users who have saved duas to their local collection.
 
 **User capabilities (no auth required):**
-- Browse 256 duas across 9 categories and 8 emotional states
-- Browse 195 hadiths across 6 categories (34 granular topics)
+- Browse 316 duas across 9 categories and 8 emotional states
+- Browse 255 hadiths across 6 categories (34 granular topics)
 - Full-text search with synonym expansion, fuzzy matching, and Arabic support
 - Save/unsave duas to a local collection (localStorage, max 200)
 - Share duas via WhatsApp, Twitter, Facebook, or native share
@@ -125,8 +125,8 @@ interface Hadith {
 
 | Content | Count | File |
 |---|---|---|
-| Duas | 256 | `data/duas.ts` |
-| Hadiths | 195 | `data/hadiths.ts` |
+| Duas | 316 | `data/duas.ts` |
+| Hadiths | 255 | `data/hadiths.ts` |
 | Dua Categories | 9 | `lib/utils.ts` — CATEGORIES array |
 | Emotion States | 8 | `lib/utils.ts` — EMOTIONS array |
 | Hadith Categories | 6 (34 topics) | `lib/hadith-categories.ts` |
@@ -288,8 +288,8 @@ Supabase search: PostgreSQL `websearch` type full-text search on `search_vector`
 │   └── useSubscribeForm.ts
 │
 ├── data/
-│   ├── duas.ts                 # 256 duas with search engine + utilities
-│   ├── hadiths.ts              # 195 hadiths with getDailyHadith()
+│   ├── duas.ts                 # 316 duas with search engine + utilities
+│   ├── hadiths.ts              # 255 hadiths with getDailyHadith()
 │   ├── schema.sql              # Supabase DDL (duas + hadith_subscribers)
 │   ├── seed.ts                 # DB seeding script
 │   └── validate.ts             # Content validation script
@@ -379,7 +379,7 @@ Supabase search: PostgreSQL `websearch` type full-text search on `search_vector`
 ## 7. Current State
 
 ### What Is Working
-- Full website live at duavault.com with 256 duas and 195 hadiths
+- Full website live at duavault.com with 316 duas and 255 hadiths
 - Dark mode with system preference detection
 - Search with synonym expansion, fuzzy matching, Arabic support
 - Save/unsave duas (localStorage)
@@ -581,6 +581,7 @@ All other routes (check-token, refresh-token, post-morning, post-evening) must b
 
 | Date | Commit | Summary |
 |---|---|---|
+| 2026-10-11 | batch 5 | feat: add 60 duas (IDs 280-339; 58 daily-eligible, 42 Qur'anic + 18 Sunnah.com incl. prayer-chapter duas) and 60 hadiths (IDs 196-255) — 2 more months. Sourced from Sunnah.com chapter scrapes (5,000+ narrations filtered for grade, reuse and Arabic overlap); 7 candidates rejected as Da'if; all post cards verified |
 | 2026-10-11 | batch 4 | fix: dua post image (`/api/instagram/dua`) now sizes text from the real wrapped line count and tightens budgets until the card fits — previously 49 existing + 24 new duas rendered Arabic over the transliteration or translation into the footer; cards that already fit are pixel-identical |
 | 2026-10-11 | batch 4 | feat: add 60 duas (IDs 220-279; 59 daily-eligible — 275 Wajjahtu Wajhiya is too long for a 1080px card) and 60 hadiths (IDs 136-195) — ~2 months of daily rotation. Arabic sliced verbatim from Sunnah.com / Quran.com source text; every hadith Sahih/Hasan per Sunnah.com grade; zero new validator errors |
 | 2026-04-27 | `88dc0ff` | feat: add 15 new SEO-optimised duas (IDs 205-219) and 15 hadiths (IDs 121-135) — batch 3, live verified |
