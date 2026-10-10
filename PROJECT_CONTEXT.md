@@ -1,7 +1,7 @@
 # PROJECT_CONTEXT.md — DuaVault
 
 > Single source of truth for the DuaVault codebase. Every fact below is derived from actual code inspection.
-> Last updated: 2026-04-27
+> Last updated: 2026-10-11
 
 ---
 
@@ -29,8 +29,8 @@
 - **Direct** — returning users who have saved duas to their local collection.
 
 **User capabilities (no auth required):**
-- Browse 196 duas across 9 categories and 8 emotional states
-- Browse 135 hadiths across 6 categories (34 granular topics)
+- Browse 256 duas across 9 categories and 8 emotional states
+- Browse 195 hadiths across 6 categories (34 granular topics)
 - Full-text search with synonym expansion, fuzzy matching, and Arabic support
 - Save/unsave duas to a local collection (localStorage, max 200)
 - Share duas via WhatsApp, Twitter, Facebook, or native share
@@ -125,8 +125,8 @@ interface Hadith {
 
 | Content | Count | File |
 |---|---|---|
-| Duas | 196 | `data/duas.ts` |
-| Hadiths | 135 | `data/hadiths.ts` |
+| Duas | 256 | `data/duas.ts` |
+| Hadiths | 195 | `data/hadiths.ts` |
 | Dua Categories | 9 | `lib/utils.ts` — CATEGORIES array |
 | Emotion States | 8 | `lib/utils.ts` — EMOTIONS array |
 | Hadith Categories | 6 (34 topics) | `lib/hadith-categories.ts` |
@@ -288,8 +288,8 @@ Supabase search: PostgreSQL `websearch` type full-text search on `search_vector`
 │   └── useSubscribeForm.ts
 │
 ├── data/
-│   ├── duas.ts                 # 196 duas with search engine + utilities
-│   ├── hadiths.ts              # 135 hadiths with getDailyHadith()
+│   ├── duas.ts                 # 256 duas with search engine + utilities
+│   ├── hadiths.ts              # 195 hadiths with getDailyHadith()
 │   ├── schema.sql              # Supabase DDL (duas + hadith_subscribers)
 │   ├── seed.ts                 # DB seeding script
 │   └── validate.ts             # Content validation script
@@ -366,6 +366,7 @@ Supabase search: PostgreSQL `websearch` type full-text search on `search_vector`
 - `@napi-rs/canvas` with `GlobalFonts.registerFromPath()` (not the deprecated `registerFont`)
 - Native `.node` binaries externalized in webpack config
 - Fonts loaded from `public/fonts/` directory
+- Dua images: text size is chosen from the actual wrapped line count; if the card would overflow, Arabic/translation budgets shrink step by step (min 20px Arabic / 14px translation). Duas too long even then should be `daily_dua_eligible: false` (e.g. istikhara, wajjahtu-wajhiya)
 - Hadith images: dark green gradient background, emerald accent
 - Dua images: dark blue/indigo gradient background, indigo accent
 - Both: 1080x1080px PNG, DuaVault wordmark, category badge, Arabic + English text
@@ -378,7 +379,7 @@ Supabase search: PostgreSQL `websearch` type full-text search on `search_vector`
 ## 7. Current State
 
 ### What Is Working
-- Full website live at duavault.com with 196 duas and 135 hadiths
+- Full website live at duavault.com with 256 duas and 195 hadiths
 - Dark mode with system preference detection
 - Search with synonym expansion, fuzzy matching, Arabic support
 - Save/unsave duas (localStorage)
@@ -572,12 +573,16 @@ All other routes (check-token, refresh-token, post-morning, post-evening) must b
 3. **Rate limiter is per-process**: Warm serverless instances share limits, but cold starts reset counters. Noted as acceptable for current traffic; Upstash Redis recommended at scale.
 4. **Meta token expiry**: 60-day user token refreshed monthly. If refresh-token cron fails, manual intervention needed within ~30 days.
 5. **No authentication system**: All user features (save, search) are anonymous/client-side. Subscriber emails are the only PII stored.
-6. **IndexNow verification files** in public/ — these must be maintained if the IndexNow key changes.
+6. **Pre-existing content duplicates**: `data/validate.ts` reports 39 errors on entries that predate batch 4 (e.g. duplicate Arabic between `dua-for-patience` / `dua-rabbana-afrigh-alayna-sabran`, `dua-for-good-health` slug used twice). Batch 4 adds none; cleaning these up requires deciding which entry keeps each slug/URL.
+7. **Content sourcing (batch 4 onward)**: Qur'anic duas use Quran.com `text_imlaei` + Sahih International; hadith Arabic/English from Sunnah.com, grade taken from Sunnah.com's grade table (Al-Albani for Abu Dawud, Darussalam for Tirmidhi/Nasa'i). Transliterations are authored.
+8. **IndexNow verification files** in public/ — these must be maintained if the IndexNow key changes.
 
 ## 11. Rolling Version History (7-Day Snapshot Log)
 
 | Date | Commit | Summary |
 |---|---|---|
+| 2026-10-11 | batch 4 | fix: dua post image (`/api/instagram/dua`) now sizes text from the real wrapped line count and tightens budgets until the card fits — previously 49 existing + 24 new duas rendered Arabic over the transliteration or translation into the footer; cards that already fit are pixel-identical |
+| 2026-10-11 | batch 4 | feat: add 60 duas (IDs 220-279; 59 daily-eligible — 275 Wajjahtu Wajhiya is too long for a 1080px card) and 60 hadiths (IDs 136-195) — ~2 months of daily rotation. Arabic sliced verbatim from Sunnah.com / Quran.com source text; every hadith Sahih/Hasan per Sunnah.com grade; zero new validator errors |
 | 2026-04-27 | `88dc0ff` | feat: add 15 new SEO-optimised duas (IDs 205-219) and 15 hadiths (IDs 121-135) — batch 3, live verified |
 | 2026-04-27 | `eee29b5` | feat: add 30 new authentic duas (IDs 175-204) and 30 new hadiths (IDs 91-120) — all SAHIH/HASAN/QURAN graded |
 | 2026-03-27 | `f07a4d0` | fix: fail-open on Blob dedup error + real ok status in mega-crons |
