@@ -209,6 +209,33 @@ export const SOCIAL = {
 export const SITE_DESCRIPTION =
   "Find the right dua for any moment — authentic supplications from Quran & Hadith, with Arabic & full meaning.";
 
+// The audience is mostly in India, so "today" on the site rolls over at
+// midnight IST. Post crons run at 8:30 AM and 8 PM IST, when the IST and UTC
+// dates agree, so the posted dua/hadith is unchanged by this.
+export const SITE_TIME_ZONE = "Asia/Kolkata";
+const IST_OFFSET_MS = 330 * 60 * 1000;
+
+export function dayOfYearIST(d: Date = new Date()): number {
+  const ist = new Date(d.getTime() + IST_OFFSET_MS);
+  return Math.floor((ist.getTime() - Date.UTC(ist.getUTCFullYear(), 0, 0)) / 86_400_000);
+}
+
+/**
+ * Builds a page title that stays within Google's ~60-char snippet once the
+ * layout template appends " | DuaVault". Uses the longest suffix that fits.
+ */
+export function fitTitle(base: string, suffixes: string[], max = 60): string {
+  const room = max - ` | ${SITE_NAME}`.length;
+  return base + (suffixes.find((s) => base.length + s.length <= room) ?? "");
+}
+
+/** Cuts text at a word boundary so meta descriptions stay under ~160 chars. */
+export function truncate(text: string, max: number): string {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max - 1);
+  return cut.slice(0, cut.lastIndexOf(" ")).replace(/[\s,;:.—–-]+$/, "") + "…";
+}
+
 export function formatShareText(title: string, translation: string, source: string): string {
   return `${title}\n\n"${translation}"\n\n📖 Source: ${source}`;
 }
