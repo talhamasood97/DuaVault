@@ -10,7 +10,7 @@ export function RelatedDuas({ duas }: { duas: Dua[] }) {
       <h2 className="text-lg font-semibold text-stone-800 dark:text-stone-100 mb-4">
         Related Duas
       </h2>
-      <div className="grid gap-3">
+      <div className="grid grid-cols-1 gap-3">
         {duas.map((dua) => (
           <Link
             key={dua.id}
@@ -18,7 +18,7 @@ export function RelatedDuas({ duas }: { duas: Dua[] }) {
             className="flex items-center justify-between gap-4 bg-white dark:bg-emerald-950/40 rounded-xl px-4 py-3 border border-stone-100 dark:border-emerald-900 hover:border-emerald-200 dark:hover:border-emerald-700 group transition-all"
           >
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-stone-700 dark:text-stone-300 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 truncate transition-colors">
+              <p className="text-sm font-medium text-stone-700 dark:text-stone-300 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 line-clamp-2 transition-colors">
                 {dua.title}
               </p>
               <p className="text-xs text-stone-500 dark:text-stone-400 mt-0.5">

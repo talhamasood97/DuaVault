@@ -89,7 +89,7 @@ export async function GET(request: Request) {
   const source = formatSource(dua);
   const title = dua.title.toUpperCase();
   // The card fonts have no ﷺ glyph (it renders as a box).
-  const translation = dua.translation.replace(/\uFDFA/g, "(SAW)");
+  const translation = dua.translation.replace(/\(?\uFDFA\)?/g, "(SAW)");
 
   const HEADER_BOTTOM = 120;
   const FOOTER_TOP = 984;
