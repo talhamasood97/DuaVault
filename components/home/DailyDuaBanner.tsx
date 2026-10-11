@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { Star, ArrowRight } from "lucide-react";
 import type { Dua } from "@/types";
+import { SITE_TIME_ZONE } from "@/lib/utils";
 
 export function DailyDuaBanner({ dua }: { dua: Dua }) {
   const today = new Date().toLocaleDateString("en-US", {
+    timeZone: SITE_TIME_ZONE,
     weekday: "long",
     month: "long",
     day: "numeric",

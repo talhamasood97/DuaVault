@@ -3,11 +3,11 @@ import Link from "next/link";
 import { BookOpen, ChevronRight, Calendar, CheckCircle, XCircle } from "lucide-react";
 import { getDailyHadith } from "@/data/hadiths";
 import { SubscribeForm } from "@/components/hadith/SubscribeForm";
-import { SITE_NAME, SITE_URL , safeJsonLd } from "@/lib/utils";
+import { SITE_NAME, SITE_URL , safeJsonLd, SITE_TIME_ZONE } from "@/lib/utils";
 import { SocialFollowStrip } from "@/components/layout/SocialFollowStrip";
 
 export const metadata: Metadata = {
-  title: "Hadith of the Day – Daily Islamic Wisdom on Morals & Character",
+  title: "Hadith of the Day – Daily Authentic Hadith",
   description:
     "A new authentic hadith every day on character, kindness, honesty and life improvement. Verified from Sahih Bukhari and Sahih Muslim.",
   alternates: { canonical: "/daily-hadith" },
@@ -39,6 +39,7 @@ export default function DailyHadithPage({
   const hadith = getDailyHadith();
 
   const today = new Date().toLocaleDateString("en-US", {
+    timeZone: SITE_TIME_ZONE,
     weekday: "long",
     year: "numeric",
     month: "long",

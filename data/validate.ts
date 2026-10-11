@@ -41,6 +41,10 @@ function normalizeText(text: string) {
 
 // ─── DUA VALIDATION ───────────────────────────────────────────────────────────
 
+// Same words, different occasion — each is its own Sunnah (e.g. the rooster
+// and leaving the mosque both use "Allahumma inni as'aluka min fadlik").
+const SHARED_TEXT_OK = new Set(["dua-before-wudu-ablution", "dua-when-rooster-crows", "dua-when-donkey-brays"]);
+
 const duaSlugs = new Map<string, number>();
 const duaIds = new Map<number, string>();
 const duaTitles = new Map<string, string>();
@@ -76,7 +80,7 @@ for (const dua of DUAS) {
 
   // ── Duplicate Arabic text ─────────────────────────────────────────────────
   const normArabic = normalizeArabic(dua.arabic_text);
-  if (duaArabic.has(normArabic)) {
+  if (duaArabic.has(normArabic) && !SHARED_TEXT_OK.has(dua.slug)) {
     error(ref, `Duplicate Arabic text — already used by "${duaArabic.get(normArabic)}"`);
   } else {
     duaArabic.set(normArabic, dua.slug);
@@ -84,7 +88,7 @@ for (const dua of DUAS) {
 
   // ── Duplicate translation ─────────────────────────────────────────────────
   const normTranslation = normalizeText(dua.translation);
-  if (duaTranslations.has(normTranslation)) {
+  if (duaTranslations.has(normTranslation) && !SHARED_TEXT_OK.has(dua.slug)) {
     error(ref, `Duplicate translation — already used by "${duaTranslations.get(normTranslation)}"`);
   } else {
     duaTranslations.set(normTranslation, dua.slug);

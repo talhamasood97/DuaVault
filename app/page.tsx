@@ -15,7 +15,7 @@ import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, safeJsonLd } from "@/lib/utils";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} – Authentic Islamic Duas with Arabic, Transliteration & Sources`,
+  title: `${SITE_NAME} – Authentic Islamic Duas in Arabic with Sources`,
   description: SITE_DESCRIPTION,
   alternates: { canonical: "/" },
 };

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy – DuaVault",
+  title: "Privacy Policy",
   description: "Privacy Policy for DuaVault.",
   robots: { index: false },
 };
@@ -48,7 +48,7 @@ export default function PrivacyPage() {
           For privacy inquiries, please contact us through our website.
         </p>
         <p className="text-xs text-stone-500 dark:text-stone-400 mt-8">
-          Last updated: {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+          Last updated: March 18, 2026
         </p>
       </div>
     </div>

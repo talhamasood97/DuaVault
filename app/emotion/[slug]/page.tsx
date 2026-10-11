@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ChevronRight, Heart } from "lucide-react";
 import { getDuasByEmotion } from "@/lib/duas";
 import { DuaCard } from "@/components/dua/DuaCard";
-import { getEmotionMeta, EMOTIONS, SITE_URL , safeJsonLd } from "@/lib/utils";
+import { getEmotionMeta, EMOTIONS, SITE_URL, safeJsonLd, fitTitle } from "@/lib/utils";
 
 export const revalidate = 3600;
 
@@ -16,15 +16,19 @@ export async function generateStaticParams() {
   return EMOTIONS.map((e) => ({ slug: e.slug }));
 }
 
+function emotionTitle(title: string): string {
+  return title === "Seeking Forgiveness" ? "Duas for Seeking Forgiveness" : `Duas for When You're ${title}`;
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const emotion = getEmotionMeta(params.slug);
   if (!emotion) return {};
   return {
-    title: `Duas for When You're ${emotion.title} – Islamic Supplications`,
+    title: fitTitle(emotionTitle(emotion.title), [" – Quran & Hadith"]),
     description: `${emotion.description}. Find authentic duas from Quran and Hadith to help when you're feeling ${emotion.title.toLowerCase()}.`,
     alternates: { canonical: `/emotion/${emotion.slug}` },
     openGraph: {
-      title: `Duas for When You're ${emotion.title} – DuaVault`,
+      title: `${emotionTitle(emotion.title)} – DuaVault`,
       description: `${emotion.description}. Find authentic duas from Quran and Hadith.`,
       url: `${SITE_URL}/emotion/${emotion.slug}`,
       images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: `Duas for ${emotion.title} – DuaVault` }],
@@ -42,9 +46,7 @@ export default async function EmotionPage({ params }: Props) {
 
   const duas = await getDuasByEmotion(params.slug);
 
-  const emotionPageTitle = emotion.title === "Seeking Forgiveness"
-    ? "Duas for Seeking Forgiveness"
-    : `Duas for When You're ${emotion.title}`;
+  const emotionPageTitle = emotionTitle(emotion.title);
 
   const breadcrumbData = {
     "@context": "https://schema.org",

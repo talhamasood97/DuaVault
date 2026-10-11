@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ShieldCheck, BookOpen, Search, Heart } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About – DuaVault",
+  title: "About Us – Authentic Duas, Verified Sources",
   description:
     "Our mission is to be the most complete and trusted vault of authentic Islamic supplications, with every dua verified against scholarly sources.",
   alternates: { canonical: "/about" },

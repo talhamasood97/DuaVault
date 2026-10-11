@@ -1,4 +1,5 @@
 import type { Dua } from "@/types";
+import { dayOfYearIST } from "@/lib/utils";
 
 export const DUAS: Dua[] = [
   // ─── DAILY LIFE ──────────────────────────────────────────────────────────────
@@ -59,38 +60,18 @@ export const DUAS: Dua[] = [
     slug: "dua-after-eating",
     title: "Dua After Eating",
     arabic_text:
-      "الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ",
+      "الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنِي هَذَا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ",
     transliteration:
-      "Alhamdu lillahil-ladhi at'amana wa saqana wa ja'alana muslimin",
+      "Alhamdu lillahil-ladhi at'amani hadha wa razaqanihi min ghayri hawlin minni wa la quwwah",
     translation:
-      "All praise is for Allah who fed us and gave us drink, and made us Muslims.",
+      "All praise is for Allah Who fed me this and provided it for me without any power or might on my part.",
     source_book: "Sunan Abu Dawud",
-    hadith_number: "3850",
-    authenticity_grade: "SAHIH",
+    hadith_number: "4023",
+    authenticity_grade: "HASAN",
     graded_by: "Al-Albani",
     category: "daily-life",
     emotion_tags: ["grateful"],
-    situation_tags: ["after-eating", "food", "gratitude", "water", "drink", "drinking"],
-    featured: false,
-    daily_dua_eligible: true,
-  },
-  {
-    id: 5,
-    slug: "dua-entering-home",
-    title: "Dua When Entering Home",
-    arabic_text:
-      "بِسْمِ اللَّهِ وَلَجْنَا وَبِسْمِ اللَّهِ خَرَجْنَا وَعَلَى اللَّهِ رَبِّنَا تَوَكَّلْنَا",
-    transliteration:
-      "Bismillahi walajna, wa bismillahi kharajna, wa 'ala Allahi rabbina tawakkalna",
-    translation:
-      "In the name of Allah we enter, in the name of Allah we leave, and upon our Lord we place our trust.",
-    source_book: "Sunan Abu Dawud",
-    hadith_number: "5096",
-    authenticity_grade: "SAHIH",
-    graded_by: "Al-Albani",
-    category: "daily-life",
-    emotion_tags: ["grateful", "hopeful"],
-    situation_tags: ["home", "entering", "door"],
+    situation_tags: ["after-eating", "food", "gratitude", "water", "drink", "drinking", "eating", "meal", "daily"],
     featured: false,
     daily_dua_eligible: true,
   },
@@ -282,7 +263,7 @@ export const DUAS: Dua[] = [
     graded_by: "Al-Albani",
     category: "protection",
     emotion_tags: ["afraid", "hopeful"],
-    situation_tags: ["protection", "morning", "evening", "ruqyah"],
+    situation_tags: ["protection", "morning", "evening", "ruqyah", "evil-eye", "hasad", "envy", "daily"],
     featured: false,
     daily_dua_eligible: true,
   },
@@ -300,8 +281,8 @@ export const DUAS: Dua[] = [
     hadith_number: "2708",
     authenticity_grade: "SAHIH",
     category: "protection",
-    emotion_tags: ["afraid", "stressed"],
-    situation_tags: ["evil-eye", "protection", "ruqyah", "harm", "magic", "sihr", "jinn", "evening"],
+    emotion_tags: ["afraid", "stressed", "hopeful"],
+    situation_tags: ["evil-eye", "protection", "ruqyah", "harm", "magic", "sihr", "jinn", "evening", "evil", "creation", "refuge", "safety", "morning", "night", "travel"],
     featured: false,
     daily_dua_eligible: true,
   },
@@ -368,7 +349,7 @@ export const DUAS: Dua[] = [
     slug: "dua-for-parents",
     title: "Dua for Parents",
     arabic_text:
-      "رَّبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",
+      "رَبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",
     transliteration: "Rabbir hamhuma kama rabbayani saghira",
     translation:
       "My Lord, have mercy upon them as they raised me when I was young.",
@@ -377,7 +358,7 @@ export const DUAS: Dua[] = [
     authenticity_grade: "QURAN",
     category: "family",
     emotion_tags: ["grateful", "hopeful", "sad"],
-    situation_tags: ["parents", "family", "mercy", "quranic", "mother", "father"],
+    situation_tags: ["parents", "family", "mercy", "quranic", "mother", "father", "daily"],
     featured: true,
     daily_dua_eligible: true,
   },
@@ -399,7 +380,7 @@ export const DUAS: Dua[] = [
     graded_by: "Al-Albani",
     category: "travel",
     emotion_tags: ["grateful", "hopeful"],
-    situation_tags: ["travel", "vehicle", "journey", "car", "plane", "umrah", "hajj", "pilgrimage"],
+    situation_tags: ["travel", "vehicle", "journey", "car", "plane", "umrah", "hajj", "pilgrimage", "driving", "riding", "transport", "bus", "mount"],
     featured: false,
     daily_dua_eligible: false,
   },
@@ -447,7 +428,7 @@ export const DUAS: Dua[] = [
     slug: "dua-of-prophet-yunus",
     title: "Dua of Prophet Yunus (Jonah)",
     arabic_text:
-      "لَّا إِلَهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ",
+      "لَا إِلَهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ",
     transliteration:
       "La ilaha illa anta subhanaka inni kuntu minaz-zalimin",
     translation:
@@ -457,7 +438,7 @@ export const DUAS: Dua[] = [
     authenticity_grade: "QURAN",
     category: "quranic",
     emotion_tags: ["seeking-forgiveness", "sad", "hopeful", "stressed", "angry", "lonely"],
-    situation_tags: ["distress", "hardship", "forgiveness", "prophets", "quranic"],
+    situation_tags: ["distress", "hardship", "forgiveness", "prophets", "quranic", "anxiety", "panic", "fear", "dua-of-yunus", "daily"],
     featured: true,
     daily_dua_eligible: true,
   },
@@ -476,7 +457,7 @@ export const DUAS: Dua[] = [
     authenticity_grade: "QURAN",
     category: "quranic",
     emotion_tags: ["hopeful", "grateful"],
-    situation_tags: ["prayer", "family", "children", "quranic"],
+    situation_tags: ["prayer", "family", "children", "quranic", "salah", "offspring", "descendants", "prophet-ibrahim", "steadfastness"],
     featured: false,
     daily_dua_eligible: true,
   },
@@ -631,8 +612,8 @@ export const DUAS: Dua[] = [
     graded_by: "Al-Albani",
     category: "worship",
     emotion_tags: ["grateful"],
-    situation_tags: ["iftar", "ramadan", "fasting", "breaking-fast"],
-    featured: false,
+    situation_tags: ["iftar", "ramadan", "fasting", "breaking-fast", "food"],
+    featured: true,
     daily_dua_eligible: false,
   },
 
@@ -669,7 +650,7 @@ export const DUAS: Dua[] = [
     authenticity_grade: "QURAN",
     category: "family",
     emotion_tags: ["hopeful", "lonely", "grateful"],
-    situation_tags: ["marriage", "spouse", "husband", "wife", "family", "children", "quranic"],
+    situation_tags: ["marriage", "spouse", "husband", "wife", "family", "children", "quranic", "offspring", "righteous", "leadership"],
     featured: true,
     daily_dua_eligible: true,
   },
@@ -710,7 +691,7 @@ export const DUAS: Dua[] = [
     graded_by: "Al-Albani",
     category: "protection",
     emotion_tags: ["sad", "stressed", "lonely", "hopeful", "angry"],
-    situation_tags: ["depression", "sadness", "distress", "anxiety", "healing"],
+    situation_tags: ["depression", "sadness", "distress", "anxiety", "healing", "grief", "worry", "quran", "sorrow", "relief", "heart", "overwhelmed"],
     featured: true,
     daily_dua_eligible: true,
   },
@@ -729,8 +710,8 @@ export const DUAS: Dua[] = [
     authenticity_grade: "SAHIH",
     graded_by: "Al-Albani",
     category: "worship",
-    emotion_tags: ["grateful"],
-    situation_tags: ["gratitude", "dhikr", "worship", "zikr"],
+    emotion_tags: ["grateful", "hopeful", "seeking-forgiveness"],
+    situation_tags: ["gratitude", "dhikr", "worship", "zikr", "shukr", "ibadah", "after-prayer", "salah", "remembrance", "excellence", "husn"],
     featured: false,
     daily_dua_eligible: true,
   },
@@ -757,7 +738,7 @@ export const DUAS: Dua[] = [
     slug: "dua-for-knowledge",
     title: "Dua for Knowledge and Wisdom",
     arabic_text:
-      "رَّبِّ زِدْنِي عِلْمًا",
+      "رَبِّ زِدْنِي عِلْمًا",
     transliteration: "Rabbi zidni 'ilma",
     translation: "My Lord, increase me in knowledge.",
     source_book: "Quran",
@@ -765,8 +746,8 @@ export const DUAS: Dua[] = [
     authenticity_grade: "QURAN",
     category: "quranic",
     emotion_tags: ["hopeful"],
-    situation_tags: ["knowledge", "studying", "wisdom", "exam", "quranic"],
-    featured: false,
+    situation_tags: ["knowledge", "studying", "wisdom", "exam", "quranic", "study", "learning", "education", "daily", "ilm", "students", "seeking-knowledge"],
+    featured: true,
     daily_dua_eligible: true,
   },
   {
@@ -785,26 +766,8 @@ export const DUAS: Dua[] = [
     graded_by: "Al-Albani",
     category: "protection",
     emotion_tags: ["stressed", "sad", "afraid", "hopeful", "angry", "lonely"],
-    situation_tags: ["hardship", "ease", "difficulty", "problem"],
-    featured: false,
-    daily_dua_eligible: true,
-  },
-  {
-    id: 43,
-    slug: "dua-for-the-night-of-jumu-ah",
-    title: "Dua for Friday (Jumu'ah)",
-    arabic_text:
-      "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ",
-    transliteration: "Allahumma salli 'ala Muhammadin wa 'ala ali Muhammad",
-    translation:
-      "O Allah, send blessings upon Muhammad and upon the family of Muhammad.",
-    source_book: "Sahih al-Bukhari",
-    hadith_number: "3370",
-    authenticity_grade: "SAHIH",
-    category: "worship",
-    emotion_tags: ["grateful", "hopeful"],
-    situation_tags: ["friday", "jumu'ah", "salawat", "prophet", "jummah", "jumah"],
-    featured: false,
+    situation_tags: ["hardship", "ease", "difficulty", "problem", "challenge", "exam", "interview", "obstacle", "help", "relief"],
+    featured: true,
     daily_dua_eligible: true,
   },
   {
@@ -858,7 +821,7 @@ export const DUAS: Dua[] = [
     graded_by: "Al-Albani",
     category: "protection",
     emotion_tags: ["afraid", "hopeful", "seeking-forgiveness"],
-    situation_tags: ["faith", "steadfastness", "heart", "iman", "steadfast", "daily", "dhikr"],
+    situation_tags: ["faith", "steadfastness", "heart", "iman", "steadfast", "daily", "dhikr", "istiqamah", "doubt", "wavering", "thabaat", "deen", "guidance"],
     featured: true,
     daily_dua_eligible: true,
   },
@@ -877,9 +840,9 @@ export const DUAS: Dua[] = [
     authenticity_grade: "HASAN",
     graded_by: "Al-Albani",
     category: "daily-life",
-    emotion_tags: ["stressed", "sad", "hopeful"],
-    situation_tags: ["debt", "financial", "poverty", "money", "rizq"],
-    featured: false,
+    emotion_tags: ["stressed", "sad", "hopeful", "grateful"],
+    situation_tags: ["debt", "financial", "poverty", "money", "rizq", "provision", "halal", "income", "wealth", "employment", "career", "job", "sufficiency"],
+    featured: true,
     daily_dua_eligible: true,
   },
   {
@@ -897,7 +860,7 @@ export const DUAS: Dua[] = [
     authenticity_grade: "QURAN",
     category: "quranic",
     emotion_tags: ["stressed", "afraid", "hopeful", "angry"],
-    situation_tags: ["patience", "sabr", "difficulty", "steadfastness", "quranic"],
+    situation_tags: ["patience", "sabr", "difficulty", "steadfastness", "quranic", "firmness", "victory", "strength", "battle", "trial", "thabaat", "courage"],
     featured: false,
     daily_dua_eligible: true,
   },
@@ -906,19 +869,19 @@ export const DUAS: Dua[] = [
     slug: "dua-for-good-health",
     title: "Dua for Good Health and Wellbeing",
     arabic_text:
-      "اللَّهُمَّ عَافِنِي فِي بَدَنِي اللَّهُمَّ عَافِنِي فِي سَمْعِي اللَّهُمَّ عَافِنِي فِي بَصَرِي",
+      "اللَّهُمَّ عَافِنِي فِي بَدَنِي اللَّهُمَّ عَافِنِي فِي سَمْعِي اللَّهُمَّ عَافِنِي فِي بَصَرِي لَا إِلَهَ إِلَّا أَنْتَ",
     transliteration:
-      "Allahumma 'afini fi badani, Allahumma 'afini fi sam'i, Allahumma 'afini fi basari",
+      "Allahumma 'afini fi badani, Allahumma 'afini fi sam'i, Allahumma 'afini fi basari, la ilaha illa ant",
     translation:
-      "O Allah, grant me health in my body. O Allah, grant me health in my hearing. O Allah, grant me health in my sight.",
+      "O Allah, grant me health in my body. O Allah, grant me health in my hearing. O Allah, grant me health in my sight. There is no god but You.",
     source_book: "Sunan Abu Dawud",
     hadith_number: "5090",
     authenticity_grade: "HASAN",
     graded_by: "Al-Albani",
     category: "health",
     emotion_tags: ["grateful", "hopeful"],
-    situation_tags: ["health", "body", "wellbeing", "healing"],
-    featured: false,
+    situation_tags: ["health", "body", "wellbeing", "healing", "morning", "daily"],
+    featured: true,
     daily_dua_eligible: true,
   },
   {
@@ -1127,8 +1090,8 @@ export const DUAS: Dua[] = [
     authenticity_grade: "QURAN",
     category: "quranic",
     emotion_tags: ["stressed", "hopeful"],
-    situation_tags: ["exam", "speech", "confidence", "ease", "presentation", "quranic"],
-    featured: false,
+    situation_tags: ["exam", "speech", "confidence", "ease", "presentation", "quranic", "study", "test", "knowledge", "speaking", "education"],
+    featured: true,
     daily_dua_eligible: true,
   },
   {
@@ -1260,7 +1223,7 @@ export const DUAS: Dua[] = [
     graded_by: "Al-Albani",
     category: "daily-life",
     emotion_tags: ["grateful", "hopeful"],
-    situation_tags: ["mirror", "character", "morning", "appearance"],
+    situation_tags: ["mirror", "character", "morning", "appearance", "daily"],
     featured: false,
     daily_dua_eligible: true,
   },
@@ -1300,7 +1263,7 @@ export const DUAS: Dua[] = [
     graded_by: "Al-Albani",
     category: "daily-life",
     emotion_tags: ["grateful", "hopeful"],
-    situation_tags: ["moon", "new-month", "ramadan", "dhul-hijjah"],
+    situation_tags: ["moon", "new-month", "ramadan", "dhul-hijjah", "chand-raat", "crescent-moon", "moon-sighting", "eid", "new-moon", "eid-al-fitr"],
     featured: false,
     daily_dua_eligible: false,
   },
@@ -1337,7 +1300,7 @@ export const DUAS: Dua[] = [
     graded_by: "Al-Albani",
     category: "daily-life",
     emotion_tags: ["hopeful", "grateful", "stressed"],
-    situation_tags: ["rizq", "provision", "knowledge", "work", "morning", "job", "employment", "career", "income", "daily"],
+    situation_tags: ["rizq", "provision", "knowledge", "work", "morning", "job", "employment", "career", "income", "daily", "deeds", "fajr", "prayer", "ilm", "acceptance"],
     featured: false,
     daily_dua_eligible: true,
   },
@@ -1392,8 +1355,8 @@ export const DUAS: Dua[] = [
     authenticity_grade: "HASAN",
     graded_by: "Al-Albani",
     category: "daily-life",
-    emotion_tags: ["afraid", "grateful"],
-    situation_tags: ["thunder", "lightning", "storm", "weather"],
+    emotion_tags: ["afraid", "grateful", "hopeful"],
+    situation_tags: ["thunder", "lightning", "storm", "weather", "rain", "fear", "natural-disaster"],
     featured: false,
     daily_dua_eligible: false,
   },
@@ -1458,23 +1421,6 @@ export const DUAS: Dua[] = [
 
   // ─── NEW: PROTECTION ──────────────────────────────────────────────────────────
   {
-    id: 78,
-    slug: "dua-protection-from-hellfire",
-    title: "Dua for Protection from Hellfire",
-    arabic_text: "اللَّهُمَّ أَجِرْنِي مِنَ النَّارِ",
-    transliteration: "Allahumma ajirni minan-nar",
-    translation: "O Allah, protect me from the Fire.",
-    source_book: "Sunan Abu Dawud",
-    hadith_number: "5079",
-    authenticity_grade: "SAHIH",
-    graded_by: "Al-Albani",
-    category: "protection",
-    emotion_tags: ["afraid", "hopeful", "seeking-forgiveness"],
-    situation_tags: ["hellfire", "protection", "morning", "evening", "akhirah"],
-    featured: false,
-    daily_dua_eligible: true,
-  },
-  {
     id: 79,
     slug: "dua-inna-lillahi-upon-calamity",
     title: "Dua of Patience Upon Calamity (Inna Lillahi)",
@@ -1510,25 +1456,6 @@ export const DUAS: Dua[] = [
     emotion_tags: ["hopeful", "seeking-forgiveness", "angry", "lonely"],
     situation_tags: ["guidance", "piety", "protection", "daily", "hidayah", "righteous", "morning"],
     featured: true,
-    daily_dua_eligible: true,
-  },
-  {
-    id: 81,
-    slug: "dua-severe-hardship-distress",
-    title: "Dua in Times of Severe Hardship",
-    arabic_text:
-      "لَا إِلَهَ إِلَّا اللَّهُ الْحَلِيمُ الْكَرِيمُ سُبْحَانَ اللَّهِ رَبِّ الْعَرْشِ الْعَظِيمِ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
-    transliteration:
-      "La ilaha illallahul-halimul-karim, subhanallahi rabbil-'arshil-'azim, alhamdu lillahi rabbil-'alamin",
-    translation:
-      "There is no deity worthy of worship except Allah, the Forbearing, the Generous. How perfect is Allah, the Lord of the Magnificent Throne. All praise is for Allah, the Lord of all the worlds.",
-    source_book: "Sahih al-Bukhari",
-    hadith_number: "6346",
-    authenticity_grade: "SAHIH",
-    category: "protection",
-    emotion_tags: ["stressed", "sad", "afraid", "hopeful", "angry"],
-    situation_tags: ["hardship", "distress", "difficulty", "anxiety"],
-    featured: false,
     daily_dua_eligible: true,
   },
 
@@ -1647,7 +1574,7 @@ export const DUAS: Dua[] = [
     authenticity_grade: "SAHIH",
     category: "family",
     emotion_tags: ["sad", "hopeful"],
-    situation_tags: ["graves", "cemetery", "deceased", "death"],
+    situation_tags: ["graves", "cemetery", "deceased", "death", "graveyard"],
     featured: false,
     daily_dua_eligible: false,
   },
@@ -1722,7 +1649,7 @@ export const DUAS: Dua[] = [
     transliteration:
       "Allahumma aghfir li wa tub 'alayya innaka antat-tawwabul-ghafur",
     translation:
-      "O Allah, forgive me and accept my repentance. Indeed You are the Oft-Returning, the Most Forgiving. (The Prophet ﷺ recited this 100 times per day.)",
+      "O Allah, forgive me and accept my repentance. Indeed You are the Oft-Returning, the Most Forgiving. (The Prophet (SAW) recited this 100 times per day.)",
     source_book: "Sunan Ibn Majah",
     hadith_number: "3814",
     authenticity_grade: "SAHIH",
@@ -1785,7 +1712,7 @@ export const DUAS: Dua[] = [
     authenticity_grade: "SAHIH",
     category: "worship",
     emotion_tags: ["grateful", "hopeful"],
-    situation_tags: ["salawat", "prophet", "prayer", "friday", "tashahhud", "jummah"],
+    situation_tags: ["salawat", "prophet", "prayer", "friday", "tashahhud", "jummah", "darood", "daily", "jumu'ah", "jumah"],
     featured: false,
     daily_dua_eligible: true,
   },
@@ -1804,10 +1731,10 @@ export const DUAS: Dua[] = [
     authenticity_grade: "HASAN",
     graded_by: "Al-Albani",
     category: "daily-life",
-    emotion_tags: ["grateful"],
-    situation_tags: ["affliction", "gratitude", "illness", "hardship"],
+    emotion_tags: ["grateful", "hopeful"],
+    situation_tags: ["affliction", "gratitude", "illness", "hardship", "blessing", "trial", "disabled", "sick", "calamity"],
     featured: false,
-    daily_dua_eligible: false,
+    daily_dua_eligible: true,
   },
   {
     id: 96,
@@ -1845,7 +1772,7 @@ export const DUAS: Dua[] = [
     graded_by: "Al-Albani",
     category: "daily-life",
     emotion_tags: ["afraid", "hopeful", "lonely"],
-    situation_tags: ["before-sleep", "night", "bedtime", "protection", "akhirah", "sleep", "sleeping"],
+    situation_tags: ["before-sleep", "night", "bedtime", "protection", "akhirah", "sleep", "sleeping", "punishment", "judgment-day", "qiyamah"],
     featured: false,
     daily_dua_eligible: true,
   },
@@ -1892,61 +1819,6 @@ export const DUAS: Dua[] = [
 
   // ─── High-traffic additions (IDs 101-150) ───────────────────────────────────
 
-  {
-    id: 101,
-    slug: "dua-for-exam-success",
-    title: "Dua for Exam Success and Good Results",
-    arabic_text:
-      "رَبِّ اشْرَحْ لِي صَدْرِي وَيَسِّرْ لِي أَمْرِي وَاحْلُلْ عُقْدَةً مِنْ لِسَانِي يَفْقَهُوا قَوْلِي",
-    transliteration:
-      "Rabbish-rahli sadri wa yassir li amri wahlul 'uqdatan min lisani yafqahu qawli",
-    translation:
-      "My Lord, expand for me my chest and ease for me my task, and untie the knot from my tongue that they may understand my speech.",
-    source_book: "Quran",
-    hadith_number: "20:25-28",
-    authenticity_grade: "QURAN",
-    category: "daily-life",
-    emotion_tags: ["stressed", "hopeful"],
-    situation_tags: ["exam", "study", "test", "knowledge", "speaking", "education"],
-    featured: true,
-    daily_dua_eligible: true,
-  },
-  {
-    id: 102,
-    slug: "dua-for-knowledge",
-    title: "Dua for Increase in Knowledge",
-    arabic_text: "رَبِّ زِدْنِي عِلْمًا",
-    transliteration: "Rabbi zidni 'ilma",
-    translation: "My Lord, increase me in knowledge.",
-    source_book: "Quran",
-    hadith_number: "20:114",
-    authenticity_grade: "QURAN",
-    category: "daily-life",
-    emotion_tags: ["hopeful"],
-    situation_tags: ["knowledge", "study", "learning", "exam", "education", "daily"],
-    featured: true,
-    daily_dua_eligible: true,
-  },
-  {
-    id: 103,
-    slug: "dua-before-driving-car",
-    title: "Dua Before Entering and Riding a Vehicle",
-    arabic_text:
-      "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ",
-    transliteration:
-      "Subhanal-ladhi sakhkhara lana hadha wama kunna lahu muqrinin, wa inna ila Rabbina lamunqalibun",
-    translation:
-      "Glory be to the One who has subjected this to us, and we were not able to subdue it; and verily, to our Lord we shall return.",
-    source_book: "Sunan Abu Dawud",
-    hadith_number: "2602",
-    authenticity_grade: "SAHIH",
-    graded_by: "Al-Albani",
-    category: "travel",
-    emotion_tags: ["grateful"],
-    situation_tags: ["car", "vehicle", "driving", "riding", "travel", "transport"],
-    featured: false,
-    daily_dua_eligible: false,
-  },
   {
     id: 105,
     slug: "dua-la-hawla-wa-la-quwwata",
@@ -2003,26 +1875,6 @@ export const DUAS: Dua[] = [
     daily_dua_eligible: true,
   },
   {
-    id: 111,
-    slug: "dua-for-rizq-lawful-provision",
-    title: "Dua for Halal Rizq and Lawful Provision",
-    arabic_text:
-      "اللَّهُمَّ اكْفِنِي بِحَلالِكَ عَنْ حَرَامِكَ وَأَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ",
-    transliteration:
-      "Allahumma-kfini bihalalika 'an haramika wa aghnini bifadlika 'amman siwak",
-    translation:
-      "O Allah, suffice me with what You have made halal so I have no need for what You have made haram, and enrich me by Your grace so I have no need of anyone other than You.",
-    source_book: "Sunan al-Tirmidhi",
-    hadith_number: "3563",
-    authenticity_grade: "HASAN",
-    graded_by: "Al-Albani",
-    category: "daily-life",
-    emotion_tags: ["hopeful", "stressed"],
-    situation_tags: ["rizq", "provision", "halal", "money", "income", "wealth", "employment"],
-    featured: true,
-    daily_dua_eligible: true,
-  },
-  {
     id: 112,
     slug: "dua-for-protection-from-laziness",
     title: "Dua for Protection from Laziness and Cowardice",
@@ -2060,65 +1912,6 @@ export const DUAS: Dua[] = [
     situation_tags: ["stressed", "distress", "hardship", "mercy", "daily"],
     featured: true,
     daily_dua_eligible: true,
-  },
-  {
-    id: 115,
-    slug: "dua-for-good-health",
-    title: "Dua for Good Health and Wellbeing",
-    arabic_text:
-      "اللَّهُمَّ عَافِنِي فِي بَدَنِي اللَّهُمَّ عَافِنِي فِي سَمْعِي اللَّهُمَّ عَافِنِي فِي بَصَرِي لَا إِلَهَ إِلَّا أَنْتَ",
-    transliteration:
-      "Allahumma 'afini fi badani, Allahumma 'afini fi sam'i, Allahumma 'afini fi basari, la ilaha illa ant",
-    translation:
-      "O Allah, grant me health in my body. O Allah, grant me health in my hearing. O Allah, grant me health in my sight. There is no god but You.",
-    source_book: "Sunan Abu Dawud",
-    hadith_number: "5090",
-    authenticity_grade: "HASAN",
-    graded_by: "Al-Albani",
-    category: "health",
-    emotion_tags: ["grateful", "hopeful"],
-    situation_tags: ["health", "wellbeing", "body", "morning", "daily"],
-    featured: true,
-    daily_dua_eligible: true,
-  },
-  {
-    id: 116,
-    slug: "dua-for-parents-health",
-    title: "Dua for the Health and Wellbeing of Parents",
-    arabic_text:
-      "رَبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",
-    transliteration:
-      "Rabbir hamhuma kama rabbayani saghira",
-    translation:
-      "My Lord, have mercy on them as they raised me when I was young.",
-    source_book: "Quran",
-    hadith_number: "17:24",
-    authenticity_grade: "QURAN",
-    category: "family",
-    emotion_tags: ["grateful", "hopeful"],
-    situation_tags: ["parents", "mother", "father", "family", "mercy", "daily"],
-    featured: false,
-    daily_dua_eligible: true,
-  },
-  {
-    id: 124,
-    slug: "dua-after-eating-food",
-    title: "Dua After Eating Food",
-    arabic_text:
-      "الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنِي هَذَا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ",
-    transliteration:
-      "Alhamdu lillahil-ladhi at'amani hadha wa razaqanihi min ghayri hawlin minni wa la quwwah",
-    translation:
-      "All praise is for Allah Who fed me this and provided it for me without any power or might on my part.",
-    source_book: "Sunan Abu Dawud",
-    hadith_number: "4023",
-    authenticity_grade: "HASAN",
-    graded_by: "Al-Albani",
-    category: "daily-life",
-    emotion_tags: ["grateful"],
-    situation_tags: ["food", "eating", "meal", "after-eating", "gratitude", "daily"],
-    featured: false,
-    daily_dua_eligible: false,
   },
   {
     id: 125,
@@ -2174,45 +1967,6 @@ export const DUAS: Dua[] = [
     daily_dua_eligible: false,
   },
   {
-    id: 131,
-    slug: "dua-for-anxiety-panic-attack",
-    title: "Dua for Anxiety and Overwhelming Panic",
-    arabic_text:
-      "لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ",
-    transliteration:
-      "La ilaha illa anta subhanaka inni kuntu minadh-dhalimin",
-    translation:
-      "There is no god but You; glory be to You. Indeed, I have been of the wrongdoers.",
-    source_book: "Quran",
-    hadith_number: "21:87",
-    authenticity_grade: "QURAN",
-    category: "daily-life",
-    emotion_tags: ["stressed", "seeking-forgiveness"],
-    situation_tags: ["anxiety", "panic", "distress", "fear", "dua-of-yunus", "daily"],
-    featured: true,
-    daily_dua_eligible: true,
-  },
-  {
-    id: 132,
-    slug: "dua-for-depression-sadness",
-    title: "Dua for Depression and Overcoming Sadness",
-    arabic_text:
-      "اللَّهُمَّ إِنِّي عَبْدُكَ ابْنُ عَبْدِكَ ابْنُ أَمَتِكَ نَاصِيَتِي بِيَدِكَ مَاضٍ فِيَّ حُكْمُكَ عَدْلٌ فِيَّ قَضَاؤُكَ أَسْأَلُكَ بِكُلِّ اسْمٍ هُوَ لَكَ سَمَّيْتَ بِهِ نَفْسَكَ أَوْ عَلَّمْتَهُ أَحَدًا مِنْ خَلْقِكَ أَوْ أَنْزَلْتَهُ فِي كِتَابِكَ أَوِ اسْتَأْثَرْتَ بِهِ فِي عِلْمِ الْغَيْبِ عِنْدَكَ أَنْ تَجْعَلَ الْقُرْآنَ رَبِيعَ قَلْبِي وَنُورَ صَدْرِي وَجَلاَءَ حُزْنِي وَذَهَابَ هَمِّي",
-    transliteration:
-      "Allahumma inni 'abduka ibnu 'abdika ibnu amatika nasiyati biyadika madin fiyya hukmuka 'adlun fiyya qada'uka as'aluka bikulli ismin huwa laka sammayta bihi nafsaka aw 'allamtahu ahadan min khalqika aw anzaltahu fi kitabika aw ista'tharta bihi fi 'ilmil-ghaybi 'indaka an taj'alal-Qurana rabi'a qalbi wa nura sadri wa jala'a huzni wa dhahaba hammi",
-    translation:
-      "O Allah, I am Your slave, son of Your slave, son of Your female slave. My forelock is in Your hand, Your command over me prevails, and Your judgment is just. I ask You by every name belonging to You which You named Yourself with, or taught to any of Your creation, or revealed in Your Book, or kept with Yourself in the knowledge of the Unseen, to make the Quran the spring of my heart, the light of my chest, and the remover of my sadness and worry.",
-    source_book: "Musnad Ahmad",
-    hadith_number: "3704",
-    authenticity_grade: "SAHIH",
-    graded_by: "Al-Albani",
-    category: "daily-life",
-    emotion_tags: ["sad", "stressed"],
-    situation_tags: ["depression", "sadness", "grief", "worry", "quran", "healing"],
-    featured: true,
-    daily_dua_eligible: true,
-  },
-  {
     id: 134,
     slug: "dua-for-students-before-studying",
     title: "Dua for Students Before Studying",
@@ -2227,8 +1981,8 @@ export const DUAS: Dua[] = [
     authenticity_grade: "HASAN",
     graded_by: "Al-Albani",
     category: "daily-life",
-    emotion_tags: ["hopeful"],
-    situation_tags: ["study", "student", "exam", "learning", "knowledge", "education"],
+    emotion_tags: ["hopeful", "grateful"],
+    situation_tags: ["study", "student", "exam", "learning", "knowledge", "education", "ilm", "studying", "memory", "understanding", "school", "university", "students", "quran"],
     featured: true,
     daily_dua_eligible: true,
   },
@@ -2246,28 +2000,9 @@ export const DUAS: Dua[] = [
     hadith_number: "6346",
     authenticity_grade: "SAHIH",
     category: "daily-life",
-    emotion_tags: ["afraid", "stressed"],
-    situation_tags: ["hardship", "difficulty", "distress", "crisis", "daily"],
+    emotion_tags: ["afraid", "stressed", "sad", "hopeful", "angry"],
+    situation_tags: ["hardship", "difficulty", "distress", "crisis", "daily", "anxiety"],
     featured: true,
-    daily_dua_eligible: true,
-  },
-  {
-    id: 136,
-    slug: "dua-before-jummah-friday-prayer",
-    title: "Salawat Ibrahim – Darood Recited on Jumu'ah and in Prayer",
-    arabic_text:
-      "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ وَبَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ",
-    transliteration:
-      "Allahumma salli 'ala Muhammadin wa 'ala ali Muhammadin kama sallayta 'ala Ibrahima wa 'ala ali Ibrahima innaka Hamidun Majid. Wa barik 'ala Muhammadin wa 'ala ali Muhammadin kama barakta 'ala Ibrahima wa 'ala ali Ibrahima innaka Hamidun Majid",
-    translation:
-      "O Allah, send blessings upon Muhammad and upon the family of Muhammad, as You sent blessings upon Ibrahim and upon the family of Ibrahim; indeed You are Praiseworthy, Glorious. And send blessings upon Muhammad and upon the family of Muhammad, as You blessed Ibrahim and the family of Ibrahim; indeed You are Praiseworthy, Glorious.",
-    source_book: "Sahih al-Bukhari",
-    hadith_number: "3370",
-    authenticity_grade: "SAHIH",
-    category: "worship",
-    emotion_tags: ["grateful", "hopeful"],
-    situation_tags: ["jummah", "friday", "salawat", "darood", "prayer", "daily", "prophet"],
-    featured: false,
     daily_dua_eligible: true,
   },
   {
@@ -2310,66 +2045,6 @@ export const DUAS: Dua[] = [
     daily_dua_eligible: false,
   },
   {
-    id: 140,
-    slug: "dua-for-protection-evil-eye-hasad",
-    title: "Dua for Protection from Evil Eye and Envy (Hasad)",
-    arabic_text:
-      "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
-    transliteration:
-      "Bismillahil-ladhi la yadurru ma'as-mihi shay'un fil-ardi wa la fis-sama'i wa huwas-sami'ul-'alim",
-    translation:
-      "In the name of Allah, with Whose name nothing on earth or in the sky can cause harm, and He is the All-Hearing, All-Knowing.",
-    source_book: "Sunan Abu Dawud",
-    hadith_number: "5088",
-    authenticity_grade: "SAHIH",
-    graded_by: "Al-Albani",
-    category: "protection",
-    emotion_tags: ["afraid"],
-    situation_tags: ["evil-eye", "hasad", "envy", "protection", "morning", "evening", "daily"],
-    featured: false,
-    daily_dua_eligible: true,
-  },
-  {
-    id: 142,
-    slug: "dua-for-seeing-yourself-in-mirror",
-    title: "Dua When Looking in the Mirror",
-    arabic_text:
-      "اللَّهُمَّ كَمَا حَسَّنْتَ خَلْقِي فَحَسِّنْ خُلُقِي",
-    transliteration:
-      "Allahumma kama hassanta khalqi fahassin khuluqi",
-    translation:
-      "O Allah, just as You have made my physical form good, make my character good as well.",
-    source_book: "Musnad Ahmad",
-    hadith_number: "3823",
-    authenticity_grade: "HASAN",
-    graded_by: "Al-Albani",
-    category: "daily-life",
-    emotion_tags: ["grateful"],
-    situation_tags: ["mirror", "appearance", "character", "daily", "morning"],
-    featured: false,
-    daily_dua_eligible: true,
-  },
-  {
-    id: 144,
-    slug: "dua-astaghfirullah-seeking-forgiveness",
-    title: "Astaghfirullah – Seeking Allah's Forgiveness",
-    arabic_text:
-      "أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ الَّذِي لَا إِلَهَ إِلَّا هُوَ الْحَيَّ الْقَيُّومَ وَأَتُوبُ إِلَيْهِ",
-    transliteration:
-      "Astaghfirullahal-'Adhimal-ladhi la ilaha illa Huwal-Hayyul-Qayyumu wa atubu ilayh",
-    translation:
-      "I seek forgiveness from Allah the Mighty, there is no god but Him, the Ever-Living, the Sustainer, and I repent to Him.",
-    source_book: "Sunan al-Tirmidhi",
-    hadith_number: "3577",
-    authenticity_grade: "SAHIH",
-    graded_by: "Al-Albani",
-    category: "worship",
-    emotion_tags: ["seeking-forgiveness", "hopeful"],
-    situation_tags: ["forgiveness", "tawbah", "repentance", "daily", "dhikr", "morning"],
-    featured: true,
-    daily_dua_eligible: true,
-  },
-  {
     id: 146,
     slug: "dua-when-in-need-of-allah",
     title: "Dua of Musa When in Desperate Need of Allah's Help",
@@ -2383,8 +2058,8 @@ export const DUAS: Dua[] = [
     hadith_number: "28:24",
     authenticity_grade: "QURAN",
     category: "daily-life",
-    emotion_tags: ["hopeful", "sad"],
-    situation_tags: ["need", "provision", "rizq", "hardship", "help", "poverty", "daily"],
+    emotion_tags: ["hopeful", "sad", "stressed"],
+    situation_tags: ["need", "provision", "rizq", "hardship", "help", "poverty", "daily", "helpless", "prophet-musa", "dependence-on-allah"],
     featured: true,
     daily_dua_eligible: true,
   },
@@ -2402,49 +2077,10 @@ export const DUAS: Dua[] = [
     hadith_number: "2:127",
     authenticity_grade: "QURAN",
     category: "worship",
-    emotion_tags: ["hopeful", "seeking-forgiveness"],
-    situation_tags: ["deeds", "acceptance", "ibadah", "ramadan", "prayer", "daily"],
+    emotion_tags: ["hopeful", "seeking-forgiveness", "grateful"],
+    situation_tags: ["deeds", "acceptance", "ibadah", "ramadan", "prayer", "daily", "worship", "dua", "fasting", "charity", "dhul-hijjah"],
     featured: false,
     daily_dua_eligible: true,
-  },
-  {
-    id: 148,
-    slug: "dua-for-passing-by-graveyard",
-    title: "Dua When Passing by a Graveyard",
-    arabic_text:
-      "السَّلَامُ عَلَيْكُمْ أَهْلَ الدِّيَارِ مِنَ الْمُؤْمِنِينَ وَالْمُسْلِمِينَ وَإِنَّا إِنْ شَاءَ اللَّهُ لَلَاحِقُونَ أَسْأَلُ اللَّهَ لَنَا وَلَكُمُ الْعَافِيَةَ",
-    transliteration:
-      "As-salamu 'alaykum ahlad-diyari minal-mu'minina wal-muslimin, wa inna in sha'Allaha la-lahiqun, as'alullaha lana wa lakumul-'afiyah",
-    translation:
-      "Peace be upon you, O people of the dwellings, among the believers and Muslims. Indeed, if Allah wills, we will be joining you. I ask Allah for well-being for us and for you.",
-    source_book: "Sahih Muslim",
-    hadith_number: "975",
-    authenticity_grade: "SAHIH",
-    category: "worship",
-    emotion_tags: ["sad", "hopeful"],
-    situation_tags: ["graveyard", "cemetery", "death", "deceased"],
-    featured: false,
-    daily_dua_eligible: false,
-  },
-  {
-    id: 150,
-    slug: "dua-for-breaking-fast-iftar",
-    title: "Dua for Breaking the Fast (Iftar)",
-    arabic_text:
-      "اللَّهُمَّ لَكَ صُمْتُ وَعَلَى رِزْقِكَ أَفْطَرْتُ",
-    transliteration:
-      "Allahumma laka sumtu wa 'ala rizqika aftartu",
-    translation:
-      "O Allah, for You I fasted, and with Your provision I break my fast.",
-    source_book: "Sunan Abu Dawud",
-    hadith_number: "2358",
-    authenticity_grade: "HASAN",
-    graded_by: "Al-Albani",
-    category: "worship",
-    emotion_tags: ["grateful"],
-    situation_tags: ["iftar", "fasting", "ramadan", "breaking-fast", "food"],
-    featured: true,
-    daily_dua_eligible: false,
   },
 
   // ─── EID & SPECIAL OCCASIONS ─────────────────────────────────────────────────
@@ -2485,26 +2121,6 @@ export const DUAS: Dua[] = [
     category: "worship",
     emotion_tags: ["grateful", "hopeful"],
     situation_tags: ["eid", "eid-al-fitr", "eid-al-adha", "greeting", "eid-mubarak", "celebration", "ramadan"],
-    featured: true,
-    daily_dua_eligible: false,
-  },
-  {
-    id: 153,
-    slug: "dua-sighting-ramadan-crescent-chand-raat",
-    title: "Dua for Sighting the Ramadan Crescent (Chand Raat)",
-    arabic_text:
-      "اللَّهُمَّ أَهِلَّهُ عَلَيْنَا بِالْيُمْنِ وَالْإِيمَانِ وَالسَّلَامَةِ وَالْإِسْلَامِ رَبِّي وَرَبُّكَ اللَّهُ",
-    transliteration:
-      "Allahumma ahillahu alayna bil-yumni wal-iman, was-salamati wal-Islam, Rabbi wa Rabbuk Allah",
-    translation:
-      "O Allah, bring this crescent upon us with blessing, faith, safety and Islam. My Lord and your Lord is Allah.",
-    source_book: "Sunan al-Tirmidhi",
-    hadith_number: "3451",
-    authenticity_grade: "HASAN",
-    graded_by: "Al-Albani",
-    category: "worship",
-    emotion_tags: ["grateful", "hopeful"],
-    situation_tags: ["chand-raat", "ramadan", "crescent-moon", "moon-sighting", "eid", "new-moon", "eid-al-fitr"],
     featured: true,
     daily_dua_eligible: false,
   },
@@ -2671,26 +2287,6 @@ export const DUAS: Dua[] = [
     featured: false,
     daily_dua_eligible: false,
   },
-  {
-    id: 162,
-    slug: "dua-at-qurbani-slaughter",
-    title: "Dua at the Time of Qurbani (Eid al-Adha Sacrifice)",
-    arabic_text:
-      "بِسْمِ اللَّهِ وَاللَّهُ أَكْبَرُ اللَّهُمَّ هَذَا مِنْكَ وَلَكَ اللَّهُمَّ تَقَبَّلْ مِنِّي",
-    transliteration:
-      "Bismillahi wallahu Akbar, Allahumma hadha minka wa lak, Allahumma taqabbal minni",
-    translation:
-      "In the name of Allah, and Allah is the Greatest. O Allah, this is from You and for You. O Allah, accept this from me.",
-    source_book: "Sunan Abu Dawud",
-    hadith_number: "2795",
-    authenticity_grade: "SAHIH",
-    graded_by: "Al-Albani",
-    category: "worship",
-    emotion_tags: ["grateful", "hopeful"],
-    situation_tags: ["qurbani", "sacrifice", "eid-al-adha", "slaughter", "dhul-hijjah", "eid", "animal-sacrifice"],
-    featured: true,
-    daily_dua_eligible: false,
-  },
 
   // ─── SOCIAL & RELATIONSHIPS ──────────────────────────────────────────────────
   {
@@ -2733,26 +2329,6 @@ export const DUAS: Dua[] = [
     situation_tags: ["bad-dream", "nightmare", "sleep", "waking-up", "fear", "shaytan", "night"],
     featured: false,
     daily_dua_eligible: true,
-  },
-  {
-    id: 166,
-    slug: "dua-when-seeing-lightning",
-    title: "Dua When Seeing Lightning",
-    arabic_text:
-      "اللَّهُمَّ لَا تَقْتُلْنَا بِغَضَبِكَ وَلَا تُهْلِكْنَا بِعَذَابِكَ وَعَافِنَا قَبْلَ ذَلِكَ",
-    transliteration:
-      "Allahumma la taqtulna bi-ghadabika wa la tuhlikna bi-'adhabika wa 'afina qabla dhalik",
-    translation:
-      "O Allah, do not kill us with Your wrath, do not destroy us with Your punishment, and grant us wellbeing before that.",
-    source_book: "Sunan al-Tirmidhi",
-    hadith_number: "3450",
-    authenticity_grade: "HASAN",
-    graded_by: "Al-Albani",
-    category: "protection",
-    emotion_tags: ["afraid", "hopeful"],
-    situation_tags: ["lightning", "thunder", "storm", "rain", "fear", "weather", "natural-disaster"],
-    featured: false,
-    daily_dua_eligible: false,
   },
   {
     id: 167,
@@ -2810,8 +2386,8 @@ export const DUAS: Dua[] = [
     graded_by: "Al-Albani",
     category: "forgiveness",
     emotion_tags: ["seeking-forgiveness", "hopeful"],
-    situation_tags: ["repentance", "tawbah", "sins", "forgiveness", "morning", "evening", "daily"],
-    featured: false,
+    situation_tags: ["repentance", "tawbah", "sins", "forgiveness", "morning", "evening", "daily", "dhikr"],
+    featured: true,
     daily_dua_eligible: true,
   },
   {
@@ -2881,7 +2457,7 @@ export const DUAS: Dua[] = [
     transliteration:
       "Qul huwal-Allahu ahad [Surah Al-Ikhlas] | Qul a'udhu bi-rabbil-falaq [Surah Al-Falaq] | Qul a'udhu bi-rabbin-nas [Surah An-Nas]",
     translation:
-      "Recite Surah Al-Ikhlas (112), Surah Al-Falaq (113), and Surah An-Nas (114) in full — three times each. The Prophet ﷺ said: 'Reciting them three times morning and evening will suffice you against everything.' After each recitation, blow into your cupped hands and wipe over your body.",
+      "Recite Surah Al-Ikhlas (112), Surah Al-Falaq (113), and Surah An-Nas (114) in full — three times each. The Prophet (SAW) said: 'Reciting them three times morning and evening will suffice you against everything.' After each recitation, blow into your cupped hands and wipe over your body.",
     source_book: "Sunan Abu Dawud",
     hadith_number: "5082",
     authenticity_grade: "HASAN",
@@ -2897,7 +2473,7 @@ export const DUAS: Dua[] = [
     slug: "dua-protection-from-shaytan-whispers",
     title: "Dua for Protection from the Whispers of Shaytan (Waswasa)",
     arabic_text:
-      "رَّبِّ أَعُوذُ بِكَ مِنْ هَمَزَاتِ الشَّيَاطِينِ وَأَعُوذُ بِكَ رَبِّ أَن يَحْضُرُونِ",
+      "رَبِّ أَعُوذُ بِكَ مِنْ هَمَزَاتِ الشَّيَاطِينِ وَأَعُوذُ بِكَ رَبِّ أَن يَحْضُرُونِ",
     transliteration:
       "Rabbi a'udhu bika min hamazatish-shayatini wa a'udhu bika rabbi an yahdurun",
     translation:
@@ -2932,25 +2508,6 @@ export const DUAS: Dua[] = [
   },
 
   // ─── BATCH 2: 30 NEW DUAS (IDs 175–204) ──────────────────────────────────────
-  {
-    id: 175,
-    slug: "dua-upon-riding-vehicle-mount",
-    title: "Dua Upon Riding a Vehicle or Mount",
-    arabic_text:
-      "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَٰذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَىٰ رَبِّنَا لَمُنقَلِبُونَ",
-    transliteration:
-      "Subhanal-ladhee sakhkhara lana hadha wa ma kunna lahu muqrinin, wa inna ila Rabbina la-munqalibun",
-    translation:
-      "Glory be to Him Who has subjected this to us, and we ourselves would not have been capable of it. And verily, to our Lord we shall return.",
-    source_book: "Quran",
-    hadith_number: "43:13-14",
-    authenticity_grade: "QURAN",
-    category: "travel",
-    emotion_tags: ["grateful", "hopeful"],
-    situation_tags: ["travel", "riding", "vehicle", "car", "plane", "bus", "transport", "journey", "mount"],
-    featured: false,
-    daily_dua_eligible: true,
-  },
   {
     id: 176,
     slug: "dua-when-rooster-crows",
@@ -3041,60 +2598,6 @@ export const DUAS: Dua[] = [
     daily_dua_eligible: true,
   },
   {
-    id: 181,
-    slug: "dua-rabbana-hab-lana-min-azwajina",
-    title: "Dua for Righteous Spouses and Offspring",
-    arabic_text:
-      "رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا",
-    transliteration:
-      "Rabbana hab lana min azwajina wa dhurriyyatina qurrata a'yunin waj'alna lil-muttaqina imama",
-    translation:
-      "Our Lord, grant us from our spouses and offspring comfort to our eyes, and make us leaders for the righteous.",
-    source_book: "Quran",
-    hadith_number: "25:74",
-    authenticity_grade: "QURAN",
-    category: "family",
-    emotion_tags: ["hopeful", "grateful"],
-    situation_tags: ["family", "spouse", "children", "offspring", "marriage", "righteous", "leadership"],
-    featured: false,
-    daily_dua_eligible: true,
-  },
-  {
-    id: 182,
-    slug: "dua-rabbi-zidni-ilma",
-    title: "Dua for Increase in Knowledge",
-    arabic_text: "رَّبِّ زِدْنِي عِلْمًا",
-    transliteration: "Rabbi zidni 'ilma",
-    translation: "My Lord, increase me in knowledge.",
-    source_book: "Quran",
-    hadith_number: "20:114",
-    authenticity_grade: "QURAN",
-    category: "quranic",
-    emotion_tags: ["hopeful"],
-    situation_tags: ["knowledge", "learning", "study", "ilm", "education", "students", "seeking-knowledge"],
-    featured: false,
-    daily_dua_eligible: true,
-  },
-  {
-    id: 183,
-    slug: "dua-of-musa-at-the-well",
-    title: "Dua of Prophet Musa in Times of Need",
-    arabic_text:
-      "رَبِّ إِنِّي لِمَا أَنزَلْتَ إِلَيَّ مِنْ خَيْرٍ فَقِيرٌ",
-    transliteration:
-      "Rabbi inni lima anzalta ilayya min khayrin faqir",
-    translation:
-      "My Lord, I am in absolute need of whatever good You may send down to me.",
-    source_book: "Quran",
-    hadith_number: "28:24",
-    authenticity_grade: "QURAN",
-    category: "quranic",
-    emotion_tags: ["sad", "hopeful", "stressed"],
-    situation_tags: ["need", "helpless", "hardship", "provision", "rizq", "prophet-musa", "dependence-on-allah"],
-    featured: false,
-    daily_dua_eligible: true,
-  },
-  {
     id: 184,
     slug: "dua-for-khushu-and-beneficial-knowledge",
     title: "Dua for a Humble Heart and Beneficial Knowledge",
@@ -3110,25 +2613,6 @@ export const DUAS: Dua[] = [
     category: "worship",
     emotion_tags: ["hopeful", "seeking-forgiveness", "stressed"],
     situation_tags: ["knowledge", "khushu", "focus", "prayer", "heart", "concentration", "worship", "ilm"],
-    featured: false,
-    daily_dua_eligible: true,
-  },
-  {
-    id: 185,
-    slug: "dua-seeking-refuge-in-allahs-words",
-    title: "Dua Seeking Refuge in Allah's Perfect Words",
-    arabic_text:
-      "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
-    transliteration:
-      "A'udhu bikalimatillahit-tammati min sharri ma khalaq",
-    translation:
-      "I seek refuge in the perfect words of Allah from the evil of what He has created.",
-    source_book: "Sahih Muslim",
-    hadith_number: "2708",
-    authenticity_grade: "SAHIH",
-    category: "protection",
-    emotion_tags: ["afraid", "hopeful"],
-    situation_tags: ["protection", "evil", "creation", "refuge", "safety", "harm", "evening", "morning", "night", "travel"],
     featured: false,
     daily_dua_eligible: true,
   },
@@ -3192,63 +2676,6 @@ export const DUAS: Dua[] = [
     daily_dua_eligible: true,
   },
   {
-    id: 189,
-    slug: "dua-allahumma-inni-abduka-distress",
-    title: "The Great Dua for Relief from Grief and Distress",
-    arabic_text:
-      "اللَّهُمَّ إِنِّي عَبْدُكَ ابْنُ عَبْدِكَ ابْنُ أَمَتِكَ نَاصِيَتِي بِيَدِكَ مَاضٍ فِيَّ حُكْمُكَ عَدْلٌ فِيَّ قَضَاؤُكَ أَسْأَلُكَ بِكُلِّ اسْمٍ هُوَ لَكَ سَمَّيْتَ بِهِ نَفْسَكَ أَوْ أَنْزَلْتَهُ فِي كِتَابِكَ أَوْ عَلَّمْتَهُ أَحَدًا مِنْ خَلْقِكَ أَوِ اسْتَأْثَرْتَ بِهِ فِي عِلْمِ الْغَيْبِ عِنْدَكَ أَنْ تَجْعَلَ الْقُرْآنَ رَبِيعَ قَلْبِي وَنُورَ صَدْرِي وَجَلَاءَ حُزْنِي وَذَهَابَ هَمِّي",
-    transliteration:
-      "Allahumma inni 'abduka ibnu 'abdika ibnu amatik, nasiyati biyadik, madin fiyya hukmuk, 'adlun fiyya qada'uk, as'aluka bikulli ismin huwa lak, sammayta bihi nafsak, aw anzaltahu fi kitabik, aw 'allamtahu ahadan min khalqik, aw ista'tharta bihi fi 'ilmil-ghaybi 'indak, an taj'alal-Qur'ana rabi'a qalbi wa nura sadri wa jala'a huzni wa dhahaba hammi",
-    translation:
-      "O Allah, I am Your servant, son of Your servant, son of Your maidservant. My forelock is in Your hand. Your command over me is forever executed and Your decree is just. I ask You by every name belonging to You which You have named Yourself, or revealed in Your Book, or taught any of Your creation, or kept in the knowledge of the unseen — that You make the Quran the spring of my heart, the light of my chest, the banisher of my sadness, and the reliever of my distress.",
-    source_book: "Musnad Ahmad",
-    hadith_number: "3704",
-    authenticity_grade: "SAHIH",
-    graded_by: "Ibn Hibban",
-    category: "health",
-    emotion_tags: ["sad", "stressed", "hopeful"],
-    situation_tags: ["grief", "sorrow", "distress", "depression", "anxiety", "quran", "relief", "heart", "worry", "sadness", "overwhelmed"],
-    featured: true,
-    daily_dua_eligible: true,
-  },
-  {
-    id: 190,
-    slug: "dua-upon-hearing-iqamah",
-    title: "Dua Upon Hearing the Iqamah",
-    arabic_text: "أَقَامَهَا اللَّهُ وَأَدَامَهَا",
-    transliteration: "Aqamahallahu wa adamaha",
-    translation: "May Allah establish it and maintain it.",
-    source_book: "Sunan Abu Dawud",
-    hadith_number: "528",
-    authenticity_grade: "HASAN",
-    graded_by: "Al-Albani",
-    category: "worship",
-    emotion_tags: ["grateful", "hopeful"],
-    situation_tags: ["iqamah", "prayer", "salah", "masjid", "mosque", "adhan", "call-to-prayer"],
-    featured: false,
-    daily_dua_eligible: false,
-  },
-  {
-    id: 191,
-    slug: "dua-upon-seeing-afflicted-person",
-    title: "Dua Upon Seeing Someone Afflicted with Hardship",
-    arabic_text:
-      "الْحَمْدُ لِلَّهِ الَّذِي عَافَانِي مِمَّا ابْتَلَاكَ بِهِ وَفَضَّلَنِي عَلَى كَثِيرٍ مِمَّنْ خَلَقَ تَفْضِيلًا",
-    transliteration:
-      "Alhamdu lillahil-ladhi 'afani mimma ibtalaka bihi wa faddalani 'ala kathirin mimman khalaqa tafdhila",
-    translation:
-      "All praise is for Allah Who spared me from what He has afflicted you with, and Who has blessed me greatly over many of His creation.",
-    source_book: "Sunan al-Tirmidhi",
-    hadith_number: "3431",
-    authenticity_grade: "HASAN",
-    graded_by: "Al-Albani",
-    category: "daily-life",
-    emotion_tags: ["grateful", "hopeful"],
-    situation_tags: ["affliction", "hardship", "gratitude", "blessing", "trial", "disabled", "sick", "calamity"],
-    featured: false,
-    daily_dua_eligible: true,
-  },
-  {
     id: 192,
     slug: "dua-for-protection-from-cowardice-miserliness",
     title: "Dua for Protection from Cowardice, Miserliness and Worldly Trials",
@@ -3287,44 +2714,6 @@ export const DUAS: Dua[] = [
     daily_dua_eligible: true,
   },
   {
-    id: 194,
-    slug: "dua-of-ibrahim-for-righteous-offspring",
-    title: "Dua of Ibrahim for Steadfastness in Prayer and Righteous Descendants",
-    arabic_text:
-      "رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِن ذُرِّيَّتِي ۚ رَبَّنَا وَتَقَبَّلْ دُعَاءِ",
-    transliteration:
-      "Rabbij'alni muqimas-salati wa min dhurriyyati, Rabbana wa taqabbal du'a'",
-    translation:
-      "My Lord, make me an establisher of prayer, and from my descendants as well. Our Lord, and accept my supplication.",
-    source_book: "Quran",
-    hadith_number: "14:40",
-    authenticity_grade: "QURAN",
-    category: "family",
-    emotion_tags: ["hopeful", "grateful"],
-    situation_tags: ["prayer", "salah", "children", "offspring", "descendants", "prophet-ibrahim", "steadfastness", "family"],
-    featured: false,
-    daily_dua_eligible: true,
-  },
-  {
-    id: 195,
-    slug: "dua-rabbana-taqabbal-minna",
-    title: "Dua for the Acceptance of Good Deeds",
-    arabic_text:
-      "رَبَّنَا تَقَبَّلْ مِنَّا إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ",
-    transliteration:
-      "Rabbana taqabbal minna innaka antas-Sami'ul-'Alim",
-    translation:
-      "Our Lord, accept this from us. Indeed, You are the All-Hearing, the All-Knowing.",
-    source_book: "Quran",
-    hadith_number: "2:127",
-    authenticity_grade: "QURAN",
-    category: "worship",
-    emotion_tags: ["hopeful", "grateful", "seeking-forgiveness"],
-    situation_tags: ["acceptance", "deeds", "ibadah", "worship", "dua", "prayer", "fasting", "charity", "ramadan", "dhul-hijjah"],
-    featured: false,
-    daily_dua_eligible: true,
-  },
-  {
     id: 196,
     slug: "dua-for-protection-from-kufr-and-faqr",
     title: "Dua for Protection from Disbelief and Poverty",
@@ -3359,26 +2748,6 @@ export const DUAS: Dua[] = [
     category: "quranic",
     emotion_tags: ["hopeful", "seeking-forgiveness"],
     situation_tags: ["mercy", "forgiveness", "tawbah", "hellfire", "angels", "repentance", "rahma", "protection"],
-    featured: false,
-    daily_dua_eligible: true,
-  },
-  {
-    id: 198,
-    slug: "dua-for-beneficial-knowledge",
-    title: "Dua for Beneficial Knowledge, Good Provision and Accepted Deeds",
-    arabic_text:
-      "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا وَرِزْقًا طَيِّبًا وَعَمَلًا مُتَقَبَّلًا",
-    transliteration:
-      "Allahumma inni as'aluka 'ilman nafi'an wa rizqan tayyiban wa 'amalan mutaqabbala",
-    translation:
-      "O Allah, I ask You for beneficial knowledge, good lawful provision, and accepted deeds.",
-    source_book: "Sunan Ibn Majah",
-    hadith_number: "925",
-    authenticity_grade: "SAHIH",
-    graded_by: "Al-Albani",
-    category: "worship",
-    emotion_tags: ["hopeful", "grateful"],
-    situation_tags: ["knowledge", "rizq", "deeds", "morning", "fajr", "prayer", "ilm", "provision", "acceptance"],
     featured: false,
     daily_dua_eligible: true,
   },
@@ -3461,7 +2830,7 @@ export const DUAS: Dua[] = [
     slug: "dua-of-nuh-for-believers",
     title: "Dua of Prophet Nuh for His Household and All Believers",
     arabic_text:
-      "رَّبِّ اغْفِرْ لِي وَلِوَالِدَيَّ وَلِمَن دَخَلَ بَيْتِيَ مُؤْمِنًا وَلِلْمُؤْمِنِينَ وَالْمُؤْمِنَاتِ",
+      "رَبِّ اغْفِرْ لِي وَلِوَالِدَيَّ وَلِمَن دَخَلَ بَيْتِيَ مُؤْمِنًا وَلِلْمُؤْمِنِينَ وَالْمُؤْمِنَاتِ",
     transliteration:
       "Rabbi ighfir li wa liwalidayya wa liman dakhala bayti mu'minan wa lil-mu'minina wal-mu'minat",
     translation:
@@ -3475,48 +2844,8 @@ export const DUAS: Dua[] = [
     featured: false,
     daily_dua_eligible: true,
   },
-  {
-    id: 204,
-    slug: "dua-protection-from-punishment-at-night",
-    title: "Dua Before Sleep for Protection from Allah's Punishment",
-    arabic_text:
-      "اللَّهُمَّ قِنِي عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ",
-    transliteration:
-      "Allahumma qini 'adhabaka yawma tab'athu 'ibadak",
-    translation:
-      "O Allah, protect me from Your punishment on the Day You resurrect Your servants.",
-    source_book: "Sunan Abu Dawud",
-    hadith_number: "5045",
-    authenticity_grade: "SAHIH",
-    graded_by: "Al-Albani",
-    category: "daily-life",
-    emotion_tags: ["afraid", "hopeful"],
-    situation_tags: ["sleep", "night", "bedtime", "punishment", "judgment-day", "qiyamah", "protection", "before-sleep"],
-    featured: false,
-    daily_dua_eligible: true,
-  },
 
   // ─── BATCH 3: 15 NEW DUAS (IDs 205–219) ──────────────────────────────────────
-  {
-    id: 205,
-    slug: "dua-for-increase-and-benefit-in-knowledge",
-    title: "Dua for Beneficial Knowledge and Increased Understanding",
-    arabic_text:
-      "اللَّهُمَّ انْفَعْنِي بِمَا عَلَّمْتَنِي وَعَلِّمْنِي مَا يَنْفَعُنِي وَزِدْنِي عِلْمًا",
-    transliteration:
-      "Allahumma infa'ni bima 'allamtani wa 'allimni ma yanfa'uni wa zidni 'ilma",
-    translation:
-      "O Allah, benefit me with what You have taught me, teach me what will benefit me, and increase me in knowledge.",
-    source_book: "Sunan al-Tirmidhi",
-    hadith_number: "3599",
-    authenticity_grade: "HASAN",
-    graded_by: "Al-Albani",
-    category: "worship",
-    emotion_tags: ["hopeful", "grateful"],
-    situation_tags: ["knowledge", "ilm", "studying", "learning", "memory", "understanding", "school", "university", "students", "quran"],
-    featured: false,
-    daily_dua_eligible: true,
-  },
   {
     id: 206,
     slug: "dua-of-ashab-al-kahf-for-mercy-and-guidance",
@@ -3553,46 +2882,6 @@ export const DUAS: Dua[] = [
     emotion_tags: ["grateful", "seeking-forgiveness", "hopeful"],
     situation_tags: ["after-prayer", "post-salah", "dhikr", "tasbih", "istighfar", "prayer", "salam", "fard", "salah", "worship"],
     featured: false,
-    daily_dua_eligible: true,
-  },
-  {
-    id: 208,
-    slug: "dua-for-financial-sufficiency-and-halal",
-    title: "Dua for Halal Sufficiency and Freedom from Need",
-    arabic_text:
-      "اللَّهُمَّ اكْفِنِي بِحَلَالِكَ عَنْ حَرَامِكَ وَأَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ",
-    transliteration:
-      "Allahumma akfini bihalâlika 'an harâmika wa aghnini bifadlika 'amman siwak",
-    translation:
-      "O Allah, make Your lawful provisions sufficient for me so I have no need of what is forbidden, and make me independent of all besides You through Your bounty.",
-    source_book: "Sunan al-Tirmidhi",
-    hadith_number: "3563",
-    authenticity_grade: "HASAN",
-    graded_by: "Al-Albani",
-    category: "health",
-    emotion_tags: ["stressed", "hopeful", "grateful"],
-    situation_tags: ["money", "financial", "halal", "rizq", "provision", "debt", "career", "job", "income", "wealth", "sufficiency"],
-    featured: false,
-    daily_dua_eligible: true,
-  },
-  {
-    id: 209,
-    slug: "dua-ya-muqallibal-qulub-steadfast-heart",
-    title: "Dua for a Steadfast Heart — Ya Muqallibal Qulub",
-    arabic_text:
-      "يَا مُقَلِّبَ الْقُلُوبِ ثَبِّتْ قَلْبِي عَلَى دِينِكَ",
-    transliteration:
-      "Ya muqallibal-qulubi thabbit qalbi 'ala dinik",
-    translation:
-      "O Turner of hearts, keep my heart steadfast upon Your religion.",
-    source_book: "Sunan al-Tirmidhi",
-    hadith_number: "2140",
-    authenticity_grade: "SAHIH",
-    graded_by: "Al-Albani",
-    category: "worship",
-    emotion_tags: ["afraid", "hopeful", "seeking-forgiveness"],
-    situation_tags: ["heart", "iman", "faith", "steadfastness", "istiqamah", "doubt", "wavering", "thabaat", "deen", "guidance"],
-    featured: true,
     daily_dua_eligible: true,
   },
   {
@@ -3633,26 +2922,6 @@ export const DUAS: Dua[] = [
     situation_tags: ["sea", "ship", "boat", "ocean", "river", "travel", "cruise", "ferry", "flight", "plane", "air", "journey"],
     featured: false,
     daily_dua_eligible: false,
-  },
-  {
-    id: 212,
-    slug: "dua-allahumma-la-sahla-ease",
-    title: "Dua for Making the Difficult Easy — La Sahla",
-    arabic_text:
-      "اللَّهُمَّ لَا سَهْلَ إِلَّا مَا جَعَلْتَهُ سَهْلًا وَأَنْتَ تَجْعَلُ الْحَزْنَ إِذَا شِئْتَ سَهْلًا",
-    transliteration:
-      "Allahumma la sahla illa ma ja'altahu sahlan wa anta taj'alul-hazna idha shi'ta sahla",
-    translation:
-      "O Allah, there is no ease except what You make easy, and You can make hardship easy whenever You will.",
-    source_book: "Sahih Ibn Hibban",
-    hadith_number: "974",
-    authenticity_grade: "SAHIH",
-    graded_by: "Ibn Hibban",
-    category: "health",
-    emotion_tags: ["stressed", "hopeful", "afraid"],
-    situation_tags: ["ease", "difficulty", "hardship", "challenge", "exam", "interview", "obstacle", "problem", "help", "relief"],
-    featured: true,
-    daily_dua_eligible: true,
   },
   {
     id: 213,
@@ -3733,26 +3002,6 @@ export const DUAS: Dua[] = [
     daily_dua_eligible: false,
   },
   {
-    id: 217,
-    slug: "dua-for-dhikr-shukr-and-good-worship",
-    title: "Dua for Remembrance, Gratitude and Excellence in Worship",
-    arabic_text:
-      "اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ",
-    transliteration:
-      "Allahumma a'inni 'ala dhikrika wa shukrika wa husni 'ibadatik",
-    translation:
-      "O Allah, help me to remember You, to be grateful to You, and to worship You in the best manner.",
-    source_book: "Sunan Abu Dawud",
-    hadith_number: "1522",
-    authenticity_grade: "SAHIH",
-    graded_by: "Al-Albani",
-    category: "worship",
-    emotion_tags: ["grateful", "hopeful", "seeking-forgiveness"],
-    situation_tags: ["dhikr", "shukr", "gratitude", "ibadah", "worship", "after-prayer", "salah", "remembrance", "excellence", "husn"],
-    featured: false,
-    daily_dua_eligible: true,
-  },
-  {
     id: 218,
     slug: "dua-of-ibrahim-and-ismail-for-ummah",
     title: "Dua of Ibrahim and Ismail for a Muslim Ummah",
@@ -3768,25 +3017,6 @@ export const DUAS: Dua[] = [
     category: "family",
     emotion_tags: ["hopeful", "seeking-forgiveness", "grateful"],
     situation_tags: ["ummah", "offspring", "family", "descendants", "islam", "hajj", "submission", "tawbah", "prophet-ibrahim", "ismail"],
-    featured: false,
-    daily_dua_eligible: true,
-  },
-  {
-    id: 219,
-    slug: "dua-rabbana-afrigh-alayna-sabran",
-    title: "Dua for Patience, Firmness and Victory",
-    arabic_text:
-      "رَبَّنَا أَفْرِغْ عَلَيْنَا صَبْرًا وَثَبِّتْ أَقْدَامَنَا وَانصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ",
-    transliteration:
-      "Rabbana afrigh 'alayna sabran wa thabbit aqdamana wansurna 'alal-qawmil-kafirin",
-    translation:
-      "Our Lord, pour upon us patience, plant our feet firmly, and give us victory over the disbelieving people.",
-    source_book: "Quran",
-    hadith_number: "2:250",
-    authenticity_grade: "QURAN",
-    category: "protection",
-    emotion_tags: ["hopeful", "afraid", "stressed"],
-    situation_tags: ["patience", "sabr", "firmness", "victory", "strength", "battle", "trial", "steadfastness", "thabaat", "courage"],
     featured: false,
     daily_dua_eligible: true,
   },
@@ -6406,19 +5636,23 @@ export function searchDuas(query: string): Dua[] {
 export function getDailyDua(date?: Date): Dua {
   // Guard: fall back to full DUAS list if no eligible duas are marked
   const pool = DAILY_DUA_POOL.length > 0 ? DAILY_DUA_POOL : DUAS;
-  const d = date ?? new Date();
-  const dayOfYear = Math.floor(
-    (d.getTime() - new Date(d.getFullYear(), 0, 0).getTime()) /
-      (1000 * 60 * 60 * 24)
-  );
-  return pool[dayOfYear % pool.length];
+  return pool[dayOfYearIST(date) % pool.length];
 }
 
+// Ranks by shared situation tags, category and emotions. Ties go to the duas
+// that follow this one by id (wrapping round), so links spread across the
+// whole collection instead of always pointing at the first few entries.
 export function getRelatedDuas(dua: Dua, limit = 4): Dua[] {
-  return DUAS.filter(
-    (d) =>
-      d.id !== dua.id &&
-      (d.category === dua.category ||
-        d.emotion_tags.some((e) => dua.emotion_tags.includes(e)))
-  ).slice(0, limit);
+  const maxId = DUAS.reduce((m, d) => Math.max(m, d.id), 0) + 1;
+  const score = (d: Dua) =>
+    d.situation_tags.filter((t) => dua.situation_tags.includes(t)).length * 2 +
+    (d.category === dua.category ? 3 : 0) +
+    d.emotion_tags.filter((e) => dua.emotion_tags.includes(e)).length;
+  const distance = (d: Dua) => (d.id - dua.id + maxId) % maxId;
+  return DUAS.filter((d) => d.id !== dua.id)
+    .map((d) => ({ d, s: score(d) }))
+    .filter(({ s }) => s > 0)
+    .sort((a, b) => b.s - a.s || distance(a.d) - distance(b.d))
+    .slice(0, limit)
+    .map(({ d }) => d);
 }

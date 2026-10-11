@@ -4,7 +4,7 @@ import { Star, BookOpen, ChevronRight, Calendar } from "lucide-react";
 import { getDailyDua } from "@/lib/duas";
 import { AuthenticityBadge } from "@/components/dua/AuthenticityBadge";
 import { ShareButtons } from "@/components/dua/ShareButtons";
-import { getCategoryMeta, SITE_NAME, SITE_URL , safeJsonLd } from "@/lib/utils";
+import { getCategoryMeta, SITE_NAME, SITE_URL , safeJsonLd, SITE_TIME_ZONE } from "@/lib/utils";
 import { SocialFollowStrip } from "@/components/layout/SocialFollowStrip";
 
 export const metadata: Metadata = {
@@ -32,6 +32,7 @@ export default async function DailyDuaPage() {
   const category = getCategoryMeta(dua.category);
 
   const today = new Date().toLocaleDateString("en-US", {
+    timeZone: SITE_TIME_ZONE,
     weekday: "long",
     year: "numeric",
     month: "long",

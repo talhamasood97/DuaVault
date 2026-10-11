@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { getDuasByCategory } from "@/lib/duas";
 import { DuaCard } from "@/components/dua/DuaCard";
-import { getCategoryMeta, CATEGORIES, SITE_URL , safeJsonLd } from "@/lib/utils";
+import { getCategoryMeta, CATEGORIES, SITE_URL, safeJsonLd, fitTitle } from "@/lib/utils";
 
 export const revalidate = 3600;
 
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const cat = getCategoryMeta(params.slug);
   if (!cat) return {};
   return {
-    title: `${cat.title} Duas – Authentic Islamic Supplications`,
+    title: fitTitle(`${cat.title} Duas`, [" – Authentic Islamic Supplications", " – Authentic Supplications", " – Quran & Hadith"]),
     description: `${cat.description}. Browse authentic duas with Arabic, transliteration, and verified Hadith sources.`,
     alternates: { canonical: `/category/${cat.slug}` },
     openGraph: {

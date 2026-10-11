@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { ArrowRight, BookOpen } from "lucide-react";
 import type { Hadith } from "@/types";
+import { SITE_TIME_ZONE } from "@/lib/utils";
 
 export function DailyHadithBanner({ hadith }: { hadith: Hadith }) {
   const today = new Date().toLocaleDateString("en-US", {
+    timeZone: SITE_TIME_ZONE,
     weekday: "long",
     month: "long",
     day: "numeric",

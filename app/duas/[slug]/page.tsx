@@ -8,7 +8,7 @@ import { ShareButtons } from "@/components/dua/ShareButtons";
 import { SaveButton } from "@/components/dua/SaveButton";
 import { RelatedDuas } from "@/components/dua/RelatedDuas";
 import { SocialFollowStrip } from "@/components/layout/SocialFollowStrip";
-import { getCategoryMeta, getEmotionMeta, SITE_URL, SITE_NAME , safeJsonLd } from "@/lib/utils";
+import { getCategoryMeta, getEmotionMeta, SITE_URL, SITE_NAME, safeJsonLd, fitTitle, truncate } from "@/lib/utils";
 import { DuaViewTracker } from "@/components/analytics/DuaViewTracker";
 
 export const revalidate = 86400;
@@ -26,8 +26,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const dua = await getDuaBySlug(params.slug);
   if (!dua) return {};
 
-  const title = `${dua.title} – Arabic, Translation & Source`;
-  const description = `${dua.title}: "${dua.arabic_text.slice(0, 60)}…" — ${dua.translation.slice(0, 120)}. Source: ${dua.source_book}${dua.hadith_number ? ` ${dua.hadith_number}` : ""}. ${dua.authenticity_grade} grading.`;
+  const title = fitTitle(dua.title, [" – Arabic, Meaning & Source", " – Arabic & Meaning", " in Arabic"]);
+  const source = `${dua.source_book}${dua.hadith_number ? ` ${dua.hadith_number}` : ""}`;
+  const sourceNote = ` Source: ${source}.`;
+  const description = truncate(`${dua.title} in Arabic with transliteration and meaning: "${dua.translation}"`, 158 - sourceNote.length) + sourceNote;
   const url = `/duas/${dua.slug}`;
 
   return {

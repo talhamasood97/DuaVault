@@ -17,8 +17,8 @@ export function generateMetadata({ searchParams }: Props): Metadata {
   const category = cat ? getHadithCategory(cat) : null;
 
   const base: Metadata = {
-    title: `Hadith Archive – Authentic Hadith with Arabic & Translation | DuaVault`,
-    description: `Browse authenticated hadith from Sahih Bukhari, Sahih Muslim, Abu Dawud, and Tirmidhi. Arabic text, transliteration, English translation, and daily practice — organised by theme.`,
+    title: "Authentic Hadith Archive – Arabic & English",
+    description: `Authentic hadith from Bukhari, Muslim, Abu Dawud and Tirmidhi with Arabic, transliteration, English translation and daily practice, by theme.`,
     alternates: { canonical: "/hadith" },
     openGraph: {
       title: "Hadith Archive – DuaVault",
@@ -32,7 +32,7 @@ export function generateMetadata({ searchParams }: Props): Metadata {
   if (category) {
     return {
       ...base,
-      title: `${category.label} Hadith – DuaVault`,
+      title: `${category.label} Hadith`,
       description: `${category.description}. Authentic hadith from Sahih Bukhari, Sahih Muslim and other major collections — Arabic, transliteration, translation and daily practice.`,
       robots: { index: false, follow: true },
     };

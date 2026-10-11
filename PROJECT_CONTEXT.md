@@ -29,8 +29,8 @@
 - **Direct** — returning users who have saved duas to their local collection.
 
 **User capabilities (no auth required):**
-- Browse 316 duas across 9 categories and 8 emotional states
-- Browse 255 hadiths across 6 categories (34 granular topics)
+- Browse 276 duas across 9 categories and 8 emotional states
+- Browse 246 hadiths across 6 categories (34 granular topics)
 - Full-text search with synonym expansion, fuzzy matching, and Arabic support
 - Save/unsave duas to a local collection (localStorage, max 200)
 - Share duas via WhatsApp, Twitter, Facebook, or native share
@@ -125,8 +125,8 @@ interface Hadith {
 
 | Content | Count | File |
 |---|---|---|
-| Duas | 316 | `data/duas.ts` |
-| Hadiths | 255 | `data/hadiths.ts` |
+| Duas | 276 | `data/duas.ts` |
+| Hadiths | 246 | `data/hadiths.ts` |
 | Dua Categories | 9 | `lib/utils.ts` — CATEGORIES array |
 | Emotion States | 8 | `lib/utils.ts` — EMOTIONS array |
 | Hadith Categories | 6 (34 topics) | `lib/hadith-categories.ts` |
@@ -167,9 +167,10 @@ Three client constructors:
 
 Both `getDailyDua()` and `getDailyHadith()` use deterministic day-of-year modulo:
 ```
-dayOfYear = floor((now - Jan 1) / 86400000)
+dayOfYear = dayOfYearIST(now)   // lib/utils.ts — day rolls over at midnight IST
 item = pool[dayOfYear % pool.length]
 ```
+Date labels on the site use `SITE_TIME_ZONE` ("Asia/Kolkata"). The post crons run at 8:30 AM / 8 PM IST, when IST and UTC dates agree.
 Duas: uses only `daily_dua_eligible` entries. Hadiths: uses full array.
 Both accept optional `date` parameter for future scheduling.
 
@@ -288,8 +289,8 @@ Supabase search: PostgreSQL `websearch` type full-text search on `search_vector`
 │   └── useSubscribeForm.ts
 │
 ├── data/
-│   ├── duas.ts                 # 316 duas with search engine + utilities
-│   ├── hadiths.ts              # 255 hadiths with getDailyHadith()
+│   ├── duas.ts                 # 276 duas with search engine + utilities
+│   ├── hadiths.ts              # 246 hadiths with getDailyHadith()
 │   ├── schema.sql              # Supabase DDL (duas + hadith_subscribers)
 │   ├── seed.ts                 # DB seeding script
 │   └── validate.ts             # Content validation script
@@ -379,7 +380,7 @@ Supabase search: PostgreSQL `websearch` type full-text search on `search_vector`
 ## 7. Current State
 
 ### What Is Working
-- Full website live at duavault.com with 316 duas and 255 hadiths
+- Full website live at duavault.com with 276 duas and 246 hadiths
 - Dark mode with system preference detection
 - Search with synonym expansion, fuzzy matching, Arabic support
 - Save/unsave duas (localStorage)
@@ -535,6 +536,8 @@ All other routes (check-token, refresh-token, post-morning, post-evening) must b
 5. Mark `daily_dua_eligible: true` if suitable for daily rotation
 6. If Supabase is configured, also insert into the `duas` table (or run seed)
 
+IDs are never reused. Removed duas/hadiths keep a permanent redirect in `REMOVED_PAGES` (`next.config.js`) — add one whenever an entry is merged or deleted.
+
 ### Adding New Hadiths
 
 1. Add entry to `data/hadiths.ts` array following the `Hadith` interface
@@ -581,6 +584,7 @@ All other routes (check-token, refresh-token, post-morning, post-evening) must b
 
 | Date | Commit | Summary |
 |---|---|---|
+| 2026-10-11 | audit fix | fix: site audit — merged 33 duplicate duas + 4 duplicate hadiths into the original (tags carried over, 301 redirects in `next.config.js` `REMOVED_PAGES`); removed 7 duas + 5 hadiths whose only source is Da'if/fabricated per Al-Albani on Sunnah.com (Abu Dawud 3850→replaced by 4023, 5096, 5079, 2358, 2795, 528; Tirmidhi 3450; hadiths Abu Dawud 4903, Ibn Majah 425, 3452, Tabarani "poisoned arrow", Hakim "dua is the weapon"); trimmed the weak addition of Ibn Majah 224; normalised hadith book names; remapped 58 hadiths to the 34 topics; related duas/hadiths now scored by relevance; IST day rollover; SEO titles/descriptions fitted (`fitTitle`/`truncate` in `lib/utils.ts`), 404 title, /privacy in sitemap. Validator now 0 errors (was 39). Counts: 276 duas / 246 hadiths |
 | 2026-10-11 | batch 5 | feat: add 60 duas (IDs 280-339; 58 daily-eligible, 42 Qur'anic + 18 Sunnah.com incl. prayer-chapter duas) and 60 hadiths (IDs 196-255) — 2 more months. Sourced from Sunnah.com chapter scrapes (5,000+ narrations filtered for grade, reuse and Arabic overlap); 7 candidates rejected as Da'if; all post cards verified |
 | 2026-10-11 | batch 4 | fix: dua post image (`/api/instagram/dua`) now sizes text from the real wrapped line count and tightens budgets until the card fits — previously 49 existing + 24 new duas rendered Arabic over the transliteration or translation into the footer; cards that already fit are pixel-identical |
 | 2026-10-11 | batch 4 | feat: add 60 duas (IDs 220-279; 59 daily-eligible — 275 Wajjahtu Wajhiya is too long for a 1080px card) and 60 hadiths (IDs 136-195) — ~2 months of daily rotation. Arabic sliced verbatim from Sunnah.com / Quran.com source text; every hadith Sahih/Hasan per Sunnah.com grade; zero new validator errors |

@@ -88,6 +88,8 @@ export async function GET(request: Request) {
 
   const source = formatSource(dua);
   const title = dua.title.toUpperCase();
+  // The card fonts have no ﷺ glyph (it renders as a box).
+  const translation = dua.translation.replace(/\uFDFA/g, "(SAW)");
 
   const HEADER_BOTTOM = 120;
   const FOOTER_TOP = 984;
@@ -111,7 +113,7 @@ export async function GET(request: Request) {
   let arabic!: TextStyle, transl!: TextStyle, showTranslit = false, totalH = 0;
   for (const [arabicMaxH, translMaxH] of BUDGETS) {
     arabic = pickArabicStyle(dua.arabic_text, arabicMaxH);
-    transl = pickTranslStyle(dua.translation, translMaxH);
+    transl = pickTranslStyle(translation, translMaxH);
     const base = TITLE_H + arabic.blockH + GAP_ARA_DIV + DIV_H + transl.blockH + GAP_TR_SRC + SOURCE_H;
     showTranslit = base + TRANSLIT_H <= AVAILABLE - 40;
     totalH = base + (showTranslit ? TRANSLIT_H : 0);

@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { BookOpen, ChevronRight, CheckCircle } from "lucide-react";
-import { getHadithBySlug, getAllHadithSlugs, HADITHS } from "@/data/hadiths";
+import { getHadithBySlug, getAllHadithSlugs, getRelatedHadiths } from "@/data/hadiths";
 import { SubscribeForm } from "@/components/hadith/SubscribeForm";
-import { SITE_NAME, SITE_URL , safeJsonLd } from "@/lib/utils";
+import { SITE_NAME, SITE_URL, safeJsonLd, fitTitle, truncate } from "@/lib/utils";
 import { HadithViewTracker } from "@/components/analytics/HadithViewTracker";
+import type { Hadith } from "@/types";
 
 export const revalidate = 86400;
 
@@ -17,12 +18,17 @@ export async function generateStaticParams() {
   return getAllHadithSlugs().map((slug) => ({ slug }));
 }
 
+function describeHadith(hadith: Hadith): string {
+  const sourceNote = ` ${hadith.source_book} ${hadith.hadith_number} (${hadith.grade}).`;
+  return truncate(hadith.translation, 158 - sourceNote.length) + sourceNote;
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const hadith = getHadithBySlug(params.slug);
   if (!hadith) return {};
   return {
-    title: `${hadith.title} – Hadith on ${hadith.topic}`,
-    description: `${hadith.translation} — ${hadith.source_book} ${hadith.hadith_number}. Grade: ${hadith.grade}. Narrated by ${hadith.narrator}.`,
+    title: fitTitle(hadith.title, [` – Hadith on ${hadith.topic.charAt(0).toUpperCase()}${hadith.topic.slice(1)}`, " – Hadith"]),
+    description: describeHadith(hadith),
     alternates: { canonical: `/hadith/${hadith.slug}` },
     openGraph: {
       title: hadith.title,
@@ -46,12 +52,7 @@ export default function HadithPage({ params }: Props) {
   const hadith = getHadithBySlug(params.slug);
   if (!hadith) notFound();
 
-  // Related hadiths — same topic, excluding current
-  const related = HADITHS.filter(
-    (h) =>
-      h.slug !== hadith.slug &&
-      h.topic_tags.some((t) => hadith.topic_tags.includes(t))
-  ).slice(0, 3);
+  const related = getRelatedHadiths(hadith, 3);
 
   const structuredData = {
     "@context": "https://schema.org",

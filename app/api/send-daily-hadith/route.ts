@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { getDailyHadith } from "@/data/hadiths";
 import { createAdminClient } from "@/lib/supabase";
-import { escapeHtml } from "@/lib/utils";
+import { escapeHtml, SITE_TIME_ZONE } from "@/lib/utils";
 import { sendAdminAlert } from "@/lib/instagram";
 
 export const runtime = "nodejs";
@@ -19,6 +19,7 @@ function buildDailyEmail(
   const hadithUrl = `${SITE_URL}/hadith/${hadith.slug}`;
   const unsubUrl = `${SITE_URL}/api/unsubscribe?token=${unsubscribeToken}`;
   const today = new Date().toLocaleDateString("en-US", {
+    timeZone: SITE_TIME_ZONE,
     weekday: "long",
     month: "long",
     day: "numeric",

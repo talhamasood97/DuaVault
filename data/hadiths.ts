@@ -9,6 +9,7 @@
  */
 
 import type { Hadith } from "@/types";
+import { dayOfYearIST } from "@/lib/utils";
 
 export const HADITHS: Hadith[] = [
   {
@@ -22,7 +23,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Abu Huraira: Allah's Messenger (ﷺ) said, \"The strong is not the one who overcomes the people by his strength, but the strong is the one who controls himself while in anger.\"",
     narrator: "Abu Hurayrah (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "6114",
     grade: "Sahih",
     topic: "anger",
@@ -41,7 +42,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated 'Aisha: A group of Jews asked permission to visit the Prophet (ﷺ) and when they were admitted they said, 'As-Samu 'Alaika (death be upon you).' I said (to them), 'But death and the curse of Allah be upon you!' The Prophet (ﷺ) said, 'O 'Aisha! Allah is kind and lenient and likes that one should be kind and lenient in all matters.' I said, 'Haven't you heard what they said?' He said, 'I said (to them), Wa 'Alaikum (and upon you).'",
     narrator: "Aisha (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "6927",
     grade: "Sahih",
     topic: "gentleness",
@@ -60,7 +61,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated 'Umar bin Al-Khattab: I heard Allah's Messenger (ﷺ) saying, \"The reward of deeds depends upon the intentions and every person will get the reward according to what he has intended. So whoever emigrated for worldly benefits or for a woman to marry, his emigration was for what he emigrated for.\"",
     narrator: "Umar ibn al-Khattab (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "1",
     grade: "Sahih",
     topic: "intention",
@@ -79,7 +80,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated 'Abdullah: The Prophet (ﷺ) said, \"Truthfulness leads to righteousness, and righteousness leads to Paradise. And a man keeps on telling the truth until he becomes a truthful person. Falsehood leads to wickedness (Al-Fajur), and wickedness leads to the (Hell) Fire, and a man may keep on telling lies till he is written before Allah as a liar.\"",
     narrator: "Abdullah ibn Masud (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "6094",
     grade: "Sahih",
     topic: "honesty",
@@ -98,11 +99,11 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Abu Huraira: The Prophet (ﷺ) said, \"Wealth is not in having many possessions, but rather (true) wealth is feeling sufficiency in the soul.\"",
     narrator: "Abu Hurayrah (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "6446",
     grade: "Sahih",
     topic: "contentment",
-    topic_tags: ["contentment", "gratitude", "wealth", "materialism"],
+    topic_tags: ["contentment", "gratitude", "wealth", "materialism", "soul", "richness", "dunya", "zuhd", "satisfaction", "qana'ah"],
     daily_practice:
       "List three things you already have that you are genuinely grateful for today.",
   },
@@ -117,7 +118,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated AbudDarda': The Prophet (ﷺ) said, \"There is nothing heavier than good character put in the scale of a believer on the Day of Resurrection.\"",
     narrator: "Abu Darda (RA)",
-    source_book: "Abu Dawud",
+    source_book: "Sunan Abu Dawud",
     hadith_number: "4799",
     grade: "Sahih",
     topic: "character",
@@ -136,7 +137,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated 'Abdullah bin 'Amr: The Prophet (ﷺ) said, \"A Muslim is the one who avoids harming Muslims with his tongue and hands. And a Muhajir (emigrant) is the one who gives up (abandons) all what Allah has forbidden.\"",
     narrator: "Abdullah ibn Amr (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "10",
     grade: "Sahih",
     topic: "character",
@@ -155,7 +156,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Abu Shuraih: The Prophet (ﷺ) said, \"By Allah, he does not believe! By Allah, he does not believe! By Allah, he does not believe!\" It was said, \"Who is that, O Allah's Messenger (ﷺ)?\" He said, \"That person whose neighbor does not feel safe from his evil.\"",
     narrator: "Abu Shurayh al-Khuza'i (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "6016",
     grade: "Sahih",
     topic: "neighbors",
@@ -174,7 +175,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Abu Huraira: The Prophet (ﷺ) said, \"Whoever believes in Allah and the Last Day, should not hurt his neighbor; and whoever believes in Allah and the Last Day, should serve his guest generously; and whoever believes in Allah and the Last Day, should speak what is good or keep silent.\"",
     narrator: "Abu Hurayrah (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "6136",
     grade: "Sahih",
     topic: "speech",
@@ -193,7 +194,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Anas: The Prophet (ﷺ) said, \"None of you will have faith till he wishes for his (Muslim) brother what he likes for himself.\"",
     narrator: "Anas ibn Malik (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "13",
     grade: "Sahih",
     topic: "brotherhood",
@@ -248,7 +249,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated 'Adi bin Hatim: I heard the Prophet (ﷺ) saying, \"Save yourself from Hell-fire even by giving half a date-fruit in charity.\"",
     narrator: "Adiyy ibn Hatim (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "1417",
     grade: "Sahih",
     topic: "charity",
@@ -267,7 +268,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Abu As-Sawar Al-Adawi: 'Imran bin Husain said, the Prophet (ﷺ) said, \"Haya' (pious shyness) does not bring anything except good.\" Thereupon Bashir bin Ka'b said, \"It is written in the wisdom paper: Haya' leads to solemnity; Haya' leads to tranquility (peace of mind).\" 'Imran said to him, \"I am narrating to you the saying of Allah's Messenger (ﷺ) and you are speaking about your paper (wisdom book)?\"",
     narrator: "Imran ibn Husayn (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "6117",
     grade: "Sahih",
     topic: "modesty",
@@ -286,7 +287,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Abdullah bin 'Amr narrated that the Messenger of Allah (ﷺ) said, \"The merciful are shown mercy by Ar-Rahman. Be merciful on the earth, and you will be shown mercy from Who is above the heavens. The womb is named after Ar-Rahman, so whoever connects it, Allah connects him, and whoever severs it, Allah severs him.\"",
     narrator: "Abdullah ibn Amr (RA)",
-    source_book: "Tirmidhi",
+    source_book: "Sunan al-Tirmidhi",
     hadith_number: "1924",
     grade: "Sahih",
     topic: "mercy",
@@ -305,7 +306,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated 'Aishah: that the Messenger of Allah (ﷺ) said, \"The best of you is the best to his wives, and I am the best of you to my wives, and when your companion dies, leave him alone.\"",
     narrator: "Aisha (RA)",
-    source_book: "Tirmidhi",
+    source_book: "Sunan al-Tirmidhi",
     hadith_number: "3895",
     grade: "Sahih",
     topic: "family",
@@ -343,7 +344,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Abu Hurayrah: The Prophet (ﷺ) said, \"He who does not thank the people is not thankful to Allah.\"",
     narrator: "Abu Hurayrah (RA)",
-    source_book: "Abu Dawud",
+    source_book: "Sunan Abu Dawud",
     hadith_number: "4811",
     grade: "Sahih",
     topic: "gratitude",
@@ -366,7 +367,7 @@ export const HADITHS: Hadith[] = [
     hadith_number: "223",
     grade: "Sahih",
     topic: "cleanliness",
-    topic_tags: ["cleanliness", "purity", "taharah", "faith", "hygiene"],
+    topic_tags: ["cleanliness", "purity", "taharah", "faith", "hygiene", "alhamdulillah", "scales", "mizan", "subhanallah", "dhikr", "gratitude", "day-of-judgement", "deeds", "weight", "tasbih"],
     daily_practice:
       "Maintain your physical cleanliness today as a conscious act of faith, not just habit.",
   },
@@ -381,11 +382,11 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Abu Huraira: Allah's Messenger (ﷺ) said, \"There is a (compulsory) Sadaqa (charity) to be given for every joint of the human body every day the sun rises. To judge justly between two persons is regarded as Sadaqa, and to help a man concerning his riding animal by helping him to ride it or by lifting his luggage on to it is also regarded as Sadaqa, and (saying) a good word is also Sadaqa, and every step taken on one's way to offer the compulsory prayer is also Sadaqa, and to remove a harmful thing from the way is also Sadaqa.\"",
     narrator: "Abu Hurayrah (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "2989",
     grade: "Sahih",
     topic: "service",
-    topic_tags: ["charity", "sadaqah", "community", "service", "small deeds"],
+    topic_tags: ["charity", "sadaqah", "community", "service", "small deeds", "joints", "good-deeds", "daily", "kindness", "prayer", "good-word", "steps"],
     daily_practice:
       "Remove or fix something today that could cause inconvenience or harm to others.",
   },
@@ -400,7 +401,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Anas bin Malik: The Prophet (ﷺ) said, \"Facilitate things to people (concerning religious matters), and do not make it hard for them and give them good tidings and do not make them run away (from Islam).\"",
     narrator: "Anas ibn Malik (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "69",
     grade: "Sahih",
     topic: "ease",
@@ -419,7 +420,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Anas reported that the Messenger of Allah (ﷺ) said, \"Every son of Adam sins, and the best of the sinners are the repentant.\"",
     narrator: "Anas ibn Malik (RA)",
-    source_book: "Tirmidhi",
+    source_book: "Sunan al-Tirmidhi",
     hadith_number: "2499",
     grade: "Sahih",
     topic: "repentance",
@@ -436,7 +437,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated An-Nu'man bin Bashir: from the Prophet (ﷺ) regarding Allah's saying, \"Your Lord said: Invoke Me, I shall respond to you\" — he said, \"The supplication is the worship,\" then he recited: \"Indeed, those who disdain My worship will enter Hell in humiliation.\" (Ghafir 40:60)",
     narrator: "Al-Nu'man ibn Bashir (RA)",
-    source_book: "Tirmidhi",
+    source_book: "Sunan al-Tirmidhi",
     hadith_number: "2969",
     grade: "Sahih",
     topic: "worship",
@@ -449,13 +450,13 @@ export const HADITHS: Hadith[] = [
     slug: "hadith-seeking-knowledge-is-obligatory",
     title: "Seeking Knowledge is Obligatory",
     arabic:
-      "طَلَبُ الْعِلْمِ فَرِيضَةٌ عَلَى كُلِّ مُسْلِمٍ وَوَاضِعُ الْعِلْمِ عِنْدَ غَيْرِ أَهْلِهِ كَمُقَلِّدِ الْخَنَازِيرِ الْجَوْهَرَ وَاللُّؤْلُؤَ وَالذَّهَبَ",
+      "طَلَبُ الْعِلْمِ فَرِيضَةٌ عَلَى كُلِّ مُسْلِمٍ",
     transliteration:
-      "Talabul-'ilmi farīdatun 'alā kulli Muslim. Wa wādi'ul-'ilmi 'inda ghayri ahlihi kammuqallidil-khanāzīri-l-jawhar wal-lu'lu'a wadh-dhahab",
+      "Talabul-'ilmi faridatun 'ala kulli Muslim",
     translation:
-      "It was narrated from Anas bin Malik that the Messenger of Allah (ﷺ) said, \"Seeking knowledge is a duty upon every Muslim, and he who imparts knowledge to those who do not deserve it, is like one who puts a necklace of jewels, pearls and gold around the neck of swine.\"",
+      "It was narrated from Anas bin Malik that the Messenger of Allah (ﷺ) said, \"Seeking knowledge is a duty upon every Muslim.\"",
     narrator: "Anas ibn Malik (RA)",
-    source_book: "Ibn Majah",
+    source_book: "Sunan Ibn Majah",
     hadith_number: "224",
     grade: "Sahih",
     topic: "knowledge",
@@ -474,7 +475,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Abu Hurairah narrated that the Messenger of Allah (ﷺ) said, \"Indeed among the excellence of a person's Islam is that he leaves what does not concern him.\"",
     narrator: "Abu Hurayrah (RA)",
-    source_book: "Tirmidhi",
+    source_book: "Sunan al-Tirmidhi",
     hadith_number: "2317",
     grade: "Hasan",
     topic: "mindfulness",
@@ -492,7 +493,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Jubair bin Mut'im: That he heard the Prophet (ﷺ) saying, \"The person who severs the bond of kinship will not enter Paradise.\"",
     narrator: "Jubayr ibn Mut'im (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "5984",
     grade: "Sahih",
     topic: "family",
@@ -511,7 +512,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Abu Huraira: The Messenger of Allah (ﷺ) said, \"Pay the deposit to him who deposited it with you, and do not betray him who betrays you.\"",
     narrator: "Abu Hurayrah (RA)",
-    source_book: "Abu Dawud",
+    source_book: "Sunan Abu Dawud",
     hadith_number: "3534",
     grade: "Sahih",
     topic: "trustworthiness",
@@ -530,7 +531,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Abu Dharr said: The Messenger of Allah (ﷺ) said to me, \"Have Taqwa of Allah wherever you are, and follow an evil deed with a good one to wipe it out, and treat the people with good behavior.\"",
     narrator: "Abu Dharr (RA)",
-    source_book: "Tirmidhi",
+    source_book: "Sunan al-Tirmidhi",
     hadith_number: "1987",
     grade: "Hasan",
     topic: "character",
@@ -549,7 +550,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Abu Dharr reported that the Messenger of Allah (ﷺ) said, \"Your smiling in the face of your brother is charity, commanding good and forbidding evil is charity, your giving directions to a man lost in the land is charity for you, your seeing for a man with bad sight is a charity for you, your removal of a rock, a thorn or a bone from the road is charity for you, and your pouring what remains from your bucket into the bucket of your brother is charity for you.\"",
     narrator: "Abu Dharr (RA)",
-    source_book: "Tirmidhi",
+    source_book: "Sunan al-Tirmidhi",
     hadith_number: "1956",
     grade: "Hasan",
     topic: "kindness",
@@ -568,7 +569,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Abu Musa Al-Ash'ari: The Prophet (ﷺ) said, \"Give food to the hungry, pay a visit to the sick and release (set free) the one in captivity (by paying his ransom).\"",
     narrator: "Abu Musa al-Ash'ari (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "5373",
     grade: "Sahih",
     topic: "service",
@@ -588,7 +589,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Umar ibn al-Khattab reported: The Messenger of Allah (ﷺ) said, \"If you were to rely upon Allah with the reliance He is due, He would provide for you just as He provides for the birds: they go out in the morning hungry and return in the evening full.\"",
     narrator: "Umar ibn al-Khattab (RA)",
-    source_book: "Tirmidhi",
+    source_book: "Sunan al-Tirmidhi",
     hadith_number: "2344",
     grade: "Hasan",
     topic: "reliance",
@@ -607,7 +608,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Abu Musa al-Ash'ari reported: The Messenger of Allah (ﷺ) said, \"The example of the one who remembers his Lord and the one who does not remember his Lord is like the living and the dead.\"",
     narrator: "Abu Musa al-Ash'ari (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "6407",
     grade: "Sahih",
     topic: "dhikr",
@@ -645,7 +646,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Abu Huraira reported: The Prophet (ﷺ) said, \"Allah the Almighty says: 'I am as My servant thinks of Me. I am with him when he remembers Me. If he mentions Me within himself, I mention him within Myself. If he mentions Me in an assembly, I mention him in an assembly far better than his.'\"",
     narrator: "Abu Hurayrah (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "7405",
     grade: "Sahih",
     topic: "hope",
@@ -664,7 +665,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Abu Huraira reported: The Prophet (ﷺ) said, \"Every deed of the son of Adam is multiplied — a good deed receiving tenfold to seven hundredfold reward — except fasting, for Allah the Almighty says: 'It is for Me and I shall reward it Myself, for he gives up his desire and his food for My sake.'\"",
     narrator: "Abu Hurayrah (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "1904",
     grade: "Sahih",
     topic: "fasting",
@@ -690,25 +691,6 @@ export const HADITHS: Hadith[] = [
     topic_tags: ["visiting sick", "service", "angels", "reward", "community"],
     daily_practice:
       "Check in on someone who is unwell today — a message, a phone call, or a visit is all it takes.",
-  },
-  {
-    id: 37,
-    slug: "hadith-beware-of-envy",
-    title: "Envy Devours Good Deeds Like Fire Devours Wood",
-    arabic:
-      "إِيَّاكُمْ وَالْحَسَدَ فَإِنَّ الْحَسَدَ يَأْكُلُ الْحَسَنَاتِ كَمَا تَأْكُلُ النَّارُ الْحَطَبَ",
-    transliteration:
-      "Iyyākum wal-hasad, fa-innal-hasada ya'kulul-hasanāti kamā ta'kulun-nārul-hatab",
-    translation:
-      "Abu Huraira reported: The Messenger of Allah (ﷺ) said, \"Beware of envy, for envy devours good deeds just as fire devours wood.\"",
-    narrator: "Abu Hurayrah (RA)",
-    source_book: "Abu Dawud",
-    hadith_number: "4903",
-    grade: "Hasan",
-    topic: "character",
-    topic_tags: ["envy", "hasad", "jealousy", "character", "deeds"],
-    daily_practice:
-      "When you feel envy rising today, replace it with sincere dua for that person — ask Allah to bless them even more.",
   },
   {
     id: 38,
@@ -759,7 +741,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Abu Huraira reported: The Messenger of Allah (ﷺ) said, \"A man follows the religion of his close friend, so let each one of you look carefully at whom he takes as a close friend.\"",
     narrator: "Abu Hurayrah (RA)",
-    source_book: "Tirmidhi",
+    source_book: "Sunan al-Tirmidhi",
     hadith_number: "2378",
     grade: "Hasan",
     topic: "friendship",
@@ -778,7 +760,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Abu Huraira reported: The Messenger of Allah (ﷺ) said, \"By Allah! I seek Allah's forgiveness and repent to Him more than seventy times a day.\"",
     narrator: "Abu Hurayrah (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "6307",
     grade: "Sahih",
     topic: "repentance",
@@ -835,7 +817,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Aisha reported: The Messenger of Allah (ﷺ) said, \"The most beloved deeds to Allah are those which are done consistently, even if they are small.\"",
     narrator: "Aisha (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "6464",
     grade: "Sahih",
     topic: "worship",
@@ -892,7 +874,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Ibn Abbas reported: The Messenger of Allah (ﷺ) said, \"There are two blessings which many people squander: good health and free time.\"",
     narrator: "Ibn Abbas (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "6412",
     grade: "Sahih",
     topic: "gratitude",
@@ -930,7 +912,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Sahl ibn Sa'd reported: The Messenger of Allah (ﷺ) said, \"I and the one who sponsors an orphan will be in Paradise like these two\" — and he pointed with his index finger and middle finger, holding them close together.",
     narrator: "Sahl ibn Sa'd (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "5304",
     grade: "Sahih",
     topic: "charity",
@@ -953,7 +935,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih al-Bukhari",
     hadith_number: "6416",
     grade: "Sahih",
-    topic: "zuhd",
+    topic: "dunya",
     topic_tags: ["dunya", "world", "detachment", "stranger", "traveler", "afterlife", "priorities"],
     daily_practice:
       "Live today as a traveler — do not postpone worship, reconciliation, or gratitude. You may not pass this way again.",
@@ -972,7 +954,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih al-Bukhari",
     hadith_number: "15",
     grade: "Sahih",
-    topic: "love for the Prophet",
+    topic: "worship",
     topic_tags: ["iman", "faith", "love", "prophet", "belief", "completion-of-faith"],
     daily_practice:
       "Read or listen to one account from the Prophet's ﷺ life today to deepen your love and connection with him.",
@@ -989,7 +971,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih al-Bukhari",
     hadith_number: "6170",
     grade: "Sahih",
-    topic: "love and companionship",
+    topic: "friendship",
     topic_tags: ["love", "companionship", "paradise", "afterlife", "saliheen", "jannah"],
     daily_practice:
       "Strengthen your love for the righteous today — attend a gathering of knowledge, read about the companions, or send salawat upon the Prophet ﷺ.",
@@ -1006,7 +988,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih al-Bukhari",
     hadith_number: "5027",
     grade: "Sahih",
-    topic: "Quran",
+    topic: "knowledge",
     topic_tags: ["quran", "knowledge", "teaching", "learning", "recitation", "excellence"],
     daily_practice:
       "Recite at least one page of Quran today — and share even a single ayah or its meaning with someone else.",
@@ -1025,7 +1007,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Mustadrak al-Hakim",
     hadith_number: "7846",
     grade: "Hasan",
-    topic: "time management",
+    topic: "mindfulness",
     topic_tags: ["time", "youth", "health", "life", "priorities", "urgency", "dunya", "akhirah"],
     daily_practice:
       "Identify one good deed you have been postponing and do it today — health, youth, and free time are gifts that expire.",
@@ -1044,7 +1026,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih Muslim",
     hadith_number: "1631",
     grade: "Sahih",
-    topic: "sadaqah jariyah",
+    topic: "charity",
     topic_tags: ["sadaqah", "charity", "knowledge", "legacy", "death", "ongoing-reward", "children", "afterlife"],
     daily_practice:
       "Plant a seed of ongoing reward today — contribute to a charity, share useful knowledge, or make dua for your parents and those who taught you.",
@@ -1063,7 +1045,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih Muslim",
     hadith_number: "145",
     grade: "Sahih",
-    topic: "steadfastness",
+    topic: "patience",
     topic_tags: ["strangers", "ghuraba", "steadfastness", "identity", "iman", "trials", "faith", "society"],
     daily_practice:
       "If your faith feels lonely today, remember — this is by design. Hold firm. The one who stands alone for truth is never truly alone.",
@@ -1081,7 +1063,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih al-Bukhari",
     hadith_number: "5678",
     grade: "Sahih",
-    topic: "health and healing",
+    topic: "ease",
     topic_tags: ["health", "healing", "shifa", "medicine", "disease", "cure", "hope", "illness"],
     daily_practice:
       "When facing illness — physical or emotional — seek both the medical cure and the spiritual one. Both are from Allah.",
@@ -1098,7 +1080,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sunan al-Tirmidhi",
     hadith_number: "2517",
     grade: "Hasan",
-    topic: "tawakkul",
+    topic: "reliance",
     topic_tags: ["tawakkul", "trust", "effort", "action", "reliance", "planning", "dunya", "akhirah"],
     daily_practice:
       "Take every reasonable action in your worldly affairs today — then release the outcome to Allah. Effort and tawakkul are inseparable.",
@@ -1114,7 +1096,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Abu Said al-Khudri reported: The Messenger of Allah (ﷺ) said, \"The best jihad is a just word spoken before an unjust ruler.\"",
     narrator: "Abu Said al-Khudri (RA)",
-    source_book: "Ibn Majah",
+    source_book: "Sunan Ibn Majah",
     hadith_number: "4011",
     grade: "Hasan",
     topic: "justice",
@@ -1154,7 +1136,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih Muslim",
     hadith_number: "8",
     grade: "Sahih",
-    topic: "faith",
+    topic: "worship",
     topic_tags: ["faith", "iman", "islam", "ihsan", "pillars", "belief", "jibril", "worship", "fundamentals", "pillars of Islam"],
     daily_practice:
       "Review the three levels — Islam, Iman, and Ihsan — and ask yourself: which level does today's worship reflect? Aim to worship as if you see Allah.",
@@ -1170,10 +1152,10 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Abu Huraira (RA): A man said to the Prophet ﷺ, 'Advise me!' The Prophet ﷺ said, 'Do not become angry and furious.' The man asked the same again and again, and the Prophet ﷺ said in each case, 'Do not become angry and furious.'",
     narrator: "Abu Hurayrah (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "6116",
     grade: "Sahih",
-    topic: "anger management",
+    topic: "anger",
     topic_tags: ["anger", "self-control", "character", "advice", "patience", "emotional control", "nasiha"],
     daily_practice:
       "When you feel the urge to react in anger today — pause and recall the Prophet's ﷺ repeated advice: 'Do not be angry.'",
@@ -1189,10 +1171,10 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Abu Huraira (RA): The Prophet ﷺ said, 'Seven people will be shaded by Allah under His shade on the Day when there will be no shade except His: a just ruler; a young man who grew up in the worship of Allah; a man whose heart is attached to the mosques; two people who love each other for Allah's sake, meeting and parting for His sake; a man who is called by a woman of rank and beauty but says, \"I fear Allah\"; a man who gives in charity so secretly that his left hand does not know what his right hand gives; and a man who remembers Allah in seclusion and his eyes become tearful.'",
     narrator: "Abu Hurayrah (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "660",
     grade: "Sahih",
-    topic: "Day of Judgment",
+    topic: "mindfulness",
     topic_tags: ["Day of Judgment", "shade", "justice", "youth", "mosque", "love for Allah", "charity", "dhikr", "taqwa", "akhirah"],
     daily_practice:
       "Identify which of the seven categories you can work toward today — heart attached to the masjid, secret charity, or remembering Allah alone with tearful eyes.",
@@ -1211,7 +1193,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sunan an-Nasa'i",
     hadith_number: "3104",
     grade: "Hasan",
-    topic: "parents",
+    topic: "family",
     topic_tags: ["mother", "parents", "jannah", "service", "family", "birr al-walidayn", "obedience", "kindness"],
     daily_practice:
       "Do something today that makes your mother happy — call her, help her, or simply speak to her with gentleness. Paradise may be found in these small moments.",
@@ -1230,7 +1212,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih Muslim",
     hadith_number: "2664",
     grade: "Sahih",
-    topic: "resilience",
+    topic: "patience",
     topic_tags: ["strength", "resilience", "tawakkul", "effort", "qadar", "productivity", "believer", "hardship", "shaytan"],
     daily_practice:
       "When things do not go your way today, replace 'if only' with 'Allah decreed it.' Then refocus on what you can still do.",
@@ -1244,9 +1226,9 @@ export const HADITHS: Hadith[] = [
     transliteration:
       "Kalimatāni khafīfatāni 'alal-lisān, thaqīlatāni fil-mīzān, ḥabībatāni ilar-Raḥmān: Subḥānallāhi wa biḥamdih, Subḥānallāhil-'Aẓīm",
     translation:
-      "Narrated Abu Huraira (RA): The Prophet ﷺ said, 'Two words are light on the tongue but heavy on the Scale and dear to the Most Merciful: Subḥānallāhi wa biḥamdih (Glory be to Allah and all praise is due to Him); Subḥānallāhil-'Aẓīm (Glory be to Allah, the Most Great).'",
+      "Narrated Abu Huraira (RA): The Prophet ﷺ said, 'Two words are light on the tongue but heavy on the Scale and dear to the Most Merciful: Subhanallahi wa bihamdih (Glory be to Allah and all praise is due to Him); Subhanallahil-'Azim (Glory be to Allah, the Most Great).'",
     narrator: "Abu Hurayrah (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "6682",
     grade: "Sahih",
     topic: "dhikr",
@@ -1265,7 +1247,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Abu Huraira (RA): I heard Allah's Messenger ﷺ saying, 'Allah has divided His mercy into one hundred parts. He kept ninety-nine parts with Him and sent one part to the earth. Through this one part, all of creation shows compassion to one another — so much so that an animal lifts its hoof over its young lest it should hurt it. On the Day of Resurrection, Allah will complete the full one hundred parts of mercy toward His servants.'",
     narrator: "Abu Hurayrah (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "6469",
     grade: "Sahih",
     topic: "mercy",
@@ -1284,10 +1266,10 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Abdullah ibn Umar (RA): Allah's Messenger ﷺ said, 'Every one of you is a shepherd and is responsible for his flock. The leader of people is a shepherd and is responsible for his subjects. A man is the shepherd of his family and is responsible for them. A woman is the shepherd of her husband's home and of his children and is responsible for them. The servant is a shepherd of his master's property and is responsible for it. Every one of you is a shepherd and is responsible for his flock.'",
     narrator: "Abdullah ibn Umar (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "893",
     grade: "Sahih",
-    topic: "responsibility",
+    topic: "trustworthiness",
     topic_tags: ["responsibility", "leadership", "family", "accountability", "community", "amanah", "shepherd", "children", "husband", "role"],
     daily_practice:
       "Ask yourself today: am I fulfilling my responsibilities as a shepherd? Start with those closest to you — your family, your household, your community.",
@@ -1306,7 +1288,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih Muslim",
     hadith_number: "1893",
     grade: "Sahih",
-    topic: "good deeds",
+    topic: "worship",
     topic_tags: ["good deeds", "reward", "guiding others", "dawah", "sharing", "charity", "continuous reward", "teaching", "community"],
     daily_practice:
       "Share something beneficial today — a du'a, an ayah, or a reminder. You will receive the same reward as everyone who acts on it.",
@@ -1325,7 +1307,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih Muslim",
     hadith_number: "804",
     grade: "Sahih",
-    topic: "Quran",
+    topic: "knowledge",
     topic_tags: ["Quran", "intercession", "akhirah", "worship", "tilawah", "reward", "Day of Judgment", "recitation", "shafa'ah"],
     daily_practice:
       "Read at least one page of the Quran today — not just to complete a target, but knowing it will stand before Allah as your intercessor on the Day you need it most.",
@@ -1344,7 +1326,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih al-Jami'",
     hadith_number: "6470",
     grade: "Sahih",
-    topic: "Quran",
+    topic: "knowledge",
     topic_tags: ["Quran", "surah al-kahf", "Friday", "jumu'ah", "light", "worship", "weekly practice", "protection", "nur"],
     daily_practice:
       "Make reciting Surah al-Kahf your most consistent weekly act — every Friday, a light that illuminates an entire week.",
@@ -1360,10 +1342,10 @@ export const HADITHS: Hadith[] = [
     translation:
       "Ibn Abbas (RA) reported: The Messenger of Allah ﷺ said, 'A surah of the Quran with thirty verses interceded for its reader until he was forgiven. It is: Blessed is He in Whose Hand is the dominion (Surah Al-Mulk).'",
     narrator: "Ibn Abbas (RA)",
-    source_book: "Jami' al-Tirmidhi",
+    source_book: "Sunan al-Tirmidhi",
     hadith_number: "2891",
     grade: "Hasan",
-    topic: "Quran",
+    topic: "knowledge",
     topic_tags: ["Quran", "surah al-mulk", "intercession", "forgiveness", "grave", "protection", "akhirah", "worship", "night recitation"],
     daily_practice:
       "Recite Surah al-Mulk (30 verses) each night before sleeping. It takes only a few minutes and may intercede for you when you need it most.",
@@ -1382,7 +1364,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih Muslim",
     hadith_number: "482",
     grade: "Sahih",
-    topic: "prayer",
+    topic: "worship",
     topic_tags: ["sujood", "prostration", "prayer", "salah", "dua", "closeness to Allah", "supplication", "worship", "nearness"],
     daily_practice:
       "In each prostration today, pause before rising and pour your heart out to Allah. This is the closest you will be to Him all day.",
@@ -1398,10 +1380,10 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Abu Huraira (RA): The Messenger of Allah ﷺ said, 'The Hellfire is veiled by desires and pleasures, and Paradise is veiled by hardships and difficulties.'",
     narrator: "Abu Hurayrah (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "6487",
     grade: "Sahih",
-    topic: "trials",
+    topic: "patience",
     topic_tags: ["jannah", "hardship", "patience", "desires", "dunya", "akhirah", "temptation", "self-discipline", "struggle", "motivation"],
     daily_practice:
       "When something is difficult today — a missed desire, a hard act of worship, a moment of restraint — remind yourself: this is the path to Jannah.",
@@ -1417,7 +1399,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Abu Huraira (RA): The Prophet ﷺ said, 'The signs of a hypocrite are three: when he speaks, he lies; when he makes a promise, he breaks it; and when he is entrusted, he betrays.'",
     narrator: "Abu Hurayrah (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "33",
     grade: "Sahih",
     topic: "character",
@@ -1436,10 +1418,10 @@ export const HADITHS: Hadith[] = [
     translation:
       "Ibn Abbas (RA) reported: I was riding behind the Messenger of Allah ﷺ when he said, 'O young man, I shall teach you some words: Be mindful of Allah and He will protect you. Be mindful of Allah and you will find Him before you. When you ask, ask of Allah; when you seek help, seek help from Allah. Know that if all the nations were to gather to benefit you with anything, they would only benefit you with something Allah has already written for you. And if they gathered to harm you, they would only harm you with something Allah has already written against you. The pens have been lifted and the pages have dried.'",
     narrator: "Ibn Abbas (RA)",
-    source_book: "Jami' al-Tirmidhi",
+    source_book: "Sunan al-Tirmidhi",
     hadith_number: "2516",
     grade: "Hasan",
-    topic: "tawakkul",
+    topic: "reliance",
     topic_tags: ["tawakkul", "protection", "qadar", "divine decree", "reliance", "asking Allah", "mindfulness", "faith", "trust", "divine will"],
     daily_practice:
       "When you face a decision or difficulty today, remember: ask only from Allah, rely only on Allah. No creation can bring what He has not written for you.",
@@ -1455,7 +1437,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Anas ibn Malik (RA): The Prophet ﷺ passed by a woman who was weeping at a grave. He told her, 'Fear Allah and be patient.' She said, 'Go away from me, for you have not been afflicted with a calamity like mine!' She did not recognise him. Then she was told it was the Prophet ﷺ, so she came to his house and said: 'I did not recognise you.' He ﷺ said, 'Verily, patience is at the first stroke of calamity.'",
     narrator: "Anas ibn Malik (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "1283",
     grade: "Sahih",
     topic: "patience",
@@ -1474,7 +1456,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Abu Huraira (RA) reported: The Messenger of Allah ﷺ said, 'The believer is a mirror to the believer. The believer is the brother of the believer — he safeguards his interests and defends him in his absence.'",
     narrator: "Abu Hurayrah (RA)",
-    source_book: "Sunan Abi Dawud",
+    source_book: "Sunan Abu Dawud",
     hadith_number: "4918",
     grade: "Hasan",
     topic: "brotherhood",
@@ -1512,7 +1494,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Abu Huraira (RA): The Prophet ﷺ said, 'Whoever fasts during Ramadan out of sincere faith and hoping for reward from Allah, then all his previous sins will be forgiven.'",
     narrator: "Abu Hurayrah (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "38",
     grade: "Sahih",
     topic: "fasting",
@@ -1531,10 +1513,10 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Abu Huraira (RA): Allah's Messenger ﷺ said, 'Our Lord, the Blessed and Superior, comes every night down to the nearest heaven during the last third of the night saying: Is there anyone who invokes Me so that I may respond? Is there anyone who asks Me so that I may give him what he asks? Is there anyone who seeks My forgiveness so that I may forgive him?'",
     narrator: "Abu Hurayrah (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "1145",
     grade: "Sahih",
-    topic: "night prayer",
+    topic: "worship",
     topic_tags: ["night prayer", "tahajjud", "dua", "forgiveness", "last third of night", "qiyam", "closeness to Allah", "response", "worship"],
     daily_practice:
       "Set an intention tonight to wake in the last third of the night — even for five minutes of sincere dua. Allah Himself is calling out, asking who will come.",
@@ -1550,10 +1532,10 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Abdullah ibn Mas'ud (RA): The Prophet ﷺ said, 'The best people are those of my generation, and then those who will follow them, and then those who will follow them.'",
     narrator: "Abdullah ibn Mas'ud (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "2651",
     grade: "Sahih",
-    topic: "Companions",
+    topic: "community",
     topic_tags: ["Companions", "Sahabah", "generations", "Tabi'in", "Sunnah", "role models", "best generations", "following the Prophet"],
     daily_practice:
       "Study the life of one Companion today — even a single story. They are the gold standard of how Islam is lived, preserved for us to follow.",
@@ -1572,7 +1554,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih Muslim",
     hadith_number: "244",
     grade: "Sahih",
-    topic: "purification",
+    topic: "cleanliness",
     topic_tags: ["wudu", "purification", "sins", "forgiveness", "taharah", "prayer", "cleanliness", "worship", "spiritual renewal"],
     daily_practice:
       "Make every wudu a conscious act of spiritual cleansing — not just physical ritual. As you wash each limb, intend for the sins of that limb to be washed away.",
@@ -1588,10 +1570,10 @@ export const HADITHS: Hadith[] = [
     translation:
       "Mu'adh ibn Jabal (RA) reported: The Messenger of Allah ﷺ said, 'The head of the matter is Islam; its pillar is the prayer; and its highest point is striving in the way of Allah.'",
     narrator: "Mu'adh ibn Jabal (RA)",
-    source_book: "Jami' al-Tirmidhi",
+    source_book: "Sunan al-Tirmidhi",
     hadith_number: "2616",
     grade: "Hasan",
-    topic: "prayer",
+    topic: "worship",
     topic_tags: ["salah", "prayer", "pillar", "Islam", "fundamentals", "worship", "five pillars", "ibadah", "foundations"],
     daily_practice:
       "Prayer is not one good deed among many — it is the pillar upon which everything stands. Guard your five prayers today as you would guard the foundation of your house.",
@@ -1605,12 +1587,12 @@ export const HADITHS: Hadith[] = [
     transliteration:
       "Al-ḥamdu lillāhi Rabbil-'ālamīn hiya-s-sab'ul-mathānī wal-Qur'ānu-l-'aẓīmulladhī ūtītuhu",
     translation:
-      "Narrated Abu Sa'id ibn al-Mu'alla (RA): I was praying when the Prophet ﷺ called me, but I did not respond until I had finished. Then I said: 'O Messenger of Allah, I was praying.' He ﷺ said: 'Did not Allah say: Respond to Allah and to the Messenger when he calls you?' He then said: 'Shall I not teach you the greatest surah in the Quran before you leave the mosque?' Then as we were about to leave, he said: 'It is: Al-Ḥamdulillāhi Rabbil-'ālamīn — it is the seven oft-repeated verses (as-sab'ul mathānī) and the great Quran that has been given to me.'",
+      "Narrated Abu Sa'id ibn al-Mu'alla (RA): I was praying when the Prophet ﷺ called me, but I did not respond until I had finished. Then I said: 'O Messenger of Allah, I was praying.' He ﷺ said: 'Did not Allah say: Respond to Allah and to the Messenger when he calls you?' He then said: 'Shall I not teach you the greatest surah in the Quran before you leave the mosque?' Then as we were about to leave, he said: 'It is: Al-Hamdulillahi Rabbil-'alamin — it is the seven oft-repeated verses (as-sab'ul mathani) and the great Quran that has been given to me.'",
     narrator: "Abu Sa'id ibn al-Mu'alla (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "5006",
     grade: "Sahih",
-    topic: "Quran",
+    topic: "knowledge",
     topic_tags: ["Quran", "surah al-fatiha", "greatest surah", "prayer", "recitation", "al-hamd", "sab'ul mathani", "magnificence", "tilawah"],
     daily_practice:
       "The next time you recite Surah al-Fatihah in prayer, pause at each verse and reflect on its meaning — you are reciting the greatest surah in the Quran, at least 17 times a day.",
@@ -1629,7 +1611,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih Muslim",
     hadith_number: "2732",
     grade: "Sahih",
-    topic: "dua",
+    topic: "dhikr",
     topic_tags: ["dua", "supplication", "brotherhood", "absent prayer", "angels", "answered dua", "sincere prayer", "community", "love"],
     daily_practice:
       "Make dua for someone you love today in their absence — a friend, a family member, someone going through a trial. An angel is making the same dua for you in return.",
@@ -1645,7 +1627,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Abdullah ibn Mas'ud (RA) reported: The Prophet ﷺ said, 'A believer is not a taunter, nor a curser, nor indecent, nor coarse in speech.'",
     narrator: "Abdullah ibn Mas'ud (RA)",
-    source_book: "Jami' al-Tirmidhi",
+    source_book: "Sunan al-Tirmidhi",
     hadith_number: "1977",
     grade: "Hasan",
     topic: "speech",
@@ -1664,10 +1646,10 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Abu Huraira (RA): The Prophet ﷺ said, 'Whoever performs Hajj for the sake of Allah and does not have sexual intercourse, nor commits sin, nor disputes unjustly during it, then he returns from Hajj as pure and free from sins as on the day on which his mother gave birth to him.'",
     narrator: "Abu Hurayrah (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "1521",
     grade: "Sahih",
-    topic: "hajj",
+    topic: "worship",
     topic_tags: ["hajj", "pilgrimage", "forgiveness", "sins", "purification", "five pillars", "worship", "renewal", "purity", "Mecca"],
     daily_practice:
       "If you have not yet performed Hajj and are able to, make it your sincere intention today. It is one of the only acts that wipes the entire ledger of sins clean.",
@@ -1683,7 +1665,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Ibn Abbas (RA) reported: The Prophet ﷺ said, 'No good deeds done on other days are superior to those done on the first ten days of Dhul Hijjah.' The Companions said: 'Not even jihad in the way of Allah?' He ﷺ said: 'Not even jihad in the way of Allah, except for a man who goes out with his life and his property and does not return with any of it.'",
     narrator: "Ibn Abbas (RA)",
-    source_book: "Sahih Bukhari",
+    source_book: "Sahih al-Bukhari",
     hadith_number: "969",
     grade: "Sahih",
     topic: "worship",
@@ -1705,7 +1687,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih Muslim",
     hadith_number: "657",
     grade: "Sahih",
-    topic: "prayer",
+    topic: "worship",
     topic_tags: ["fajr", "prayer", "protection", "morning prayer", "accountability", "salah", "worship", "consistency", "safety", "dhimmah"],
     daily_practice:
       "Never miss Fajr — it places you under the direct protection of Allah for the day. Show up at dawn, and Allah keeps you in His care.",
@@ -1713,39 +1695,20 @@ export const HADITHS: Hadith[] = [
 
   // ─── BATCH 2: 30 NEW HADITHS (IDs 91–120) ────────────────────────────────────
   {
-    id: 91,
-    slug: "hadith-do-not-waste-water-in-wudu",
-    title: "Do Not Be Wasteful Even in Wudu",
-    arabic:
-      "أَنَّ النَّبِيَّ صلى الله عليه وسلم مَرَّ بِسَعْدٍ وَهُوَ يَتَوَضَّأُ فَقَالَ مَا هَذَا السَّرَفُ يَا سَعْدُ قَالَ أَفِي الْوُضُوءِ سَرَفٌ قَالَ نَعَمْ وَإِنْ كُنْتَ عَلَى نَهَرٍ جَارٍ",
-    transliteration:
-      "Annan-Nabiyya ﷺ marra bi Sa'din wa huwa yatawadd'a faqala ma hadhas-sarfu ya Sa'd, qala: afi'l-wudu'i sarafun? Qala: Na'am wa in kunta 'ala naharin jar",
-    translation:
-      "Narrated Ibn Majah: The Prophet (SAW) passed by Sa'd while he was performing wudu and said, 'What is this waste, O Sa'd?' Sa'd asked, 'Is there waste even in wudu?' He replied, 'Yes, even if you are at a flowing river.'",
-    narrator: "Sa'd ibn Abi Waqqas (RA)",
-    source_book: "Sunan Ibn Majah",
-    hadith_number: "425",
-    grade: "Hasan",
-    topic: "conservation",
-    topic_tags: ["wudu", "water", "waste", "environment", "moderation", "purification", "sunnah"],
-    daily_practice:
-      "Use only what you need in wudu today — three washes per limb is the sunnah maximum. Respect water as a trust from Allah.",
-  },
-  {
     id: 92,
     slug: "hadith-sleep-in-state-of-wudu",
     title: "Sleep in a State of Wudu",
     arabic:
       "إِذَا أَتَيْتَ مَضْجَعَكَ فَتَوَضَّأْ وُضُوءَكَ لِلصَّلَاةِ ثُمَّ اضْطَجِعْ عَلَى شِقِّكَ الْأَيْمَنِ",
     transliteration:
-      "Idha atayta madja'aka fatawadda' wudu'aka lis-salah thumma'dtaji' 'ala shiqqikal-aymanم",
+      "Idha atayta madja'aka fatawadda' wudu'aka lis-salah thumma'dtaji' 'ala shiqqikal-ayman",
     translation:
       "Narrated al-Bara' ibn 'Azib: The Prophet (SAW) said, 'When you go to bed, perform wudu as you do for prayer, then lie on your right side.'",
     narrator: "Al-Bara' ibn 'Azib (RA)",
     source_book: "Sahih al-Bukhari",
     hadith_number: "247",
     grade: "Sahih",
-    topic: "sleep",
+    topic: "mindfulness",
     topic_tags: ["wudu", "sleep", "bedtime", "purity", "night", "sunnah", "rest", "tahara"],
     daily_practice:
       "Make wudu before you sleep tonight and lie on your right side — you will be in a state of purity if you die in the night.",
@@ -1764,7 +1727,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih Muslim",
     hadith_number: "948",
     grade: "Sahih",
-    topic: "death",
+    topic: "dunya",
     topic_tags: ["janazah", "death", "funeral", "prayer", "intercession", "community", "deceased"],
     daily_practice:
       "Attend every janazah you can — your prayer is an act of intercession. Live so that people will pray over you with sincere hearts.",
@@ -1783,7 +1746,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sunan Abu Dawud",
     hadith_number: "1488",
     grade: "Hasan",
-    topic: "dua",
+    topic: "dhikr",
     topic_tags: ["dua", "supplication", "generosity", "allah", "answered-prayer", "hope", "trust", "raising-hands"],
     daily_practice:
       "Raise your hands and make du'a with certainty — Allah is too generous to send them back empty. Ask without hesitation.",
@@ -1802,7 +1765,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih Muslim",
     hadith_number: "854",
     grade: "Sahih",
-    topic: "friday",
+    topic: "worship",
     topic_tags: ["friday", "jumu'ah", "best-day", "adam", "paradise", "dua", "dhikr", "salawat"],
     daily_practice:
       "On Fridays: send abundant salawat on the Prophet (SAW), read Surah al-Kahf, and look for the blessed hour of accepted du'a between Asr and Maghrib.",
@@ -1821,7 +1784,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih Muslim",
     hadith_number: "725",
     grade: "Sahih",
-    topic: "prayer",
+    topic: "worship",
     topic_tags: ["fajr", "sunnah", "prayer", "morning", "dawn", "optional-prayer", "nafl", "dunya", "worship"],
     daily_practice:
       "Never skip the two sunnah rak'ahs before Fajr — they are worth more than everything in this world. Wake up early enough to pray them calmly.",
@@ -1840,7 +1803,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih Ibn Hibban",
     hadith_number: "2395",
     grade: "Sahih",
-    topic: "quran",
+    topic: "knowledge",
     topic_tags: ["ayatul-kursi", "quran", "prayer", "salah", "paradise", "jannah", "dhikr", "after-salah", "protection"],
     daily_practice:
       "After every fard prayer today, recite Ayat al-Kursi before you stand up. Make it as automatic as the prayer itself.",
@@ -1859,7 +1822,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Musnad Ahmad",
     hadith_number: "17440",
     grade: "Hasan",
-    topic: "marriage",
+    topic: "family",
     topic_tags: ["marriage", "nikah", "simplicity", "mahr", "blessing", "barakah", "family", "wedding"],
     daily_practice:
       "If you are planning a nikah, prioritise simplicity over spectacle — the greater the ease, the greater the blessing Allah places in it.",
@@ -1884,44 +1847,6 @@ export const HADITHS: Hadith[] = [
       "Show mercy to every living creature today — a kind act towards an animal can earn Allah's forgiveness. Rahma begins with the small things.",
   },
   {
-    id: 100,
-    slug: "hadith-every-joint-owes-sadaqah",
-    title: "Every Joint of Your Body Owes a Daily Charity",
-    arabic:
-      "كُلُّ سُلَامَى مِنَ النَّاسِ عَلَيْهِ صَدَقَةٌ كُلَّ يَوْمٍ تَطْلُعُ فِيهِ الشَّمْسُ تَعْدِلُ بَيْنَ الِاثْنَيْنِ صَدَقَةٌ وَتُعِينُ الرَّجُلَ فِي دَابَّتِهِ فَتَحْمِلُهُ عَلَيْهَا أَوْ تَرْفَعُ لَهُ عَلَيْهَا مَتَاعَهُ صَدَقَةٌ وَالْكَلِمَةُ الطَّيِّبَةُ صَدَقَةٌ وَبِكُلِّ خَطْوَةٍ تَمْشِيهَا إِلَى الصَّلَاةِ صَدَقَةٌ وَتُمِيطُ الْأَذَى عَنِ الطَّرِيقِ صَدَقَةٌ",
-    transliteration:
-      "Kullu sulamy minan-nasi 'alayhi sadaqatun kulla yawmin tatlu'u fihish-shams, ta'dilu baynal-ithnayn sadaqah, wa tu'inur-rajula fi dabbatihi fatahmiluhu 'alayha aw tarfa'u lahu 'alayha mata'ahu sadaqah, wal-kalimatu at-tayyibatu sadaqah, wa bikulli khutwa tamshiha ilas-salati sadaqah, wa tumitu al-adha 'anit-tariq sadaqah",
-    translation:
-      "Narrated Abu Hurayrah (RA): The Prophet (SAW) said, 'Every joint of a person must perform a charity each day the sun rises: to judge justly between two people is a charity; to help a man with his mount is a charity; a good word is a charity; every step you take to the prayer is a charity; and removing a harmful thing from the road is a charity.'",
-    narrator: "Abu Hurayrah (RA)",
-    source_book: "Sahih al-Bukhari",
-    hadith_number: "2989",
-    grade: "Sahih",
-    topic: "charity",
-    topic_tags: ["sadaqah", "charity", "joints", "good-deeds", "daily", "kindness", "prayer", "good-word", "steps"],
-    daily_practice:
-      "Today, count your small acts of goodness as sadaqah — a smile, a kind word, helping someone, removing an obstacle. Every joint is owed its daily charity.",
-  },
-  {
-    id: 101,
-    slug: "hadith-wealth-not-in-abundance",
-    title: "True Wealth Is the Richness of the Soul",
-    arabic:
-      "لَيْسَ الْغِنَى عَنْ كَثْرَةِ الْعَرَضِ وَلَكِنَّ الْغِنَى غِنَى النَّفْسِ",
-    transliteration:
-      "Laysal-ghina 'an kathratil-'arad, wa lakinnalghinaa ghina an-nafs",
-    translation:
-      "Narrated Abu Hurayrah (RA): The Messenger of Allah (SAW) said, 'Wealth is not in having many possessions. Rather, true wealth is the richness of the soul (contentment of the heart).'",
-    narrator: "Abu Hurayrah (RA)",
-    source_book: "Sahih Muslim",
-    hadith_number: "1051",
-    grade: "Sahih",
-    topic: "contentment",
-    topic_tags: ["wealth", "contentment", "soul", "richness", "dunya", "zuhd", "satisfaction", "qana'ah"],
-    daily_practice:
-      "Notice what you already have today. The richer your sense of gratitude and contentment, the wealthier you truly are — regardless of your bank balance.",
-  },
-  {
     id: 102,
     slug: "hadith-allah-loves-when-you-ask",
     title: "Allah Is Angry When You Do Not Ask Him",
@@ -1934,7 +1859,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sunan al-Tirmidhi",
     hadith_number: "3373",
     grade: "Hasan",
-    topic: "dua",
+    topic: "dhikr",
     topic_tags: ["dua", "supplication", "asking", "allah", "anger", "prayer", "tawakkul", "need"],
     daily_practice:
       "Ask Allah for everything today — your needs, your fears, your dreams. Not asking is not humility; it is depriving yourself of the greatest relationship.",
@@ -1972,29 +1897,10 @@ export const HADITHS: Hadith[] = [
     source_book: "Sunan Abu Dawud",
     hadith_number: "4843",
     grade: "Hasan",
-    topic: "respect",
+    topic: "character",
     topic_tags: ["quran", "hafiz", "respect", "elders", "honour", "scholars", "tawqeer", "character"],
     daily_practice:
       "Show special respect to those who have memorised the Quran and to the elderly around you — honouring them is part of honouring Allah.",
-  },
-  {
-    id: 105,
-    slug: "hadith-on-moderation-in-religion",
-    title: "The Most Beloved Deed Is the One You Can Sustain",
-    arabic:
-      "أَحَبُّ الْأَعْمَالِ إِلَى اللَّهِ أَدْوَمُهَا وَإِنْ قَلَّ",
-    transliteration:
-      "Ahabbu al-a'mali ilallahi adwamuha wa in qalla",
-    translation:
-      "Narrated 'Aisha (RA): The Messenger of Allah (SAW) said, 'The most beloved of deeds to Allah is the most consistent of them, even if it is little.'",
-    narrator: "Aisha (RA)",
-    source_book: "Sahih al-Bukhari",
-    hadith_number: "6465",
-    grade: "Sahih",
-    topic: "consistency",
-    topic_tags: ["consistency", "moderation", "good-deeds", "ibadah", "worship", "istiqamah", "beloved", "small-deeds"],
-    daily_practice:
-      "Choose one small ibadah you can do every single day without exception — two rak'ahs, 100 istighfar, one page of Quran. Small and consistent beats grand and sporadic.",
   },
   {
     id: 106,
@@ -2010,7 +1916,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih al-Bukhari",
     hadith_number: "5688",
     grade: "Sahih",
-    topic: "health",
+    topic: "ease",
     topic_tags: ["black-seed", "nigella", "cure", "health", "medicine", "shifa", "healing", "prophetic-medicine"],
     daily_practice:
       "Incorporate black seed (nigella sativa) into your diet with the intention of following prophetic medicine — a small daily habit with deep sunnah roots.",
@@ -2029,7 +1935,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sunan Abu Dawud",
     hadith_number: "3764",
     grade: "Hasan",
-    topic: "food",
+    topic: "gratitude",
     topic_tags: ["food", "eating-together", "barakah", "blessing", "bismillah", "family", "community", "meal"],
     daily_practice:
       "Eat at least one meal together with family or others today, say Bismillah out loud, and notice the barakah that comes with shared meals.",
@@ -2044,10 +1950,10 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Abu Hurayrah (RA): The Prophet (SAW) said, 'Exchange gifts, and you will love one another.'",
     narrator: "Abu Hurayrah (RA)",
-    source_book: "Bukhari (Al-Adab al-Mufrad)",
+    source_book: "Al-Adab al-Mufrad",
     hadith_number: "594",
     grade: "Hasan",
-    topic: "love",
+    topic: "brotherhood",
     topic_tags: ["gifts", "love", "brotherhood", "hadiyya", "relationship", "kindness", "generosity", "social"],
     daily_practice:
       "Give a small, sincere gift to someone today — a book, food, or even a heartfelt message. Gifts remove grudges and multiply love.",
@@ -2085,7 +1991,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih al-Bukhari",
     hadith_number: "1975",
     grade: "Sahih",
-    topic: "balance",
+    topic: "ease",
     topic_tags: ["body", "rights", "balance", "sleep", "health", "family", "spouse", "moderation", "ibadah"],
     daily_practice:
       "Rest when your body needs rest — it is not laziness, it is fulfilling a right. Balance worship with sleep, food, and time with your family.",
@@ -2104,7 +2010,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih Muslim",
     hadith_number: "1337",
     grade: "Sahih",
-    topic: "hajj",
+    topic: "worship",
     topic_tags: ["hajj", "obligatory", "once", "five-pillars", "makkah", "fard", "ibadah", "mercy"],
     daily_practice:
       "If Hajj is obligatory on you and you are able, make firm intention to go. If you have performed it, cherish it and live the transformation it brought.",
@@ -2123,7 +2029,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih al-Bukhari",
     hadith_number: "527",
     grade: "Sahih",
-    topic: "prayer",
+    topic: "worship",
     topic_tags: ["prayer", "salah", "on-time", "parents", "duty", "ibadah", "beloved", "fard", "priorities"],
     daily_practice:
       "Make praying every salah at its earliest time your first goal today. It is the deed most beloved to Allah — let nothing delay it.",
@@ -2142,7 +2048,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih Muslim",
     hadith_number: "666",
     grade: "Sahih",
-    topic: "prayer",
+    topic: "worship",
     topic_tags: ["mosque", "masjid", "steps", "rank", "sins", "walking", "prayer", "salah", "reward"],
     daily_practice:
       "Walk to the masjid for at least one prayer today — and know that every single step is wiping a sin and elevating your rank with Allah.",
@@ -2161,7 +2067,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih al-Bukhari",
     hadith_number: "722",
     grade: "Sahih",
-    topic: "prayer",
+    topic: "worship",
     topic_tags: ["prayer", "rows", "saf", "congregation", "salah", "jama'ah", "sunnah", "masjid", "discipline"],
     daily_practice:
       "In congregational prayer, close the gaps in the rows and stand shoulder to shoulder. Aligned rows are a sign of a spiritually aligned community.",
@@ -2177,10 +2083,10 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Anas ibn Malik (RA): The Messenger of Allah (SAW) said, 'Whoever sends one blessing upon me, Allah will send ten blessings upon him, ten sins will be erased from him, and his rank will be raised by ten degrees.'",
     narrator: "Anas ibn Malik (RA)",
-    source_book: "Sahih al-Nasa'i",
+    source_book: "Sunan an-Nasa'i",
     hadith_number: "1297",
     grade: "Sahih",
-    topic: "salawat",
+    topic: "dhikr",
     topic_tags: ["salawat", "salah-upon-prophet", "blessings", "sins", "rank", "dhikr", "friday", "love-of-prophet"],
     daily_practice:
       "Send salawat on the Prophet (SAW) abundantly today — especially on Fridays. Set a target: 100 times. Each one returns tenfold mercy from Allah.",
@@ -2199,7 +2105,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sunan al-Tirmidhi",
     hadith_number: "413",
     grade: "Hasan",
-    topic: "prayer",
+    topic: "worship",
     topic_tags: ["prayer", "salah", "judgment-day", "accountability", "qiyamah", "fard", "deeds", "first-question"],
     daily_practice:
       "Guard your prayer as if your entire akhirah depends on it — because it does. Let no prayer be rushed, skipped, or forgotten today.",
@@ -2224,24 +2130,6 @@ export const HADITHS: Hadith[] = [
       "Contribute — even a small amount — towards the building or maintenance of a masjid. Every brick laid for Allah's sake is a room secured in Jannah.",
   },
   {
-    id: 118,
-    slug: "hadith-cure-honey-and-quran",
-    title: "Seek Healing in Two Things: Honey and the Quran",
-    arabic:
-      "عَلَيْكُمْ بِالشِّفَاءَيْنِ الْعَسَلِ وَالْقُرْآنِ",
-    transliteration: "Alaykum bish-shifa'ayn: al-'asal wal-Qur'an",
-    translation:
-      "Narrated Ibn Mas'ud (RA): The Messenger of Allah (SAW) said, 'Make use of the two cures: honey and the Quran.'",
-    narrator: "Abdullah ibn Mas'ud (RA)",
-    source_book: "Sunan Ibn Majah",
-    hadith_number: "3452",
-    grade: "Hasan",
-    topic: "health",
-    topic_tags: ["honey", "quran", "healing", "shifa", "cure", "prophetic-medicine", "ruqyah", "health", "illness"],
-    daily_practice:
-      "When ill, recite Quran over yourself with sincerity and take honey as part of your healing — both are divinely prescribed cures.",
-  },
-  {
     id: 119,
     slug: "hadith-righteous-bad-companion-analogy",
     title: "The Good Companion Is Like a Perfume Seller",
@@ -2255,7 +2143,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih al-Bukhari",
     hadith_number: "2101",
     grade: "Sahih",
-    topic: "companionship",
+    topic: "friendship",
     topic_tags: ["friends", "companions", "influence", "good-company", "bad-company", "character", "social", "perfume", "suhba"],
     daily_practice:
       "Audit your closest friendships honestly today. Who leaves you feeling closer to Allah? Spend more time with them. Who pulls you away? Create healthy distance.",
@@ -2274,32 +2162,13 @@ export const HADITHS: Hadith[] = [
     source_book: "Sunan al-Tirmidhi",
     hadith_number: "1899",
     grade: "Sahih",
-    topic: "parents",
+    topic: "family",
     topic_tags: ["parents", "father", "mother", "pleasure", "anger", "allah", "birrul-walidayn", "family", "obedience"],
     daily_practice:
       "Call or visit a parent today. Ask how they are. Say something kind. Their happiness is a direct path to Allah's pleasure — and their hurt is a warning.",
   },
 
   // ─── BATCH 3: 15 NEW HADITHS (IDs 121–135) ───────────────────────────────────
-  {
-    id: 121,
-    slug: "hadith-guard-your-gaze",
-    title: "The Glance Is a Poisoned Arrow — Guard Your Gaze",
-    arabic:
-      "النَّظْرَةُ سَهْمٌ مِنْ سِهَامِ إِبْلِيسَ مَسْمُومَةٌ فَمَنْ تَرَكَهَا مَخَافَةَ اللَّهِ أَثَابَهُ اللَّهُ إِيمَانًا يَجِدُ حَلَاوَتَهُ فِي قَلْبِهِ",
-    transliteration:
-      "An-nazratu sahmun min sihami Iblisa masmumah, faman tarakaha makhafatallahi atha-bahu Allahu imanan yajidu halawatuhu fi qalbih",
-    translation:
-      "Narrated by Hudhayfah (RA): The Messenger of Allah (SAW) said, 'The glance is a poisoned arrow from the arrows of Iblis. Whoever lowers it out of fear of Allah, Allah will grant him faith whose sweetness he will find in his heart.'",
-    narrator: "Hudhayfah ibn al-Yaman (RA)",
-    source_book: "Al-Mu'jam al-Kabir — Tabarani",
-    hadith_number: "2674",
-    grade: "Hasan",
-    topic: "character",
-    topic_tags: ["gaze", "eyes", "lowering-gaze", "chastity", "modesty", "iblis", "iman", "sweetness-of-faith", "purity"],
-    daily_practice:
-      "Every time you consciously lower your gaze today, know that Allah is planting sweetness of iman in your heart. Make it a deliberate act of worship.",
-  },
   {
     id: 122,
     slug: "hadith-subhanallah-100-times-morning-evening",
@@ -2339,25 +2208,6 @@ export const HADITHS: Hadith[] = [
       "Learn one name of Allah today — its meaning and how it applies to your life. Ninety-nine days of this and you will have walked a path to Jannah.",
   },
   {
-    id: 124,
-    slug: "hadith-dua-weapon-of-believer",
-    title: "Du'a Is the Weapon of the Believer",
-    arabic:
-      "الدُّعَاءُ سِلَاحُ الْمُؤْمِنِ وَعِمَادُ الدِّينِ وَنُورُ السَّمَاوَاتِ وَالْأَرْضِ",
-    transliteration:
-      "Ad-du'a silahu al-mu'min wa 'imadud-din wa nurus-samawati wal-ard",
-    translation:
-      "Narrated Ali ibn Abi Talib (RA): The Messenger of Allah (SAW) said, 'Du'a is the weapon of the believer, the pillar of religion, and the light of the heavens and the earth.'",
-    narrator: "Ali ibn Abi Talib (RA)",
-    source_book: "Mustadrak al-Hakim",
-    hadith_number: "1812",
-    grade: "Hasan",
-    topic: "dua",
-    topic_tags: ["dua", "supplication", "weapon", "believer", "light", "religion", "power", "prayer", "strength", "faith"],
-    daily_practice:
-      "Pick up your weapon today — make du'a with full presence and certainty. A believer who does not make du'a is like a soldier who enters battle unarmed.",
-  },
-  {
     id: 125,
     slug: "hadith-shaking-hands-sins-forgiven",
     title: "Two Muslims Who Shake Hands Are Forgiven Before They Part",
@@ -2371,7 +2221,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sunan Abu Dawud",
     hadith_number: "5212",
     grade: "Hasan",
-    topic: "social",
+    topic: "community",
     topic_tags: ["handshake", "greeting", "musafahah", "forgiveness", "brotherhood", "meeting", "social", "sins-forgiven", "kindness"],
     daily_practice:
       "Shake hands warmly and with presence when you meet a Muslim today — knowing that both of you may be forgiven before your hands part.",
@@ -2390,7 +2240,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih al-Bukhari",
     hadith_number: "5009",
     grade: "Sahih",
-    topic: "quran",
+    topic: "knowledge",
     topic_tags: ["baqarah", "last-two-verses", "sleep", "night", "protection", "quran", "bedtime", "amana rasulu", "kafatah", "recitation"],
     daily_practice:
       "Before you sleep tonight, recite the last two verses of Surah al-Baqarah (2:285-286). Make it part of your non-negotiable bedtime routine.",
@@ -2413,25 +2263,6 @@ export const HADITHS: Hadith[] = [
     topic_tags: ["trial", "bala", "reward", "patience", "sabr", "test", "love-of-allah", "contentment", "rida", "hardship"],
     daily_practice:
       "Whatever trial you are in today, know its size is a measure of how much Allah has chosen to elevate you. Respond with sabr — the reward rises with the difficulty.",
-  },
-  {
-    id: 128,
-    slug: "hadith-alhamdulillah-fills-the-scales",
-    title: "Alhamdulillah Fills the Scales on the Day of Judgement",
-    arabic:
-      "الطُّهُورُ شَطْرُ الْإِيمَانِ وَالْحَمْدُ لِلَّهِ تَمْلَأُ الْمِيزَانَ وَسُبْحَانَ اللَّهِ وَالْحَمْدُ لِلَّهِ تَمْلَآنِ أَوْ تَمْلَأُ مَا بَيْنَ السَّمَاوَاتِ وَالْأَرْضِ",
-    transliteration:
-      "At-tuhuru shattrul-iman, wal-hamdu lillahi tamla'ul-mizan, wa SubhanAllahi wal-hamdu lillahi tamla'ani aw tamla'u ma baynas-samawati wal-ard",
-    translation:
-      "Narrated Abu Malik al-Ash'ari (RA): The Messenger of Allah (SAW) said, 'Purity is half of iman. Alhamdulillah fills the scales. SubhanAllah and Alhamdulillah together fill what is between the heavens and the earth.'",
-    narrator: "Abu Malik al-Ash'ari (RA)",
-    source_book: "Sahih Muslim",
-    hadith_number: "223",
-    grade: "Sahih",
-    topic: "dhikr",
-    topic_tags: ["alhamdulillah", "scales", "mizan", "subhanallah", "dhikr", "gratitude", "day-of-judgement", "deeds", "weight", "tasbih"],
-    daily_practice:
-      "Say 'Alhamdulillah' consciously and frequently today — not as a reflex, but knowing it fills the scales on the Day of Judgement. Let every breath that goes out carry it.",
   },
   {
     id: 129,
@@ -2466,7 +2297,7 @@ export const HADITHS: Hadith[] = [
     source_book: "Sahih al-Bukhari",
     hadith_number: "2465",
     grade: "Sahih",
-    topic: "social",
+    topic: "community",
     topic_tags: ["road", "public", "gaze", "salaam", "good", "evil", "community", "manners", "social-conduct", "rights", "outdoor"],
     daily_practice:
       "In any public space today — a street, café, or office — observe the rights of the space: lower your gaze, cause no harm, return greetings, and speak good.",
@@ -2520,7 +2351,7 @@ export const HADITHS: Hadith[] = [
     translation:
       "Narrated Ibn Abbas (RA): The Messenger of Allah (SAW) said, 'Eat, drink, wear clothes and give in charity — without extravagance and without arrogance.'",
     narrator: "Ibn Abbas (RA)",
-    source_book: "Sunan al-Nasa'i",
+    source_book: "Sunan an-Nasa'i",
     hadith_number: "2559",
     grade: "Sahih",
     topic: "character",
@@ -4857,12 +4688,25 @@ export function getHadithBySlug(slug: string): Hadith | undefined {
 }
 
 export function getDailyHadith(date?: Date): Hadith {
-  const d = date ?? new Date();
-  const start = new Date(d.getFullYear(), 0, 0);
-  const dayOfYear = Math.floor((d.getTime() - start.getTime()) / 86_400_000);
-  return HADITHS[dayOfYear % HADITHS.length];
+  return HADITHS[dayOfYearIST(date) % HADITHS.length];
 }
 
 export function getAllHadithSlugs(): string[] {
   return HADITHS.map((h) => h.slug);
+}
+
+// Same approach as getRelatedDuas: score by shared topic/tags, break ties by
+// the hadiths that follow this one so links spread across the collection.
+export function getRelatedHadiths(hadith: Hadith, limit = 3): Hadith[] {
+  const maxId = HADITHS.reduce((m, h) => Math.max(m, h.id), 0) + 1;
+  const score = (h: Hadith) =>
+    h.topic_tags.filter((t) => hadith.topic_tags.includes(t)).length * 2 +
+    (h.topic === hadith.topic ? 3 : 0);
+  const distance = (h: Hadith) => (h.id - hadith.id + maxId) % maxId;
+  return HADITHS.filter((h) => h.id !== hadith.id)
+    .map((h) => ({ h, s: score(h) }))
+    .filter(({ s }) => s > 0)
+    .sort((a, b) => b.s - a.s || distance(a.h) - distance(b.h))
+    .slice(0, limit)
+    .map(({ h }) => h);
 }
