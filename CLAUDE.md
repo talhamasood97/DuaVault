@@ -25,8 +25,8 @@ A task is NOT complete until:
 - Normal: `git push origin main`. Credentials live in the macOS Keychain, and the sandbox can't read it, so retry without the sandbox.
 - If push fails on auth (the token expired in Oct 2026; `gh` isn't installed), **don't ask the owner for a token**. Publish through GitHub's web upload page in the built-in browser pane instead:
   1. The owner signs in to GitHub there; that's the only step they do.
-  2. Hand the file contents to `https://github.com/talhamasood97/DuaVault/upload/main/<folder>` via a local `window.name` handoff page.
-  3. Set the files on `#upload-manifest-files-input` with a DataTransfer, add a commit message, and click "Commit changes".
+  2. Hand the file contents to `https://github.com/talhamasood97/DuaVault/upload/main` via a local `window.name` handoff page (escape `</` as `<\/` in the inlined JSON).
+  3. Build each `File` with its full repo path as the name (e.g. `app/duas/[slug]/page.tsx`) so every file lands in its folder in ONE commit. Set them on `#upload-manifest-files-input` with a DataTransfer, add a commit message, and click "Commit changes".
   4. Verify `git diff origin/main main` is empty, then `git reset origin/main` locally.
 
 ## Adding duas / hadiths
@@ -34,7 +34,8 @@ A task is NOT complete until:
 - **Arabic:** sliced from the source text, never retyped. Transliterations ASCII only. Write (SAW), not ﷺ.
 - **No duplicates** against existing duas AND hadiths: reference, slug, title, translation, Arabic overlap.
 - **Labels:** only the 9 categories, 8 emotions and 34 hadith topics.
-- **Validator:** `data/validate.ts` has 39 pre-existing errors on old entries. New content must add zero.
+- **Validator:** `data/validate.ts` passes with 0 errors (since the Oct 2026 audit). Keep it at 0.
+- **Removing an entry:** never reuse its ID; add a permanent redirect to `REMOVED_PAGES` in `next.config.js`.
 - **Post images:** render `/api/instagram/dua` and `/api/instagram/hadith` for every new item and look at them.
   - Very long duas → `daily_dua_eligible: false`.
   - The hadith card quotes from the first `said, "…"`, so make sure that's the Prophet's words.
