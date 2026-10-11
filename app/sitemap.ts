@@ -3,6 +3,10 @@ import { DUAS } from "@/data/duas";
 import { HADITHS } from "@/data/hadiths";
 import { CATEGORIES, EMOTIONS, SITE_URL } from "@/lib/utils";
 
+// Date the dua/hadith content last changed. Bump it whenever content is added
+// or edited — a lastmod that always says "now" teaches Google to ignore it.
+const CONTENT_UPDATED = new Date("2026-10-11");
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
@@ -28,25 +32,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/hadith`,
-      lastModified: now,
+      lastModified: CONTENT_UPDATED,
       changeFrequency: "weekly",
       priority: 0.85,
     },
     {
       url: `${SITE_URL}/about`,
-      lastModified: now,
+      lastModified: CONTENT_UPDATED,
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
       url: `${SITE_URL}/sources`,
-      lastModified: now,
+      lastModified: CONTENT_UPDATED,
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
       url: `${SITE_URL}/privacy`,
-      lastModified: now,
+      lastModified: CONTENT_UPDATED,
       changeFrequency: "yearly",
       priority: 0.2,
     },
@@ -55,7 +59,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Category pages
   const categoryPages: MetadataRoute.Sitemap = CATEGORIES.map((cat) => ({
     url: `${SITE_URL}/category/${cat.slug}`,
-    lastModified: now,
+    lastModified: CONTENT_UPDATED,
     changeFrequency: "weekly" as const,
     priority: 0.8,
   }));
@@ -63,7 +67,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Emotion pages
   const emotionPages: MetadataRoute.Sitemap = EMOTIONS.map((em) => ({
     url: `${SITE_URL}/emotion/${em.slug}`,
-    lastModified: now,
+    lastModified: CONTENT_UPDATED,
     changeFrequency: "weekly" as const,
     priority: 0.7,
   }));
@@ -71,7 +75,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Individual dua pages
   const duaPages: MetadataRoute.Sitemap = DUAS.map((dua) => ({
     url: `${SITE_URL}/duas/${dua.slug}`,
-    lastModified: now,
+    lastModified: CONTENT_UPDATED,
     changeFrequency: "monthly" as const,
     priority: 0.9,
   }));
@@ -79,7 +83,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Hadith detail pages
   const hadithPages: MetadataRoute.Sitemap = HADITHS.map((h) => ({
     url: `${SITE_URL}/hadith/${h.slug}`,
-    lastModified: now,
+    lastModified: CONTENT_UPDATED,
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));

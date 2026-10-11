@@ -42,11 +42,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       type: "article",
       siteName: SITE_NAME,
+      images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: `${dua.title} – DuaVault` }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [`${SITE_URL}/opengraph-image`],
     },
   };
 }
@@ -66,6 +68,9 @@ export default async function DuaPage({ params }: Props) {
     headline: dua.title,
     description: dua.translation,
     url: `${SITE_URL}/duas/${dua.slug}`,
+    mainEntityOfPage: `${SITE_URL}/duas/${dua.slug}`,
+    image: `${SITE_URL}/opengraph-image`,
+    author: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
     publisher: {
       "@type": "Organization",
       name: SITE_NAME,
