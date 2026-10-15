@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { BookOpen } from "lucide-react";
 import { SOCIAL } from "@/lib/utils";
+import { COLLECTIONS } from "@/lib/collections";
 
 const SOURCES = [
+  "The Quran",
   "Sahih al-Bukhari",
   "Sahih Muslim",
-  "Hisn al-Muslim",
-  "Riyad as-Salihin",
   "Sunan Abu Dawud",
   "Sunan al-Tirmidhi",
+  "Sunan Ibn Majah",
 ];
 
 const LINKS = {
@@ -18,6 +19,7 @@ const LINKS = {
     { href: "/search", label: "Search Duas" },
     { href: "/category/daily-life", label: "Browse Categories" },
   ],
+  "Dua Collections": COLLECTIONS.map((c) => ({ href: `/duas-for/${c.slug}`, label: c.label })),
   Emotions: [
     { href: "/emotion/sad", label: "Feeling Sad" },
     { href: "/emotion/stressed", label: "Feeling Stressed" },
@@ -37,7 +39,7 @@ export function Footer() {
     <footer className="bg-white dark:bg-emerald-950 border-t border-stone-100 dark:border-emerald-900 mt-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-8">
         {/* Top grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link

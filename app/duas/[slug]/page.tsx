@@ -12,6 +12,8 @@ import { getCategoryMeta, getEmotionMeta, SITE_URL, SITE_NAME, safeJsonLd, fitTi
 import { DuaViewTracker } from "@/components/analytics/DuaViewTracker";
 import { SourceLink, ReportErrorLink } from "@/components/ui/SourceLink";
 import { sourceUrl } from "@/lib/sources";
+import { getCollectionsForDua } from "@/lib/collections";
+import { SEO_TITLES } from "@/lib/seo-titles";
 
 export const revalidate = 86400;
 
@@ -28,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const dua = await getDuaBySlug(params.slug);
   if (!dua) return {};
 
-  const title = fitTitle(dua.title, [" – Arabic, Meaning & Source", " – Arabic & Meaning", " in Arabic"]);
+  const title = SEO_TITLES[dua.slug] ?? fitTitle(dua.title, [" – Arabic, Meaning & Source", " – Arabic & Meaning", " in Arabic"]);
   const source = `${dua.source_book}${dua.hadith_number ? ` ${dua.hadith_number}` : ""}`;
   const sourceNote = ` Source: ${source}.`;
   const description = truncate(`${dua.title} in Arabic with transliteration and meaning: "${dua.translation}"`, 158 - sourceNote.length) + sourceNote;
@@ -60,6 +62,7 @@ export default async function DuaPage({ params }: Props) {
   const dua = await getDuaBySlug(params.slug);
   if (!dua) notFound();
 
+  const collections = getCollectionsForDua(dua.slug);
   const [related, categoryMeta] = await Promise.all([
     getRelatedDuas(dua, 4),
     Promise.resolve(getCategoryMeta(dua.category)),
@@ -266,6 +269,20 @@ export default async function DuaPage({ params }: Props) {
             ) : null;
           })}
         </div>
+
+        {/* Topic collections this dua belongs to */}
+        {collections.map((c) => (
+          <Link
+            key={c.slug}
+            href={`/duas-for/${c.slug}`}
+            className="mt-6 flex items-center justify-between gap-3 rounded-2xl border border-emerald-100 dark:border-emerald-800 bg-emerald-50/60 dark:bg-emerald-950/40 px-5 py-4 text-sm text-emerald-800 dark:text-emerald-300 hover:border-emerald-300 dark:hover:border-emerald-600 transition-colors"
+          >
+            <span>
+              Part of <span className="font-semibold">{c.title}</span> — see all {c.duas.length} together
+            </span>
+            <ChevronRight className="w-4 h-4 flex-shrink-0" />
+          </Link>
+        ))}
 
         {/* Follow us */}
         <SocialFollowStrip variant="dua" />

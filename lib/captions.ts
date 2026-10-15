@@ -23,7 +23,8 @@ export function buildHadithCaption(hadith: Hadith): string {
     `— ${hadith.narrator}`,
     `📖 ${hadith.source_book} • #${hadith.hadith_number} • ${hadith.grade}`,
     "",
-    "Read more duas & hadith at duavault.com",
+    // A direct page link is clickable on Facebook and sends readers to the full hadith
+    `Full hadith with Arabic & source: https://duavault.com/hadith/${hadith.slug}`,
     "",
     "#hadith #islamicquotes #prophetmuhammad #sunnah #islam #muslimlifestyle #islamicreminder #duavault",
   ].join("\n");
@@ -46,7 +47,7 @@ export function buildDuaCaption(dua: Dua): string {
     "",
     `📖 ${formatDuaSource(dua)}`,
     "",
-    "Learn more duas at duavault.com",
+    `Full dua with Arabic & meaning: https://duavault.com/duas/${dua.slug}`,
     "",
     "#dua #islamicdua #quran #islam #muslimlifestyle #dailydua #islamicreminder #duavault",
   ].join("\n");

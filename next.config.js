@@ -40,7 +40,7 @@ const REMOVED_PAGES = [
   ["/hadith/hadith-alhamdulillah-fills-the-scales", "/hadith/hadith-purification-half-of-faith"],
   ["/hadith/hadith-every-joint-owes-sadaqah", "/hadith/hadith-removing-harm-is-charity"],
   ["/duas/dua-entering-home", "/category/daily-life"],
-  ["/duas/dua-protection-from-hellfire", "/category/protection"],
+  ["/duas/dua-protection-from-hellfire", "/duas-for/protection-from-hellfire"],
   ["/duas/dua-at-qurbani-slaughter", "/category/worship"],
   ["/duas/dua-upon-hearing-iqamah", "/category/worship"],
   ["/hadith/hadith-beware-of-envy", "/hadith/hadith-do-not-spy"],

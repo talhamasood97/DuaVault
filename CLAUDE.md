@@ -39,6 +39,7 @@ A task is NOT complete until:
 - **No duplicates** against existing duas AND hadiths: reference, slug, title, translation, Arabic overlap.
 - **Labels:** only the 9 categories, 8 emotions and 34 hadith topics.
 - **Validator:** `data/validate.ts` passes with 0 errors (since the Oct 2026 audit). Keep it at 0.
+- **Topic collections** (`lib/collections.ts` → `/duas-for/<slug>`): when adding duas, add them to a matching collection. Create new collections only from Search Console queries where several pages split the same search.
 - **After any content change:** bump `CONTENT_UPDATED` in `app/sitemap.ts` to today.
 - **Removing an entry:** never reuse its ID; add a permanent redirect to `REMOVED_PAGES` in `next.config.js`.
 - **Post images:** render `/api/instagram/dua` and `/api/instagram/hadith` for every new item and look at them.

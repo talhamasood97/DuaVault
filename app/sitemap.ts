@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { DUAS } from "@/data/duas";
 import { HADITHS } from "@/data/hadiths";
 import { CATEGORIES, EMOTIONS, SITE_URL } from "@/lib/utils";
+import { COLLECTIONS } from "@/lib/collections";
 
 // Date the dua/hadith content last changed. Bump it whenever content is added
 // or edited — a lastmod that always says "now" teaches Google to ignore it.
@@ -72,6 +73,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  // Topic collections ("Duas for the Sick" …)
+  const collectionPages: MetadataRoute.Sitemap = COLLECTIONS.map((c) => ({
+    url: `${SITE_URL}/duas-for/${c.slug}`,
+    lastModified: CONTENT_UPDATED,
+    changeFrequency: "monthly" as const,
+    priority: 0.9,
+  }));
+
   // Individual dua pages
   const duaPages: MetadataRoute.Sitemap = DUAS.map((dua) => ({
     url: `${SITE_URL}/duas/${dua.slug}`,
@@ -88,5 +97,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...categoryPages, ...emotionPages, ...duaPages, ...hadithPages];
+  return [...staticPages, ...collectionPages, ...categoryPages, ...emotionPages, ...duaPages, ...hadithPages];
 }
