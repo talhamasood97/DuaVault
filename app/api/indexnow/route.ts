@@ -4,7 +4,9 @@ import { HADITHS } from "@/data/hadiths";
 import { CATEGORIES, EMOTIONS, SITE_URL } from "@/lib/utils";
 import { COLLECTIONS } from "@/lib/collections";
 
-const INDEXNOW_KEY = "9e52a8b3c4d1f067e2a9b5c8d3f10247";
+// Must match the key file Bing/IndexNow first verified (public/<key>.txt). The other
+// key file in public/ is rejected with UserForbiddedToAccessSite.
+const INDEXNOW_KEY = "7407844c6631af6428ce3b88a62107ae";
 
 function getAllUrls(): string[] {
   const staticUrls = [
