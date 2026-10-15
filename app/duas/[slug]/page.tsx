@@ -10,6 +10,8 @@ import { RelatedDuas } from "@/components/dua/RelatedDuas";
 import { SocialFollowStrip } from "@/components/layout/SocialFollowStrip";
 import { getCategoryMeta, getEmotionMeta, SITE_URL, SITE_NAME, safeJsonLd, fitTitle, truncate } from "@/lib/utils";
 import { DuaViewTracker } from "@/components/analytics/DuaViewTracker";
+import { SourceLink, ReportErrorLink } from "@/components/ui/SourceLink";
+import { sourceUrl } from "@/lib/sources";
 
 export const revalidate = 86400;
 
@@ -31,6 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const sourceNote = ` Source: ${source}.`;
   const description = truncate(`${dua.title} in Arabic with transliteration and meaning: "${dua.translation}"`, 158 - sourceNote.length) + sourceNote;
   const url = `/duas/${dua.slug}`;
+  const shareImage = `${SITE_URL}/api/instagram/dua?slug=${dua.slug}&share=1`;
 
   return {
     title,
@@ -42,13 +45,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       type: "article",
       siteName: SITE_NAME,
-      images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: `${dua.title} – DuaVault` }],
+      images: [{ url: shareImage, width: 1080, height: 1080, alt: `${dua.title} – Arabic and meaning` }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [`${SITE_URL}/opengraph-image`],
+      images: [shareImage],
     },
   };
 }
@@ -69,7 +72,7 @@ export default async function DuaPage({ params }: Props) {
     description: dua.translation,
     url: `${SITE_URL}/duas/${dua.slug}`,
     mainEntityOfPage: `${SITE_URL}/duas/${dua.slug}`,
-    image: `${SITE_URL}/opengraph-image`,
+    image: `${SITE_URL}/api/instagram/dua?slug=${dua.slug}&share=1`,
     author: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
     publisher: {
       "@type": "Organization",
@@ -167,7 +170,10 @@ export default async function DuaPage({ params }: Props) {
 
             {/* Source reference — groups so it wraps cleanly */}
             <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-stone-500 dark:text-stone-400">
-              <div className="flex items-center gap-1.5">
+              <SourceLink
+                href={sourceUrl(dua.source_book, dua.hadith_number)}
+                className="flex items-center gap-1.5"
+              >
                 <BookOpen className="w-4 h-4 flex-shrink-0" />
                 <span className="font-medium">{dua.source_book}</span>
                 {dua.hadith_number && (
@@ -180,7 +186,7 @@ export default async function DuaPage({ params }: Props) {
                     </span>
                   </>
                 )}
-              </div>
+              </SourceLink>
               {dua.graded_by && (
                 <span className="text-emerald-700 dark:text-emerald-400 font-medium flex items-center gap-1">
                   ✓ Graded by {dua.graded_by}
@@ -231,6 +237,7 @@ export default async function DuaPage({ params }: Props) {
               Share this Dua
             </p>
             <ShareButtons dua={dua} />
+            <ReportErrorLink title={dua.title} url={`${SITE_URL}/duas/${dua.slug}`} />
           </div>
         </article>
 

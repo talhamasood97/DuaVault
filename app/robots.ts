@@ -6,8 +6,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
         // Don't block /_next/: Google needs the CSS/JS there to render pages.
+        // Page preview images (og:image) live under /api/instagram/ — keep them fetchable.
+        allow: ["/", "/api/instagram/"],
         disallow: ["/api/"],
       },
     ],

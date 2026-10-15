@@ -50,8 +50,8 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm text-stone-500 dark:text-stone-400 leading-relaxed">
-              The most complete vault of authentic Islamic supplications. Every dua
-              scholar-verified with clear Quran & Hadith sources.
+              Authentic Islamic supplications from the Quran and Sunnah — every
+              dua with its Arabic text and a clear source reference.
             </p>
             <div className="mt-4 flex flex-wrap gap-1.5">
               {SOURCES.map((s) => (

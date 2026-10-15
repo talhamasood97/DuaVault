@@ -31,8 +31,8 @@ export default function PrivacyPage() {
         </h2>
         <p>
           This platform does not allow user-generated content. All duas are
-          sourced and verified by our editorial team from authenticated Islamic
-          scholarship.
+          sourced by our editorial team from the Quran and authenticated hadith
+          collections.
         </p>
         <h2 className="text-base font-semibold text-stone-800 dark:text-stone-200 mt-6">
           Cookies

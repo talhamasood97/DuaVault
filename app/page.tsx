@@ -74,23 +74,22 @@ export default async function HomePage() {
             <span className="text-gradient">Verified Sources.</span>
           </h1>
           <p className="text-stone-500 dark:text-stone-400 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
-            The most complete vault of authentic Islamic supplications — every
-            dua with Arabic text, transliteration, translation, and verified
-            Hadith reference.
+            Authentic Islamic supplications — every dua with Arabic text,
+            transliteration, translation, and its Quran or hadith reference.
           </p>
 
           <HeroSearch />
         </div>
       </section>
 
+      {/* Emotion-based discovery — the main way people find a dua, so it comes first */}
+      <EmotionGrid />
+
       {/* Daily Dua Banner */}
       <DailyDuaBanner dua={daily} />
 
       {/* Daily Hadith Banner */}
       <DailyHadithBanner hadith={dailyHadith} />
-
-      {/* Emotion-based discovery */}
-      <EmotionGrid />
 
       {/* Categories */}
       <CategoryGrid />

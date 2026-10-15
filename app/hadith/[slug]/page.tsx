@@ -7,6 +7,8 @@ import { SubscribeForm } from "@/components/hadith/SubscribeForm";
 import { SITE_NAME, SITE_URL, safeJsonLd, fitTitle, truncate } from "@/lib/utils";
 import { HadithViewTracker } from "@/components/analytics/HadithViewTracker";
 import type { Hadith } from "@/types";
+import { SourceLink, ReportErrorLink } from "@/components/ui/SourceLink";
+import { sourceUrl } from "@/lib/sources";
 
 export const revalidate = 86400;
 
@@ -34,11 +36,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: hadith.title,
       description: hadith.translation,
       url: `${SITE_URL}/hadith/${hadith.slug}`,
-      images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: `${hadith.title} – DuaVault` }],
+      images: [{ url: `${SITE_URL}/api/instagram/hadith?slug=${hadith.slug}&share=1`, width: 1080, height: 1080, alt: `${hadith.title} – DuaVault` }],
     },
     twitter: {
       card: "summary_large_image",
-      images: [`${SITE_URL}/opengraph-image`],
+      images: [`${SITE_URL}/api/instagram/hadith?slug=${hadith.slug}&share=1`],
     },
   };
 }
@@ -130,10 +132,15 @@ export default function HadithPage({ params }: Props) {
               </span>
             </div>
             <div className="flex items-center gap-2 text-sm text-stone-500 dark:text-stone-400 mt-3">
-              <BookOpen className="w-4 h-4" />
-              <span>
-                {hadith.source_book} · {hadith.hadith_number}
-              </span>
+              <SourceLink
+                href={sourceUrl(hadith.source_book, hadith.hadith_number)}
+                className="flex items-center gap-2"
+              >
+                <BookOpen className="w-4 h-4" />
+                <span>
+                  {hadith.source_book} · {hadith.hadith_number}
+                </span>
+              </SourceLink>
               <span className="text-stone-300 dark:text-stone-600">·</span>
               <span>Narrated by {hadith.narrator}</span>
             </div>
@@ -197,6 +204,7 @@ export default function HadithPage({ params }: Props) {
                 </span>
               ))}
             </div>
+            <ReportErrorLink title={hadith.title} url={`${SITE_URL}/hadith/${hadith.slug}`} />
           </div>
         </div>
 

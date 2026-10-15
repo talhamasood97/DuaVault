@@ -82,6 +82,8 @@ function roundRect(ctx: SKRSContext2D, x: number, y: number, w: number, h: numbe
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const slug = searchParams.get("slug");
+  // share=1: link-preview image for a page (WhatsApp/Facebook), not the daily post
+  const share = searchParams.get("share") === "1";
   const dua = slug ? (DUAS.find((d) => d.slug === slug) ?? getDailyDua()) : getDailyDua();
 
   ensureFonts();
@@ -175,7 +177,7 @@ export async function GET(request: Request) {
   ctx.font = "bold 17px sans-serif";
   ctx.fillStyle = "#a5b4fc";
   ctx.textAlign = "center";
-  ctx.fillText("DUA OF THE DAY", 904, 78);
+  ctx.fillText(share ? "AUTHENTIC DUA" : "DUA OF THE DAY", 904, 78);
 
   // Title
   ctx.font = "bold 22px sans-serif";
@@ -251,6 +253,10 @@ export async function GET(request: Request) {
   const pngBuffer = await canvas.encode("png");
 
   return new Response(pngBuffer as unknown as BodyInit, {
-    headers: { "Content-Type": "image/png", "Cache-Control": "no-store" },
+    headers: {
+      "Content-Type": "image/png",
+      // Previews are cached at the edge; daily-post images must always be fresh
+      "Cache-Control": share ? "public, max-age=86400, s-maxage=2592000" : "no-store",
+    },
   });
 }

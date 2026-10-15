@@ -3,13 +3,13 @@ import { ShieldCheck, BookOpen, CalendarDays } from "lucide-react";
 const TRUST_ITEMS = [
   {
     icon: ShieldCheck,
-    title: "Scholar Verified",
-    desc: "Every dua reviewed against classical Islamic scholarship",
+    title: "Checked Against the Source",
+    desc: "Every dua matched to its Quran verse or hadith number, with its grading",
   },
   {
     icon: BookOpen,
     title: "Authentic Sources",
-    desc: "Sahih al-Bukhari · Sahih Muslim · Hisn al-Muslim · Riyad as-Salihin",
+    desc: "The Quran · Sahih al-Bukhari · Sahih Muslim · Abu Dawud · Tirmidhi",
   },
   {
     icon: CalendarDays,

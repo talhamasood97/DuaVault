@@ -29,6 +29,10 @@ A task is NOT complete until:
   3. Build each `File` with its full repo path as the name (e.g. `app/duas/[slug]/page.tsx`) so every file lands in its folder in ONE commit. Set them on `#upload-manifest-files-input` with a DataTransfer, add a commit message, and click "Commit changes".
   4. Verify `git diff origin/main main` is empty, then `git reset origin/main` locally.
 
+## Trust wording
+- Never claim "scholar-verified" or "most complete": no individual scholar review has happened. Say each dua is checked against its source and grading.
+- Keep `public/google80842bb7c72773cb.html`. It verifies Google Search Console ownership (talhasubscriptionbbk@gmail.com).
+
 ## Adding duas / hadiths
 - **Sources:** Sunnah.com for hadith (Arabic, English, grade); Quran.com `text_imlaei` + Sahih International for Qur'anic duas. Sahih/Hasan only.
 - **Arabic:** sliced from the source text, never retyped. Transliterations ASCII only. Write (SAW), not ﷺ.

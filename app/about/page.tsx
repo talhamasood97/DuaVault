@@ -5,20 +5,20 @@ import { ShieldCheck, BookOpen, Search, Heart } from "lucide-react";
 export const metadata: Metadata = {
   title: "About Us – Authentic Duas, Verified Sources",
   description:
-    "Our mission is to be the most complete and trusted vault of authentic Islamic supplications, with every dua verified against scholarly sources.",
+    "Authentic Islamic supplications that are easy to find, with every dua linked to its Quran verse or hadith reference and grading.",
   alternates: { canonical: "/about" },
 };
 
 const FEATURES = [
   {
     icon: ShieldCheck,
-    title: "Scholar-Verified Content",
-    desc: "Every supplication is cross-referenced against classical Islamic scholarship and authentic hadith collections.",
+    title: "Checked Against the Source",
+    desc: "Every supplication is matched to its Quran verse or hadith number and checked against the grading published on Sunnah.com (such as Al-Albani's).",
   },
   {
     icon: BookOpen,
-    title: "Primary Sources Only",
-    desc: "Duas sourced exclusively from Sahih al-Bukhari, Sahih Muslim, Hisn al-Muslim, Riyad as-Salihin, and the Holy Quran.",
+    title: "Quran and Authentic Hadith",
+    desc: "Duas come from the Quran and the hadith collections — mainly Sahih al-Bukhari, Sahih Muslim, Abu Dawud and Tirmidhi. We include only narrations graded Sahih or Hasan.",
   },
   {
     icon: Search,
@@ -43,8 +43,8 @@ export default function AboutPage() {
           About DuaVault
         </h1>
         <p className="text-stone-500 dark:text-stone-400 max-w-xl mx-auto leading-relaxed">
-          DuaVault exists to be the most complete, trusted, and accessible vault
-          of authentic Islamic supplications — for every Muslim, everywhere.
+          DuaVault exists to be a trusted, easy-to-use home for authentic
+          Islamic supplications — for every Muslim, everywhere.
         </p>
       </div>
 
@@ -60,8 +60,13 @@ export default function AboutPage() {
         </p>
         <p className="text-stone-600 dark:text-stone-300 leading-relaxed">
           DuaVault solves this. Every supplication in this vault comes with its
-          Arabic text, transliteration, translation, and full hadith reference —
-          verified against classical Islamic scholarship.
+          Arabic text, transliteration, translation, and its Quran verse or
+          hadith reference — checked against the original source. If you spot
+          a mistake, please{" "}
+          <a href="mailto:feedback.duavault@gmail.com?subject=DuaVault%20correction" className="text-emerald-700 dark:text-emerald-400 underline">
+            tell us
+          </a>{" "}
+          and we will correct it.
         </p>
       </div>
 

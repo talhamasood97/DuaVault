@@ -97,6 +97,8 @@ function roundRect(ctx: SKRSContext2D, x: number, y: number, w: number, h: numbe
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const slug = searchParams.get("slug");
+  // share=1: link-preview image for a page (WhatsApp/Facebook), not the daily post
+  const share = searchParams.get("share") === "1";
   const hadith = slug ? (HADITHS.find((h) => h.slug === slug) ?? getDailyHadith()) : getDailyHadith();
 
   ensureFonts();
@@ -182,7 +184,7 @@ export async function GET(request: Request) {
   ctx.font = "bold 17px Inter";
   ctx.fillStyle = "#6ee7b7";
   ctx.textAlign = "center";
-  ctx.fillText("HADITH OF THE DAY", 890, 78);
+  ctx.fillText(share ? "AUTHENTIC HADITH" : "HADITH OF THE DAY", 890, 78);
 
   // Arabic text — large, white, RTL
   ctx.direction = "rtl";
@@ -252,6 +254,10 @@ export async function GET(request: Request) {
   const pngBuffer = await canvas.encode("png");
 
   return new Response(pngBuffer as unknown as BodyInit, {
-    headers: { "Content-Type": "image/png", "Cache-Control": "no-store" },
+    headers: {
+      "Content-Type": "image/png",
+      // Previews are cached at the edge; daily-post images must always be fresh
+      "Cache-Control": share ? "public, max-age=86400, s-maxage=2592000" : "no-store",
+    },
   });
 }
