@@ -16,7 +16,7 @@ function getAllUrls(): string[] {
     `${SITE_URL}/about`,
     `${SITE_URL}/sources`,
   ];
-  const collectionUrls = COLLECTIONS.map((c) => `${SITE_URL}/duas-for/${c.slug}`);
+  const collectionUrls = [`${SITE_URL}/duas-for`, ...COLLECTIONS.map((c) => `${SITE_URL}/duas-for/${c.slug}`)];
   const categoryUrls = CATEGORIES.map((c) => `${SITE_URL}/category/${c.slug}`);
   const emotionUrls = EMOTIONS.map((e) => `${SITE_URL}/emotion/${e.slug}`);
   const duaUrls = DUAS.map((d) => `${SITE_URL}/duas/${d.slug}`);

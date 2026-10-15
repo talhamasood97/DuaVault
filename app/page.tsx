@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { HeroSearch } from "@/components/home/HeroSearch";
 import { EmotionGrid } from "@/components/home/EmotionGrid";
 import { CategoryGrid } from "@/components/home/CategoryGrid";
+import { CollectionLinks } from "@/components/home/CollectionLinks";
 import { FeaturedDuas } from "@/components/home/FeaturedDuas";
 import { TrustBar } from "@/components/home/TrustBar";
 import { HomeSubscribeBanner } from "@/components/home/HomeSubscribeBanner";
@@ -93,6 +94,9 @@ export default async function HomePage() {
 
       {/* Categories */}
       <CategoryGrid />
+
+      {/* Topic collections */}
+      <CollectionLinks />
 
       {/* Featured duas */}
       <FeaturedDuas duas={featured} />

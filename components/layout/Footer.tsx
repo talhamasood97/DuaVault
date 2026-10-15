@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { BookOpen } from "lucide-react";
 import { SOCIAL } from "@/lib/utils";
-import { COLLECTIONS } from "@/lib/collections";
+import { FOOTER_COLLECTIONS, getCollection } from "@/lib/collections";
 
 const SOURCES = [
   "The Quran",
@@ -19,7 +19,10 @@ const LINKS = {
     { href: "/search", label: "Search Duas" },
     { href: "/category/daily-life", label: "Browse Categories" },
   ],
-  "Dua Collections": COLLECTIONS.map((c) => ({ href: `/duas-for/${c.slug}`, label: c.label })),
+  "Dua Collections": [
+    ...FOOTER_COLLECTIONS.map((slug) => ({ href: `/duas-for/${slug}`, label: getCollection(slug)?.label ?? slug })),
+    { href: "/duas-for", label: "All collections →" },
+  ],
   Emotions: [
     { href: "/emotion/sad", label: "Feeling Sad" },
     { href: "/emotion/stressed", label: "Feeling Stressed" },

@@ -73,13 +73,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  // Topic collections ("Duas for the Sick" …)
-  const collectionPages: MetadataRoute.Sitemap = COLLECTIONS.map((c) => ({
+  // Topic collections ("Duas for the Sick" …) and their index
+  const collectionPages: MetadataRoute.Sitemap = [
+    { url: `${SITE_URL}/duas-for`, lastModified: CONTENT_UPDATED, changeFrequency: "monthly" as const, priority: 0.8 },
+  ].concat(COLLECTIONS.map((c) => ({
     url: `${SITE_URL}/duas-for/${c.slug}`,
     lastModified: CONTENT_UPDATED,
     changeFrequency: "monthly" as const,
     priority: 0.9,
-  }));
+  })));
 
   // Individual dua pages
   const duaPages: MetadataRoute.Sitemap = DUAS.map((dua) => ({
