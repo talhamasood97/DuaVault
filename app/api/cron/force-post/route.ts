@@ -60,7 +60,7 @@ export async function POST(request: Request) {
     return Response.json({ ok: true, skipped: true, reason: "both platforms already posted today — use force:true to override" });
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "https://duavault.com";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL?.trim() ?? "https://duavault.com";
   let imageUrl: string;
   let caption: string;
   let slug: string;

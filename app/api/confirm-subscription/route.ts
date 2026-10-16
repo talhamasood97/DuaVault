@@ -5,11 +5,11 @@ import { rateLimit, getClientIp } from "@/lib/rateLimit";
 
 export const runtime = "nodejs";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://duavault.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() ?? "https://duavault.com";
 
 const hasSupabase =
-  !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
-  !!process.env.SUPABASE_SERVICE_ROLE_KEY;
+  !!process.env.NEXT_PUBLIC_SUPABASE_URL?.trim() &&
+  !!process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
 
 /** Confirmation landing page — shown when user clicks the email link. */
 export async function GET(req: NextRequest) {

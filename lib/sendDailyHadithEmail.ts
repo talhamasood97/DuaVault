@@ -11,7 +11,7 @@ import { createAdminClient } from "@/lib/supabase";
 import { escapeHtml } from "@/lib/utils";
 import { sendAdminAlert } from "@/lib/instagram";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://duavault.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() ?? "https://duavault.com";
 
 function buildDailyEmail(
   name: string,
@@ -128,15 +128,15 @@ export interface EmailResult {
  * Sends admin alert on partial or total failure.
  */
 export async function sendDailyHadithEmails(): Promise<EmailResult> {
-  if (!process.env.RESEND_API_KEY) throw new Error("RESEND_API_KEY not configured");
-  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+  if (!process.env.RESEND_API_KEY?.trim()) throw new Error("RESEND_API_KEY not configured");
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL?.trim() || !process.env.SUPABASE_SERVICE_ROLE_KEY?.trim()) {
     throw new Error("Supabase env vars not configured");
   }
 
   const hadith = getDailyHadith();
   const db = createAdminClient();
-  const resend = new Resend(process.env.RESEND_API_KEY);
-  const fromEmail = `Daily Hadith · DuaVault <${process.env.RESEND_FROM_EMAIL ?? "noreply@duavault.com"}>`;
+  const resend = new Resend(process.env.RESEND_API_KEY?.trim());
+  const fromEmail = `Daily Hadith · DuaVault <${process.env.RESEND_FROM_EMAIL?.trim() ?? "noreply@duavault.com"}>`;
   const todayUtc = new Date().toISOString().split("T")[0];
 
   let sent = 0;

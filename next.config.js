@@ -93,11 +93,12 @@ const nextConfig = {
     // - Tighten to a nonce-based policy via middleware when traffic justifies the effort.
     const csp = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com",
+      "script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com",
       "style-src 'self' 'unsafe-inline'",
       "font-src 'self'",
       "img-src 'self' data: https:",
-      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://vitals.vercel-insights.com https://*.supabase.co",
+      // GA4 sends hits to regional hosts (e.g. region1.google-analytics.com) — allow Google's documented wildcards
+      "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://vitals.vercel-insights.com https://*.supabase.co",
       "frame-src 'none'",
       "frame-ancestors 'none'",
       "base-uri 'self'",

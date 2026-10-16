@@ -7,13 +7,13 @@ import { escapeHtml } from "@/lib/utils";
 export const runtime = "nodejs";
 
 const hasSupabase =
-  !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
-  !!process.env.SUPABASE_SERVICE_ROLE_KEY;
+  !!process.env.NEXT_PUBLIC_SUPABASE_URL?.trim() &&
+  !!process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
 
-const hasResend = !!process.env.RESEND_API_KEY;
+const hasResend = !!process.env.RESEND_API_KEY?.trim();
 
 function buildConfirmationEmail(name: string, token: string): string {
-  const confirmUrl = `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://duavault.com"}/api/confirm-subscription?token=${token}`;
+  const confirmUrl = `${process.env.NEXT_PUBLIC_SITE_URL?.trim() ?? "https://duavault.com"}/api/confirm-subscription?token=${token}`;
   const safeName = escapeHtml(name);
   const greeting = safeName ? `Assalamu Alaikum ${safeName},` : "Assalamu Alaikum,";
 
@@ -128,9 +128,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    const resend = new Resend(process.env.RESEND_API_KEY?.trim());
     const { error: sendError } = await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL ?? "noreply@duavault.com",
+      from: process.env.RESEND_FROM_EMAIL?.trim() ?? "noreply@duavault.com",
       to: normalizedEmail,
       subject: "Confirm your Daily Hadith subscription — DuaVault",
       html: buildConfirmationEmail(name ?? "", subscriber.confirmation_token),

@@ -52,7 +52,7 @@ export async function GET(request: Request) {
     }
 
     const dua = getDailyDua();
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "https://duavault.com";
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL?.trim() ?? "https://duavault.com";
     const imageUrl = `${baseUrl}/api/instagram/dua?slug=${encodeURIComponent(dua.slug)}`;
     const caption = buildDuaCaption(dua);
 

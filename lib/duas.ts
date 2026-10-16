@@ -19,8 +19,8 @@ import {
 // Public content reads use the anon key (least privilege).
 // Gate on both URL and anon key — if either is missing, fall back to static data.
 const hasSupabase =
-  !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
-  !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  !!process.env.NEXT_PUBLIC_SUPABASE_URL?.trim() &&
+  !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim();
 
 export async function getAllDuas(): Promise<Dua[]> {
   if (!hasSupabase) return DUAS;

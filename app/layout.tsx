@@ -84,7 +84,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION?.trim(),
   },
 };
 
@@ -125,8 +125,10 @@ export default function RootLayout({
           />
           </SavedDuasProvider>
         </ThemeProvider>
-        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        {/* Vercel env values have a trailing newline; untrimmed it broke the inline
+            gtag script, so GA never received data until Oct 2026. */}
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID.trim()} />
         )}
         <Analytics />
       </body>

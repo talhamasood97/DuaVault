@@ -4,7 +4,7 @@ import { rateLimit, getClientIp } from "@/lib/rateLimit";
 
 export const runtime = "nodejs";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://duavault.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() ?? "https://duavault.com";
 
 // GET — show a confirmation page so bots/prefetch crawlers cannot accidentally
 // trigger the deletion. The actual delete happens on POST (form submission).
@@ -32,8 +32,8 @@ export async function GET(req: NextRequest) {
   // Verify the token exists before rendering the page — mirrors the confirm flow.
   // Invalid tokens get a redirect instead of a valid-looking unsubscribe page.
   const hasSupabase =
-    !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
-    !!process.env.SUPABASE_SERVICE_ROLE_KEY;
+    !!process.env.NEXT_PUBLIC_SUPABASE_URL?.trim() &&
+    !!process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
 
   if (hasSupabase) {
     try {

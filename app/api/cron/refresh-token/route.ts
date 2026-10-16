@@ -26,8 +26,8 @@ function redact(token: string): string {
 }
 
 async function updateVercelEnv(key: string, value: string): Promise<boolean> {
-  const vercelToken = process.env.MY_VERCEL_TOKEN;
-  const projectId = process.env.VERCEL_PROJECT_ID;
+  const vercelToken = process.env.MY_VERCEL_TOKEN?.trim();
+  const projectId = process.env.VERCEL_PROJECT_ID?.trim();
   if (!vercelToken || !projectId) return false;
 
   // Get existing env var ID
@@ -59,10 +59,10 @@ export async function GET(request: Request) {
     return new Response("Unauthorized", { status: 401 });
   }
 
-  const appId = process.env.META_APP_ID;
-  const appSecret = process.env.META_APP_SECRET;
-  const currentToken = process.env.META_USER_ACCESS_TOKEN;
-  const pageId = process.env.FACEBOOK_PAGE_ID;
+  const appId = process.env.META_APP_ID?.trim();
+  const appSecret = process.env.META_APP_SECRET?.trim();
+  const currentToken = process.env.META_USER_ACCESS_TOKEN?.trim();
+  const pageId = process.env.FACEBOOK_PAGE_ID?.trim();
 
   if (!appId || !appSecret || !currentToken) {
     await sendAdminAlert(

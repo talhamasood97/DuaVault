@@ -19,9 +19,9 @@ export async function GET(request: Request) {
     return new Response("Unauthorized", { status: 401 });
   }
 
-  const token = process.env.META_PAGE_ACCESS_TOKEN;
-  const pageId = process.env.FACEBOOK_PAGE_ID;
-  const igId = process.env.INSTAGRAM_BUSINESS_ACCOUNT_ID;
+  const token = process.env.META_PAGE_ACCESS_TOKEN?.trim();
+  const pageId = process.env.FACEBOOK_PAGE_ID?.trim();
+  const igId = process.env.INSTAGRAM_BUSINESS_ACCOUNT_ID?.trim();
 
   if (!token || !pageId || !igId) {
     await sendAdminAlert(

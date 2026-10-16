@@ -26,7 +26,7 @@ function getAllUrls(): string[] {
 
 export async function POST(req: NextRequest) {
   // Require admin secret — fail closed if env var is unset
-  const cronSecret = process.env.CRON_SECRET;
+  const cronSecret = process.env.CRON_SECRET?.trim();
   if (!cronSecret) {
     return NextResponse.json({ error: "CRON_SECRET not configured" }, { status: 500 });
   }

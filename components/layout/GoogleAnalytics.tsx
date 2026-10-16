@@ -2,7 +2,8 @@
 
 import Script from "next/script";
 
-export function GoogleAnalytics({ gaId }: { gaId: string }) {
+export function GoogleAnalytics({ gaId: rawId }: { gaId: string }) {
+  const gaId = rawId.trim();
   return (
     <>
       <Script
@@ -14,7 +15,7 @@ export function GoogleAnalytics({ gaId }: { gaId: string }) {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${gaId}', {
+          gtag('config', ${JSON.stringify(gaId)}, {
             page_path: window.location.pathname,
           });
         `}

@@ -21,15 +21,15 @@ const GRAPH = "https://graph.facebook.com/v20.0";
  * Uses Resend (already configured). Silently no-ops if env vars are missing.
  */
 export async function sendAdminAlert(subject: string, body: string): Promise<void> {
-  const apiKey = process.env.RESEND_API_KEY;
-  const adminEmail = process.env.ADMIN_ALERT_EMAIL;
+  const apiKey = process.env.RESEND_API_KEY?.trim();
+  const adminEmail = process.env.ADMIN_ALERT_EMAIL?.trim();
   if (!apiKey || !adminEmail) return;
   try {
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        from: `DuaVault Alerts <${process.env.RESEND_FROM_EMAIL ?? "noreply@duavault.com"}>`,
+        from: `DuaVault Alerts <${process.env.RESEND_FROM_EMAIL?.trim() ?? "noreply@duavault.com"}>`,
         to: [adminEmail],
         subject: `[DuaVault] ${subject}`,
         html: `<div style="font-family:monospace;font-size:14px;white-space:pre-wrap">${body}</div>`,
@@ -74,8 +74,8 @@ export async function postToInstagram(
   caption: string,
   scheduledTime?: number
 ): Promise<PostResult> {
-  const igUserId = process.env.INSTAGRAM_BUSINESS_ACCOUNT_ID;
-  const token = process.env.META_PAGE_ACCESS_TOKEN;
+  const igUserId = process.env.INSTAGRAM_BUSINESS_ACCOUNT_ID?.trim();
+  const token = process.env.META_PAGE_ACCESS_TOKEN?.trim();
 
   if (!igUserId || !token) {
     return {
@@ -143,8 +143,8 @@ export async function postToFacebook(
   caption: string,
   scheduledTime?: number
 ): Promise<PostResult> {
-  const pageId = process.env.FACEBOOK_PAGE_ID;
-  const token = process.env.META_PAGE_ACCESS_TOKEN;
+  const pageId = process.env.FACEBOOK_PAGE_ID?.trim();
+  const token = process.env.META_PAGE_ACCESS_TOKEN?.trim();
 
   if (!pageId || !token) {
     return {
@@ -220,7 +220,7 @@ export async function postToFacebook(
 
 /** Verify Vercel cron secret from Authorization header. Fails closed if CRON_SECRET is unset. */
 export function verifyCronSecret(request: Request): boolean {
-  const secret = process.env.CRON_SECRET;
+  const secret = process.env.CRON_SECRET?.trim();
   if (!secret) return false; // fail closed — never grant access if secret is missing
   const auth = request.headers.get("authorization");
   return auth === `Bearer ${secret}`;

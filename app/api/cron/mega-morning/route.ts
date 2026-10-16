@@ -58,7 +58,7 @@ export async function GET(request: Request) {
       results.social = { skipped: true, reason: "already posted to both platforms this morning" };
     } else {
       const hadith = getDailyHadith();
-      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "https://duavault.com";
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL?.trim() ?? "https://duavault.com";
       const imageUrl = `${baseUrl}/api/instagram/hadith?slug=${encodeURIComponent(hadith.slug)}`;
       const caption = buildHadithCaption(hadith);
 

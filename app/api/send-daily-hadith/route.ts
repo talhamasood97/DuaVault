@@ -7,7 +7,7 @@ import { sendAdminAlert } from "@/lib/instagram";
 
 export const runtime = "nodejs";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://duavault.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() ?? "https://duavault.com";
 
 function buildDailyEmail(
   name: string,
@@ -112,7 +112,7 @@ function buildDailyEmail(
 
 export async function GET(req: NextRequest) {
   // Verify cron secret — always required, fail closed if unset
-  const cronSecret = process.env.CRON_SECRET;
+  const cronSecret = process.env.CRON_SECRET?.trim();
   if (!cronSecret) {
     return NextResponse.json({ error: "CRON_SECRET not configured" }, { status: 500 });
   }
@@ -121,13 +121,13 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  if (!process.env.RESEND_API_KEY) {
+  if (!process.env.RESEND_API_KEY?.trim()) {
     return NextResponse.json({ error: "RESEND_API_KEY not configured" }, { status: 500 });
   }
 
   if (
-    !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    !process.env.SUPABASE_SERVICE_ROLE_KEY
+    !process.env.NEXT_PUBLIC_SUPABASE_URL?.trim() ||
+    !process.env.SUPABASE_SERVICE_ROLE_KEY?.trim()
   ) {
     return NextResponse.json({ error: "Supabase not configured" }, { status: 500 });
   }
@@ -135,8 +135,8 @@ export async function GET(req: NextRequest) {
   try {
     const hadith = getDailyHadith();
     const db = createAdminClient();
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    const baseEmail = process.env.RESEND_FROM_EMAIL ?? "noreply@duavault.com";
+    const resend = new Resend(process.env.RESEND_API_KEY?.trim());
+    const baseEmail = process.env.RESEND_FROM_EMAIL?.trim() ?? "noreply@duavault.com";
     const fromEmail = `Daily Hadith · DuaVault <${baseEmail}>`;
 
     // Today's date string (UTC) used for idempotency — skip subscribers who

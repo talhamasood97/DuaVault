@@ -22,7 +22,7 @@ export async function GET(request: Request) {
     return new Response("Unauthorized", { status: 401 });
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "https://duavault.com";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL?.trim() ?? "https://duavault.com";
 
   // Schedule for exactly 4 days from now
   const targetDate = new Date();
