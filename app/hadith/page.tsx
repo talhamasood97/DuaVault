@@ -98,7 +98,7 @@ export default function HadithArchivePage({ searchParams }: Props) {
         >
           <Link href="/" className="hover:text-emerald-600 transition-colors">Home</Link>
           <ChevronRight className="w-3 h-3" />
-          <span className="text-stone-500">Hadith Archive</span>
+          <span className="text-stone-500 dark:text-stone-400">Hadith Archive</span>
         </nav>
 
         {/* Header */}
@@ -138,7 +138,7 @@ export default function HadithArchivePage({ searchParams }: Props) {
 
         {/* Category filter buttons */}
         <div className="mb-10">
-          <p className="text-xs font-semibold uppercase tracking-widest text-stone-400 dark:text-stone-500 mb-3">
+          <p className="text-xs font-semibold uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-3">
             Browse by theme
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-2">
@@ -153,7 +153,7 @@ export default function HadithArchivePage({ searchParams }: Props) {
             >
               <span className="text-xl">📖</span>
               <span className="text-xs font-semibold leading-tight">All</span>
-              <span className={`text-xs ${!activeCategory ? "text-amber-200" : "text-stone-400 dark:text-stone-500"}`}>
+              <span className={`text-xs ${!activeCategory ? "text-amber-100" : "text-stone-500 dark:text-stone-400"}`}>
                 {HADITHS.length}
               </span>
             </Link>
@@ -174,7 +174,7 @@ export default function HadithArchivePage({ searchParams }: Props) {
                 >
                   <span className="text-xl">{cat.icon}</span>
                   <span className="text-xs font-semibold leading-tight line-clamp-2">{cat.label}</span>
-                  <span className={`text-xs ${isActive ? "text-amber-200" : "text-stone-400 dark:text-stone-500"}`}>
+                  <span className={`text-xs ${isActive ? "text-amber-100" : "text-stone-500 dark:text-stone-400"}`}>
                     {count}
                   </span>
                 </Link>

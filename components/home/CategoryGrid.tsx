@@ -31,7 +31,7 @@ export function CategoryGrid() {
                   {cat.description}
                 </p>
               </div>
-              <span className="text-stone-300 dark:text-stone-600 text-sm flex-shrink-0">›</span>
+              <span className="text-stone-300 dark:text-stone-400 text-sm flex-shrink-0">›</span>
             </Link>
           ))}
         </div>

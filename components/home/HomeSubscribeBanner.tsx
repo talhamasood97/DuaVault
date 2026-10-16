@@ -63,7 +63,7 @@ export function HomeSubscribeBanner() {
             {status === "error" && (
               <p className="text-xs text-red-500 dark:text-red-400">{message}</p>
             )}
-            <p className="text-xs text-stone-400 dark:text-stone-500">
+            <p className="text-xs text-stone-500 dark:text-stone-400">
               No spam. No sharing. Unsubscribe anytime.
             </p>
           </form>

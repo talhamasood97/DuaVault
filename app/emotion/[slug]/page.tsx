@@ -75,14 +75,14 @@ export default async function EmotionPage({ params }: Props) {
     />
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12 animate-fade-in">
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400 mb-8">
+      <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400 mb-8">
         <Link href="/" className="hover:text-emerald-600 transition-colors">
           Home
         </Link>
         <ChevronRight className="w-3 h-3" />
         <span>Emotions</span>
         <ChevronRight className="w-3 h-3" />
-        <span className="text-stone-500">{emotion.title}</span>
+        <span className="text-stone-500 dark:text-stone-400">{emotion.title}</span>
       </nav>
 
       {/* Hero */}
@@ -94,11 +94,11 @@ export default async function EmotionPage({ params }: Props) {
           <h1 className={`text-2xl sm:text-3xl font-bold mb-3 ${emotion.color}`}>
             {emotionPageTitle}
           </h1>
-          <p className="text-stone-500 dark:text-stone-400 max-w-lg mx-auto text-sm sm:text-base leading-relaxed">
+          <p className="text-stone-600 dark:text-stone-300 max-w-lg mx-auto text-sm sm:text-base leading-relaxed">
             {emotion.description}. Turn to Allah through these authenticated
             supplications.
           </p>
-          <p className="text-xs text-stone-500 dark:text-stone-400 mt-3">
+          <p className="text-xs text-stone-600 dark:text-stone-400 mt-3">
             {duas.length} {duas.length === 1 ? "supplication" : "supplications"} found
           </p>
         </div>

@@ -94,7 +94,7 @@ export default function HadithPage({ params }: Props) {
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8 sm:py-12 animate-fade-in">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400 mb-8 flex-wrap">
+        <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400 mb-8 flex-wrap">
           <Link href="/" className="hover:text-emerald-600 transition-colors">
             Home
           </Link>
@@ -106,7 +106,7 @@ export default function HadithPage({ params }: Props) {
             Hadiths
           </Link>
           <ChevronRight className="w-3 h-3" />
-          <span className="text-stone-500 truncate max-w-[160px]">
+          <span className="text-stone-500 dark:text-stone-400 truncate max-w-[160px]">
             {hadith.title}
           </span>
         </nav>
@@ -142,7 +142,7 @@ export default function HadithPage({ params }: Props) {
                   {hadith.source_book} · {hadith.hadith_number}
                 </span>
               </SourceLink>
-              <span className="text-stone-300 dark:text-stone-600">·</span>
+              <span className="text-stone-300 dark:text-stone-400">·</span>
               <span>Narrated by {hadith.narrator}</span>
             </div>
           </div>
@@ -199,7 +199,7 @@ export default function HadithPage({ params }: Props) {
               {hadith.topic_tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs px-2.5 py-1 bg-stone-100 dark:bg-emerald-900 text-stone-500 dark:text-stone-400 rounded-full capitalize"
+                  className="text-xs px-2.5 py-1 bg-stone-100 dark:bg-emerald-900 text-stone-600 dark:text-stone-300 rounded-full capitalize"
                 >
                   {tag}
                 </span>
@@ -235,7 +235,7 @@ export default function HadithPage({ params }: Props) {
                       {r.source_book} · {r.hadith_number}
                     </p>
                   </div>
-                  <ChevronRight className="w-4 h-4 text-stone-300 dark:text-stone-600 flex-shrink-0 mt-0.5" />
+                  <ChevronRight className="w-4 h-4 text-stone-300 dark:text-stone-400 flex-shrink-0 mt-0.5" />
                 </Link>
               ))}
             </div>

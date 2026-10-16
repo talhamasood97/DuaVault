@@ -5511,6 +5511,37 @@ const SEARCH_SYNONYMS: Record<string, string[]> = {
   sneeze:           ["daily-life", "manners"],
   mirror:           ["daily-life", "appearance"],
   market:           ["daily-life", "trade"],
+  // ── Urdu / Hindi words people search with (South Asian audience) ─────────
+  nazar:            ["evil-eye", "evil", "eye", "ayn"],
+  bimari:           ["sick", "illness", "healing"],
+  sehat:            ["health", "wellbeing"],
+  safar:            ["travel", "journey"],
+  roza:             ["fasting", "iftar", "ramadan"],
+  sehri:            ["fasting", "ramadan"],
+  janaza:           ["janazah", "deceased", "funeral"],
+  janazah:          ["deceased", "funeral", "death"],
+  nikah:            ["marriage", "wedding", "spouse"],
+  shaadi:           ["marriage", "wedding"],
+  rishta:           ["spouse", "marriage"],
+  aulad:            ["children", "offspring"],
+  walidain:         ["parents"],
+  maa:              ["mother", "parents"],
+  qarz:             ["debt"],
+  karz:             ["debt"],
+  rozi:             ["rizq", "provision"],
+  naukri:           ["job", "work", "rizq"],
+  tension:          ["stress", "anxiety", "worry"],
+  pareshani:        ["distress", "anxiety", "hardship"],
+  khauf:            ["fear", "afraid"],
+  gussa:            ["anger", "angry"],
+  dukh:             ["sadness", "grief"],
+  maafi:            ["forgiveness", "repentance"],
+  tauba:            ["repentance", "tawbah", "forgiveness"],
+  tawbah:           ["repentance", "forgiveness"],
+  darood:           ["salawat", "blessings", "prophet"],
+  durood:           ["salawat", "blessings", "prophet"],
+  kursi:            ["ayatul", "kursi", "throne"],
+  qul:              ["ikhlas", "falaq", "nas", "three-quls"],
 };
 
 // ── Scoring weights ───────────────────────────────────────────────────────────
@@ -5629,7 +5660,8 @@ export function searchDuas(query: string): Dua[] {
     .filter(({ score }) => score > 0);
 
   // Return sorted by relevance (highest score first)
-  scored.sort((a, b) => b.score - a.score);
+  // Well-known (featured) duas win ties, e.g. Sayyidul Istighfar for "forgiveness".
+  scored.sort((a, b) => b.score - a.score || Number(!!b.dua.featured) - Number(!!a.dua.featured));
   return scored.map(({ dua }) => dua);
 }
 

@@ -63,7 +63,7 @@ export function Navbar() {
             : "bg-transparent"
         )}
       >
-        <nav className="max-w-6xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-4">
+        <nav aria-label="Main" className="max-w-6xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-4">
           {/* Logo */}
           <Link
             href="/"
@@ -109,7 +109,7 @@ export function Navbar() {
                 <button
                   type="button"
                   onClick={() => setShowSearch(false)}
-                  className="ml-1 p-1.5 rounded-lg text-stone-500 hover:text-stone-700 dark:hover:text-stone-300 transition-colors"
+                  className="ml-1 p-1.5 rounded-lg text-stone-500 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-300 transition-colors"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -117,7 +117,7 @@ export function Navbar() {
             ) : (
               <button
                 onClick={() => setShowSearch(true)}
-                className="hidden md:flex items-center justify-center min-w-[44px] min-h-[44px] p-2 rounded-lg text-stone-500 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/50 transition-colors"
+                className="hidden md:flex items-center justify-center min-w-[44px] min-h-[44px] p-2 rounded-lg text-stone-500 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/50 transition-colors"
                 aria-label="Search"
               >
                 <Search className="w-4 h-4" />
@@ -150,7 +150,7 @@ export function Navbar() {
             {mounted && (
               <button
                 onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-                className="flex items-center justify-center min-w-[44px] min-h-[44px] p-2 rounded-lg text-stone-500 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/50 transition-colors"
+                className="flex items-center justify-center min-w-[44px] min-h-[44px] p-2 rounded-lg text-stone-500 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/50 transition-colors"
                 aria-label="Toggle theme"
               >
                 {resolvedTheme === "dark" ? (
@@ -164,7 +164,7 @@ export function Navbar() {
             {/* Mobile hamburger */}
             <button
               onClick={() => setOpen(!open)}
-              className="md:hidden flex items-center justify-center min-w-[44px] min-h-[44px] p-2 rounded-lg text-stone-500 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/50 transition-colors"
+              className="md:hidden flex items-center justify-center min-w-[44px] min-h-[44px] p-2 rounded-lg text-stone-500 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/50 transition-colors"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               aria-controls="mobile-menu"
@@ -183,7 +183,7 @@ export function Navbar() {
             <div className="max-w-6xl mx-auto px-4 py-4 space-y-1">
               <form onSubmit={handleSearch} className="flex gap-2 mb-4">
                 <div className="relative flex-1">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400 pointer-events-none" />
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-500 dark:text-stone-400 pointer-events-none" />
                   <input
                     type="search"
                     value={query}

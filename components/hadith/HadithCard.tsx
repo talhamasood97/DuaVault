@@ -54,7 +54,7 @@ export function HadithCard({ hadith }: { hadith: Hadith }) {
         <div className="flex items-center gap-1 text-xs text-stone-500 dark:text-stone-400 min-w-0">
           <BookOpen className="w-3.5 h-3.5 flex-shrink-0" />
           <span className="truncate">{hadith.source_book}</span>
-          <span className="text-stone-300 dark:text-stone-600 flex-shrink-0">·</span>
+          <span className="text-stone-300 dark:text-stone-400 flex-shrink-0">·</span>
           <span className="flex-shrink-0">{hadith.hadith_number}</span>
         </div>
         <span className="text-xs font-medium text-amber-700 dark:text-amber-400 capitalize flex-shrink-0">

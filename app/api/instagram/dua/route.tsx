@@ -84,7 +84,15 @@ export async function GET(request: Request) {
   const slug = searchParams.get("slug");
   // share=1: link-preview image for a page (WhatsApp/Facebook), not the daily post
   const share = searchParams.get("share") === "1";
-  const dua = slug ? (DUAS.find((d) => d.slug === slug) ?? getDailyDua()) : getDailyDua();
+  // Only known params, and only real slugs: random values would bypass the edge
+  // cache and make every request render a fresh image (a cheap way to burn
+  // through the hosting quota).
+  if ([...searchParams.keys()].some((k) => k !== "slug" && k !== "share")) {
+    return new Response("Unknown parameter", { status: 400 });
+  }
+  const found = slug ? DUAS.find((d) => d.slug === slug) : undefined;
+  if (slug && !found) return new Response("Not found", { status: 404 });
+  const dua = found ?? getDailyDua();
 
   ensureFonts();
 
@@ -255,8 +263,14 @@ export async function GET(request: Request) {
   return new Response(pngBuffer as unknown as BodyInit, {
     headers: {
       "Content-Type": "image/png",
-      // Previews are cached at the edge; daily-post images must always be fresh
-      "Cache-Control": share ? "public, max-age=86400, s-maxage=2592000" : "no-store",
+      // Slug images are deterministic, so cache them at the edge (link previews
+      // for 30 days, post images for a day). Only the slug-less "today" image
+      // changes daily and must never be cached.
+      "Cache-Control": share
+        ? "public, max-age=86400, s-maxage=2592000"
+        : slug
+          ? "public, max-age=3600, s-maxage=86400"
+          : "no-store",
     },
   });
 }

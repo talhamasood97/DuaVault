@@ -27,7 +27,7 @@ export function RelatedDuas({ duas }: { duas: Dua[] }) {
             </div>
             <div className="flex items-center gap-2 flex-shrink-0">
               <AuthenticityBadge grade={dua.authenticity_grade} />
-              <ChevronRight className="w-4 h-4 text-stone-300 dark:text-stone-600 group-hover:text-emerald-500 transition-colors" />
+              <ChevronRight className="w-4 h-4 text-stone-300 dark:text-stone-400 group-hover:text-emerald-500 transition-colors" />
             </div>
           </Link>
         ))}

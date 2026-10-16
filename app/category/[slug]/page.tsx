@@ -69,14 +69,14 @@ export default async function CategoryPage({ params }: Props) {
     />
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12 animate-fade-in">
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400 mb-8">
+      <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400 mb-8">
         <Link href="/" className="hover:text-emerald-600 transition-colors">
           Home
         </Link>
         <ChevronRight className="w-3 h-3" />
-        <span className="text-stone-500">Categories</span>
+        <span className="text-stone-500 dark:text-stone-400">Categories</span>
         <ChevronRight className="w-3 h-3" />
-        <span className="text-stone-500">{cat.title}</span>
+        <span className="text-stone-500 dark:text-stone-400">{cat.title}</span>
       </nav>
 
       {/* Header */}

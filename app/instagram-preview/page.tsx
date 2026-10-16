@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import { getDailyHadith } from "@/data/hadiths";
 import { getDailyDua } from "@/data/duas";
 
 export const dynamic = "force-dynamic";
+
+// Internal preview of today's social cards — not a page for search results.
+export const metadata: Metadata = {
+  title: "Social Post Preview",
+  robots: { index: false, follow: false },
+};
 
 function formatDuaSource(dua: { source_book: string; hadith_number?: string; authenticity_grade: string }) {
   if (dua.authenticity_grade === "QURAN") {
@@ -33,7 +40,7 @@ export default function InstagramPreviewPage() {
       {/* Instructions */}
       <div className="max-w-[1080px] mx-auto mb-10 text-center">
         <h1 className="text-white text-2xl font-bold mb-2">Instagram Post Preview</h1>
-        <p className="text-stone-400 text-sm">
+        <p className="text-stone-500 dark:text-stone-400 text-sm">
           Right-click each card → &quot;Save image as&quot; (if browser supports it), or take a
           screenshot of each card. Use browser zoom to fit your screen.
         </p>
@@ -43,7 +50,7 @@ export default function InstagramPreviewPage() {
 
         {/* ── MORNING HADITH ─────────────────────────────────────── */}
         <div>
-          <p className="text-stone-500 text-xs uppercase tracking-widest mb-3 text-center">Morning Hadith — 1080×1080</p>
+          <p className="text-stone-500 dark:text-stone-400 text-xs uppercase tracking-widest mb-3 text-center">Morning Hadith — 1080×1080</p>
           {/* Outer wrapper clips to half-size for on-screen preview; full 1080px layout is preserved inside */}
           <div style={{ width: 540, height: 540, overflow: "hidden", borderRadius: 8 }}>
           <div
@@ -119,7 +126,7 @@ export default function InstagramPreviewPage() {
 
         {/* ── EVENING DUA ────────────────────────────────────────── */}
         <div>
-          <p className="text-stone-500 text-xs uppercase tracking-widest mb-3 text-center">Evening Dua — 1080×1080</p>
+          <p className="text-stone-500 dark:text-stone-400 text-xs uppercase tracking-widest mb-3 text-center">Evening Dua — 1080×1080</p>
           <div style={{ width: 540, height: 540, overflow: "hidden", borderRadius: 8 }}>
           <div
             style={{

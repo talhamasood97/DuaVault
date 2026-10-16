@@ -91,7 +91,7 @@ export function ShareButtons({ dua }: { dua: Dua }) {
       {/* WhatsApp */}
       <button
         onClick={shareWhatsApp}
-        className="flex items-center gap-1.5 px-3 py-2 bg-[#25D366] hover:bg-[#22c55e] text-white text-sm font-medium rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-white/70"
+        className="flex items-center gap-1.5 px-3 py-2 bg-[#1A7F4B] hover:bg-[#166b3f] text-white text-sm font-medium rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-white/70"
         aria-label="Share on WhatsApp"
       >
         <MessageCircle className="w-4 h-4" />
@@ -101,7 +101,7 @@ export function ShareButtons({ dua }: { dua: Dua }) {
       {/* Telegram */}
       <button
         onClick={shareTelegram}
-        className="flex items-center gap-1.5 px-3 py-2 bg-[#2AABEE] hover:bg-[#1e96d4] text-white text-sm font-medium rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-white/70"
+        className="flex items-center gap-1.5 px-3 py-2 bg-[#1A75AD] hover:bg-[#156394] text-white text-sm font-medium rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-white/70"
         aria-label="Share on Telegram"
       >
         <Send className="w-4 h-4" />
@@ -121,7 +121,7 @@ export function ShareButtons({ dua }: { dua: Dua }) {
       {/* Facebook */}
       <button
         onClick={shareFacebook}
-        className="flex items-center gap-1.5 px-3 py-2 bg-[#1877F2] hover:bg-[#1664d9] text-white text-sm font-medium rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-white/70"
+        className="flex items-center gap-1.5 px-3 py-2 bg-[#1464D2] hover:bg-[#1156b8] text-white text-sm font-medium rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-white/70"
         aria-label="Share on Facebook"
       >
         <Facebook className="w-4 h-4" />

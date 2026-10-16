@@ -182,7 +182,7 @@ export default async function DuaPage({ params }: Props) {
                 <span className="font-medium">{dua.source_book}</span>
                 {dua.hadith_number && (
                   <>
-                    <span className="text-stone-300 dark:text-stone-600">·</span>
+                    <span className="text-stone-300 dark:text-stone-400">·</span>
                     <span>
                       {dua.authenticity_grade === "QURAN"
                         ? dua.hadith_number
@@ -202,7 +202,7 @@ export default async function DuaPage({ params }: Props) {
           {/* Arabic text — primary element */}
           <div className="px-6 sm:px-10 py-10 bg-gradient-to-b from-sand-50/50 to-transparent dark:from-emerald-950/50">
             <div className="ornament mb-8">
-              <span className="text-xs text-stone-400 dark:text-stone-600 font-medium uppercase tracking-widest px-4">
+              <span className="text-xs text-stone-500 dark:text-stone-400 font-medium uppercase tracking-widest px-4">
                 Arabic
               </span>
             </div>

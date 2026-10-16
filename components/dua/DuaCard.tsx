@@ -57,7 +57,7 @@ export function DuaCard({ dua }: { dua: Dua }) {
           <span className="truncate">{dua.source_book}</span>
           {dua.hadith_number && (
             <>
-              <span className="text-stone-300 dark:text-stone-600 flex-shrink-0">·</span>
+              <span className="text-stone-300 dark:text-stone-400 flex-shrink-0">·</span>
               <span className="flex-shrink-0">{dua.hadith_number}</span>
             </>
           )}

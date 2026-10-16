@@ -34,6 +34,11 @@ The owner asked (Oct 2026) that none of these are ever skipped. Each one exists 
 2. `npx tsc --noEmit` and `npm run build`.
 3. Start the build (`npx next start -p 3002`), then run `node tools/phone-check.js http://localhost:3002`. Every sitemap page must fit 375px with no broken images and exactly one `<h1>`.
 4. For visual changes, take light and dark screenshots with `--shots light|dark <paths>` and look at them.
+   Then run `node tools/a11y-check.js http://localhost:3002`. It is an axe audit of 13 page types in light and dark, and must report 0 violations.
+   Colour rules:
+   - light text must not be lighter than `text-stone-500` (`stone-600` on tinted backgrounds)
+   - dark text must not be darker than `dark:text-stone-400`
+   - brand buttons use the darker shades `#1A7F4B`, `#1A75AD` and `#1464D2`
 5. If content changed: bump `CONTENT_UPDATED`, add new duas to a collection, check Sunnah.com links (`SUNNAH_SUFFIX`), and render the post cards.
 6. New page types need: a unique title (≤60 chars incl. " | DuaVault"), a description (≤160), a canonical, an og:image, one `<h1>`, a sitemap entry and internal links (homepage/footer/related).
 
@@ -49,6 +54,7 @@ The owner asked (Oct 2026) that none of these are ever skipped. Each one exists 
 - Change existing URLs without a redirect.
 - Reuse an ID.
 - Leave a viewport emulation on the browser pane before handing it to the owner.
+- Serve images for arbitrary query values: `/api/instagram/*` must 404 unknown slugs and 400 unknown params, so random URLs can't bypass the cache and burn the hosting quota.
 
 ## Publishing
 - Normal: `git push origin main`. Credentials live in the macOS Keychain, and the sandbox can't read it, so retry without the sandbox.

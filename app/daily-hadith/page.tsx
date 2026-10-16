@@ -76,12 +76,12 @@ export default function DailyHadithPage({
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8 sm:py-12 animate-fade-in">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400 mb-8">
+        <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400 mb-8">
           <Link href="/" className="hover:text-emerald-600 transition-colors">
             Home
           </Link>
           <ChevronRight className="w-3 h-3" />
-          <span className="text-stone-500">Hadith of the Day</span>
+          <span className="text-stone-500 dark:text-stone-400">Hadith of the Day</span>
         </nav>
 
         {/* Confirmation banner */}
@@ -181,7 +181,7 @@ export default function DailyHadithPage({
               <span>
                 {hadith.source_book} · {hadith.hadith_number}
               </span>
-              <span className="text-stone-300 dark:text-stone-600">·</span>
+              <span className="text-stone-300 dark:text-stone-400">·</span>
               <span>Narrated by {hadith.narrator}</span>
             </div>
           </div>
@@ -238,7 +238,7 @@ export default function DailyHadithPage({
               {hadith.topic_tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs px-2.5 py-1 bg-stone-100 dark:bg-emerald-900 text-stone-500 dark:text-stone-400 rounded-full capitalize"
+                  className="text-xs px-2.5 py-1 bg-stone-100 dark:bg-emerald-900 text-stone-600 dark:text-stone-300 rounded-full capitalize"
                 >
                   {tag}
                 </span>
@@ -256,7 +256,7 @@ export default function DailyHadithPage({
             View full details
             <ChevronRight className="w-4 h-4" />
           </Link>
-          <span className="text-stone-300 dark:text-stone-700">·</span>
+          <span className="text-stone-300 dark:text-stone-400">·</span>
           <Link
             href="/hadith"
             className="inline-flex items-center gap-1.5 text-sm text-stone-500 dark:text-stone-400 hover:text-amber-700 dark:hover:text-amber-400 hover:underline font-medium transition-colors"

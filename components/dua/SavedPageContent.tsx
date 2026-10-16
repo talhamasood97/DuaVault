@@ -115,13 +115,13 @@ function SavedDuaCard({ dua, isSharedView }: { dua: Dua; isSharedView: boolean }
         <span className="truncate">{dua.source_book}</span>
         {dua.hadith_number && (
           <>
-            <span className="text-stone-300 dark:text-stone-600">·</span>
+            <span className="text-stone-300 dark:text-stone-400">·</span>
             <span className="flex-shrink-0">{dua.hadith_number}</span>
           </>
         )}
         {category && (
           <>
-            <span className="text-stone-300 dark:text-stone-600 ml-auto">·</span>
+            <span className="text-stone-300 dark:text-stone-400 ml-auto">·</span>
             <span className={`font-medium ml-0.5 ${category.color}`}>{category.icon}</span>
           </>
         )}
@@ -266,7 +266,7 @@ export function SavedPageContent() {
             ) : (
               <button
                 onClick={() => setShowClearConfirm(true)}
-                className="p-2 rounded-xl text-stone-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/30 transition-colors"
+                className="p-2 rounded-xl text-stone-500 dark:text-stone-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/30 transition-colors"
                 aria-label="Clear all saved duas"
               >
                 <Trash2 className="w-4 h-4" />

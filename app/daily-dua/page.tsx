@@ -57,12 +57,12 @@ export default async function DailyDuaPage() {
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8 sm:py-12 animate-fade-in">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400 mb-8">
+        <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400 mb-8">
           <Link href="/" className="hover:text-emerald-600 transition-colors">
             Home
           </Link>
           <ChevronRight className="w-3 h-3" />
-          <span className="text-stone-500">Daily Dua</span>
+          <span className="text-stone-500 dark:text-stone-400">Daily Dua</span>
         </nav>
 
         {/* Date header */}
@@ -105,7 +105,7 @@ export default async function DailyDuaPage() {
               <BookOpen className="w-4 h-4" />
               <span>{dua.source_book}</span>
               {dua.hadith_number && (
-                <span className="text-stone-300 dark:text-stone-600">· {dua.hadith_number}</span>
+                <span className="text-stone-500 dark:text-stone-400">· {dua.hadith_number}</span>
               )}
             </div>
           </div>
@@ -113,7 +113,7 @@ export default async function DailyDuaPage() {
           {/* Arabic */}
           <div className="px-6 sm:px-10 py-10">
             <div className="ornament mb-8">
-              <span className="text-xs text-stone-400 dark:text-stone-600 font-medium uppercase tracking-widest px-4">
+              <span className="text-xs text-stone-500 dark:text-stone-400 font-medium uppercase tracking-widest px-4">
                 Arabic
               </span>
             </div>

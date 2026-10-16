@@ -60,7 +60,11 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const { email, name: rawName } = await req.json();
+    const body = await req.json().catch(() => null);
+    if (!body || typeof body !== "object") {
+      return NextResponse.json({ error: "Valid email required." }, { status: 400 });
+    }
+    const { email, name: rawName } = body as { email?: unknown; name?: unknown };
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     if (!email || typeof email !== "string" || !emailRegex.test(email.trim())) {
@@ -69,6 +73,12 @@ export async function POST(req: NextRequest) {
 
     // Normalize server-side — the form does this too, but API callers bypass the form.
     const normalizedEmail = email.trim().toLowerCase();
+
+    // Per-address throttle: stops the form being used to flood someone else's
+    // inbox from many IPs. Same reply as success so it reveals nothing.
+    if (!rateLimit(`subscribe-email:${normalizedEmail}`, 2, 60 * 60 * 1000).allowed) {
+      return NextResponse.json({ message: "Please check your inbox to confirm your subscription." });
+    }
 
     // Sanitise name: printable ASCII/Unicode only, max 50 chars
     const name =

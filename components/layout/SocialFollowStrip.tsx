@@ -47,7 +47,7 @@ export function SocialFollowStrip({ variant = "dua" }: Props) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Follow DuaVault on Facebook"
-          className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-white bg-[#1877F2] hover:bg-[#166fe5] transition-colors shadow-sm"
+          className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-white bg-[#1464D2] hover:bg-[#166fe5] transition-colors shadow-sm"
         >
           {/* Facebook SVG */}
           <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

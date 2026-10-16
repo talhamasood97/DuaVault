@@ -51,7 +51,7 @@ export function Footer() {
             >
               <BookOpen className="w-5 h-5" />
               <span className="font-semibold text-lg">
-                Dua<span className="text-emerald-600">Vault</span>
+                Dua<span className="text-emerald-700 dark:text-emerald-400">Vault</span>
               </span>
             </Link>
             <p className="text-sm text-stone-500 dark:text-stone-400 leading-relaxed">
@@ -87,22 +87,22 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="DuaVault on Facebook"
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-stone-100 dark:bg-emerald-900 text-stone-500 dark:text-stone-400 hover:bg-[#1877F2] hover:text-white transition-all"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-stone-100 dark:bg-emerald-900 text-stone-500 dark:text-stone-400 hover:bg-[#1464D2] hover:text-white transition-all"
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                 </svg>
               </a>
-              <span className="text-xs text-stone-400 dark:text-stone-600">@dua.vault</span>
+              <span className="text-xs text-stone-500 dark:text-stone-400">@dua.vault</span>
             </div>
           </div>
 
           {/* Links */}
           {Object.entries(LINKS).map(([section, items]) => (
             <div key={section}>
-              <h3 className="text-xs font-semibold uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-4">
+              <h2 className="text-xs font-semibold uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-4">
                 {section}
-              </h3>
+              </h2>
               <ul className="space-y-2.5">
                 {items.map((item) => (
                   <li key={item.href}>
@@ -125,12 +125,12 @@ export function Footer() {
             رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ
           </span>
         </div>
-        <p className="text-center text-xs text-stone-400 dark:text-stone-500 italic mb-8">
+        <p className="text-center text-xs text-stone-500 dark:text-stone-400 italic mb-8">
           &ldquo;Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire.&rdquo; &mdash; Quran 2:201
         </p>
 
         {/* Bottom bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400 dark:text-stone-600">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500 dark:text-stone-400">
           <p>
             © {new Date().getFullYear()} DuaVault · Made by Mohd Talha Masood, IIT Kanpur
           </p>

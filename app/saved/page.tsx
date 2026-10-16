@@ -15,7 +15,7 @@ export default function SavedPage() {
     // Suspense required because SavedPageContent uses useSearchParams()
     <Suspense fallback={
       <div className="flex justify-center py-24">
-        <Loader2 className="w-6 h-6 animate-spin text-stone-300 dark:text-stone-600" />
+        <Loader2 className="w-6 h-6 animate-spin text-stone-300 dark:text-stone-400" />
       </div>
     }>
       <SavedPageContent />
