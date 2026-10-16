@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 
-export const size = { width: 32, height: 32 };
+// Google Search only shows favicons that are a multiple of 48px; 32px showed a blank globe.
+export const size = { width: 96, height: 96 };
 export const contentType = "image/png";
 
 export default function Icon() {
@@ -8,17 +9,17 @@ export default function Icon() {
     (
       <div
         style={{
-          width: 32,
-          height: 32,
+          width: 96,
+          height: 96,
           background: "#047857",
-          borderRadius: 6,
+          borderRadius: 18,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           color: "white",
-          fontSize: 20,
+          fontSize: 60,
           fontWeight: "bold",
-          letterSpacing: "-1px",
+          letterSpacing: "-3px",
         }}
       >
         D

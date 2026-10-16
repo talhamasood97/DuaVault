@@ -10,7 +10,7 @@ import { DailyDuaBanner } from "@/components/home/DailyDuaBanner";
 import { DailyHadithBanner } from "@/components/home/DailyHadithBanner";
 import { getFeaturedDuas, getDailyDua } from "@/lib/duas";
 import { getDailyHadith } from "@/data/hadiths";
-import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, safeJsonLd } from "@/lib/utils";
+import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, SOCIAL, safeJsonLd } from "@/lib/utils";
 
 // Revalidate every hour so the Daily Dua banner rotates correctly
 export const revalidate = 3600;
@@ -43,7 +43,8 @@ const organizationSchema = {
   name: SITE_NAME,
   url: SITE_URL,
   description: SITE_DESCRIPTION,
-  sameAs: [],
+  logo: `${SITE_URL}/apple-icon`,
+  sameAs: [SOCIAL.instagram, SOCIAL.facebook],
 };
 
 export default async function HomePage() {

@@ -11,6 +11,7 @@ import { SocialFollowStrip } from "@/components/layout/SocialFollowStrip";
 import { getCategoryMeta, getEmotionMeta, SITE_URL, SITE_NAME, safeJsonLd, fitTitle, truncate } from "@/lib/utils";
 import { DuaViewTracker } from "@/components/analytics/DuaViewTracker";
 import { SourceLink, ReportErrorLink } from "@/components/ui/SourceLink";
+import { ShareImage } from "@/components/ui/ShareImage";
 import { sourceUrl } from "@/lib/sources";
 import { getCollectionsForDua } from "@/lib/collections";
 import { SEO_TITLES } from "@/lib/seo-titles";
@@ -269,6 +270,11 @@ export default async function DuaPage({ params }: Props) {
             ) : null;
           })}
         </div>
+
+        <ShareImage
+          src={`/api/instagram/dua?slug=${dua.slug}&share=1`}
+          alt={`${dua.title} in Arabic with English meaning – ${dua.source_book}${dua.hadith_number ? ` ${dua.hadith_number}` : ""}`}
+        />
 
         {/* Topic collections this dua belongs to */}
         {collections.map((c) => (

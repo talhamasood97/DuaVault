@@ -8,6 +8,7 @@ import { SITE_NAME, SITE_URL, safeJsonLd, fitTitle, truncate } from "@/lib/utils
 import { HadithViewTracker } from "@/components/analytics/HadithViewTracker";
 import type { Hadith } from "@/types";
 import { SourceLink, ReportErrorLink } from "@/components/ui/SourceLink";
+import { ShareImage } from "@/components/ui/ShareImage";
 import { sourceUrl } from "@/lib/sources";
 
 export const revalidate = 86400;
@@ -207,6 +208,11 @@ export default function HadithPage({ params }: Props) {
             <ReportErrorLink title={hadith.title} url={`${SITE_URL}/hadith/${hadith.slug}`} />
           </div>
         </div>
+
+        <ShareImage
+          src={`/api/instagram/hadith?slug=${hadith.slug}&share=1`}
+          alt={`${hadith.title} – hadith in Arabic with English translation, ${hadith.source_book} ${hadith.hadith_number}`}
+        />
 
         {/* Related hadiths */}
         {related.length > 0 && (
