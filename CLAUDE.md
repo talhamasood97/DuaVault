@@ -41,6 +41,8 @@ A task is NOT complete until:
 - **Validator:** `data/validate.ts` passes with 0 errors (since the Oct 2026 audit). Keep it at 0.
 - **Topic collections** (`lib/collections.ts` → `/duas-for/<slug>`): when adding duas, add them to a matching collection. Create new collections only from Search Console queries where several pages split the same search.
 - **After any content change:** bump `CONTENT_UPDATED` in `app/sitemap.ts` to today.
+- **Source links:** for a new Sunnah.com reference, check that `https://sunnah.com/<book>:<n>` opens. If only `<n>a` exists, add it to `SUNNAH_SUFFIX` in `lib/sources.ts`.
+- **Tell search engines:** after publishing new pages, POST the sitemap URLs to IndexNow with key `7407844c6631af6428ce3b88a62107ae` (the other key file in `public/` is rejected).
 - **Removing an entry:** never reuse its ID; add a permanent redirect to `REMOVED_PAGES` in `next.config.js`.
 - **Post images:** render `/api/instagram/dua` and `/api/instagram/hadith` for every new item and look at them.
   - Very long duas → `daily_dua_eligible: false`.
