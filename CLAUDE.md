@@ -21,6 +21,35 @@ A task is NOT complete until:
 4. On GitHub `main` (see Publishing below)
 5. Live: poll a changed/new URL on https://duavault.com until it serves the change (Vercel takes ~5 min), then spot-check pages and `/api/instagram/*` images
 
+## ✅ Release checklist — EVERY change, no exceptions
+The owner asked (Oct 2026) that none of these are ever skipped. Each one exists because it broke silently before.
+
+**Before publishing**
+1. `npm run preflight`. It runs `tools/preflight.ts` and the content validator, and must pass. It checks:
+   - every `process.env` read is `.trim()`ed (Vercel values end in a newline, which broke Google Analytics until Oct 2026)
+   - collections and `SEO_TITLES` point at real duas
+   - redirects are valid
+   - the verification files exist
+   - `CONTENT_UPDATED` isn't stale
+2. `npx tsc --noEmit` and `npm run build`.
+3. Start the build (`npx next start -p 3002`), then run `node tools/phone-check.js http://localhost:3002`. Every sitemap page must fit 375px with no broken images and exactly one `<h1>`.
+4. For visual changes, take light and dark screenshots with `--shots light|dark <paths>` and look at them.
+5. If content changed: bump `CONTENT_UPDATED`, add new duas to a collection, check Sunnah.com links (`SUNNAH_SUFFIX`), and render the post cards.
+6. New page types need: a unique title (≤60 chars incl. " | DuaVault"), a description (≤160), a canonical, an og:image, one `<h1>`, a sitemap entry and internal links (homepage/footer/related).
+
+**After it's live**
+7. Spot-check the changed URLs on https://duavault.com. Confirm Google Analytics still fires: `gtag` is defined and a `/g/collect` request is sent.
+8. If pages were added or removed: POST all sitemap URLs to IndexNow (key below). In Search Console, resubmit `sitemap.xml` and request indexing for the most important new pages (about 10 a day).
+9. Update `PROJECT_CONTEXT.md` (version history) and the memory notes.
+
+**Never**
+- Reduce the favicon below 48px.
+- Remove `public/google80842bb7c72773cb.html` or `public/7407844c6631af6428ce3b88a62107ae.txt`.
+- Block `/_next/` or `/api/instagram/` in robots.
+- Change existing URLs without a redirect.
+- Reuse an ID.
+- Leave a viewport emulation on the browser pane before handing it to the owner.
+
 ## Publishing
 - Normal: `git push origin main`. Credentials live in the macOS Keychain, and the sandbox can't read it, so retry without the sandbox.
 - If push fails on auth (the token expired in Oct 2026; `gh` isn't installed), **don't ask the owner for a token**. Publish through GitHub's web upload page in the built-in browser pane instead:
@@ -47,7 +76,7 @@ A task is NOT complete until:
 - **Post images:** render `/api/instagram/dua` and `/api/instagram/hadith` for every new item and look at them.
   - Very long duas → `daily_dua_eligible: false`.
   - The hadith card quotes from the first `said, "…"`, so make sure that's the Prophet's words.
-- **Before publishing:** `npx tsc --noEmit`, `npm run build`, and phone-width (375px) checks.
+- **Before publishing:** follow the Release checklist above.
 
 ## Project
 - Live site: https://duavault.com

@@ -6,7 +6,7 @@ import { COLLECTIONS } from "@/lib/collections";
 
 // Date the dua/hadith content last changed. Bump it whenever content is added
 // or edited — a lastmod that always says "now" teaches Google to ignore it.
-const CONTENT_UPDATED = new Date("2026-10-11");
+const CONTENT_UPDATED = new Date("2026-10-16");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

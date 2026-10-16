@@ -10,7 +10,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db:seed": "ts-node --project tsconfig.json data/seed.ts"
+    "db:seed": "ts-node --project tsconfig.json data/seed.ts",
+    "preflight": "npx tsx tools/preflight.ts && npx tsx data/validate.ts",
+    "phone-check": "node tools/phone-check.js"
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.97",
